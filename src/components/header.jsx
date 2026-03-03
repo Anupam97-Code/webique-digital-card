@@ -47,7 +47,7 @@ const Header = () => {
   const animateSlides = (swiper) => {
     swiper.slides.forEach((slide, index) => {
       const img = slide.querySelectorAll("a");
-      console.log(img);
+      // console.log(img);
 
       if (!img) return;
 
@@ -91,13 +91,13 @@ const Header = () => {
           <div class="col-md-8">
             {/* <h2 class="section-heading mb-3">See Your Digital Card in Action</h2> */}
 
-               <BlurText
-                                                text="See Your Digital Card in Action"
-                                                delay={100}
-                                                animateBy="words"
-                                                direction="bottom"
-                                                className="justify-content-center section-heading"
-                                              />
+            <BlurText
+              text="See Your Digital Card in Action"
+              delay={100}
+              animateBy="words"
+              direction="bottom"
+              className="justify-content-center section-heading"
+            />
           </div>
         </div>
         <Swiper

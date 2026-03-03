@@ -1,24 +1,30 @@
 @import '../assets/scss/variable';
 @import '../assets/scss/common';
 
-.cbox-1, .cbox-2, .cbox-3 {
+.cbox-1,
+.cbox-2,
+.cbox-3 {
     display: flex;
     position: relative;
     align-items: stretch !important;
     justify-content: flex-start;
 
-    
+
 }
 
-.cbox-2-txt, .cbox-3-txt {
+.cbox-2-txt,
+.cbox-3-txt {
     margin-bottom: 35px;
 }
 
-.cbox-1-txt, .cbox-2-txt, .cbox-3-txt {
+.cbox-1-txt,
+.cbox-2-txt,
+.cbox-3-txt {
     overflow: hidden;
     flex: 1;
     max-width: 100%;
 }
+
 .cbox-2-line {
     position: absolute;
     bottom: 20px;
@@ -36,17 +42,20 @@
     margin-right: 1.625rem;
 }
 
-
 .rounded-circle {
     width: 48px;
     height: 49px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $primary !important;
+    background: $primary;
 }
 
-.content-lst{list-style: none;  margin: 0; padding: 0;
+.content-lst {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
     li {
         font-size: 1.25rem;
         color: $text-para;

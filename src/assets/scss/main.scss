@@ -1,3 +1,16 @@
 @import '../scss/variable';
 @import '../scss/common';
-@import '../scss/mixin'
+@import '../scss/mixin';
+
+.card-basic-1 {
+    border: 1px solid #000;
+    width: 450px;
+    border-radius: 6px;
+
+    .card-call-btn,
+    .card-whatsapp-btn {
+        padding: 6px;
+        border: 1px solid #000;
+        border-radius: 50%;
+    }
+}
