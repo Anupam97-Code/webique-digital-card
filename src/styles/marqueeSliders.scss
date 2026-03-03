@@ -1,0 +1,112 @@
+@import '../assets/scss/common';
+@import '../assets/scss/mixin';
+@import '../assets/scss/variable';
+
+
+
+.industery-marquee {
+    .maquee-container {
+        ul {
+            @include flex (row, center, space-between, 0);
+
+            li {
+                list-style: none;
+                padding: 13px 33px;
+                border-radius: $radius-pill;
+                background: $trinery;
+            }
+        }
+    }
+}
+
+
+.industery-marquee {
+    position: relative;
+    overflow: hidden;
+
+    .marquee-main-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 20px 0;
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15vw;
+            z-index: 2;
+            pointer-events: none;
+
+            &.overlay-left {
+                left: -5px;
+                  background: linear-gradient(to right,#fff 20%,transparent)
+            }
+
+            &.overlay-right {
+                right: -5px;
+               background: linear-gradient(to left,#fff 20%,transparent);
+            }
+        }
+        @media(max-width:576px){
+            gap: 15px;
+        }
+    }
+
+    .marquee-wrapper {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .marquee-content {
+        display: flex;
+        gap: 20px;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        white-space: nowrap;
+
+        li {
+            padding: 13px 33px;
+            border-radius: $radius-pill;
+            background: $trinery;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 400;
+            flex-shrink: 0;
+
+            @media(max-width:768px) {
+                padding: 6px 12px;
+                font-size: $font-size-base0875;
+            }
+        }
+        @media(max-width:576px){
+            gap: 10px;
+        }
+    }
+}
+
+.curved-loop-jacket {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.curved-loop-svg {
+    user-select: none;
+    width: 100%;
+    aspect-ratio: 100 / 12;
+    overflow: visible;
+    display: block;
+    font-size: 6rem;
+    fill: #ffffff;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+}

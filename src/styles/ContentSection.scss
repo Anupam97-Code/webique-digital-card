@@ -1,0 +1,61 @@
+@import '../assets/scss/variable';
+@import '../assets/scss/common';
+
+.cbox-1, .cbox-2, .cbox-3 {
+    display: flex;
+    position: relative;
+    align-items: stretch !important;
+    justify-content: flex-start;
+
+    
+}
+
+.cbox-2-txt, .cbox-3-txt {
+    margin-bottom: 35px;
+}
+
+.cbox-1-txt, .cbox-2-txt, .cbox-3-txt {
+    overflow: hidden;
+    flex: 1;
+    max-width: 100%;
+}
+.cbox-2-line {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 2px;
+    background-color: $line;
+    height: calc(100% - 90px);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.ico-wrap {
+    position: relative;
+    margin-right: 1.625rem;
+}
+
+
+.rounded-circle {
+    width: 48px;
+    height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary !important;
+}
+
+.content-lst{list-style: none;  margin: 0; padding: 0;
+    li {
+        font-size: 1.25rem;
+        color: $text-para;
+        font-weight: 400;
+        line-height: 30px;
+        background: url('../assets/images/list-dot.png');
+        background-repeat: no-repeat;
+        background-size: 10px;
+        background-position: left 55%;
+        padding-left: 30px;
+    }
+}

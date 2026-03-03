@@ -1,0 +1,124 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "../styles/FeaturesSection.scss"; // optional if using custom styles
+import icnOne from "../assets/images/step-1.svg";
+import icnTwo from "../assets/images/step-2.svg"
+import icnThr from "../assets/images/step-3.svg"
+import icnFvr from "../assets/images/step-4.svg"
+import featureImg from "../assets/images/four-steps.png"
+import { BlurText } from "./shared/TextAnimation";
+const FeaturesSection = () => {
+  // ✅ JSON inside component
+  const featuresData = {
+    image: featureImg,
+    features: [
+      {
+        id: 1,
+        nmb:"01",
+        icon: icnOne,
+        title: "Share Your Details",
+        text: "Send us your contact information and business details.",
+      },
+      {
+        id: 2,
+        nmb:"02",
+        icon: icnTwo,
+        title: "We Design Your Card",
+        text: "Our team creates a professional digital card for you.",
+      },
+      {
+        id: 3,
+        nmb:"03",
+        icon: icnThr,
+        title: "Get Your Link & QR Code",
+        text: "Receive your personal link and scannable QR.",
+      },
+      {
+        id: 4,
+        nmb:"04",
+        icon: icnFvr,
+        title: "Start Sharing",
+        text: "Share it instantly with clients anytime, anywhere.",
+      },
+    ],
+  };
+
+  return (
+    <section id="process" className="bg-white features-section-top">
+      <Container className="position-relative z-2">
+        <Row className="align-items-center">
+
+          <Col sm={12}>
+            <div class="row w-50 w-md-100 margin-minus">
+              <p>Product by Webique Technology</p>
+              <h2 class="section-heading"></h2>
+
+               <BlurText
+                                                              text="4 Simple Steps to Get Your Digital Card"
+                                                              delay={100}
+                                                              animateBy="words"
+                                                              direction="bottom"
+                                                              className="section-heading"
+                                                            />
+
+            </div>
+          </Col>
+
+
+          {/* LEFT IMAGE */}
+          <Col md={6}>
+
+
+            <div className="features-img wow perch-fadeInLeft fadeInLeft">
+              <img
+                src={featuresData.image}
+                alt="feature"
+                className="img-fluid"
+              />
+            </div>
+          </Col>
+
+
+          {/* RIGHT FEATURES */}
+          <Col md={6}>
+            <Row>
+
+              {featuresData.features.map((feature) => {
+
+                const IconComponent = feature.icon;
+                return (
+                  <Col xl={12} xxl={6} key={feature.id} className="mb-4">
+                    <div className="wow perch-fadeInUp fadeInUp fbox-4">
+                      <div className="fbox grey-color-box position-relative">
+
+                        {/* Icon */}
+                        <div className="grey-color-icon b-icon box-icon-md">
+                          <img src={feature.icon} className="feature-icons" alt="icn" />
+                        </div>
+
+                        <div className="position-absolute abs-number">
+                          {feature.nmb}
+                        </div>
+
+                        {/* Text */}
+                        <div className="fbox-4-txt">
+                          <h5>{feature.title}</h5>
+                          <p className="grey-color">{feature.text}</p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </Col>
+                )
+              })}
+
+            </Row>
+          </Col>
+
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default FeaturesSection;

@@ -1,0 +1,138 @@
+@import '../assets/scss/variable';
+@import '../assets/scss/common';
+
+.banner-section {
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+
+    .c-to-a {
+        width: 100%;
+        padding: 75px 20% 85px;
+
+        p.lead {
+    font-size: 1.4rem;
+    font-weight: 600; color: $white;
+    padding: 20px 0 25px 0;
+    margin: 0;
+}
+p.small {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $white;
+}
+.ctoa-button{
+    color: $primary !important;
+    border-color: $white !important;
+    background-color: $white !important;
+    padding: 0.8rem 1.7rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    
+}
+        h2{font-size: 3rem; line-height: 1.25; color: $white;}
+
+        background: $primary;
+    }
+}
+
+
+.integrations-2-wrapper {
+  padding: 80px 70px;
+}
+
+.in_tool_logo {
+  padding: 50px 30px;
+  margin-bottom: 25px;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out; 
+}
+
+.integrations-1-wrapper {
+.in_tool-logo {
+  position: relative;
+  margin-right: 20px;
+
+  }
+
+}
+
+.integrations-1-wrapper .in_tool {
+  display: flex;
+    position: relative;
+    flex-flow: row wrap;
+    justify-content: start;
+    padding: 22px 20px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    background-color: #ffffff;
+    height: 100%;
+    align-items: center;
+}
+
+.integrations-1-wrapper .in_tool-txt {
+  overflow: hidden;
+  flex: 1;
+  max-width: 100%;
+
+}
+
+.in_tool h6 {
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.integrations-1-wrapper .in_tool-txt h6 {
+  margin-top: 5px;
+}
+
+.integrations-1-wrapper .in_tool-txt p {
+  margin-top: 5px;
+  margin-bottom: 0;
+    @media (max-width: 991px){font-size: 14px;}
+}
+
+.integrations-1-wrapper .in_tool:hover {
+  border-color: transparent;
+  -webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .08); 
+  -moz-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .08); 
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .08); 
+}
+
+//common classes
+
+.w-700 {
+    font-weight: 700;
+}
+.s-20 {
+    font-size: 1.25rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $text-heading;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-bottom: 0;
+}
+
+.w-700 {
+    font-weight: 700;
+}
+.s-50 {
+    font-size: 3.125rem;
+}
+
+.section-title p.p-md, .section-title p.p-lg, .section-title p.p-xl, .section-title p.s-20, .section-title p.s-21 {
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+.s-21 {
+    font-size: 1.3125rem;
+}
+
+.color--white, .color--white h1, .color--white h2, .color--white h3, .color--white h4, .color--white h5, .color--white h6, .color--white p, .color--white a, .color--white li, .color--white i, .color--white span {
+    color: $white;
+}
