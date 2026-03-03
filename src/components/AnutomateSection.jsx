@@ -21,17 +21,29 @@ const AnutomateSection = () => {
         title: "Smart Features for Smart Business Owners",
         // subtitle: "",
 
+
+
+
+
+
+
+
+
+
+
+
+
         buttonLink: "/integrations",
         tools: [
-            { id: 1, name: "Instant Call Access", desc: "Let clients reach you with a single tap.", img: Tool1 },
-            { id: 2, name: "Quick WhatsApp Chat", desc: "Connect instantly without saving numbers.", img: Tool2 },
-            { id: 3, name: "Seamless Email Contact", desc: "Send emails directly with one tap", img: Tool3 },
-            { id: 4, name: "Easy Navigation", desc: "Share your location for hassle-free visits.", img: Tool4 },
-            { id: 5, name: "Website, Social  Links", desc: "Showcase your online presence.", img: Tool5 },
-            { id: 6, name: "Unlimited Sharing", desc: "Share your profile across any platform.", img: Tool6 },
-            { id: 7, name: "Real-Time Updates", desc: "Modify details anytime, effortlessly.", img: Tool7 },
-            { id: 8, name: "Products and Services", desc: "Highlight what you offer instantly.", img: Tool8 },
-            { id: 9, name: "Enquiry Form", desc: "easy-to-use contact form", img: Tool9 },
+            { id: 1, name: "Instant Call Access", desc: "Connect with clients in just one tap.", img: Tool1 },
+            { id: 2, name: "Quick WhatsApp Chat", desc: "No need to save numbers first.", img: Tool2 },
+            { id: 3, name: "Seamless Email Contact", desc: "Send emails instantly.", img: Tool3 },
+            { id: 4, name: "Easy Navigation", desc: "Share your location easily.", img: Tool4 },
+            { id: 5, name: "Website, Social  Links", desc: "Display all your social links in one place.", img: Tool5 },
+            { id: 6, name: "Unlimited Sharing", desc: "Share your profile anywhere.", img: Tool6 },
+            { id: 7, name: "Real-Time Updates", desc: "Update your details anytime.", img: Tool7 },
+            { id: 8, name: "Products and Services", desc: "Show your services clearly.", img: Tool8 },
+            { id: 9, name: "Enquiry Form", desc: "Simple and quick contact form.", img: Tool9 },
         ]
     };
 
@@ -51,7 +63,7 @@ const AnutomateSection = () => {
                                     delay={100}
                                     animateBy="words"
                                     direction="bottom"
-                                    className="justify-content-center mb-3 mb-md-5 section-heading"
+                                    className="justify-content-center  section-heading"
                                   />
                     
                    
@@ -62,7 +74,7 @@ const AnutomateSection = () => {
                 </Row>
 
                 {/* INTEGRATIONS GRID */}
-                <Row xs={1} md={2} lg={3} className="g-4 integrations-1-wrapper">
+                <Row xs={1} md={2} lg={3} className="g-3 g-md-4 integrations-1-wrapper">
                     {integrationsData.tools.map((tool) => (
                         <Col key={tool.id}>
                             <div

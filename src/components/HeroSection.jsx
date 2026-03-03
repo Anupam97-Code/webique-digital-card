@@ -9,7 +9,7 @@ import imgThr from "../assets/images/social-media.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MobileIcon from "../assets/images/smartphone.svg";
 
-import arrowOne from "../assets/images/search.svg";
+import arrowOne from "../assets/images/search-samll.svg";
 import StatCard from "./StartCard";
 import ShinyText from "./ShinyText";
 import ButtonCall from "./ButtonCall";
@@ -26,7 +26,7 @@ const HeroSection = () => {
 
               {/* Title */}
               <h2 className="fw-bold display-5">
-                <span className="small-text">Turn Your Visiting Card Into</span> <ShinyText
+                <span className="small-text">Turn Your Visiting Card Into</span><br/> <ShinyText
                   text="Smart Digital Identity"
                   speed={2}
                   delay={0}
@@ -66,19 +66,23 @@ const HeroSection = () => {
 
                 <div className='type-txt'>
                   <img src={arrowOne} alt="search"/>
-                   <TextType
-                      text={["www.webiquecard.in/businessname"]}
-                      typingSpeed={75}
-                      pauseDuration={2500}
-                      showCursor
-                      cursorCharacter="_"
-                      texts={["www.webiquecard.in/businessname"]}
-                      deletingSpeed={50}
-                      variableSpeedEnabled={false}
-                      variableSpeedMin={60}
-                      variableSpeedMax={120}
-                      cursorBlinkDuration={0.5}
-                    />
+                   <div className="typing-wrapper">
+  {/* Faded Background Text */}
+  <span className="fade-text">
+    www.webiquecard.in/businessname
+  </span>
+
+  {/* Typing Text Over It */}
+  <TextType
+    text={["www.webiquecard.in/businessname"]}
+    typingSpeed={75}
+    pauseDuration={2500}
+    showCursor
+    cursorCharacter=""
+    deletingSpeed={50}
+    variableSpeedEnabled={false}
+  />
+</div>
                 </div>
 
               {/* <ButtonCall

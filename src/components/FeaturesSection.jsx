@@ -48,28 +48,26 @@ const FeaturesSection = () => {
       <Container className="position-relative z-2">
         <Row className="align-items-center">
 
-          <Col sm={12}>
-            <div class="row w-50 w-md-100 margin-minus">
+
+
+          {/* LEFT IMAGE */}
+          <Col md={12} lg={6} >
+               <div className="mb-0 mb-md-4">
               <p>Product by Webique Technology</p>
-              <h2 class="section-heading"></h2>
+              <h2 class="section-heading">
 
                <BlurText
                                                               text="4 Simple Steps to Get Your Digital Card"
                                                               delay={100}
                                                               animateBy="words"
                                                               direction="bottom"
-                                                              className="section-heading"
+                                                              
                                                             />
+                                                            </h2>
 
             </div>
-          </Col>
 
-
-          {/* LEFT IMAGE */}
-          <Col md={6}>
-
-
-            <div className="features-img wow perch-fadeInLeft fadeInLeft">
+            <div className="features-img wow perch-fadeInLeft fadeInLeft d-none d-lg-block">
               <img
                 src={featuresData.image}
                 alt="feature"
@@ -80,14 +78,14 @@ const FeaturesSection = () => {
 
 
           {/* RIGHT FEATURES */}
-          <Col md={6}>
+          <Col md={12} lg={6} xl={6} xxl={12}>
             <Row>
 
               {featuresData.features.map((feature) => {
 
                 const IconComponent = feature.icon;
                 return (
-                  <Col xl={12} xxl={6} key={feature.id} className="mb-4">
+                  <Col xl={12} xxl={6} md={6}   key={feature.id} className="mb-md-4 mt-4  mt-md-0 mt-lg-0">
                     <div className="wow perch-fadeInUp fadeInUp fbox-4">
                       <div className="fbox grey-color-box position-relative">
 

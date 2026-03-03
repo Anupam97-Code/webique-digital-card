@@ -106,7 +106,7 @@ const Footer = () => {
             <p>Create a smart digital business card that’s easy to share, simple to update, and designed to help your business stand out.</p>
 
             <ButtonCall
-              className='hero-btn my-4'
+              className='hero-btn my-4 '
               phone="+919876543210"
               label="Create Digital Card"
               icon={phoneIcon}

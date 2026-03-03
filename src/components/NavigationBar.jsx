@@ -52,6 +52,24 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 
+useEffect(() => {
+  if (sidebarOpen) {
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+  };
+}, [sidebarOpen]);
+
   /* ================= SCROLL TO SECTION ================= */
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -90,7 +108,9 @@ useEffect(() => {
 >
         <Container className="nav-container">
           <div className="nav-logo">
+            <a href="https://www.webique.in/" target="_blank">
             <img src={logo} alt="Company Logo" />
+            </a>
           </div>
 
           <nav className="nav-links">

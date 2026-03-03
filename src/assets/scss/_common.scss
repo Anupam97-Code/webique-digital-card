@@ -35,7 +35,7 @@ ul {
 
 .hero-btn {
 
-    padding: 5px;
+    padding: 12px 10px 10px 10px;
     font-size: 18px;
     font-weight: 500;
     display: flex;
@@ -45,8 +45,8 @@ ul {
     gap: 10px;
     border-radius: 50PX;
     width: fit-content;
-    background: #ffffff;
-    color: #022B5B;
+    background: #022B5B;
+    color: #ffffff;
     transition: 0.5s all ease-in;
     text-decoration: none;
     border: solid 1px #ccc;
@@ -57,7 +57,7 @@ ul {
     padding: 5px;
     border-radius: 50%;
     transition: 0.5s all ease-in;
-    background: #052b59;
+    background: #ffffff;
 }
 
 
@@ -90,8 +90,8 @@ ul {
 
 .type-txt {
 
-    padding: 5px;
-    font-size: 18px;
+    padding: 17px 17px 17px 24px;
+    font-size: 19px;
     font-weight: 500;
     display: flex;
     flex-direction: row;
@@ -99,20 +99,23 @@ ul {
     justify-content: start;
     gap: 10px;
     border-radius: 50PX;
-    background: #ffffff;
+    background: linear-gradient(90deg, #E6F7FD 0%, #F7FCFE 50%, #F7FCFE 100%);
     color: #022B5B;
     transition: 0.5s all ease-in;
     text-decoration: none;
-    border: solid 1px #ccc;
-    width: 430px;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 0px 6px 0px #00000033;
+    width: 450px;
 
  img {
     width: 30px;
-    height: 30px;
-    padding: 5px;
+    height: auto;
+    padding: 0px;
     border-radius: 50%;
     transition: 0.5s all ease-in;
-    background: #052b59;
+
+    @media(max-width:768px) {
+        width: 18px; height: auto;}
 }
 
 
@@ -124,21 +127,21 @@ ul {
         transition: .5s all ease-in;
     }
 
-    @media(max-width:992px) {
+    @media(max-width:991px) {
         padding: 6px 6px 6px 18px;
         font-size: $font-size-base2;
         gap: 12px;
         border-radius: 60PX;
+         font-size: 14px;
+        width: 340px;
     }
 
     @media(max-width:768px) {
-        padding: 6px 6px 6px 18px;
-        font-size: $font-size-base1;
+       padding: 6px 6px 6px 12px;
+        font-size: 14px;
+        width: 340px;
 
-        img {
-            width: 30px;
-            height: 30px;
-        }
+        
     }
 }
 
@@ -148,6 +151,8 @@ ul {
 // } 
 .automate-section{width: 100%; height: auto; padding: 90px 0; 
     background: #fff5dd;
+
+     @media(max-width:991px) {padding: 40px 0;}
 }
 
 .nav-btn-new {
