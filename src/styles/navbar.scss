@@ -1,0 +1,289 @@
+@import "../assets/scss/variable";
+@import "../assets/scss/common";
+
+/* ================= NAVBAR BASE ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0;
+
+  background: transparent;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* initial load */
+.navbar-initial {
+  position: absolute;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hide while scrolling (0–500px) */
+.navbar-hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* ================= FIXED AFTER 500PX ================= */
+.navbar-fixed {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* smooth slide-down */
+.navbar-fixed.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ================= CONTAINER ================= */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+
+  @media (max-width: 991px) {padding: 15px 15px;}
+}
+
+/* ================= LOGO ================= */
+.nav-logo {
+  img {
+    height: 42px;
+  }
+}
+
+/* ================= DESKTOP NAV LINKS ================= */
+.nav-links {
+  display: flex;
+  gap: 30px;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+
+    position: relative;
+    padding: 6px 0;
+
+    transition: color 0.3s ease;
+
+    /* underline */
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #022b5b;
+      transition: width 0.35s ease;
+    }
+
+    &:hover {
+      color: #022b5b;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &.active {
+      color: #022b5b;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* ================= CTA BUTTON ================= */
+.nav-btn {
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 60px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  background: #022b5b;
+  color: #f8f9fa;
+  border: none;
+
+  transition: all 0.3s ease;
+
+  img {
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: translateX(4px);
+  }
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ================= SIDEBAR OVERLAY ================= */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+
+  z-index: 1001;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: -320px;
+
+  width: 300px;
+  height: 100%;
+
+  background: #000;
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: right 0.45s ease;
+
+  &.open {
+    right: 0;
+  }
+
+  .lgo-sidebar {
+    border-bottom: 1px dotted #fff;
+    margin-bottom: 30px;
+  }
+
+  .dashed-border {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ================= SIDEBAR CONTENT ================= */
+.sidebar-logo {
+  height: 45px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px dotted #fff;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    color: $white;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #2386f4;
+    }
+
+    &.active {
+      color: #2386f4;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ================= CONTACT BOX ================= */
+.contact-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  p {
+    margin: 0;
+    color: $white;
+  }
+
+  a {
+    font-size: 0.875rem;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 991px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

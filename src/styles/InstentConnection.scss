@@ -1,0 +1,193 @@
+@import '../assets/scss/variable';
+@import '../assets/scss/common';
+
+/* =====================================================
+   🚨 CRITICAL FIX FOR WPBAKERY (DO NOT REMOVE)
+   ===================================================== */
+#process.vc_section,
+#process section.vc_section,
+#process .vc_section {
+  overflow: visible !important;
+}
+
+/* =====================================================
+   BASE VC RESETS
+   ===================================================== */
+section.vc_section {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+}
+
+/* =====================================================
+   ROW & FLEX
+   ===================================================== */
+.vc_row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.vc_row.vc_row-flex {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   FEATURES SECTION
+   ===================================================== */
+.features-section {
+  width: 100%;
+  padding: 90px 0;
+  position: relative;
+  overflow: visible; /* 🔥 REQUIRED FOR STICKY */
+  z-index: 0;
+  border-radius: 40px 40px 0 0;
+  background: #ffffff;
+
+  @media (max-width: 1024px) {
+    padding: 50px 0;
+  }
+
+  @media (max-width: 576px) {
+    padding: 40px 0;
+  }
+}
+
+/* =====================================================
+   MAIN SCROLL WRAP
+   ===================================================== */
+.scroll-wrap {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+  padding: 0 32px 100px;
+  position: relative;
+}
+
+/* =====================================================
+   🔒 LEFT STICKY IMAGE (ONLY STICKY ELEMENT)
+   ===================================================== */
+.image-sticky {
+  position: sticky;
+  top: 240px; /* adjust if header height changes */
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+/* Image alignment */
+.features-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =====================================================
+   RIGHT CONTENT COLUMN
+   ===================================================== */
+.is-dg-column {
+  margin-top: 0vh; /* keeps right content starting lower */
+}
+
+/* =====================================================
+   FEATURE BOXES
+   ===================================================== */
+.fbox-4 {
+  border: 1px solid #ccc;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px #00000014;
+
+  @media (max-width: 1024px) {
+    padding: 20px;
+  }
+
+  h5 {
+    margin: 0.5rem 0;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  p {
+    @media (max-width: 991px) {
+      font-size: 14px;
+      line-height: 22px;
+      margin-bottom: 0;
+    }
+  }
+
+  .abs-number {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 63.3px;
+    font-style: italic;
+    color: #353F4F33;
+  }
+}
+
+.fbox-5 {
+  border: 1px solid #ccc;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================
+   ICON + TEXT BOX
+   ===================================================== */
+.grey-color-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  img {
+    width: 70px;
+    height: auto;
+
+    @media (max-width: 1024px) {
+      width: 80px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+  }
+}
+
+/* =====================================================
+   LIST STYLE
+   ===================================================== */
+.feature-list-two {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li {
+    padding-left: 30px;
+    background-image: url('../assets/images/checkM.svg');
+    background-repeat: no-repeat;
+    background-position: 0 3px;
+    background-size: 17px;
+  }
+}
+
+/* =====================================================
+   MISC
+   ===================================================== */
+.margin-minus {
+  margin-bottom: -30px;
+
+  @media (max-width: 576px) {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+}

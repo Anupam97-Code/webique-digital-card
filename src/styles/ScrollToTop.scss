@@ -1,0 +1,58 @@
+$btn-size: 60px;
+$bg-color: #2386f4;
+$hover-bg: #222;
+
+.scroll-top {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  width: $btn-size;
+  height: $btn-size;
+  border-radius: 50%;
+  background: $bg-color;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.35s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background: $hover-bg;
+  }
+
+  .arrow-icon {
+    animation: arrowFloat 1.4s ease-in-out infinite;
+  }
+}
+
+/* Smooth floating arrow */
+@keyframes arrowFloat {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+

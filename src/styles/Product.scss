@@ -1,0 +1,159 @@
+/* ================================
+   PHONE SLIDER WRAPPER
+================================ */
+.phone-slider-wrapper {
+  position: relative;
+  padding: 90px 0;
+background-color: #e1f8ffc2;
+
+
+  .section-heading {
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+}
+
+/* ================================
+   SWIPER CONTAINER
+================================ */
+.simple-swiper {
+  padding-bottom: 50px; // space for pagination
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+}
+
+/* ================================
+   SLIDE CONTENT (EQUAL HEIGHT)
+================================ */
+.slide-box {
+  width: 100%;
+  height: auto; // 🔥 all slides same height
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f5f5f5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // 🔥 no white space
+    border-radius: inherit;
+  }
+}
+
+/* ================================
+   NAVIGATION ARROWS
+================================ */
+.nav-btn {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff;
+  color: #000;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #0d6efd;
+    color: #fff;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  &.nav-prev {
+    left: -20px;
+  }
+
+  &.nav-next {
+    right: -20px;
+  }
+}
+
+/* ================================
+   PAGINATION DOTS
+================================ */
+.simple-swiper {
+  .swiper-pagination {
+    bottom: 0 !important;
+    text-align: center;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 6px !important;
+    border-radius: 50%;
+    background: #d0d0d0;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #0d6efd; // 🔵 active blue
+    transform: scale(1.25);
+  }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1200px) {
+  .slide-box {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .phone-slider-wrapper {
+    padding: 60px 0;
+  }
+
+  .slide-box {
+    height: auto;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+
+    &.nav-prev {
+      left: -10px;
+    }
+
+    &.nav-next {
+      right: -10px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .slide-box {
+    height: auto;
+  }
+
+  .nav-btn {
+    display: none; // 🔥 hide arrows on mobile (optional)
+  }
+}
