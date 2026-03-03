@@ -78,7 +78,7 @@ const FeaturesSection = () => {
 
 
           {/* RIGHT FEATURES */}
-          <Col md={12} lg={6} xl={6} xxl={12}>
+          <Col md={12} lg={6} >
             <Row>
 
               {featuresData.features.map((feature) => {
