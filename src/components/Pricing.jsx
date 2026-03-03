@@ -74,7 +74,7 @@ const Pricing = () => {
         icn: priceIcnOne,
         currency: "₹",
         price: "800",
-        duration: "/Yearly (Save 33%)",
+        duration: "/Yearly",
         features: [
           "Profile Photo",
           "Name & Designation",
@@ -91,7 +91,7 @@ const Pricing = () => {
         tag: "Popular",
         currency: "₹",
         price: "1400",
-        duration: "/Yearly (Save 22%)",
+        duration: "/Yearly",
         features: [
           "Everything in Basic Package",
           "Services Section",
@@ -106,7 +106,7 @@ const Pricing = () => {
         icn: priceIcnThr,
         currency: "₹",
         price: "1800",
-        duration: "/Yearly (Save 25%)",
+        duration: "/Yearly",
         features: [
           "Everything in Special Package",
           "Payment QR (UPI / Bank Details)",

@@ -5,6 +5,8 @@
 .pricing-section {
   background: #ffffff;
   padding: 90px 0;
+
+    @media(max-width:991px) {padding: 40px 0;}
 }
 
 /* ===============================
@@ -117,6 +119,7 @@
     overflow: hidden;
     border-radius: 16px;
     background: #fff;
+    width: 100%;
 
     img {
       width: 60px;
@@ -162,15 +165,16 @@
       font-weight: 600;
       margin-right: 6px;
 
-       @media (max-width: 991px){font-size: 20px;}
+       @media (max-width: 991px){font-size: 20px; }
     }
 
     .amount {
       font-size: 56px;
       font-weight: 700;
       line-height: 1;
-
+          @media (max-width: 1250px){align-items: center;  font-size: 36px; margin:0 0 0 10px}
           @media (max-width: 991px){font-size: 30px;}
+           @media (max-width: 768px){align-items: center;  font-size: 32px; margin-left: 0;}
     }
 
     .duration {
@@ -178,8 +182,14 @@
       color: #6c757d;
       margin-left: 6px;
       margin-bottom: 6px;
+      @media (max-width: 1250px){align-items: center;  font-size: 18px; margin:0 0 0 10px}
+       @media (max-width: 768px){align-items: center;  font-size: 18px; margin:0 0 0 10px}
     }
-      @media (max-width: 991px){align-items: center; margin-bottom: 10px; font-size: 24px;}
+
+    @media (max-width: 1250px){align-items: center;  font-size: 24px;}
+      @media (max-width: 991px){align-items: center;  font-size: 24px; margin-bottom:15px;}
+
+      
   }
 
   /* Feature list */

@@ -13,13 +13,22 @@ width: 160px;
     left: -75px;
     bottom: 5px;
 
-  h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #4a4a60;
-    margin-bottom: 10px;
-  }
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4a4a60;
+  margin-bottom: 10px;
+  animation: subtleScale 2s ease-in-out infinite;
+}
 
+@keyframes subtleScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08); /* slight zoom */
+  }
+}
   /* Grey indicator lines */
   .lines {
 
@@ -58,10 +67,11 @@ width: 160px;
       &:nth-child(5) { animation-delay: 0.8s; }
       &:nth-child(6) { animation-delay: 1s; }
     }
+      @media(max-width:991px) {display: none;};
   }
 
-  @media(max-width:1024px) {width: 140px; height: 140px;};
-   @media(max-width:768px) {display: none};
+  @media(max-width:1024px) {width: 140px; height: 140px; left: 0;};
+
 
 }
 

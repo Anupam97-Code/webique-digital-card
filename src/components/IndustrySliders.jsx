@@ -108,7 +108,7 @@ const IndustrySliders = () => {
                             delay={100}
                             animateBy="words"
                             direction="bottom"
-                            className="justify-content-center mb-3 mb-md-5 section-heading"
+                            className="justify-content-center  section-heading"
                         />
                     </div>
                     <div className="marquee-main-container">

@@ -8,6 +8,8 @@
     padding-top: 90px;
     // background: linear-gradient(180deg, #F4F4F9 0%, rgba(244, 244, 249, 0) 100%);
     background: #D8F5FF;
+
+     @media(max-width:991px) {padding: 40px 0 0;}
 }
 
 .header-wrap {
