@@ -86,7 +86,7 @@ const MarqueeRow = ({ items, speed = 20, reverse = false }) => {
 
 const IndustrySliders = () => {
     return (
-        <section className="industery-marquee bg-white features-section ">
+        <section className="industery-marquee bg-white features-section section-padding">
             <AnimatedContent
                 distance={120}
                 direction="vertical"

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/digitalCard.scss"
 import {
     Phone,
     Mail,
@@ -12,6 +13,7 @@ import {
     Share2,
     Sun,
     Moon,
+    ScanQrCode,
 } from "lucide-react";
 
 /* ======================================================
@@ -20,7 +22,7 @@ import {
    Fully Functional • Error Free
 ====================================================== */
 
-function Basic2({ data }) {
+function Basic2({ data, saveContact, openQR }) {
     const [darkMode, setDarkMode] = useState(false);
 
     const safeData = data || {};
@@ -29,13 +31,15 @@ function Basic2({ data }) {
         () => ({
             name: safeData.name || "Marcus Whitlow",
             title: safeData.title || "CEO & Founder",
+            description: safeData.description || "",
+            ogImage: safeData.ogImage || "",
             company: safeData.company || "Quantix",
             phone: safeData.phone || "+1-212-456-7890",
             email: safeData.email || "marcus.whitlow@gmail.com",
             address: safeData.address || "2093 Philadelphia Pike",
             addressLink: safeData.addressLink || "",
-            image:
-                safeData.image ||
+            profileImage:
+                safeData.profileImage ||
                 "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
             darkModeImage: safeData.darkModeImage || "",
             facebook: safeData.facebook || "#",
@@ -108,16 +112,19 @@ function Basic2({ data }) {
 
     return (
         <div
-            className="min-vh-100 d-flex align-items-center justify-content-center p-3"
-            style={{ background: darkMode ? "#0f172a" : "#ffffff" }}
+            className="min-vh-100 d-flex align-items-center justify-content-center p-2 p-md-3"
+            style={{ background: darkMode ? "#0f172a" : "#F1F3F5" }}
         >
             {/* Theme Toggle */}
             <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="btn position-fixed top-0 end-0 m-4 rounded-circle shadow"
+                className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
                 style={{
                     background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
                     color: darkMode ? "#1F2D3D" : "#ffffff",
+                    padding: "12px 15px",
+                    marginRight: "16px",
+                    marginTop: "16px",
                 }}
             >
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -127,12 +134,14 @@ function Basic2({ data }) {
                 className="position-relative "
                 style={{
                     width: "100%",
-                    maxWidth: "390px",
+                    maxWidth: "402px",
                     // borderRadius: "40px",
                     // border: "3px solid #000",
                     background: darkMode ? "#111827" : "#ffffff",
-                    paddingTop: "0px",
+                    paddingTop: "20px",
                     paddingBottom: "20px",
+                    paddingLeft: "16px",
+                    paddingRight: "16px",
                     color: darkMode ? "#fff" : "#000",
                 }}
             >
@@ -140,7 +149,7 @@ function Basic2({ data }) {
                 {/* <div className="position-absolute start-50 translate-middle" style={{ top: "28px" }}> */}
                 <div className="text-center">
                     <img
-                        src={darkMode ? profile.darkModeImage : profile.image}
+                        src={darkMode ? profile.darkModeImage : profile.profileImage}
                         alt={profile.name}
                         style={{
                             width: "120px",
@@ -176,10 +185,7 @@ function Basic2({ data }) {
                             borderRadius: "14px",
                             fontWeight: "500",
                         }}
-                        onClick={() =>
-                            (window.location.href = `tel:${profile.phone}`)
-                        }
-                    >
+                        onClick={saveContact}>
                         Save Contact
                     </button>
 
@@ -233,17 +239,29 @@ function Basic2({ data }) {
 
                 {/* Sticky Footer Buttons */}
                 <div
-                    className="position-sticky w-100 d-flex justify-content-between"
-                    style={{ bottom: "5px" }}
+                    className="position-fixed w-100 d-flex flex-column gap-2 justify-content-between align-items-end"
+                    style={{ bottom: "16px", right: "16px" }}
                 >
+                    <button
+                        onClick={openQR}
+                        className="d-flex align-items-center justify-content-center rounded-circle shadow border-0"
+                        style={{
+                            width: "50px",
+                            height: "50px",
+                            background: "#1f2d3d",
+                            color: "#fff",
+                        }}
+                    >
+                        <ScanQrCode size={22} />
+                    </button>
                     <a
                         href={`https://wa.me/${whatsappNumber}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="d-flex align-items-center justify-content-center rounded-circle shadow"
                         style={{
-                            width: "55px",
-                            height: "55px",
+                            width: "50px",
+                            height: "50px",
                             background: "#25D366",
                             color: "#fff",
                         }}
@@ -252,22 +270,9 @@ function Basic2({ data }) {
                             <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
                         </svg>
                     </a>
-
-                    <button
-                        onClick={shareCard}
-                        className="d-flex align-items-center justify-content-center rounded-circle shadow border-0"
-                        style={{
-                            width: "55px",
-                            height: "55px",
-                            background: "#1f2d3d",
-                            color: "#fff",
-                        }}
-                    >
-                        <Share2 size={22} />
-                    </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

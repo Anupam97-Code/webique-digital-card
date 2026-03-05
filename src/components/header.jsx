@@ -77,7 +77,7 @@ const Header = () => {
   };
 
   return (
-    <header className="product-wrap" id="demo">
+    <section className="product-wrap" id="demo">
       {/* <div className="w-lgo-wrap d-none d-xl-block">
         <img src={wLgo} alt="Header Logo" />
       </div> */}
@@ -85,7 +85,7 @@ const Header = () => {
 
 
       {/* card stag slider */}
-      <div className="header-portfolio">
+      <div className="header-portfolio section-padding pb-0">
 
         <div class="justify-content-center text-center mb-3 mb-lg-5 row">
           <div class="col-md-8">
@@ -150,7 +150,7 @@ const Header = () => {
           ))}
         </Swiper>
       </div>
-    </header>
+    </section>
   );
 };
 

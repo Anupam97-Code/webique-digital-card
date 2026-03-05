@@ -2,6 +2,18 @@
 @import '../scss/common';
 @import '../scss/mixin';
 
+.section-padding {
+    padding: 90px 0;
+
+    @media(max-width:992px) {
+        padding: 60px 0;
+    }
+
+    @media(max-width:768px) {
+        padding: 40px 0;
+    }
+}
+
 .card-basic-1 {
     border: 1px solid #000;
     width: 450px;

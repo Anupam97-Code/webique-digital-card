@@ -120,7 +120,7 @@ const Pricing = () => {
   };
 
   return (
-    <section className="pricing-section" id="pricing">
+    <section className="pricing-section section-padding" id="pricing">
       <Container>
 
         <Row className="justify-content-center text-center mb-3 mb-md-5">

@@ -44,24 +44,19 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section id="process" className="bg-white features-section-top">
+    <section id="process" className="bg-white features-section-top section-padding">
       <Container className="position-relative z-2">
         <Row className="align-items-center">
-
-
-
           {/* LEFT IMAGE */}
           <Col md={12} lg={6} >
             <div className="mb-0 mb-md-4">
               <p>Product by Webique Technology</p>
               <h2 class="section-heading">
-
                 <BlurText
                   text="4 Simple Steps to Get Your Digital Card"
                   delay={100}
                   animateBy="words"
                   direction="bottom"
-
                 />
               </h2>
 
@@ -80,12 +75,10 @@ const FeaturesSection = () => {
           {/* RIGHT FEATURES */}
           <Col md={12} lg={6} >
             <Row>
-
               {featuresData.features.map((feature) => {
-
                 const IconComponent = feature.icon;
                 return (
-                  <Col xl={12} xxl={6} md={6} key={feature.id} className="mb-md-4 mt-4  mt-md-0 mt-lg-0">
+                  <Col md={6} xl={6} xxl={6} key={feature.id} className="mb-md-4 mt-4  mt-md-0 mt-lg-0">
                     <div className="wow perch-fadeInUp fadeInUp fbox-4">
                       <div className="fbox grey-color-box position-relative">
 

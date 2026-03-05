@@ -1,7 +1,9 @@
 {
     "name": "Webique Technology",
     "title": "Software Agency",
-    "image": "/images/logo-futar.svg",
+    "description": "Professional Digital Visiting Card for Local Businesses",
+    "ogImage": "/images/webique-og-image.png",
+    "profileImage": "/images/logo-futar.svg",
     "darkModeImage": "/images/webique-logo-white.svg",
     "company": "Webique Technology",
     "phone": "+919860188007",

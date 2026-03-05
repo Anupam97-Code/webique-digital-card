@@ -25,8 +25,8 @@ const HeroSection = () => {
             <div className="hero-1-txt d-flex flex-column gap-3 align-items-start">
 
               {/* Title */}
-              <h2 className="fw-bold display-5">
-                <span className="small-text">Turn Your Visiting Card Into</span><br/> <ShinyText
+              <h1 className="fw-bold display-5">
+                <span className="small-text">Turn Your Visiting Card Into</span><br /> <ShinyText
                   text="Smart Digital Identity"
                   speed={2}
                   delay={0}
@@ -38,21 +38,17 @@ const HeroSection = () => {
                   pauseOnHover={false}
                   disabled={false}
                 />
-
-
-
-
                 {" "}
                 {/* <img
                   src={MobileIcon}
                   alt="Mobile icon"
                   className="title-icon"
                 /> */}
-              </h2>
+              </h1>
 
               {/* Description */}
               <p className="lead text-black">
-                Share your contact, WhatsApp, website & location<br /> with just one link
+                Share your contact, WhatsApp, website & location with just one link
               </p>
 
               {/* Button */}
@@ -64,26 +60,26 @@ const HeroSection = () => {
                 View Demo
               </Button> */}
 
-                <div className='type-txt'>
-                  <img src={arrowOne} alt="search"/>
-                   <div className="typing-wrapper">
-  {/* Faded Background Text */}
-  <span className="fade-text">
-    www.webiquecard.in/businessname
-  </span>
+              <div className='type-txt'>
+                <img src={arrowOne} alt="search" />
+                <div className="typing-wrapper">
+                  {/* Faded Background Text */}
+                  <span className="fade-text">
+                    www.webiquecard.in/businessname
+                  </span>
 
-  {/* Typing Text Over It */}
-  <TextType
-    text={["www.webiquecard.in/businessname"]}
-    typingSpeed={75}
-    pauseDuration={2500}
-    showCursor
-    cursorCharacter=""
-    deletingSpeed={50}
-    variableSpeedEnabled={false}
-  />
-</div>
+                  {/* Typing Text Over It */}
+                  <TextType
+                    text={["www.webiquecard.in/businessname"]}
+                    typingSpeed={75}
+                    pauseDuration={2500}
+                    showCursor
+                    cursorCharacter=""
+                    deletingSpeed={50}
+                    variableSpeedEnabled={false}
+                  />
                 </div>
+              </div>
 
               {/* <ButtonCall
                 className='hero-btn'
