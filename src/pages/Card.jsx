@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Basic1 from "../templates/Basic1";
 import Basic2 from "../templates/Basic2";
+import Premium1 from "../templates/Premium1";
 
 const Card = () => {
     const { username } = useParams();
@@ -28,6 +29,7 @@ const Card = () => {
     const templates = {
         Basic1: Basic1,
         Basic2: Basic2,
+        Premium1: Premium1,
     };
 
     const SelectedTemplate = templates[data.template];
