@@ -107,6 +107,7 @@ Message: ${formData.message}`;
       address: safeData.address || "2093 Philadelphia Pike",
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
+      reviewLink:safeData.reviewLink || "",
       colors: safeData.colors,
       AboutContent: safeData.AboutContent || "",
       image:
@@ -262,15 +263,18 @@ Message: ${formData.message}`;
 
         {/* Theme Toggle */}
         <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="btn position-fixed top-0 end-0 m-4 rounded-circle shadow"
-          style={{
-            background: darkMode ? "#ffffff" : "#000",
-            color: darkMode ? "#000" : "#ffffff",
-          }}
-        >
-          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+                        onClick={() => setDarkMode(!darkMode)}
+                        className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
+                        style={{
+                            background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
+                            color: darkMode ? "#1F2D3D" : "#ffffff",
+                            padding: "12px 15px",
+                            marginRight: "16px",
+                            marginTop: "16px",
+                        }}
+                    >
+                        {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                    </button>
 
         <div
 
@@ -456,7 +460,7 @@ Message: ${formData.message}`;
                       }
                     >
                       <div className='d-flex flex-column gap-3'>
-                        {tab.items?.map((item, itemIndex) => (
+                        {/* {tab.items?.map((item, itemIndex) => (
                           <div
                             key={`item-${tabIndex}-${itemIndex}`}
                             style={{
@@ -513,7 +517,166 @@ Message: ${formData.message}`;
                               </p>
                             </div>
                           </div>
-                        ))}
+                        ))} */}
+
+                        {tab.tabName === "Service" && (
+  <div className="d-flex flex-column gap-3">
+    {tab.items?.map((item, itemIndex) => (
+      <div
+        key={itemIndex}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 15,
+          padding: "10px 9px",
+          border: `solid 1px ${darkMode ? profile.colors.darkBorder : profile.colors.whiteBorder}`,
+          borderRadius: "6px",
+          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
+        }}
+      >
+         <div style={{ width: "101px", height: "92px", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
+                              <img
+                                src={item.image || "https://picsum.photos/300/200"}
+                                alt={item.title}
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  objectFit: "cover",
+                                  flexShrink: 0,
+
+                                }}
+                              />
+                            </div>
+
+        <div className='d-flex flex-column' style={{ gap: "3px" }}>
+                              <h5 className='mb-0'
+                                style={{
+                                  fontSize: 14,
+                                  fontWeight: 500,
+                                  color: darkMode ? profile.colors.white : profile.colors.dark,
+
+                                }}
+                              >
+                                {item.title}
+                              </h5>
+
+                              <p
+                                style={{
+                                  fontSize: "12px",
+                                  fontWeight: 400,
+                                  lineHeight: "18px",
+                                  margin: 0,
+                                  color: darkMode ? profile.colors.white : profile.colors.dark,
+                                  opacity: darkMode ? "0.7" : "1"
+                                }}
+                              >
+                                {item.content}
+                              </p>
+                            </div>
+      </div>
+    ))}
+  </div>
+)}
+
+
+{(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gap: "10px",
+      
+    }}
+  >
+    {tab.items?.map((item, index) => (
+      <div
+  key={index}
+  style={{
+    borderRadius: "6px",
+    overflow: "hidden",
+    position: "relative",
+    border: `1px solid ${darkMode ? profile.colors.darkBorder : profile.colors.whiteBorder}`
+  }}
+>
+
+  <img
+    src={item.image}
+    alt={item.altTab}
+    style={{
+      width: "100%",
+      height: "150px",
+      objectFit: "cover"
+    }}
+  />
+
+  {/* Gradient overlay */}
+  {tab.tabName === "Portfolio" && (
+  <div
+    style={{
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background:
+        "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+      pointerEvents: "none"
+    }}
+  />
+)}
+
+  <p
+    style={
+      tab.tabName === "Portfolio"
+        ? {
+            margin: 0,
+            padding: 0,
+            fontSize: "13px",
+            textAlign: "center",
+            position: "absolute",
+            color: "#fff",
+            lineHeight: "100%",
+            left: "11px",
+            bottom: "20px",
+            fontWeight: 500
+          }
+        : tab.tabName === "Gallery"
+        ? {
+            position: "absolute",
+            bottom: "10px",
+            left: 0,
+            width: "100%",
+            color: "#fff",
+            fontSize: "12px",
+            textAlign: "center",
+            margin: 0,
+            opacity: 0,
+            transition: "opacity 0.3s"
+          }
+        : {}
+    }
+    className={tab.tabName === "Gallery" ? "gallery-hover-text" : ""}
+  >
+    {item.altTab}
+  </p>
+</div>
+    ))}
+  </div>
+)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                       </div>
                     </Tab>
                   ))}
@@ -628,7 +791,11 @@ Message: ${formData.message}`;
                   {profile.testimonials.heading}
                 </h4>
 
-                <a href={profile.testimonials.viewAll}>View All</a>
+                <a href={profile.reviewLink} target='_blank'
+                style={{
+                  color:darkMode?profile.colors.white:profile.colors.primary
+                }}
+                >View All</a>
               </div>
 
               <Carousel
