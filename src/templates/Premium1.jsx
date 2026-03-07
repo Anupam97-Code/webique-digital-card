@@ -4,10 +4,12 @@ import backgrondImg from "../assets/images/profile-backgrd.png";
 import profileImg from "../assets/images/profie-photo.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
+import FuterIcnOne from "../../public/images/footer-whatsaap.svg";
+import FuterIcnTwo from "../../public/images/footer-share.svg";
+import FuterIcnThr from "../../public/images/footer-adduser.svg";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Tabs, Tab, Container } from "react-bootstrap";
+import { Tabs, Tab, Container, Carousel } from "react-bootstrap";
 import {
   Phone,
   Mail,
@@ -24,10 +26,13 @@ import {
   Building,
   Clock,
   Twitter,
+  QrCode,
+  ArrowDownToLine
 
 
 } from "lucide-react";
 import { link } from 'framer-motion/client';
+
 
 
 const iconMap = {
@@ -44,10 +49,13 @@ const iconMap = {
   arrowRight: <ArrowUpRight size={20} />
 };
 
-const Premium1 = ({ data }) => {
+const Premium1 = ({ data, openQR, saveContact }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const [activeTab, setActiveTab] = useState("");
+  const [index, setIndex] = useState(0);
+
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -76,12 +84,17 @@ Message: ${formData.message}`;
     )}`;
     console.log(profile.whatsapp)
     window.open(whatsappURL, "_blank");
+
+    // clear form
+    setFormData({
+      name: "",
+      email: "",
+      message: ""
+    });
   };
 
 
   const safeData = data || {};
-
-
 
   const profile = useMemo(
     () => ({
@@ -94,6 +107,7 @@ Message: ${formData.message}`;
       address: safeData.address || "2093 Philadelphia Pike",
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
+      colors: safeData.colors,
       AboutContent: safeData.AboutContent || "",
       image:
         safeData.image ||
@@ -111,6 +125,13 @@ Message: ${formData.message}`;
         items: []
       },
 
+      // ✅ MAP OBJECT FROM JSON
+      map: safeData.map || {
+        type: "map",
+        label: "Location Map",
+        value: "",
+        className: "w-100"
+      },
       // ✅ CONTACT SECTION
       contactInfo: safeData.contactInfo || [
         {
@@ -157,6 +178,20 @@ Message: ${formData.message}`;
     [safeData]
   );
 
+
+
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
+  const groupedTestimonials = profile.testimonials.items.reduce((rows, item, i) => {
+    if (i % 2 === 0) rows.push([item]);
+    else rows[rows.length - 1].push(item);
+    return rows;
+  }, []);
+
+
   useEffect(() => {
     if (profile.tabs?.length > 0) {
       setActiveTab(profile.tabs[0].tabName);
@@ -195,7 +230,7 @@ Message: ${formData.message}`;
         className="d-flex align-items-center justify-content-between text-decoration-none p-2 rounded-4 border"
         style={{
           backgroundColor: darkMode ? "#1e293b" : "#f1f3f5",
-          color: darkMode ? "#fff" : "#000",
+          color: darkMode ? "#ffffff" : "#000",
         }}
       >
         <div className="d-flex align-items-center gap-3">
@@ -221,8 +256,8 @@ Message: ${formData.message}`;
 
   return (
     <div style={{}}>
-      <div className="min-vh-100 d-flex align-items-center justify-content-center p-3"
-        style={{ background: darkMode ? "#0f172a" : "#ffffff" }}
+      <div className="min-vh-100 d-flex align-items-center justify-content-center "
+        style={{ background: darkMode ? "#0f172a" : "#F1F3F5" }}
       >
 
         {/* Theme Toggle */}
@@ -238,16 +273,19 @@ Message: ${formData.message}`;
         </button>
 
         <div
-          className="shadow-lg"
+
           style={{
             width: "100%",
             maxWidth: "402px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
             // borderRadius: "0px",
             // border: "3px solid #000",
-            background: darkMode ? "#111827" : "#ffffff",
+            background: darkMode ? profile.colors.bdyColor : profile.colors.white,
             paddingTop: "0px",
-            paddingBottom: "20px",
-            color: darkMode ? "#fff" : "#000",
+            paddingBottom: "0px",
+            color: darkMode ? profile.colors.white : profile.colors.primary,
           }}
         >
           <div className='position-relative w-100 h-auto'>
@@ -256,8 +294,10 @@ Message: ${formData.message}`;
 
           </div>
 
-          <div style={{ padding: "0 16px" }}>
-            <div className='w-100 d-flex justify-item-between' style={{ marginTop: "-40px", position: "relative", alignItems: "center", gap: "20px" }}>
+
+
+          <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div className='w-100 d-flex justify-item-between' style={{ marginTop: "-55px", position: "relative", alignItems: "center", gap: "20px" }}>
               <div >
                 <img
                   src={profileImg}
@@ -272,18 +312,37 @@ Message: ${formData.message}`;
                 />
               </div>
               <div>
-                <h4 className="fw-bold" style={{ fontSize: "20px", fontWeight: "600", marginTop: "40px" }}>{profile.name}</h4>
-                <p>{profile.title}</p>
+                <h4 className="fw-bold" style={{ fontSize: "20px", fontWeight: "600", marginTop: "40px", color: darkMode ? "#fff" : "#000", }}>{profile.name}</h4>
+                <p
+
+                  style={{ color: darkMode ? "#fff" : "#000", }}
+                >{profile.title}</p>
               </div>
             </div>
-            {/* Profile Image */}
-            <ul style={{ display: "flex", gap: "17px", margin: "20px 0 42px 0" }}>
+          </div>
+
+          <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
+
+            {/* social media icons */}
+
+
+
+
+            <ul style={{ display: "flex", gap: "17px", }}>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
                 return (
                   <li className='d-flex align-items-center justify-content-center' style={{ width: "37px", height: "37px" }}>
                     <a key={index} href={item.url} target="_blank" rel="noopener noreferrer"
-                      className='d-flex align-items-center justify-content-center' style={{ backgroundColor: "#DCECFE", width: "37px", height: "37px", borderRadius: "6px" }}>
+                      className='d-flex align-items-center justify-content-center'
+                      style={{
+                        background: darkMode ? profile.colors.black : profile.colors.iconBakcgroundWhite,
+                        color: darkMode ? profile.colors.white : profile.colors.primary,
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        width: "37px",
+                        height: "37px",
+                        borderRadius: "6px"
+                      }}>
                       <Icon size={20} />
                     </a>
                   </li>
@@ -291,34 +350,39 @@ Message: ${formData.message}`;
               })}
             </ul>
 
+            {/* About Me */}
+            <section className='d-flex flex-column gap-2'>
 
-            {/* Profile Image */}
-            <h4 style={{
-              fontSize: "18px",
-              fontWeight: 600,
-              color: "#000000",
-              margin: "0 0 10px"
-            }}
-            >
-              {profile.AboutMe}
-            </h4>
-            <p
-              style={{
-                fontSize: "14px",
-                lineHeight: "120%",
-                fontWeight: 400
+              <h4 style={{
+                fontSize: "18px",
+                fontWeight: 600, lineHeight: "27px",
+                color: darkMode ? profile.colors.white : profile.colors.dark,
+
               }}
-            >
-              {profile.AboutContent}
-            </p>
-
+              >
+                {profile.AboutMe}
+              </h4>
+              <p
+                style={{
+                  fontSize: "14px",
+                  lineHeight: "24px",
+                  opacity: "0.7",
+                  fontWeight: 400,
+                  margin: 0,
+                  color: darkMode ? profile.colors.white : profile.colors.dark,
+                }}
+              >
+                {profile.AboutContent}
+              </p>
+            </section>
 
             <>
               <style>
                 {`
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{background:transparent;}
 .nav-tabs{gap:10px; margin: 0 0 13px !important;}
 .nav-item{
-  button {padding:0; border:none !important; 
+  button {padding:0; border:none !important; background:transparent;
   .tab-block{padding: 7px 12px !important;
             background: #1680FB26;
             border-radius: 6px;
@@ -337,7 +401,7 @@ Message: ${formData.message}`;
 
             </>
 
-
+            {/* tabs */}
 
             {profile.tabs?.length > 0 && (
               <Container style={{ padding: 0 }}>
@@ -360,16 +424,30 @@ Message: ${formData.message}`;
                       title={
                         <div className='tab-block'
                           style={{
+                            // backgroundColor:
+                            //   activeTab === tab.tabName ? "#1f2d3c" : "#1f2d3c",
+                            // color:
+                            //   activeTab === tab.tabName ? "#1680FB" : "#ffffff",
+
                             backgroundColor:
-                              activeTab === tab.tabName ? "#1680FB26" : "#f2f2f2",
+                              activeTab === tab.tabName
+                                ? (darkMode ? profile.colors.darkFields : profile.colors.trinery)
+                                : (darkMode ? profile.colors.dark : profile.colors.white),
+
                             color:
-                              activeTab === tab.tabName ? "#1680FB" : "#333333",
+                              activeTab === tab.tabName
+                                ? (darkMode ? profile.colors.white : profile.colors.primary)
+                                : (darkMode ? profile.colors.white : profile.colors.black),
+
+                            opacity: activeTab === tab.tabName ? 1 : (darkMode ? 0.7 : 1),
+
 
                             margin: 0,
                             width: "100%",     // 3 equal buttons
                             textAlign: "center",
                             border: "none",
                             fontWeight: 500,
+                            fontSize: 13
 
                           }}
                         >
@@ -377,38 +455,45 @@ Message: ${formData.message}`;
                         </div>
                       }
                     >
-                      <div>
+                      <div className='d-flex flex-column gap-3'>
                         {tab.items?.map((item, itemIndex) => (
                           <div
                             key={`item-${tabIndex}-${itemIndex}`}
                             style={{
                               display: "flex",
                               alignItems: "center",
-                              gap: 20,
-                              marginBottom: 13,
-                              padding: 14,
-                              border: "solid 1px #B4B4B4",
-                              borderRadius: "6px"
+                              gap: 15,
+
+                              padding: "10px 9px",
+                              border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                              borderRadius: "6px",
+                              background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+
+
+
+                              color: darkMode ? "#fff" : "#F1F3F5",
                             }}
                           >
-                            <img
-                              src={item.image || "https://picsum.photos/300/200"}
-                              alt={item.title}
-                              style={{
-                                width: 120,
-                                height: 120,
-                                objectFit: "cover",
-                                borderRadius: 8,
-                                flexShrink: 0,
-                              }}
-                            />
+                            <div style={{ width: "101px", height: "92px", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
+                              <img
+                                src={item.image || "https://picsum.photos/300/200"}
+                                alt={item.title}
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  objectFit: "cover",
+                                  flexShrink: 0,
 
-                            <div>
-                              <h5
+                                }}
+                              />
+                            </div>
+                            <div className='d-flex flex-column' style={{ gap: "3px" }}>
+                              <h5 className='mb-0'
                                 style={{
                                   fontSize: 14,
-                                  fontWeight: 600,
-                                  marginBottom: 8,
+                                  fontWeight: 500,
+                                  color: darkMode ? profile.colors.white : profile.colors.dark,
+
                                 }}
                               >
                                 {item.title}
@@ -416,11 +501,12 @@ Message: ${formData.message}`;
 
                               <p
                                 style={{
-                                  fontSize: 13,
+                                  fontSize: "12px",
                                   fontWeight: 400,
-                                  lineHeight: "1.6",
+                                  lineHeight: "18px",
                                   margin: 0,
-                                  color: "#555",
+                                  color: darkMode ? profile.colors.white : profile.colors.dark,
+                                  opacity: darkMode ? "0.7" : "1"
                                 }}
                               >
                                 {item.content}
@@ -458,7 +544,10 @@ Message: ${formData.message}`;
 `}
             </style>
 
-            <section className="testimonial-section mt-5">
+
+            {/* testimonials Carousel */}
+
+            {/* <section className="testimonial-section mt-5">
 
               <div className="d-flex justify-content-between align-items-center">
                 <h4 style={{
@@ -521,43 +610,200 @@ Message: ${formData.message}`;
 
               </Swiper>
 
-            </section>
+            </section> */}
 
+            <section className='d-flex flex-column gap-2'>
 
+              <div className="d-flex justify-content-between align-items-center">
+                <h4
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    color: darkMode ? profile.colors.white : profile.colors.dark,
 
-            <section>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                color: "#000000",
-                margin: "0 0 10px"
-              }}>Inquiries</h4>
-            </section>
+                    lineHeight: "27px"
 
-            <div >
-              <form
-                onSubmit={sendMessage}
+                  }}
+                >
+                  {profile.testimonials.heading}
+                </h4>
+
+                <a href={profile.testimonials.viewAll}>View All</a>
+              </div>
+
+              <Carousel
+                activeIndex={index}
+                onSelect={handleSelect}
+                indicators={false}
+                controls={false}
+                interval={3000}
+                touch={true}
+                pause={false}
+
+              >
+
+                {groupedTestimonials.map((group, i) => (
+                  <Carousel.Item key={i}>
+
+                    <div className='d-flex' style={{ gap: "15px" }}>
+
+                      {group.map((item, idx) => (
+
+                        <div
+                          key={idx}
+                          style={{
+                            flex: "1",
+                            padding: "15px",
+                            borderRadius: "10px",
+                            border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                            background: darkMode ? profile.colors.darkFields : profile.colors.white,
+                            color: darkMode ? profile.colors.white : profile.colors.dark,
+                          }}
+                        >
+
+                          <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
+
+                            <img
+                              src={item.photo}
+                              alt={item.name}
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+
+                              }}
+                            />
+
+                            <div>
+                              <h5 style={{ fontSize: "13px", margin: "0", color: "#000000", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+                                {item.name}
+                              </h5>
+
+                              <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+                                {item.designation}
+                              </p>
+                            </div>
+
+                          </div>
+
+                          <p
+                            style={{
+                              fontSize: "12px",
+                              color: "#000000",
+                              marginTop: "20px",
+                              fontWeight: "400",
+                              lineHeight: "18px",
+                              opacity: darkMode ? "0.7" : "1",
+                              color: darkMode ? "#fff" : "#000",
+                            }}
+                          >
+                            {item.description?.slice(0, 100)}
+                          </p>
+
+                        </div>
+
+                      ))}
+
+                    </div>
+
+                  </Carousel.Item>
+                ))}
+
+              </Carousel>
+
+              {/* Custom Pagination */}
+              <div
                 style={{
-                  padding: "0px",
-                  background: "#fff",
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "8px",
+                  marginTop: "15px"
                 }}
               >
 
+                {groupedTestimonials.map((_, i) => (
 
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-control"
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    style={{ border: "1px solid #DEE2E6", backgroundColor: "#F1F3F5", padding: "11px 12px", fontSize: "12px" }}
+                  <div
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: index === i ? "#000" : "#ccc",
+                      cursor: "pointer"
+                    }}
                   />
-                </div>
 
-                {/* <div className="mb-3">
+                ))}
+
+              </div>
+
+            </section>
+
+
+            <style>
+
+              {`
+
+
+textarea::placeholder {
+  color: #6c757d;
+}
+
+.dark-placeholder::placeholder {
+  color: #9CA3AF;
+}
+`}
+            </style>
+
+
+
+
+
+            {/* Inquiry Section (form) */}
+
+            <section className='d-flex flex-column gap-2'>
+              <h4 style={{
+                fontSize: "18px",
+                fontWeight: 600,
+                lineHeight: "27px",
+                color: darkMode ? profile.colors.white : profile.colors.black,
+
+
+              }}>Inquiries</h4>
+
+
+              <div>
+                <form
+                  onSubmit={sendMessage}
+                  style={{
+                    padding: "0px",
+
+                  }}
+                >
+
+
+
+                  <div style={{ margin: "0 0 13px" }}>
+                    <input
+                      type="text"
+                      name="name"
+                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                        color: darkMode ? profile.colors.white : profile.colors.black,
+                        padding: "11px 12px", fontSize: "12px"
+                      }}
+                    />
+                  </div>
+
+                  {/* <div className="mb-3">
                   <input
                     type="tel"
                     className="form-control"
@@ -570,154 +816,64 @@ Message: ${formData.message}`;
                   />
                 </div> */}
 
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    style={{ border: "1px solid #DEE2E6", backgroundColor: "#F1F3F5", padding: "11px 12px", fontSize: "12px" }}
-                  />
-                </div>
+                  <div style={{ margin: "0 0 13px" }}>
+                    <input
 
-                <div className="mb-3">
-                  <textarea
-                    className="form-control"
-                    name="message"
-                    rows="4"
-                    placeholder="Write your message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    style={{ border: "1px solid #DEE2E6", backgroundColor: "#F1F3F5", padding: "11px 12px", fontSize: "12px" }}
-                  />
-                </div>
-                <div style={{ textAlign: "center" }}>
-                  <button
-                    type="submit"
-                    className="btn  w-50"
-                    style={{
-                      fontWeight: "600",
-                      padding: "10px",
-                      color: "#fff",
-                      backgroundColor: "#1680FB",
-                      margin: "0 auto",
-                      fontSize: "13px"
-                    }}
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
+                      type="email"
+                      name="email"
+                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                      placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                        color: darkMode ? profile.colors.white : profile.colors.black,
+                        padding: "11px 12px", fontSize: "12px"
+                      }}
+                    />
+                  </div>
 
-
-
-            <div style={{ marginTop: "20px" }}>
-
-
-
-
-
-
-
-              <div className="container" style={{ marginTop: "40px" }}>
-
-                <h4 style={{
-                  fontSize: "18px",
-                  fontWeight: 600,
-                  color: "#000000",
-                  margin: "0 0 15px"
-                }}>Contact Me</h4>
-
-                <div className="row" style={{ gap: "15px" }}>
-
-                  {profile.contactInfo?.map((item, index) => (
-
-                    <div key={index} className="col-md-12 p-0">
-
-                      <div
-                        className="d-flex justify-content-between"
-                        style={{
-                          border: "1px solid #DEE2E6",
-                          borderRadius: "12px",
-                          padding: "13px",
-                          background: "#F1F3F5",
-                          height: "100%"
-                        }}
-                      >
-
-                        {/* LEFT SECTION */}
-                        <div className={`d-flex gap-3 ${item.className}`}>
-
-                          {/* ICON */}
-                          <div
-                            style={{
-                              width: "35px",
-                              height: "35px",
-                              borderRadius: "6px",
-                              background: "#ffffff",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              color: "#1680FB"
-                            }}
-                          >
-                            {iconMap[item.type]}
-                          </div>
-
-                          {/* TEXT */}
-                          <div style={{ textAlign: "left" }}>
-                            <h6 style={{ fontWeight: "600", marginBottom: "0px", fontSize: "15px" }}>
-                              {item.label}
-                            </h6>
-
-                            {Array.isArray(item.value) ? (
-                              item.value.map((v, i) => (
-                                <p key={i} style={{ margin: "0", fontSize: "15px", fontWeight: "500" }}>
-                                  {v}
-                                </p>
-                              ))
-                            ) : (
-                              <p style={{ margin: "0", fontSize: "14px" }}>
-                                {item.value}
-                              </p>
-                            )}
-
-                          </div>
-
-                        </div>
-
-                        {/* ARROW (hidden for office hours) */}
-                        {item.type !== "officeHours" && (
-                          <div
-                            style={{
-                              width: "35px",
-                              height: "35px",
-                              borderRadius: "6px",
-                              background: "transparent",
-                              color: "#000000",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center"
-                            }}
-                          >
-                            <ArrowUpRight size={20} style={{ opacity: 0.6 }} />
-                          </div>
-                        )}
-
-                      </div>
-
-                    </div>
-
-                  ))}
-
-                </div>
+                  <div style={{ margin: "0 0 13px" }}>
+                    <textarea
+                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                      name="message"
+                      rows="4"
+                      placeholder="Write your message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        padding: "11px 12px",
+                        fontSize: "12px",
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                        color: darkMode ? profile.colors.white : profile.colors.black,
+                      }}
+                    />
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <button
+                      type="submit"
+                      className="btn  w-50"
+                      style={{
+                        fontWeight: "600",
+                        padding: "10px",
+                        color: "#fff",
+                        background: darkMode ? profile.colors.darkFields : profile.colors.primary,
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        margin: "0 auto",
+                        fontSize: "13px"
+                      }}
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                </form>
               </div>
 
+            </section>
 
 
 
@@ -726,75 +882,166 @@ Message: ${formData.message}`;
 
 
 
+            {/* Contact me */}
+            <section className='d-flex flex-column gap-2'>
 
-
-
-
-
-
-
-
-
-
-
-              {/* 
               <h4 style={{
                 fontSize: "18px",
                 fontWeight: 600,
-                color: "#000000",
-                margin: "0 0 10px"
-              }}>Inquiries</h4> */}
+                color: darkMode ? "#fff" : "#000",
+                lineHeight: "27px"
+              }}>Contact Me</h4>
+
+              <div className='gap-3 d-flex flex-column'>
+
+                {profile.contactInfo?.map((item, index) => (
+
+                  <div key={index} className="col-md-12 p-0">
+
+                    <div
+                      className="d-flex justify-content-between"
+                      style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        borderRadius: "12px",
+                        padding: "13px",
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+
+                        height: "100%"
+                      }}
+                    >
+
+                      {/* LEFT SECTION */}
+                      <div className={`d-flex gap-3 ${item.className}`}>
+
+                        {/* ICON */}
+                        <div
+                          style={{
+                            width: "35px",
+                            height: "35px",
+                            borderRadius: "6px",
+                            background: darkMode ? profile.colors.black : profile.colors.whiteFields,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: darkMode ? profile.colors.white : profile.colors.black,
+                          }}
+                        >
+                          {iconMap[item.type]}
+                        </div>
+
+                        {/* TEXT */}
+                        <div style={{ textAlign: "left" }}>
+                          <h6 style={{
+                            fontWeight: "600",
+                            marginBottom: "0px",
+                            fontSize: "15px",
+
+                            color: darkMode ? profile.colors.white : profile.colors.black,
+                          }}>
+                            {item.label}
+                          </h6>
+
+                          {Array.isArray(item.value) ? (
+                            item.value.map((v, i) => (
+                              <p key={i}
+                                style={{
+                                  margin: "0",
+                                  fontSize: "14px",
+                                  fontWeight: "500",
+                                  color: darkMode ? profile.colors.white : profile.colors.black,
+                                  opacity: darkMode ? "0.7" : "1"
+                                }}>
+                                {v}
+                              </p>
+                            ))
+                          ) : (
+                            <p style={{
+                              margin: "0",
+                              fontSize: "14px",
+                              color: darkMode ? profile.colors.white : profile.colors.black,
+                              opacity: darkMode ? "0.7" : "1"
+                            }}>
+                              {item.value}
+                            </p>
+                          )}
+
+                        </div>
+
+                      </div>
+
+                      {/* ARROW (hidden for office hours) */}
+                      {item.type !== "officeHours" && (
+                        <div
+                          style={{
+                            width: "35px",
+                            height: "35px",
+                            borderRadius: "6px",
+                            background: "transparent",
+                            color: darkMode ? profile.colors.white : profile.colors.black,
+                            opacity: darkMode ? "0.7" : "1",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+
+                          }}
+                        >
+                          <ArrowUpRight
+                            size={20}
+                            style={{
+                              opacity: 0.6,
+                              color: darkMode ? profile.colors.white : profile.colors.black
+                            }}
+                          />
+                        </div>
+                      )}
+
+                    </div>
+
+                  </div>
+
+                ))}
+
+              </div>
+            </section>
 
 
-              {/* <div className="d-grid gap-3 text-start">
-                <ActionItem
-                  icon={<Phone size={18} className="text-success" />}
-                  title="Call me"
-                  subtitle={profile.phone}
-                  href={`tel:${profile.phone}`}
-                />
 
-                <ActionItem
-                  icon={<Dribbble size={18} className="text-primary" />}
-                  title="Follow me"
-                  subtitle="Facebook Profile"
-                  href={profile.facebook}
-                />
 
-                <ActionItem
-                  icon={<Instagram size={18} className="text-danger" />}
-                  title="Follow on Instagram"
-                  subtitle="Instagram Profile"
-                  href={profile.instagram}
-                />
 
-                <ActionItem
-                  icon={<MapPin size={18} className="text-danger" />}
-                  title="Visit my office"
-                  subtitle={profile.address}
-                  href={`https://maps.google.com/?q=${encodeURIComponent(
-                    profile.address
-                  )}`}
-                />
 
-                <ActionItem
-                  icon={<Mail size={18} className="text-info" />}
-                  title="Email me"
-                  subtitle={profile.email}
-                  href={`mailto:${profile.email}`}
-                />
 
-                <ActionItem
-                  icon={<Linkedin size={18} className="text-primary" />}
-                  title="Follow my Linkedin"
-                  subtitle="LinkedIn Profile"
-                  href={profile.linkedin}
-                />
-              </div> */}
-            </div>
+
+
+
+            {/* map section */}
+            <section>
+
+              {profile.map?.value && (
+                <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
+
+
+                  <div className="ratio ratio-16x9">
+                    <iframe
+                      src={profile.map.value}
+                      style={{ border: "0" }}
+                      loading="lazy"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+              )}
+            </section>
+
+
+
+
+
+
+
+
 
             {/* Sticky Footer Buttons */}
-            <div
+            {/* <div
               className="position-sticky w-100 d-flex justify-content-between px-4"
               style={{ bottom: "0px" }}
             >
@@ -825,7 +1072,31 @@ Message: ${formData.message}`;
               >
                 <Share2 size={22} />
               </button>
-            </div>
+            </div> */}
+          </div>
+
+          <div className='position-sticky bottom-0 left-0 w-100%' style={{ height: "auto" }}>
+
+            <ul style={{ display: "flex", alignItems: "center", justifyContent: "space-between", textAlign: "center" }}>
+              <li style={{ width: "100%" }}>
+                <a href={`https://wa.me/${whatsappNumber}`} target='_blank' style={{ display: "flex", textDecoration: "none", flexDirection: "column", padding: "6.5px 0", alignItems: "center", justifyContent: "center", gap: "4px", backgroundColor: "#00BF63", width: "100%", border: "none" }}>
+                  <img src={FuterIcnOne} alt='icon1' style={{ width: "23px", height: "auto" }} />
+                  <p style={{ fontSize: "10px", margin: "0", color: "#ffffff", lineHeight: "15px", fontWeight: "500" }}>Whatsapp</p>
+                </a>
+              </li>
+              <li style={{ width: "100%" }}>
+                <button style={{ display: "flex", flexDirection: "column", padding: "6.5px 0", alignItems: "center", justifyContent: "center", gap: "4px", backgroundColor: "#1680FB", width: "100%", border: "none" }} onClick={openQR}>
+                  <img src={FuterIcnTwo} alt='icon2' style={{ width: "23px", height: "auto" }} />
+                  <p style={{ fontSize: "10px", margin: "0", color: "#ffffff", lineHeight: "15px", fontWeight: "500" }}>Share QR</p>
+                </button>
+              </li>
+              <li style={{ width: "100%" }}>
+                <button style={{ display: "flex", flexDirection: "column", padding: "6.5px 0", alignItems: "center", justifyContent: "center", gap: "4px", backgroundColor: "#022B5B", width: "100%", border: "none" }} onClick={saveContact}>
+                  <img src={FuterIcnThr} alt='icon3' style={{ width: "23px", height: "auto" }} />
+                  <p style={{ fontSize: "10px", margin: "0", color: "#ffffff", lineHeight: "15px", fontWeight: "500" }}>Save Contact</p>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
 
