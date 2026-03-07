@@ -1,0 +1,301 @@
+{
+    "headerBgImage": "/images/restaurant.dc-head-img.png",
+    "profileImage": "/images/reastaurant-logo.png",
+    "name": "Rameshwer Cafe",
+    "title": "Shouth indian food",
+    "socialLinks": [
+        {
+            "socialName": "Dribble",
+            "socialURL": "https://dribbble.com"
+        },
+        {
+            "socialName": "Facebook",
+            "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/"
+        },
+        {
+            "socialName": "Instagram",
+            "socialURL": "https://www.instagram.com/webique_tech"
+        },
+        {
+            "socialName": "Twitter / X",
+            "socialURL": "https://x.com"
+        },
+        {
+            "socialName": "LinkedIn",
+            "socialURL": "https://www.linkedin.com/company/webiquetech"
+        },
+        {
+            "socialName": "Youtube",
+            "socialURL": "https://www.youtube.com"
+        }
+    ],
+    "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
+    "servicesData": [
+        "Fresh Food",
+        "Customer reviews",
+        "Online Ordering",
+        "Special Offers",
+        "Party Orders",
+        "Custome Meal Plans"
+    ],
+    "menuTabData": [
+        {
+            "menuTabName": "Salad",
+            "menuTabList": [
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Antipasta Salad",
+                    "menuDishPrice": "120"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Tossed Salad",
+                    "menuDishPrice": "100"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Garden Salad",
+                    "menuDishPrice": "130"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Simple Garden Salad Recipe",
+                    "menuDishPrice": "150"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Garden Salad with Oregano ",
+                    "menuDishPrice": "125"
+                }
+            ]
+        },
+        {
+            "menuTabName": "Pizzas",
+            "menuTabList": [
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Margherita Pizza",
+                    "menuDishPrice": "149"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Cheesy Mac Veg Giant Pizza",
+                    "menuDishPrice": "159"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Sausage Pizza",
+                    "menuDishPrice": "120"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Greek Pita Pizzas",
+                    "menuDishPrice": "179"
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "Easy Pita Pizza",
+                    "menuDishPrice": "199"
+                }
+            ]
+        },
+        {
+            "menuTabName": "Veg",
+            "menuTabList": [
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                }
+            ]
+        },
+        {
+            "menuTabName": "Non-Veg",
+            "menuTabList": [
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                },
+                {
+                    "menuDishSrc": "",
+                    "menuDishName": "",
+                    "menuDishPrice": ""
+                }
+            ]
+        }
+    ],
+    "gallerySlider": [
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "imageAlt": "Demo Image"
+        }
+    ],
+    "tesimonialSliderData": [
+        {
+            "testSrc": "",
+            "testName": "Cole Rich",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "",
+            "testName": "Richi Rich",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "",
+            "testName": "Solomon",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "",
+            "testName": "Sanju",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        }
+    ],
+    "contactData": {
+        "phone_Number": "+919876543210",
+        "mail": "contact@gmail.com",
+        "restaurant_Number": "+917894561230",
+        "location": {
+            "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
+            "link": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167"
+        }
+    },
+    "openingHours": [
+        {
+            "dayName": "Monday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Tuesday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Wednesday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Thursday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Friday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Saturday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Sunday",
+            "ocTime": "Closed"
+        }
+    ],
+    "colors": {
+        "Primery": "#DE0400",
+        "Secondery": "#DE040033",
+        "trinery": "#BEBEBE33",
+        "white": "#fff",
+        "black": "#000",
+        "dark": "#0F172A",
+        "darkCardBg": "#1E293B",
+        "grayblack": "#17191c",
+        "borderGray": "#B4B4B4",
+        "stickyLink1": "#00BF63",
+        "stickyLink2": "#1680FB",
+        "stickyLink3": "#022B5B"
+    },
+    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.666904269915!2d73.7666468!3d19.9537683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772874905998!5m2!1sen!2sin",
+    "description": "Professional Digital Visiting Card for Local Businesses",
+    "ogImage": "/images/webique-og-image.png",
+    "darkModeImage": "/images/reastaurant-logo.png",
+    "company": "Webique Technology",
+    "email": "contact@webique.in",
+    "whatsapp": "919860188007",
+    "package": "premium",
+    "template": "Premium2"
+}

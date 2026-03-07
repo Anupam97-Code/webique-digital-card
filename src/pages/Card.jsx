@@ -6,6 +6,7 @@ import "../styles/digitalCard.scss"
 import Basic1 from "../templates/Basic1";
 import Basic2 from "../templates/Basic2";
 import Premium1 from "../templates/Premium1";
+import Premium2 from "../templates/Premium2";
 
 const Card = () => {
     const { username } = useParams();
@@ -216,6 +217,7 @@ END:VCARD
         Basic1: Basic1,
         Basic2: Basic2,
         Premium1: Premium1,
+        Premium2: Premium2
     };
 
     const SelectedTemplate = templates[data.template];

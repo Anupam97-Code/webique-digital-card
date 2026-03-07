@@ -44,12 +44,6 @@ const iconMap = {
   arrowRight: <ArrowUpRight size={20} />
 };
 
-
-
-
-
-
-
 const Premium1 = ({ data }) => {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -157,7 +151,7 @@ Message: ${formData.message}`;
           ],
           className: "align-items-start"
         },
-  
+
       ]
     }),
     [safeData]
@@ -730,7 +724,7 @@ Message: ${formData.message}`;
 
 
 
-              
+
 
 
 
