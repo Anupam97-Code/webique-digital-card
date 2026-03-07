@@ -74,6 +74,8 @@ function Premium2({ data, saveContact, openQR }) {
         const getUserPackage = profile.package;
         console.log("get user package from json:", getUserPackage);
 
+        // const comparePackage = 
+
     }, [checkPackeg]);
 
     //==== create for checking the packages and assing the styles
@@ -437,7 +439,7 @@ Message: ${formData.message}`;
                     style={{ gap: "15px", padding: "12px 16px 16px 16px" }}
                 >
                     {/* Profile Image / logo */}
-                    <div className="w-100 d-flex justify-content-center gap-3" style={{ paddingLeft: "95px" }}>
+                    <div className="w-100 d-flex justify-content-center mb-2 gap-3" style={{ paddingLeft: "95px" }}>
                         <img
                             src={darkMode ? profile.darkModeImage : profile.profileImage}
                             alt={profile.name}
@@ -470,7 +472,7 @@ Message: ${formData.message}`;
                     </div>
 
                     {/* Social Links / with lucid react icons */}
-                    <ul className="d-flex justify-content-center gap-3">
+                    <ul className="d-flex justify-content-center flex-wrap mb-2 gap-3">
                         {profile.socialLinks.map((item, i) => (
                             <li key={i}>
                                 <a
@@ -748,7 +750,6 @@ Message: ${formData.message}`;
                         </div>
                     </div>
 
-                    {/* form */}
                     {/* form */}
                     <div className="w-100">
                         <h5

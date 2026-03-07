@@ -101,61 +101,61 @@
         },
         {
             "menuTabName": "Veg",
-            "menuTabList": [
+           "menuTabList": [
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Antipasta Salad",
+                    "menuDishPrice": "120"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Tossed Salad",
+                    "menuDishPrice": "100"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Garden Salad",
+                    "menuDishPrice": "130"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Simple Garden Salad Recipe",
+                    "menuDishPrice": "150"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Garden Salad with Oregano ",
+                    "menuDishPrice": "125"
                 }
             ]
         },
         {
             "menuTabName": "Non-Veg",
-            "menuTabList": [
+             "menuTabList": [
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Margherita Pizza",
+                    "menuDishPrice": "149"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Cheesy Mac Veg Giant Pizza",
+                    "menuDishPrice": "159"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Sausage Pizza",
+                    "menuDishPrice": "120"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Greek Pita Pizzas",
+                    "menuDishPrice": "179"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Easy Pita Pizza",
+                    "menuDishPrice": "199"
                 }
             ]
         }
