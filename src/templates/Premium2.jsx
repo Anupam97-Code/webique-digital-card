@@ -24,14 +24,11 @@ import {
     PartyPopper,
     CookingPot,
     Clock,
-    Download
+    Download,
 } from "lucide-react";
 import { li } from "framer-motion/client";
-import { Col, Row } from "react-bootstrap";
-import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
+import { Carousel, Col, Row } from "react-bootstrap";
 
-gsap.registerPlugin(Draggable);
 
 /* ======================================================
    FACEBOOK STYLE DIGITAL BUSINESS CARD
@@ -60,10 +57,29 @@ const serviceIcon = [
 function Premium2({ data, saveContact, openQR }) {
     const [darkMode, setDarkMode] = useState(false);
     const [activeMenuTab, setActiveMenuTab] = useState(0);
+    const [index, setIndex] = useState(0);
     const safeData = data || {};
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
+    // create for checking the packages and assing the styles
+    const packegeNames = {
+        basic: "basic",
+        regular: "regular",
+        premium: "premuim"
+    }
 
+    const [checkPackeg, setCheckPackeg] = useState(packegeNames);
+    // console.log("checkPackage", checkPackeg);
+
+    useEffect(() => {
+        const getUserPackage = profile.package;
+        console.log("get user package from json:", getUserPackage);
+
+    }, [checkPackeg]);
+
+    //==== create for checking the packages and assing the styles
+
+    // make for handle responsive
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
     useEffect(() => {
 
         const handleResize = () => {
@@ -78,8 +94,7 @@ function Premium2({ data, saveContact, openQR }) {
 
     }, []);
 
-    console.log("is mobile:", isMobile);
-
+    // console.log("is mobile:", isMobile);
 
     const profile = useMemo(() => ({
         headerBgImage: safeData.headerBgImage || "",
@@ -130,28 +145,23 @@ function Premium2({ data, saveContact, openQR }) {
     // const contactArr = new Array(profile.contactData)
     // console.log(profile);
 
-    const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
-    const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
-    const shareCard = () => {
-        if (navigator.share) {
-            navigator
-                .share({
-                    title: profile.name,
-                    text: `Connect with ${profile.name}`,
-                    url: currentUrl,
-                })
-                .catch(() => { });
-        } else {
-            window.open(
-                `https://wa.me/?text=${encodeURIComponent(
-                    `Connect with ${profile.name} - ${currentUrl}`
-                )}`,
-                "_blank"
-            );
-        }
+    // make for testimonial carousal
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
     };
+    const groupedTestimonials = (profile?.tesimonialSliderData || []).reduce((rows, item, i) => {
+        if (i % 2 === 0) rows.push([item]);
+        else rows[rows.length - 1].push(item);
+        return rows;
+    }, []);
 
+    // console.log("groupedTestimonials", groupedTestimonials);
+    //================ make for testimonial carousal
+
+    const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
+    // const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+
+    // make for contact data 
     const ActionItem = ({ icon, title, subtitle, href }) => {
         const isExternal = href.startsWith("http");
         return (
@@ -162,7 +172,7 @@ function Premium2({ data, saveContact, openQR }) {
                 className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
                 style={{
                     backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
-                    color: darkMode ? "#fff" : "#000",
+                    color: darkMode ? profile.colors.white : profile.colors.black,
                     borderRadius: "4px"
                 }}
             >
@@ -190,6 +200,7 @@ function Premium2({ data, saveContact, openQR }) {
             </a>
         )
     }
+    //================= make for contact data 
 
     // Gallery slider component
     const GallerySlider = ({ slideData }) => {
@@ -248,184 +259,93 @@ function Premium2({ data, saveContact, openQR }) {
         );
     };
 
-    // testimonial slider component
-    const TestimonialSlider = ({ data }) => {
+    const InquiryForm = ({ profile, darkMode }) => {
 
-        const containerRef = useRef(null);
-        const wrapperRef = useRef(null);
+        const [formData, setFormData] = useState({
+            name: "",
+            phone: "",
+            email: "",
+            message: ""
+        });
 
-        const [active, setActive] = useState(0);
+        const handleChange = (e) => {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value
+            });
+        };
 
-        const slides = [...data, ...data.slice(0, 2)];
+        const sendMessage = (e) => {
+            e.preventDefault();
 
-        const indexRef = useRef(0);
-        const autoRef = useRef(null);
-        const draggableRef = useRef(null);
+            const text = `Hello,
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Message: ${formData.message}`;
 
-        useLayoutEffect(() => {
+            const whatsappURL = `https://wa.me/${profile.contactData.phone_Number}?text=${encodeURIComponent(text)}`;
 
-            const container = containerRef.current;
-            const wrapper = wrapperRef.current;
+            window.open(whatsappURL, "_blank");
 
-            if (!container || !wrapper) return;
-
-            const slideWidth = container.offsetWidth / 2;
-            const total = data.length;
-
-            gsap.set(wrapper, { x: 0 });
-
-            const moveSlide = (i) => {
-
-                indexRef.current = i;
-
-                gsap.to(wrapper, {
-                    x: -(slideWidth * i),
-                    duration: 0.6,
-                    ease: "power2.out",
-                    overwrite: true,
-                    onComplete: () => {
-
-                        if (i >= total) {
-                            gsap.set(wrapper, { x: 0 });
-                            indexRef.current = 0;
-                        }
-
-                        setActive(i % total);
-                    }
-                });
-            };
-
-            // autoplay
-            autoRef.current = setInterval(() => {
-                moveSlide(indexRef.current + 1);
-            }, 3000);
-
-            // draggable
-            draggableRef.current = Draggable.create(wrapper, {
-                type: "x",
-                inertia: true,
-                bounds: {
-                    minX: -(slideWidth * total),
-                    maxX: 0
-                },
-
-                onPress() {
-                    clearInterval(autoRef.current);
-                },
-
-                onDragEnd() {
-
-                    const newIndex = Math.round(Math.abs(this.x) / slideWidth);
-
-                    moveSlide(newIndex);
-
-                    autoRef.current = setInterval(() => {
-                        moveSlide(indexRef.current + 1);
-                    }, 3000);
-                }
-
-            })[0];
-
-            return () => {
-
-                clearInterval(autoRef.current);
-
-                if (draggableRef.current) {
-                    draggableRef.current.kill();
-                }
-
-                gsap.killTweensOf(wrapper);
-
-            };
-
-        }, [data]);
+            setFormData({
+                name: "",
+                phone: "",
+                email: "",
+                message: ""
+            });
+        };
 
         return (
-            <div className="testimonial-slider" ref={containerRef}>
+            <div className="w-100">
+                <form onSubmit={sendMessage}>
 
-                <div className="testimonial-wrapper" ref={wrapperRef}>
+                    <input
+                        className="form-control mb-2"
+                        placeholder="Your Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
 
-                    {slides.map((test, i) => (
-                        <div
-                            className="testimonial-card d-flex flex-column gap-2"
-                            key={i}
+                    <input
+                        className="form-control mb-2"
+                        placeholder="Phone Number"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        className="form-control mb-2"
+                        placeholder="Email Address"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+
+                    <textarea
+                        className="form-control mb-2"
+                        placeholder="Type a message..."
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                    />
+
+                    <div className="d-flex align-items-center justify-content-center">
+                        <button
+                            type="submit"
+                            className="btn"
                             style={{
-                                border: `1px solid ${profile.colors.borderGray}`,
-                                padding: "24px 13px 10px",
-                                boxSizing: "border-box"
+                                background: profile.colors.Primery,
+                                color: profile.colors.white
                             }}
                         >
+                            Send Message
+                        </button>
+                    </div>
 
-                            <div className="test-header">
-
-                                <img
-                                    src={test.testSrc || "https://i.pravatar.cc/100"}
-                                    alt={test.testName}
-                                />
-
-                                <div>
-                                    <strong
-                                        style={{
-                                            color: darkMode ? profile.colors.white : profile.colors.black,
-                                            fontSize: "14px"
-                                        }}
-                                    >
-                                        {test.testName}
-                                    </strong>
-
-                                    <div className="test-post">
-                                        {test.testPost}
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <p
-                                style={{
-                                    color: darkMode ? profile.colors.white : profile.colors.black,
-                                    fontSize: "13px",
-                                    lineHeight: "20px"
-                                }}
-                            >
-                                {test.testReview}
-                            </p>
-
-                        </div>
-                    ))}
-
-                </div>
-
-                <div className="test-dots">
-
-                    {data.map((_, i) => (
-                        <span
-                            key={i}
-                            className={active === i ? "dot active" : "dot"}
-                            onClick={() => {
-
-                                clearInterval(autoRef.current);
-
-                                const slideWidth = containerRef.current.offsetWidth / 2;
-
-                                gsap.to(wrapperRef.current, {
-                                    x: -(slideWidth * i),
-                                    duration: 0.6
-                                });
-
-                                indexRef.current = i;
-                                setActive(i);
-
-                            }}
-                            style={{
-                                cursor: "pointer",
-                                background: active === i
-                                    ? (darkMode ? profile.colors.white : profile.colors.black)
-                                    : ""
-                            }}
-                        />
-                    ))}
-
-                </div>
+                </form>
 
             </div>
         );
@@ -469,8 +389,48 @@ function Premium2({ data, saveContact, openQR }) {
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         // borderRadius: "16px",
+                        padding: "10px"
                     }}
-                />
+                    className="d-flex align-items-end justify-content-end"
+                >
+                    <div className="d-flex gap-1">
+                        {/* location button */}
+                        <a
+                            href={profile.contactData.location.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded"
+                            style={{
+                                background: profile.colors.Primery,
+                                color: profile.colors.white,
+                            }}
+                        >
+                            <MapPin size={24} />
+                        </a>
+                        {/* QR button */}
+                        <button
+                            className="p-2 rounded border-0"
+                            style={{
+                                background: profile.colors.Primery,
+                                color: profile.colors.white,
+                            }}
+                            onClick={openQR}
+                        >
+                            <ScanQrCode size={24} />
+                        </button>
+                        {/* brosher button */}
+                        <button
+                            className="p-2 rounded border-0"
+                            style={{
+                                background: profile.colors.Primery,
+                                color: profile.colors.white,
+                            }}
+                            onClick={""}
+                        >
+                            <Download size={24} />
+                        </button>
+                    </div>
+                </div>
                 {/* make this wrapper div to wrapp all the filds */}
                 <div
                     className="position-relative d-flex flex-column align-items-start justify-content-between"
@@ -672,6 +632,7 @@ function Premium2({ data, saveContact, openQR }) {
 
                     {/* testimonial */}
                     <div className="w-100">
+
                         <h5 className="mt-4 fw-bold"
                             style={{
                                 opacity: "0.8",
@@ -679,45 +640,128 @@ function Premium2({ data, saveContact, openQR }) {
                             }}
                         >Testimonials</h5>
 
-                        <TestimonialSlider
-                            data={profile.tesimonialSliderData}
-                            darkMode={darkMode}
-                            profile={profile}
-                        />
+                        <Carousel
+                            activeIndex={index}
+                            onSelect={handleSelect}
+                            indicators={false}
+                            controls={false}
+                            interval={3000}
+                            touch={true}
+                            pause={false}
 
-                        {/* {profile.tesimonialSliderData.map((test, i) => (
-                            <div key={i} className="border rounded p-3 mb-2">
-                                <strong>{test.testName}</strong>
-                                <div style={{ fontSize: "12px", opacity: 0.6 }}>
-                                    {test.testPost}
-                                </div>
-                                <p>{test.testReview}</p>
-                            </div>
-                        ))} */}
+                        >
+
+                            {groupedTestimonials.map((group, i) => (
+                                <Carousel.Item key={i}>
+
+                                    <div className='d-flex' style={{ gap: "15px" }}>
+
+                                        {group.map((item, idx) => (
+
+                                            <div
+                                                key={idx}
+                                                style={{
+                                                    flex: "1",
+                                                    padding: "15px",
+                                                    borderRadius: "10px",
+                                                    border: `solid 1px ${profile.colors.borderGray}`,
+                                                    background: darkMode ? profile.colors.darkFields : profile.colors.white,
+                                                    color: darkMode ? profile.colors.white : profile.colors.dark,
+                                                }}
+                                            >
+
+                                                <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
+
+                                                    <img
+                                                        src={item.testSrc}
+                                                        alt={item.testName}
+                                                        style={{
+                                                            width: "40px",
+                                                            height: "40px",
+                                                            borderRadius: "50%",
+
+                                                        }}
+                                                    />
+
+                                                    <div>
+                                                        <h5 style={{ fontSize: "13px", margin: "0", color: profile.colors.black, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                                            {item.testName}
+                                                        </h5>
+
+                                                        <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                                            {item.testPost}
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+
+                                                <p
+                                                    style={{
+                                                        fontSize: "12px",
+                                                        color: "#000000",
+                                                        marginTop: "20px",
+                                                        fontWeight: "400",
+                                                        lineHeight: "18px",
+                                                        opacity: darkMode ? "0.7" : "1",
+                                                        color: darkMode ? profile.colors.white : profile.colors.black,
+                                                    }}
+                                                >
+                                                    {item.testReview?.slice(0, 100)}
+                                                </p>
+
+                                            </div>
+
+                                        ))}
+
+                                    </div>
+
+                                </Carousel.Item>
+                            ))}
+
+                        </Carousel>
+                        {/* Custom Pagination */}
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                gap: "8px",
+                                marginTop: "15px"
+                            }}
+                        >
+
+                            {groupedTestimonials.map((_, i) => (
+
+                                <div
+                                    key={i}
+                                    onClick={() => setIndex(i)}
+                                    style={{
+                                        width: "8px",
+                                        height: "8px",
+                                        borderRadius: "50%",
+                                        backgroundColor: index === i ? "#000" : "#ccc",
+                                        cursor: "pointer"
+                                    }}
+                                />
+
+                            ))}
+
+                        </div>
                     </div>
 
                     {/* form */}
+                    {/* form */}
                     <div className="w-100">
-                        <h5 className="mt-4 fw-bold"
+                        <h5
+                            className="mt-4 fw-bold"
                             style={{
                                 opacity: "0.8",
                                 color: darkMode ? profile.colors.white : profile.colors.black
                             }}
-                        >Inquiries</h5>
+                        >
+                            Inquiries
+                        </h5>
 
-                        <input className="form-control mb-2" placeholder="Your Name" />
-                        <input className="form-control mb-2" placeholder="Phone Number" />
-                        <input className="form-control mb-2" placeholder="Email Address" />
-                        <textarea className="form-control mb-2" placeholder="Type a message..." />
-
-                        <div className="d-flex align-items-center justify-content-center">
-                            <button
-                                className="btn"
-                                style={{ background: profile.colors.Primery, color: profile.colors.white }}
-                            >
-                                Send Message
-                            </button>
-                        </div>
+                        <InquiryForm profile={profile} />
                     </div>
 
                     {/* contact section */}
@@ -850,7 +894,7 @@ function Premium2({ data, saveContact, openQR }) {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
                                     <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
                                 </svg>
-                                <p style={{ color: profile.colors.white }} className="m-0">Whatsapp</p>
+                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Whatsapp</p>
                             </a>
                         </div>
                         {/* QR button */}
@@ -872,7 +916,7 @@ function Premium2({ data, saveContact, openQR }) {
                                 }}
                             >
                                 <ScanQrCode size={28} />
-                                <p style={{ color: profile.colors.white }} className="m-0">Scan QR</p>
+                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Scan QR</p>
                             </button>
                         </div>
                         {/* save contact button */}
@@ -894,7 +938,7 @@ function Premium2({ data, saveContact, openQR }) {
                                 }}
                             >
                                 <Download size={28} />
-                                <p style={{ color: profile.colors.white }} className="m-0">Save contact</p>
+                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Save contact</p>
                             </button>
                         </div>
                     </div>

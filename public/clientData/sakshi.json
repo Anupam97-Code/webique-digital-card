@@ -162,75 +162,75 @@
     ],
     "gallerySlider": [
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         }
     ],
     "tesimonialSliderData": [
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Cole Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Richi Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Solomon",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Sanju",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
