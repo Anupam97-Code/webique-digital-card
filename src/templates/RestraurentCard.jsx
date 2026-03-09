@@ -277,7 +277,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                     borderRadius: "4px"
                 }}
             >
-                <div className="d-flex align-items-center gap-3">
+                <div className="d-flex align-items-center gap-3 flex-wrap">
                     <div
                         className="d-flex align-items-center justify-content-center rounded-3"
                         style={{
@@ -372,12 +372,12 @@ function RestraurentCard({ data, saveContact, openQR }) {
                 style={{
                     background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
                     color: darkMode ? "#1F2D3D" : "#ffffff",
-                    padding: "12px 15px",
-                    marginRight: "16px",
-                    marginTop: "16px",
+                    padding: "8px 11px",
+                    marginRight: "5px",
+                    marginTop: "5px",
                 }}
             >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                {darkMode ? <Sun size={13} /> : <Moon size={13} />}
             </button>
 
             <div
