@@ -101,7 +101,7 @@
         },
         {
             "menuTabName": "Veg",
-           "menuTabList": [
+            "menuTabList": [
                 {
                     "menuDishSrc": "",
                     "menuDishName": "Antipasta Salad",
@@ -131,7 +131,7 @@
         },
         {
             "menuTabName": "Non-Veg",
-             "menuTabList": [
+            "menuTabList": [
                 {
                     "menuDishSrc": "",
                     "menuDishName": "Margherita Pizza",
@@ -296,6 +296,6 @@
     "company": "Webique Technology",
     "email": "contact@webique.in",
     "whatsapp": "919860188007",
-    "package": "premium",
-    "template": "Premium2"
+    "package": "basic",
+    "template": "RestraurentCard"
 }
