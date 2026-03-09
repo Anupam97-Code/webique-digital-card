@@ -166,7 +166,7 @@ function Premium2({ data, saveContact, openQR }) {
                     borderRadius: "4px"
                 }}
             >
-                <div className="d-flex align-items-center gap-3 flex-wrap">
+                <div className="d-flex align-items-center gap-3">
                     <div
                         className="d-flex align-items-center justify-content-center rounded-3"
                         style={{
@@ -443,12 +443,12 @@ function Premium2({ data, saveContact, openQR }) {
                 style={{
                     background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
                     color: darkMode ? "#1F2D3D" : "#ffffff",
-                    padding: "8px 11px",
-                    marginRight: "5px",
-                    marginTop: "5px",
+                    padding: "12px 15px",
+                    marginRight: "16px",
+                    marginTop: "16px",
                 }}
             >
-                {darkMode ? <Sun size={13} /> : <Moon size={13} />}
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
             <div
@@ -477,7 +477,7 @@ function Premium2({ data, saveContact, openQR }) {
                     style={{ gap: "15px", padding: "12px 16px 16px 16px" }}
                 >
                     {/* Profile Image / logo */}
-                    <div className="w-100 d-flex flex-wrap justify-content-center gap-3" style={{ paddingLeft: "95px" }}>
+                    <div className="w-100 d-flex justify-content-center gap-3" style={{ paddingLeft: "95px" }}>
                         <img
                             src={darkMode ? profile.darkModeImage : profile.profileImage}
                             alt={profile.name}
@@ -510,7 +510,7 @@ function Premium2({ data, saveContact, openQR }) {
                     </div>
 
                     {/* Social Links / with lucid react icons */}
-                    <ul className="d-flex  justify-content-center gap-3">
+                    <ul className="d-flex justify-content-center gap-3">
                         {profile.socialLinks.map((item, i) => (
                             <li key={i}>
                                 <a

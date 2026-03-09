@@ -221,6 +221,8 @@ Message: ${formData.message}`;
     }
   };
 
+
+
   const ActionItem = ({ icon, title, subtitle, href }) => {
     const isExternal = href.startsWith("http");
     return (
@@ -268,12 +270,12 @@ Message: ${formData.message}`;
                         style={{
                             background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
                             color: darkMode ? "#1F2D3D" : "#ffffff",
-                            padding: "12px 15px",
-                            marginRight: "16px",
-                            marginTop: "16px",
+                            padding: "5px 11px",
+                            marginRight: "5px",
+                            marginTop: "5px",
                         }}
                     >
-                        {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                        {darkMode ? <Sun size={13} /> : <Moon size={13} />}
                     </button>
 
         <div
@@ -300,30 +302,58 @@ Message: ${formData.message}`;
 
 
 
-          <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: "20px" }}>
-            <div className='w-100 d-flex justify-item-between' style={{ marginTop: "-55px", position: "relative", alignItems: "center", gap: "20px" }}>
-              <div >
-                <img
-                  src={profileImg}
-                  alt={profile.name}
-                  style={{
-                    width: "120px",
-                    height: "120px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: "0px solid #f1f3f5",
-                  }}
-                />
-              </div>
-              <div>
-                <h4 className="fw-bold" style={{ fontSize: "20px", fontWeight: "600", marginTop: "40px", color: darkMode ? "#fff" : "#000", }}>{profile.name}</h4>
-                <p
+          <div
+  style={{
+    padding: "0 16px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  }}
+>
+  <div
+    className="w-100 d-flex"
+    style={{
+      marginTop: "-55px",
+      position: "relative",
+      alignItems: "center",
+      gap: "20px",
+    }}
+  >
+    <div>
+      <img
+        src={profileImg}
+        alt={profile.name}
+        style={{
+          maxWidth: "120px",
+          maxHeight: "100%",
+          width:"100%",
+          borderRadius: "50%",
+          objectFit: "cover",
+          border: "0px solid #f1f3f5",
+          transition: "0.3s",
+        }}
+      />
+    </div>
 
-                  style={{ color: darkMode ? "#fff" : "#000", }}
-                >{profile.title}</p>
-              </div>
-            </div>
-          </div>
+    <div>
+      <h4
+        className="fw-bold"
+        style={{
+          fontSize: "20px",
+          fontWeight: "600",
+          marginTop: "40px",
+          color: darkMode ? "#fff" : "#000",
+        }}
+      >
+        {profile.name}
+      </h4>
+
+      <p style={{ color: darkMode ? "#fff" : "#000" }}>
+        {profile.title}
+      </p>
+    </div>
+  </div>
+</div>
 
           <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
 
@@ -332,7 +362,7 @@ Message: ${formData.message}`;
 
 
 
-            <ul style={{ display: "flex", gap: "17px", }}>
+            <ul style={{ display: "flex", flexWrap:"wrap", gap: "17px", }}>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
                 return (
@@ -529,20 +559,21 @@ Message: ${formData.message}`;
           alignItems: "center",
           gap: 15,
           padding: "10px 9px",
-          border: `solid 1px ${darkMode ? profile.colors.darkBorder : profile.colors.whiteBorder}`,
+          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
           borderRadius: "6px",
           background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
         }}
       >
-         <div style={{ width: "101px", height: "92px", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
-                              <img
+         <div style={{ width: "100%", maxWidth:"101px", maxHeight: "100%", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
+                              <img className='img-fluid'
                                 src={item.image || "https://picsum.photos/300/200"}
                                 alt={item.title}
                                 style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  objectFit: "cover",
-                                  flexShrink: 0,
+                                  // width: "100%",
+                                  // height: "100%",
+                                  // objectFit: "cover",
+                                  // flexShrink: 0,
+
 
                                 }}
                               />
@@ -1114,6 +1145,7 @@ textarea::placeholder {
                                 style={{
                                   margin: "0",
                                   fontSize: "14px",
+                                  wordBreak:"break-all",
                                   fontWeight: "500",
                                   color: darkMode ? profile.colors.white : profile.colors.black,
                                   opacity: darkMode ? "0.7" : "1"
@@ -1125,6 +1157,7 @@ textarea::placeholder {
                             <p style={{
                               margin: "0",
                               fontSize: "14px",
+                               wordBreak:"break-all",
                               color: darkMode ? profile.colors.white : profile.colors.black,
                               opacity: darkMode ? "0.7" : "1"
                             }}>
