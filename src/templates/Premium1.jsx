@@ -1,7 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import backgrondImg from "../assets/images/profile-backgrd.png";
-import profileImg from "../assets/images/profie-photo.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import FuterIcnOne from "../../public/images/footer-whatsaap.svg";
@@ -27,7 +25,9 @@ import {
   Clock,
   Twitter,
   QrCode,
-  ArrowDownToLine
+  ArrowDownToLine,
+  ScanQrCode,
+  Download 
 
 
 } from "lucide-react";
@@ -102,16 +102,20 @@ Message: ${formData.message}`;
       whatsapp: safeData.whatsapp || "+91 919860188007",
       title: safeData.title || "CEO & Founder",
       company: safeData.company || "Quantix",
+      headerBgImage: safeData.headerBgImage,
       phone: safeData.phone || "+1-212-456-7890",
+      profileImg: safeData.profileImg || "",
       email: safeData.email || "marcus.whitlow@gmail.com",
       address: safeData.address || "2093 Philadelphia Pike",
+      servicesData: safeData.servicesData || "",
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
-      reviewLink:safeData.reviewLink || "",
+      reviewLink: safeData.reviewLink || "",
       colors: safeData.colors,
       AboutContent: safeData.AboutContent || "",
-      image:
-        safeData.image ||
+      package: safeData.package,
+      profileImage:
+        safeData.profileImage ||
         "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
       facebook: safeData.facebook || "#",
       linkedin: safeData.linkedin || "#",
@@ -180,7 +184,34 @@ Message: ${formData.message}`;
   );
 
 
+  // const servisecJsonArr = profile.tabs
+  // console.log("servisecJsonArr:", servisecJsonArr.slice(0, 1));
 
+
+  // create for checking the packages and assing the styles
+  const checkUserPackage = (requiredUserPackage) => {
+    // console.log("requiredUserPackage:", requiredUserPackage);
+
+    const packageLevels = {
+      basic: 1,
+      regular: 2,
+      premium: 3
+    };
+
+    // console.log("packageLevels:",packageLevels[profile.package]);
+
+    const checkPackage = (requiredPackage) => {
+
+      const userPackage = profile.package;
+      console.log("userPackage:", packageLevels[userPackage]);
+      console.log("requiredPackage:", packageLevels[requiredPackage]);
+      console.log("check package conditions:", packageLevels[userPackage] >= packageLevels[requiredPackage]);
+
+      return packageLevels[userPackage] >= packageLevels[requiredPackage];
+    };
+
+    return checkPackage(requiredUserPackage);
+  };
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -265,18 +296,18 @@ Message: ${formData.message}`;
 
         {/* Theme Toggle */}
         <button
-                        onClick={() => setDarkMode(!darkMode)}
-                        className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
-                        style={{
-                            background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
-                            color: darkMode ? "#1F2D3D" : "#ffffff",
-                            padding: "5px 11px",
-                            marginRight: "5px",
-                            marginTop: "5px",
-                        }}
-                    >
-                        {darkMode ? <Sun size={13} /> : <Moon size={13} />}
-                    </button>
+          onClick={() => setDarkMode(!darkMode)}
+          className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
+          style={{
+            background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
+            color: darkMode ? "#1F2D3D" : "#ffffff",
+            padding: "5px 11px",
+            marginRight: "5px",
+            marginTop: "5px",
+          }}
+        >
+          {darkMode ? <Sun size={13} /> : <Moon size={13} />}
+        </button>
 
         <div
 
@@ -295,7 +326,7 @@ Message: ${formData.message}`;
           }}
         >
           <div className='position-relative w-100 h-auto'>
-            <img src={backgrondImg} alt='background' style={{ width: "100%", height: "auto" }} />
+            <img src={profile.headerBgImage} alt='background' style={{ width: "100%", height: "auto" }} />
 
 
           </div>
@@ -303,57 +334,57 @@ Message: ${formData.message}`;
 
 
           <div
-  style={{
-    padding: "0 16px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-  }}
->
-  <div
-    className="w-100 d-flex"
-    style={{
-      marginTop: "-55px",
-      position: "relative",
-      alignItems: "center",
-      gap: "20px",
-    }}
-  >
-    <div>
-      <img
-        src={profileImg}
-        alt={profile.name}
-        style={{
-          maxWidth: "120px",
-          maxHeight: "100%",
-          width:"100%",
-          borderRadius: "50%",
-          objectFit: "cover",
-          border: "0px solid #f1f3f5",
-          transition: "0.3s",
-        }}
-      />
-    </div>
+            style={{
+              padding: "0 16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+          >
+            <div
+              className="w-100 d-flex"
+              style={{
+                marginTop: "-55px",
+                position: "relative",
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <div>
+                <img
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  style={{
+                    maxWidth: "120px",
+                    maxHeight: "100%",
+                    width: "100%",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    border: "0px solid #f1f3f5",
+                    transition: "0.3s",
+                  }}
+                />
+              </div>
 
-    <div>
-      <h4
-        className="fw-bold"
-        style={{
-          fontSize: "20px",
-          fontWeight: "600",
-          marginTop: "40px",
-          color: darkMode ? "#fff" : "#000",
-        }}
-      >
-        {profile.name}
-      </h4>
+              <div>
+                <h4
+                  className="fw-bold"
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "600",
+                    marginTop: "40px",
+                    color: darkMode ? "#fff" : "#000",
+                  }}
+                >
+                  {profile.name}
+                </h4>
 
-      <p style={{ color: darkMode ? "#fff" : "#000" }}>
-        {profile.title}
-      </p>
-    </div>
-  </div>
-</div>
+                <p style={{ color: darkMode ? "#fff" : "#000" }}>
+                  {profile.title}
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
 
@@ -362,7 +393,7 @@ Message: ${formData.message}`;
 
 
 
-            <ul style={{ display: "flex", flexWrap:"wrap", gap: "17px", }}>
+            <ul style={{ display: "flex", flexWrap: "wrap", gap: "17px", }}>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
                 return (
@@ -436,286 +467,291 @@ Message: ${formData.message}`;
             </>
 
             {/* tabs */}
+            <div>
+              {/* to show premium cardc data and grid services */}
+              {checkUserPackage("premium") && (
+                <div>
+                  {profile.tabs?.length > 0 && (
+                    <Container style={{ padding: 0 }}>
+                      <Tabs
+                        activeKey={activeTab}
+                        onSelect={(k) => setActiveTab(k)}
+                        style={{
+                          border: "none",
+                          margin: 0,
+                          padding: 0,
 
-            {profile.tabs?.length > 0 && (
-              <Container style={{ padding: 0 }}>
-                <Tabs
-                  activeKey={activeTab}
-                  onSelect={(k) => setActiveTab(k)}
-                  style={{
-                    border: "none",
-                    margin: 0,
-                    padding: 0,
+                        }}
+                        className="border-0"
+                      >
+                        {profile.tabs.slice(0, 3).map((tab, tabIndex) => (
+                          <Tab
+                            key={`tab-${tabIndex}`}
+                            eventKey={tab.tabName}
 
-                  }}
-                  className="border-0"
-                >
-                  {profile.tabs.slice(0, 3).map((tab, tabIndex) => (
-                    <Tab
-                      key={`tab-${tabIndex}`}
-                      eventKey={tab.tabName}
+                            title={
+                              <div className='tab-block'
+                                style={{
+                                  // backgroundColor:
+                                  //   activeTab === tab.tabName ? "#1f2d3c" : "#1f2d3c",
+                                  // color:
+                                  //   activeTab === tab.tabName ? "#1680FB" : "#ffffff",
 
-                      title={
-                        <div className='tab-block'
-                          style={{
-                            // backgroundColor:
-                            //   activeTab === tab.tabName ? "#1f2d3c" : "#1f2d3c",
-                            // color:
-                            //   activeTab === tab.tabName ? "#1680FB" : "#ffffff",
+                                  backgroundColor:
+                                    activeTab === tab.tabName
+                                      ? (darkMode ? profile.colors.darkFields : profile.colors.trinery)
+                                      : (darkMode ? profile.colors.dark : profile.colors.white),
 
-                            backgroundColor:
-                              activeTab === tab.tabName
-                                ? (darkMode ? profile.colors.darkFields : profile.colors.trinery)
-                                : (darkMode ? profile.colors.dark : profile.colors.white),
+                                  color:
+                                    activeTab === tab.tabName
+                                      ? (darkMode ? profile.colors.white : profile.colors.primary)
+                                      : (darkMode ? profile.colors.white : profile.colors.black),
 
-                            color:
-                              activeTab === tab.tabName
-                                ? (darkMode ? profile.colors.white : profile.colors.primary)
-                                : (darkMode ? profile.colors.white : profile.colors.black),
-
-                            opacity: activeTab === tab.tabName ? 1 : (darkMode ? 0.7 : 1),
-
-
-                            margin: 0,
-                            width: "100%",     // 3 equal buttons
-                            textAlign: "center",
-                            border: "none",
-                            fontWeight: 500,
-                            fontSize: 13
-
-                          }}
-                        >
-                          {tab.tabName}
-                        </div>
-                      }
-                    >
-                      <div className='d-flex flex-column gap-3'>
-                        {/* {tab.items?.map((item, itemIndex) => (
-                          <div
-                            key={`item-${tabIndex}-${itemIndex}`}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 15,
-
-                              padding: "10px 9px",
-                              border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                              borderRadius: "6px",
-                              background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                                  opacity: activeTab === tab.tabName ? 1 : (darkMode ? 0.7 : 1),
 
 
+                                  margin: 0,
+                                  width: "100%",     // 3 equal buttons
+                                  textAlign: "center",
+                                  border: "none",
+                                  fontWeight: 500,
+                                  fontSize: 13
 
-                              color: darkMode ? "#fff" : "#F1F3F5",
-                            }}
+                                }}
+                              >
+                                {tab.tabName}
+                              </div>
+                            }
                           >
-                            <div style={{ width: "101px", height: "92px", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
-                              <img
-                                src={item.image || "https://picsum.photos/300/200"}
-                                alt={item.title}
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  objectFit: "cover",
-                                  flexShrink: 0,
+                            <div className='d-flex flex-column gap-3'>
 
-                                }}
-                              />
+
+                              {tab.tabName === "Service" && (
+                                <div className="d-flex flex-column gap-3">
+                                  {tab.items?.map((item, itemIndex) => (
+                                    <div
+                                      key={itemIndex}
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 15,
+                                        padding: "10px 9px",
+                                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                                        borderRadius: "6px",
+                                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
+                                      }}
+                                    >
+                                      <div style={{ width: "100%", maxWidth: "101px", maxHeight: "100%", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
+                                        <img className='img-fluid'
+                                          src={item.image || "https://picsum.photos/300/200"}
+                                          alt={item.title}
+                                          style={{
+                                            // width: "100%",
+                                            // height: "100%",
+                                            // objectFit: "cover",
+                                            // flexShrink: 0,
+
+
+                                          }}
+                                        />
+                                      </div>
+
+                                      <div className='d-flex flex-column' style={{ gap: "3px" }}>
+                                        <h5 className='mb-0'
+                                          style={{
+                                            fontSize: 14,
+                                            fontWeight: 500,
+                                            color: darkMode ? profile.colors.white : profile.colors.dark,
+
+                                          }}
+                                        >
+                                          {item.title}
+                                        </h5>
+
+                                        <p
+                                          style={{
+                                            fontSize: "12px",
+                                            fontWeight: 400,
+                                            lineHeight: "18px",
+                                            margin: 0,
+                                            color: darkMode ? profile.colors.white : profile.colors.dark,
+                                            opacity: darkMode ? "0.7" : "1"
+                                          }}
+                                        >
+                                          {item.content}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+
+
+                              {(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
+                                <div
+                                  style={{
+                                    display: "grid",
+                                    gridTemplateColumns: "repeat(2, 1fr)",
+                                    gap: "10px",
+
+                                  }}
+                                >
+                                  {tab.items?.map((item, index) => (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        borderRadius: "6px",
+                                        overflow: "hidden",
+                                        position: "relative",
+                                        border: `1px solid ${darkMode ? profile.colors.darkBorder : profile.colors.whiteBorder}`
+                                      }}
+                                    >
+
+                                      <img
+                                        src={item.image}
+                                        alt={item.altTab}
+                                        style={{
+                                          width: "100%",
+                                          height: "150px",
+                                          objectFit: "cover"
+                                        }}
+                                      />
+
+                                      {/* Gradient overlay */}
+                                      {tab.tabName === "Portfolio" && (
+                                        <div
+                                          style={{
+                                            position: "absolute",
+                                            bottom: 0,
+                                            left: 0,
+                                            width: "100%",
+                                            height: "100%",
+                                            background:
+                                              "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+                                            pointerEvents: "none"
+                                          }}
+                                        />
+                                      )}
+
+                                      <p
+                                        style={
+                                          tab.tabName === "Portfolio"
+                                            ? {
+                                              margin: 0,
+                                              padding: 0,
+                                              fontSize: "13px",
+                                              textAlign: "center",
+                                              position: "absolute",
+                                              color: "#fff",
+                                              lineHeight: "100%",
+                                              left: "11px",
+                                              bottom: "20px",
+                                              fontWeight: 500
+                                            }
+                                            : tab.tabName === "Gallery"
+                                              ? {
+                                                position: "absolute",
+                                                bottom: "10px",
+                                                left: 0,
+                                                width: "100%",
+                                                color: "#fff",
+                                                fontSize: "12px",
+                                                textAlign: "center",
+                                                margin: 0,
+                                                opacity: 0,
+                                                transition: "opacity 0.3s"
+                                              }
+                                              : {}
+                                        }
+                                        className={tab.tabName === "Gallery" ? "gallery-hover-text" : ""}
+                                      >
+                                        {item.altTab}
+                                      </p>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+
                             </div>
-                            <div className='d-flex flex-column' style={{ gap: "3px" }}>
-                              <h5 className='mb-0'
-                                style={{
-                                  fontSize: 14,
-                                  fontWeight: 500,
-                                  color: darkMode ? profile.colors.white : profile.colors.dark,
+                          </Tab>
+                        ))}
+                      </Tabs>
+                    </Container>
+                  )}
+                </div>
 
-                                }}
-                              >
-                                {item.title}
-                              </h5>
+              )}
+              {/* to show regular & basic services */}
+              {(profile.package === "regular" || profile.package === "basic") && (
+                // <div className='d-flex flex-column gap-2'>
+                //   <h4
+                //     style={{
+                //       fontSize: "18px",
+                //       fontWeight: 600,
+                //       color: darkMode ? profile.colors.white : profile.colors.dark,
 
-                              <p
-                                style={{
-                                  fontSize: "12px",
-                                  fontWeight: 400,
-                                  lineHeight: "18px",
-                                  margin: 0,
-                                  color: darkMode ? profile.colors.white : profile.colors.dark,
-                                  opacity: darkMode ? "0.7" : "1"
-                                }}
-                              >
-                                {item.content}
-                              </p>
-                            </div>
-                          </div>
-                        ))} */}
+                //       lineHeight: "27px"
 
-                        {tab.tabName === "Service" && (
-  <div className="d-flex flex-column gap-3">
-    {tab.items?.map((item, itemIndex) => (
-      <div
-        key={itemIndex}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 15,
-          padding: "10px 9px",
-          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-          borderRadius: "6px",
-          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
-        }}
-      >
-         <div style={{ width: "100%", maxWidth:"101px", maxHeight: "100%", flexShrink: "0", borderRadius: "6px", overflow: "hidden" }}>
-                              <img className='img-fluid'
-                                src={item.image || "https://picsum.photos/300/200"}
-                                alt={item.title}
-                                style={{
-                                  // width: "100%",
-                                  // height: "100%",
-                                  // objectFit: "cover",
-                                  // flexShrink: 0,
+                //     }}
+                //   >
+                //     Services
+                //   </h4>
+                //   {profile.tabs.slice(0, 1).map((value, i) => {
+                //     return (
+                //       <ul className='d-flex flex-wrap align-items-center gap-2 justify-content-start' key={index}>
+                //         {value.items.map((item, index) => (
+                //           <li
+                //             style={{
+                //               background: profile.colors.whiteBorder,
+                //               padding: "7px 11px 7px",
+                //               borderRadius: "55px"
+                //             }}
+                //           >
+                //             {item.title}
+                //           </li>
+                //         ))}
+                //       </ul>
+                //     )
+                //   })}
+                // </div>
 
+                <div className='d-flex flex-column gap-2'>
+                  <h4
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      color: darkMode ? profile.colors.white : profile.colors.dark,
 
-                                }}
-                              />
-                            </div>
+                      lineHeight: "27px"
 
-        <div className='d-flex flex-column' style={{ gap: "3px" }}>
-                              <h5 className='mb-0'
-                                style={{
-                                  fontSize: 14,
-                                  fontWeight: 500,
-                                  color: darkMode ? profile.colors.white : profile.colors.dark,
-
-                                }}
-                              >
-                                {item.title}
-                              </h5>
-
-                              <p
-                                style={{
-                                  fontSize: "12px",
-                                  fontWeight: 400,
-                                  lineHeight: "18px",
-                                  margin: 0,
-                                  color: darkMode ? profile.colors.white : profile.colors.dark,
-                                  opacity: darkMode ? "0.7" : "1"
-                                }}
-                              >
-                                {item.content}
-                              </p>
-                            </div>
-      </div>
-    ))}
-  </div>
-)}
-
-
-{(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(2, 1fr)",
-      gap: "10px",
-      
-    }}
-  >
-    {tab.items?.map((item, index) => (
-      <div
-  key={index}
-  style={{
-    borderRadius: "6px",
-    overflow: "hidden",
-    position: "relative",
-    border: `1px solid ${darkMode ? profile.colors.darkBorder : profile.colors.whiteBorder}`
-  }}
->
-
-  <img
-    src={item.image}
-    alt={item.altTab}
-    style={{
-      width: "100%",
-      height: "150px",
-      objectFit: "cover"
-    }}
-  />
-
-  {/* Gradient overlay */}
-  {tab.tabName === "Portfolio" && (
-  <div
-    style={{
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      background:
-        "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
-      pointerEvents: "none"
-    }}
-  />
-)}
-
-  <p
-    style={
-      tab.tabName === "Portfolio"
-        ? {
-            margin: 0,
-            padding: 0,
-            fontSize: "13px",
-            textAlign: "center",
-            position: "absolute",
-            color: "#fff",
-            lineHeight: "100%",
-            left: "11px",
-            bottom: "20px",
-            fontWeight: 500
-          }
-        : tab.tabName === "Gallery"
-        ? {
-            position: "absolute",
-            bottom: "10px",
-            left: 0,
-            width: "100%",
-            color: "#fff",
-            fontSize: "12px",
-            textAlign: "center",
-            margin: 0,
-            opacity: 0,
-            transition: "opacity 0.3s"
-          }
-        : {}
-    }
-    className={tab.tabName === "Gallery" ? "gallery-hover-text" : ""}
-  >
-    {item.altTab}
-  </p>
-</div>
-    ))}
-  </div>
-)}
+                    }}
+                  >
+                    Servicess
+                  </h4>
 
 
 
+                  <ul className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+                    {profile.servicesData.map((service, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          background: profile.colors.whiteBorder,
+                          padding: "7px 11px",
+                          borderRadius: "55px"
+                        }}
+                      >
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
 
 
 
+                </div>
 
-
-
-
-
-
-
-
-                      </div>
-                    </Tab>
-                  ))}
-                </Tabs>
-              </Container>
-            )}
-
-
+              )}
+            </div>
 
             <style>
               {`
@@ -805,141 +841,141 @@ Message: ${formData.message}`;
               </Swiper>
 
             </section> */}
+            {(profile.package === "regular" || profile.package === "premium") && (
+              <section className='d-flex flex-column gap-2'>
 
-            <section className='d-flex flex-column gap-2'>
+                <div className="d-flex justify-content-between align-items-center">
+                  <h4
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      color: darkMode ? profile.colors.white : profile.colors.dark,
 
-              <div className="d-flex justify-content-between align-items-center">
-                <h4
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    color: darkMode ? profile.colors.white : profile.colors.dark,
+                      lineHeight: "27px"
 
-                    lineHeight: "27px"
+                    }}
+                  >
+                    {profile.testimonials.heading}
+                  </h4>
 
-                  }}
+                  <a href={profile.reviewLink} target='_blank'
+                    style={{
+                      color: darkMode ? profile.colors.white : profile.colors.primary
+                    }}
+                  >View All</a>
+                </div>
+
+                <Carousel
+                  activeIndex={index}
+                  onSelect={handleSelect}
+                  indicators={false}
+                  controls={false}
+                  interval={3000}
+                  touch={true}
+                  pause={false}
+
                 >
-                  {profile.testimonials.heading}
-                </h4>
 
-                <a href={profile.reviewLink} target='_blank'
-                style={{
-                  color:darkMode?profile.colors.white:profile.colors.primary
-                }}
-                >View All</a>
-              </div>
+                  {groupedTestimonials.map((group, i) => (
+                    <Carousel.Item key={i}>
 
-              <Carousel
-                activeIndex={index}
-                onSelect={handleSelect}
-                indicators={false}
-                controls={false}
-                interval={3000}
-                touch={true}
-                pause={false}
+                      <div className='d-flex' style={{ gap: "15px" }}>
 
-              >
+                        {group.map((item, idx) => (
 
-                {groupedTestimonials.map((group, i) => (
-                  <Carousel.Item key={i}>
+                          <div
+                            key={idx}
+                            style={{
+                              flex: "1",
+                              padding: "15px",
+                              borderRadius: "10px",
+                              border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                              background: darkMode ? profile.colors.darkFields : profile.colors.white,
+                              color: darkMode ? profile.colors.white : profile.colors.dark,
+                            }}
+                          >
 
-                    <div className='d-flex' style={{ gap: "15px" }}>
+                            <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
 
-                      {group.map((item, idx) => (
+                              <img
+                                src={item.photo}
+                                alt={item.name}
+                                style={{
+                                  width: "40px",
+                                  height: "40px",
+                                  borderRadius: "50%",
 
-                        <div
-                          key={idx}
-                          style={{
-                            flex: "1",
-                            padding: "15px",
-                            borderRadius: "10px",
-                            border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                            background: darkMode ? profile.colors.darkFields : profile.colors.white,
-                            color: darkMode ? profile.colors.white : profile.colors.dark,
-                          }}
-                        >
+                                }}
+                              />
 
-                          <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
+                              <div>
+                                <h5 style={{ fontSize: "13px", margin: "0", color: "#000000", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+                                  {item.name}
+                                </h5>
 
-                            <img
-                              src={item.photo}
-                              alt={item.name}
-                              style={{
-                                width: "40px",
-                                height: "40px",
-                                borderRadius: "50%",
+                                <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+                                  {item.designation}
+                                </p>
+                              </div>
 
-                              }}
-                            />
-
-                            <div>
-                              <h5 style={{ fontSize: "13px", margin: "0", color: "#000000", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
-                                {item.name}
-                              </h5>
-
-                              <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
-                                {item.designation}
-                              </p>
                             </div>
+
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                color: "#000000",
+                                marginTop: "20px",
+                                fontWeight: "400",
+                                lineHeight: "18px",
+                                opacity: darkMode ? "0.7" : "1",
+                                color: darkMode ? "#fff" : "#000",
+                              }}
+                            >
+                              {item.description?.slice(0, 100)}
+                            </p>
 
                           </div>
 
-                          <p
-                            style={{
-                              fontSize: "12px",
-                              color: "#000000",
-                              marginTop: "20px",
-                              fontWeight: "400",
-                              lineHeight: "18px",
-                              opacity: darkMode ? "0.7" : "1",
-                              color: darkMode ? "#fff" : "#000",
-                            }}
-                          >
-                            {item.description?.slice(0, 100)}
-                          </p>
+                        ))}
 
-                        </div>
+                      </div>
 
-                      ))}
+                    </Carousel.Item>
+                  ))}
 
-                    </div>
+                </Carousel>
 
-                  </Carousel.Item>
-                ))}
+                {/* Custom Pagination */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "8px",
+                    marginTop: "15px"
+                  }}
+                >
 
-              </Carousel>
+                  {groupedTestimonials.map((_, i) => (
 
-              {/* Custom Pagination */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "8px",
-                  marginTop: "15px"
-                }}
-              >
+                    <div
+                      key={i}
+                      onClick={() => setIndex(i)}
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: index === i ? "#000" : "#ccc",
+                        cursor: "pointer"
+                      }}
+                    />
 
-                {groupedTestimonials.map((_, i) => (
+                  ))}
 
-                  <div
-                    key={i}
-                    onClick={() => setIndex(i)}
-                    style={{
-                      width: "8px",
-                      height: "8px",
-                      borderRadius: "50%",
-                      backgroundColor: index === i ? "#000" : "#ccc",
-                      cursor: "pointer"
-                    }}
-                  />
+                </div>
 
-                ))}
+              </section>
 
-              </div>
-
-            </section>
-
-
+            )}
             <style>
 
               {`
@@ -961,47 +997,48 @@ textarea::placeholder {
 
             {/* Inquiry Section (form) */}
 
-            <section className='d-flex flex-column gap-2'>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                lineHeight: "27px",
-                color: darkMode ? profile.colors.white : profile.colors.black,
+
+            {(profile.package === "regular" || profile.package === "premium") && (
+
+              <section className='d-flex flex-column gap-2'>
+                <h4 style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  lineHeight: "27px",
+                  color: darkMode ? profile.colors.white : profile.colors.black,
 
 
-              }}>Inquiries</h4>
+                }}>Inquiries</h4>
 
 
-              <div>
-                <form
-                  onSubmit={sendMessage}
-                  style={{
-                    padding: "0px",
+                <div>
+                  <form
+                    onSubmit={sendMessage}
+                    style={{
+                      padding: "0px",
 
-                  }}
-                >
+                    }}
+                  >
 
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
+                        type="text"
+                        name="name"
+                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        placeholder="Enter your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
 
-
-                  <div style={{ margin: "0 0 13px" }}>
-                    <input
-                      type="text"
-                      name="name"
-                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
-                      placeholder="Enter your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      style={{
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                        color: darkMode ? profile.colors.white : profile.colors.black,
-                        padding: "11px 12px", fontSize: "12px"
-                      }}
-                    />
-                  </div>
-
-                  {/* <div className="mb-3">
+                    {/* <div className="mb-3">
                   <input
                     type="tel"
                     className="form-control"
@@ -1014,67 +1051,67 @@ textarea::placeholder {
                   />
                 </div> */}
 
-                  <div style={{ margin: "0 0 13px" }}>
-                    <input
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
 
-                      type="email"
-                      name="email"
-                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
-                      placeholder="Enter your email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      style={{
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                        color: darkMode ? profile.colors.white : profile.colors.black,
-                        padding: "11px 12px", fontSize: "12px"
-                      }}
-                    />
-                  </div>
+                        type="email"
+                        name="email"
+                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        placeholder="Enter your email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
 
-                  <div style={{ margin: "0 0 13px" }}>
-                    <textarea
-                      className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
-                      name="message"
-                      rows="4"
-                      placeholder="Write your message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      style={{
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                        padding: "11px 12px",
-                        fontSize: "12px",
-                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                        color: darkMode ? profile.colors.white : profile.colors.black,
-                      }}
-                    />
-                  </div>
-                  <div style={{ textAlign: "center" }}>
-                    <button
-                      type="submit"
-                      className="btn  w-50"
-                      style={{
-                        fontWeight: "600",
-                        padding: "10px",
-                        color: "#fff",
-                        background: darkMode ? profile.colors.darkFields : profile.colors.primary,
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                        margin: "0 auto",
-                        fontSize: "13px"
-                      }}
-                    >
-                      Send Message
-                    </button>
-                  </div>
-                </form>
-              </div>
+                    <div style={{ margin: "0 0 13px" }}>
+                      <textarea
+                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        name="message"
+                        rows="4"
+                        placeholder="Write your message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          padding: "11px 12px",
+                          fontSize: "12px",
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                        }}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <button
+                        type="submit"
+                        className="btn  w-50"
+                        style={{
+                          fontWeight: "600",
+                          padding: "10px",
+                          color: "#fff",
+                          background: darkMode ? profile.colors.darkFields : profile.colors.primary,
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          margin: "0 auto",
+                          fontSize: "13px"
+                        }}
+                      >
+                        Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
 
-            </section>
+              </section>
 
 
-
+            )}
 
 
 
@@ -1145,7 +1182,7 @@ textarea::placeholder {
                                 style={{
                                   margin: "0",
                                   fontSize: "14px",
-                                  wordBreak:"break-all",
+                                  wordBreak: "break-all",
                                   fontWeight: "500",
                                   color: darkMode ? profile.colors.white : profile.colors.black,
                                   opacity: darkMode ? "0.7" : "1"
@@ -1157,7 +1194,7 @@ textarea::placeholder {
                             <p style={{
                               margin: "0",
                               fontSize: "14px",
-                               wordBreak:"break-all",
+                              wordBreak: "break-all",
                               color: darkMode ? profile.colors.white : profile.colors.black,
                               opacity: darkMode ? "0.7" : "1"
                             }}>
@@ -1214,23 +1251,25 @@ textarea::placeholder {
 
 
             {/* map section */}
-            <section>
+            {profile.package === "premium" && (
+              <section>
 
-              {profile.map?.value && (
-                <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
+                {profile.map?.value && (
+                  <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
 
 
-                  <div className="ratio ratio-16x9">
-                    <iframe
-                      src={profile.map.value}
-                      style={{ border: "0" }}
-                      loading="lazy"
-                      allowFullScreen
-                    ></iframe>
+                    <div className="ratio ratio-16x9">
+                      <iframe
+                        src={profile.map.value}
+                        style={{ border: "0" }}
+                        loading="lazy"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
                   </div>
-                </div>
-              )}
-            </section>
+                )}
+              </section>
+            )}
 
 
 
@@ -1286,13 +1325,16 @@ textarea::placeholder {
               </li>
               <li style={{ width: "100%" }}>
                 <button style={{ display: "flex", flexDirection: "column", padding: "6.5px 0", alignItems: "center", justifyContent: "center", gap: "4px", backgroundColor: "#1680FB", width: "100%", border: "none" }} onClick={openQR}>
-                  <img src={FuterIcnTwo} alt='icon2' style={{ width: "23px", height: "auto" }} />
+                  <div style={{color:"#fff"}}><ScanQrCode  size={24} /></div>
                   <p style={{ fontSize: "10px", margin: "0", color: "#ffffff", lineHeight: "15px", fontWeight: "500" }}>Share QR</p>
                 </button>
               </li>
               <li style={{ width: "100%" }}>
                 <button style={{ display: "flex", flexDirection: "column", padding: "6.5px 0", alignItems: "center", justifyContent: "center", gap: "4px", backgroundColor: "#022B5B", width: "100%", border: "none" }} onClick={saveContact}>
-                  <img src={FuterIcnThr} alt='icon3' style={{ width: "23px", height: "auto" }} />
+                  
+
+
+                 <div style={{color:"#fff"}}><Download  size={24} /></div>
                   <p style={{ fontSize: "10px", margin: "0", color: "#ffffff", lineHeight: "15px", fontWeight: "500" }}>Save Contact</p>
                 </button>
               </li>

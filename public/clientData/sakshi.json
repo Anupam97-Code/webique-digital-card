@@ -104,28 +104,28 @@
             "menuTabList": [
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Antipasta Salad",
+                    "menuDishPrice": "120"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Tossed Salad",
+                    "menuDishPrice": "100"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Garden Salad",
+                    "menuDishPrice": "130"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Simple Garden Salad Recipe",
+                    "menuDishPrice": "150"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Garden Salad with Oregano ",
+                    "menuDishPrice": "125"
                 }
             ]
         },
@@ -134,103 +134,103 @@
             "menuTabList": [
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Margherita Pizza",
+                    "menuDishPrice": "149"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Cheesy Mac Veg Giant Pizza",
+                    "menuDishPrice": "159"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Sausage Pizza",
+                    "menuDishPrice": "120"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Greek Pita Pizzas",
+                    "menuDishPrice": "179"
                 },
                 {
                     "menuDishSrc": "",
-                    "menuDishName": "",
-                    "menuDishPrice": ""
+                    "menuDishName": "Easy Pita Pizza",
+                    "menuDishPrice": "199"
                 }
             ]
         }
     ],
     "gallerySlider": [
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyohPzhQzmROQXU-Zus26TJlV0RuGLEwebQ&s",
+            "galleryImage": "/images/placeholder-img.jpg",
             "imageAlt": "Demo Image"
         }
     ],
     "tesimonialSliderData": [
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Cole Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Richi Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Solomon",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "",
+            "testSrc": "/images/user-profile.png",
             "testName": "Sanju",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
@@ -296,6 +296,6 @@
     "company": "Webique Technology",
     "email": "contact@webique.in",
     "whatsapp": "919860188007",
-    "package": "premium",
-    "template": "Premium2"
+    "package": "basic",
+    "template": "RestraurentCard"
 }
