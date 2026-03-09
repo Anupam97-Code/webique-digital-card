@@ -31,12 +31,30 @@
     ],
     "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
     "servicesData": [
-        "Fresh Food",
-        "Customer reviews",
-        "Online Ordering",
-        "Special Offers",
-        "Party Orders",
-        "Custome Meal Plans"
+        {
+            "title": "Fresh Food",
+            "icon": "Soup"
+        },
+        {
+            "title": "Customer reviews",
+            "icon": "UserStar"
+        },
+        {
+            "title": "Online Ordering",
+            "icon": "ShoppingCart"
+        },
+        {
+            "title": "Special Offers",
+            "icon": "BadgePercent"
+        },
+        {
+            "title": "Party Orders",
+            "icon": "PartyPopper"
+        },
+        {
+            "title": "Custome Meal Plans",
+            "icon": "CookingPot"
+        }
     ],
     "menuTabData": [
         {
@@ -284,6 +302,7 @@
         "dark": "#0F172A",
         "darkCardBg": "#1E293B",
         "grayblack": "#17191c",
+        "inputBg": "#BEBEBE26",
         "borderGray": "#B4B4B4",
         "stickyLink1": "#00BF63",
         "stickyLink2": "#1680FB",
@@ -296,6 +315,6 @@
     "company": "Webique Technology",
     "email": "contact@webique.in",
     "whatsapp": "919860188007",
-    "package": "basic",
+    "package": "premium",
     "template": "RestraurentCard"
 }

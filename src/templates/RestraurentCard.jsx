@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useMemo, useState, useEffect, memo, useRef, useLayoutEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/digitalCard.scss"
 import {
@@ -17,15 +17,10 @@ import {
     Sun,
     Moon,
     ScanQrCode,
-    Soup,
-    UserStar,
-    ShoppingCart,
-    BadgePercent,
-    PartyPopper,
-    CookingPot,
     Clock,
     Download,
 } from "lucide-react";
+import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
 import { Carousel, Col, Row } from "react-bootstrap";
 
@@ -45,14 +40,111 @@ const socialIcons = [
     <Youtube />
 ];
 
-const serviceIcon = [
-    <Soup size={44} />,
-    <UserStar size={44} />,
-    <ShoppingCart size={44} />,
-    <BadgePercent size={44} />,
-    <PartyPopper size={44} />,
-    <CookingPot size={44} />
-]
+const InquiryForm = memo(({ profile, darkMode }) => {
+
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        message: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const sendMessage = (e) => {
+        e.preventDefault();
+
+        const text = `Hello,
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Message: ${formData.message}`;
+
+        const whatsappURL = `https://wa.me/${profile.contactData.phone_Number}?text=${encodeURIComponent(text)}`;
+
+        window.open(whatsappURL, "_blank");
+
+        setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            message: ""
+        });
+    };
+
+    const inputStyle = {
+        backgroundColor: profile.colors.inputBg,
+        opacity: "0.5",
+        color: darkMode ? profile.colors.white : profile.colors.black,
+        border: `1px solid ${profile.colors.borderGray}`,
+        borderRadius: "6px",
+        padding: "10px 12px",
+        fontSize: "14px"
+    };
+
+    return (
+        <div className="w-100">
+            <form onSubmit={sendMessage}>
+
+                <input
+                    className="form-control mb-2 shadow-none"
+                    placeholder="Your Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    style={inputStyle}
+                />
+
+                <input
+                    className="form-control mb-2"
+                    placeholder="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    style={inputStyle}
+                />
+
+                <input
+                    className="form-control mb-2"
+                    placeholder="Email Address"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    style={inputStyle}
+                />
+
+                <textarea
+                    className="form-control mb-2"
+                    placeholder="Type a message..."
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    style={inputStyle}
+                />
+
+                <div className="d-flex align-items-center justify-content-center">
+                    <button
+                        type="submit"
+                        className="btn"
+                        style={{
+                            background: profile.colors.Primery,
+                            color: profile.colors.white
+                        }}
+                    >
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+});
+
+// to fetch all icons by value
 
 function RestraurentCard({ data, saveContact, openQR }) {
     const [darkMode, setDarkMode] = useState(false);
@@ -268,98 +360,6 @@ function RestraurentCard({ data, saveContact, openQR }) {
         );
     };
 
-    const InquiryForm = ({ profile, darkMode }) => {
-
-        const [formData, setFormData] = useState({
-            name: "",
-            phone: "",
-            email: "",
-            message: ""
-        });
-
-        const handleChange = (e) => {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.value
-            });
-        };
-
-        const sendMessage = (e) => {
-            e.preventDefault();
-
-            const text = `Hello,
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Message: ${formData.message}`;
-
-            const whatsappURL = `https://wa.me/${profile.contactData.phone_Number}?text=${encodeURIComponent(text)}`;
-
-            window.open(whatsappURL, "_blank");
-
-            setFormData({
-                name: "",
-                phone: "",
-                email: "",
-                message: ""
-            });
-        };
-
-        return (
-            <div className="w-100">
-                <form onSubmit={sendMessage}>
-
-                    <input
-                        className="form-control mb-2"
-                        placeholder="Your Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        className="form-control mb-2"
-                        placeholder="Phone Number"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        className="form-control mb-2"
-                        placeholder="Email Address"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-
-                    <textarea
-                        className="form-control mb-2"
-                        placeholder="Type a message..."
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                    />
-
-                    <div className="d-flex align-items-center justify-content-center">
-                        <button
-                            type="submit"
-                            className="btn"
-                            style={{
-                                background: profile.colors.Primery,
-                                color: profile.colors.white
-                            }}
-                        >
-                            Send Message
-                        </button>
-                    </div>
-
-                </form>
-
-            </div>
-        );
-    };
-
     return (
         <div
             className="min-vh-100 d-flex align-items-center justify-content-center p-0 p-md-3"
@@ -464,6 +464,7 @@ Message: ${formData.message}`;
                                 top: "-40px"
                             }}
                         />
+
                         <div className="">
                             <h4 className="fw-bold"
                                 style={{
@@ -488,22 +489,25 @@ Message: ${formData.message}`;
                     //     justifyContent: isMobile ? "flex-start" : "center",
                     // }}
                     >
-                        {profile.socialLinks.map((item, i) => (
-                            <li key={i}>
-                                <a
-                                    href={item.socialURL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 rounded"
-                                    style={{
-                                        background: profile.colors.Secondery,
-                                        color: profile.colors.Primery,
-                                    }}
-                                >
-                                    {socialIcons[i]}
-                                </a>
-                            </li>
-                        ))}
+                        {profile.socialLinks.map((item, i) => {
+                            {/* const IconComponent = Icons[service.icon]; */ }
+                            return (
+                                <li key={i}>
+                                    <a
+                                        href={item.socialURL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 rounded"
+                                        style={{
+                                            background: profile.colors.Secondery,
+                                            color: profile.colors.Primery,
+                                        }}
+                                    >
+                                        {socialIcons[i]}
+                                    </a>
+                                </li>
+                            )
+                        })}
                     </ul>
 
                     {/* about */}
@@ -534,31 +538,35 @@ Message: ${formData.message}`;
                         {/* check if package is premium & regular to render this */}
                         {checkUserPackage("regular") && (
                             <Row className="row g-3">
-                                {profile.servicesData.map((service, i) => (
-                                    <Col xs={4} key={i} className="">
-                                        <div
-                                            className="p-3 h-100 text-center rounded d-flex gap-2 flex-column align-items-center justify-content-center"
-                                            style={{ background: profile.colors.trinery }}
-                                        >
+                                {profile.servicesData.map((service, i) => {
+                                    const IconComponent = Icons[service.icon];
+                                    return (
+                                        <Col xs={4} key={i} className="">
                                             <div
-                                                style={{
-                                                    color: profile.colors.Primery,
-                                                }}
+                                                className="p-3 h-100 text-center rounded d-flex gap-2 flex-column align-items-center justify-content-center"
+                                                style={{ background: profile.colors.trinery }}
                                             >
-                                                {serviceIcon[i]}
+                                                <div
+                                                    style={{
+                                                        color: profile.colors.Primery,
+                                                    }}
+                                                >
+                                                    {IconComponent && <IconComponent size={44} />}
+                                                </div>
+                                                <h6
+                                                    style={{
+                                                        fontSize: "14px",
+                                                        opacity: "0.7",
+                                                        color: darkMode ? profile.colors.white : profile.colors.black
+                                                    }}
+                                                >{service.title}</h6>
                                             </div>
-                                            <h6
-                                                style={{
-                                                    fontSize: "14px",
-                                                    opacity: "0.7",
-                                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                                }}
-                                            >{service}</h6>
-                                        </div>
-                                    </Col>
-                                ))}
+                                        </Col>
+                                    )
+                                })}
                             </Row>
                         )}
+
                         {/* check if package is basic to render this */}
                         {profile.package === "basic" && (
                             <div>
@@ -942,12 +950,12 @@ Message: ${formData.message}`;
                                 href={`https://wa.me/${whatsappNumber}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="d-flex align-items-center flex-column justify-content-center text-decoration-none"
+                                className="d-flex gap-1  align-items-center flex-column justify-content-center text-decoration-none"
                                 style={{
                                     color: profile.colors.white,
                                 }}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
                                     <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
                                 </svg>
                                 <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Whatsapp</p>
@@ -965,13 +973,13 @@ Message: ${formData.message}`;
                         >
                             <button
                                 onClick={openQR}
-                                className="d-flex align-items-center flex-column justify-content-center border-0"
+                                className="d-flex gap-1 align-items-center flex-column justify-content-center border-0"
                                 style={{
                                     background: profile.colors.stickyLink2,
                                     color: profile.colors.white,
                                 }}
                             >
-                                <ScanQrCode size={28} />
+                                <ScanQrCode size={24} />
                                 <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Scan QR</p>
                             </button>
                         </div>
@@ -987,13 +995,13 @@ Message: ${formData.message}`;
                         >
                             <button
                                 onClick={saveContact}
-                                className="d-flex align-items-center flex-column justify-content-center shadow border-0"
+                                className="d-flex gap-1 align-items-center flex-column justify-content-center shadow border-0"
                                 style={{
                                     background: profile.colors.stickyLink3,
                                     color: profile.colors.white,
                                 }}
                             >
-                                <Download size={28} />
+                                <Download size={24} />
                                 <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Save contact</p>
                             </button>
                         </div>

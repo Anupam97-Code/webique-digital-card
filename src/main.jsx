@@ -7,6 +7,11 @@ import { HelmetProvider } from 'react-helmet-async'
 
 import NavigationBar from "./components/NavigationBar.jsx"
 
+// import meta env
+if (import.meta.env.PROD) {
+  gtag('config', import.meta.env.VITE_GA_ID);
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
