@@ -5,7 +5,7 @@ import icnOne from "../assets/images/step-1.svg";
 import icnTwo from "../assets/images/step-2.svg"
 import icnThr from "../assets/images/step-3.svg"
 import icnFvr from "../assets/images/step-4.svg"
-import featureImg from "../assets/images/four-steps.png"
+import featureImg from "../assets/images/cards.gif"
 import { BlurText } from "./shared/TextAnimation";
 const FeaturesSection = () => {
   // ✅ JSON inside component
