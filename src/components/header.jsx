@@ -14,11 +14,19 @@ import { gsap } from "gsap";
 import arrowOne from "../assets/images/arrow-one.svg";
 
 // images
-import imgOne from "../assets/images/reactrangle-one.png";
-import imgTwo from "../assets/images/reactrangle-two.png";
-import imgThree from "../assets/images/reactrangle-three.png";
-import imgFour from "../assets/images/reactrangle-four.png";
-import imgFive from "../assets/images/reactrangle-five.png";
+import imgOne from "../assets/images/mockup-11.png";
+import imgTwo from "../assets/images/mockup-12.png";
+import imgThree from "../assets/images/mockup-13.png";
+import imgFour from "../assets/images/mockup-14.png";
+import imgFive from "../assets/images/mockup-15.png";
+
+import imgSix from "../assets/images/mockup-16.png";
+import imgSeven from "../assets/images/mockup-17.png";
+import imgEight from "../assets/images/mockup-18.png";
+
+import imgNine from "../assets/images/mockup-19.png";
+import imgTen from "../assets/images/mockup-20.png";
+
 import { BlurText } from "./shared/TextAnimation";
 
 
@@ -29,11 +37,11 @@ const webImages = [
   { src: imgThree, alt: "Web development dashboard" },
   { src: imgFour, alt: "Mobile app interface" },
   { src: imgFive, alt: "Digital branding concept" },
-  { src: imgOne, alt: "Modern website design" },
-  { src: imgTwo, alt: "Creative UI UX design" },
-  { src: imgThree, alt: "Web development dashboard" },
-  { src: imgFour, alt: "Mobile app interface" },
-  { src: imgFive, alt: "Digital branding concept" },
+  { src: imgSix, alt: "Modern website design" },
+  { src: imgSeven, alt: "Creative UI UX design" },
+  { src: imgEight, alt: "Web development dashboard" },
+  { src: imgNine, alt: "Mobile app interface" },
+  { src: imgTen, alt: "Digital branding concept" },
   { src: imgOne, alt: "Modern website design" },
   { src: imgTwo, alt: "Creative UI UX design" },
   { src: imgThree, alt: "Web development dashboard" },
@@ -106,10 +114,10 @@ const Header = () => {
           centeredSlides
           loop
           loopAdditionalSlides={4}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: false,
+          // }}
           modules={[Autoplay]}
           onInit={(swiper) => {
             swiperRef.current = swiper;

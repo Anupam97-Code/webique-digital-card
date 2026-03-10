@@ -236,7 +236,7 @@ Message: ${formData.message}`;
         rel={isExternal ? "noopener noreferrer" : ""}
         className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
         style={{
-          backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
+          backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
           color: darkMode ? profile.colors.white : profile.colors.black,
           borderRadius: "4px"
         }}
@@ -247,7 +247,7 @@ Message: ${formData.message}`;
             style={{
               width: "42px",
               height: "42px",
-              background: darkMode ? "#0f172a" : "#ffffff",
+              color: darkMode ? profile.colors.dark : profile.colors.white,
               color: darkMode ? profile.colors.Primery : profile.colors.Primery,
               flexShrink: "0",
             }}
@@ -270,22 +270,22 @@ Message: ${formData.message}`;
   return (
     <div style={{}}>
       <div className="min-vh-100 d-flex align-items-center justify-content-center "
-        style={{ background: darkMode ? "#0f172a" : "#F1F3F5" }}
+        style={{ background: darkMode ? profile.colors.dark : profile.colors.whiteFields }}
       >
 
         {/* Theme Toggle */}
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
+          className="btn d-flex align-items-center justify-content-center position-fixed top-0 end-0 z-3 rounded-circle shadow"
           style={{
-            background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
-            color: darkMode ? "#1F2D3D" : "#ffffff",
-            padding: "5px 11px",
+            background: darkMode ? profile.colors.white : profile.colors.darkFields,
+            color: darkMode ? profile.colors.darkFields : profile.colors.white,
+            padding: "13px 13px",
             marginRight: "5px",
             marginTop: "5px",
           }}
         >
-          {darkMode ? <Sun size={13} /> : <Moon size={13} />}
+          {darkMode ? <Sun size={16} /> : <Moon size={16} />}
         </button>
 
         <div
@@ -391,12 +391,13 @@ Message: ${formData.message}`;
                     fontSize: "20px",
                     fontWeight: "600",
                     marginTop: "40px",
-                    color: darkMode ? "#fff" : "#000",
+                    color: darkMode ? profile.colors.white : profile.colors.black,
                   }}
                 >
                   {profile.name}
                 </h4>
-                <p style={{ color: darkMode ? "#fff" : "#000" }}>
+
+                <p style={{ color: darkMode ? profile.colors.white : profile.colors.black }}>
                   {profile.title}
                 </p>
               </div>
@@ -455,11 +456,12 @@ Message: ${formData.message}`;
             <style>
               {`
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{background:transparent;}
-.nav-tabs{gap:10px; margin: 0 0 13px !important;}
+.nav-tabs{gap:10px; margin: 0 0 13px !important; border-radius:6px;}
 .nav-item{
   button {padding:0; border:none !important; background:transparent;
   .tab-block{padding: 7px 12px !important;
-            background: #1680FB26;
+            background: profile.colors.tabBackground;
+
             border-radius: 6px;
             border: none !important;}
   }
@@ -470,6 +472,11 @@ Message: ${formData.message}`;
   color: 1680FB !important;
 
 }
+
+
+
+
+
 `}
             </style>
             <div>
@@ -500,12 +507,12 @@ Message: ${formData.message}`;
 
                                   backgroundColor:
                                     activeTab === tab.tabName
-                                      ? (darkMode ? profile.colors.darkFields : profile.colors.trinery)
-                                      : (darkMode ? profile.colors.dark : profile.colors.white),
+                                      ? (darkMode ? profile.colors.tabBackground : profile.colors.tabBackground)
+                                      : (darkMode ? profile.colors.deactiveTabs : profile.colors.decativeWhite),
 
                                   color:
                                     activeTab === tab.tabName
-                                      ? (darkMode ? profile.colors.white : profile.colors.primary)
+                                      ? (darkMode ? profile.colors.white : profile.colors.Primery)
                                       : (darkMode ? profile.colors.white : profile.colors.black),
 
                                   opacity: activeTab === tab.tabName ? 1 : (darkMode ? 0.7 : 1),
@@ -617,8 +624,7 @@ Message: ${formData.message}`;
                                             left: 0,
                                             width: "100%",
                                             height: "100%",
-                                            background:
-                                              "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+                                            background: profile.colors.GredientOne,
                                             pointerEvents: "none"
                                           }}
                                         />
@@ -633,7 +639,7 @@ Message: ${formData.message}`;
                                               fontSize: "13px",
                                               textAlign: "center",
                                               position: "absolute",
-                                              color: "#fff",
+                                              color: profile.colors.white,
                                               lineHeight: "100%",
                                               left: "11px",
                                               bottom: "20px",
@@ -645,7 +651,7 @@ Message: ${formData.message}`;
                                                 bottom: "10px",
                                                 left: 0,
                                                 width: "100%",
-                                                color: "#fff",
+                                                color: profile.colors.white,
                                                 fontSize: "12px",
                                                 textAlign: "center",
                                                 margin: 0,
@@ -731,8 +737,12 @@ Message: ${formData.message}`;
 .swiper-pagination{position:relative; margin-top:10px;}
 `}
             </style>
-            {checkUserPackage("regular") && (
-              <div className='d-flex flex-column gap-2'>
+
+
+
+            {(profile.package === "regular" || profile.package === "premium") && (
+              <section className='d-flex flex-column gap-2'>
+
                 <div className="d-flex justify-content-between align-items-center">
                   <h4
                     style={{
@@ -789,10 +799,11 @@ Message: ${formData.message}`;
                                 }}
                               />
                               <div>
-                                <h5 style={{ fontSize: "13px", margin: "0", color: "#000000", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+                                <h5 style={{ fontSize: "13px", margin: "0", color: profile.colors.white, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
                                   {item.name}
                                 </h5>
-                                <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
+
+                                <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: profile.colors.darkFields, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
                                   {item.designation}
                                 </p>
                               </div>
@@ -800,12 +811,12 @@ Message: ${formData.message}`;
                             <p
                               style={{
                                 fontSize: "12px",
-                                color: "#000000",
+                                color: profile.colors.black,
                                 marginTop: "20px",
                                 fontWeight: "400",
                                 lineHeight: "18px",
                                 opacity: darkMode ? "0.7" : "1",
-                                color: darkMode ? "#fff" : "#000",
+                                color: darkMode ? profile.colors.white : profile.colors.black,
                               }}
                             >
                               {item.description?.slice(0, 100)}
@@ -834,13 +845,16 @@ Message: ${formData.message}`;
                         width: "8px",
                         height: "8px",
                         borderRadius: "50%",
-                        backgroundColor: index === i ? "#000" : "#ccc",
+                        backgroundColor:
+                          index === i
+                            ? (darkMode ? profile.colors.white : profile.colors.black)
+                            : (darkMode ? profile.colors.black : profile.colors.servBack),
                         cursor: "pointer"
                       }}
                     />
                   ))}
                 </div>
-              </div>
+              </section>
             )}
 
             {/* Inquiry div (form) */}
@@ -876,7 +890,7 @@ textarea::placeholder {
                       <input
                         type="text"
                         name="name"
-                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
                         placeholder="Enter your name"
                         value={formData.name}
                         onChange={handleChange}
@@ -908,7 +922,7 @@ textarea::placeholder {
 
                         type="email"
                         name="email"
-                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleChange}
@@ -924,7 +938,7 @@ textarea::placeholder {
 
                     <div style={{ margin: "0 0 13px" }}>
                       <textarea
-                        className={`form-control ${darkMode ? "dark-placeholder" : "#000"}`}
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
                         name="message"
                         rows="4"
                         placeholder="Write your message"
@@ -947,7 +961,7 @@ textarea::placeholder {
                         style={{
                           fontWeight: "600",
                           padding: "10px",
-                          color: "#fff",
+                          color: profile.colors.white,
                           background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
                           border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                           margin: "0 auto",
@@ -970,7 +984,7 @@ textarea::placeholder {
               <h4 style={{
                 fontSize: "18px",
                 fontWeight: 600,
-                color: darkMode ? "#fff" : "#000",
+                color: darkMode ? profile.colors.white : profile.colors.black,
                 lineHeight: "27px"
               }}>Contact Me</h4>
 
@@ -1005,8 +1019,8 @@ textarea::placeholder {
                 <div
                   className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
                   style={{
-                    backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
-                    color: darkMode ? "#fff" : "#000",
+                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+                    color: darkMode ? profile.colors.white : profile.colors.black,
                     borderRadius: "4px"
                   }}
                 >
@@ -1016,7 +1030,7 @@ textarea::placeholder {
                       style={{
                         width: "42px",
                         height: "42px",
-                        background: darkMode ? "#0f172a" : profile.colors.white,
+                        background: darkMode ? profile.colors.dark : profile.colors.white,
                         color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                         flexShrink: "0",
                       }}

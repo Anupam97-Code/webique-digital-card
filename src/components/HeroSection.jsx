@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../styles/HeroSection.scss";
 import "../styles/TextType.scss";
-import HImg from "../assets/images/headder_mobile.png";
+import HImg from "../assets/images/headder_mobile.webp";
 import imgOne from "../assets/images/hero-barcode.svg";
 import imgTwo from "../assets/images/hero-employee.png";
 import imgThr from "../assets/images/social-media.svg";
