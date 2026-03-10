@@ -7,6 +7,7 @@ import Basic1 from "../templates/Basic1";
 import Basic2 from "../templates/Basic2";
 import Premium1 from "../templates/Premium1";
 import RestraurentCard from "../templates/RestraurentCard";
+import DigitalIDcard from "../templates/DigitalIDcard";
 
 const Card = () => {
     const { username } = useParams();
@@ -217,7 +218,8 @@ END:VCARD
         Basic1: Basic1,
         Basic2: Basic2,
         Premium1: Premium1,
-        RestraurentCard: RestraurentCard
+        RestraurentCard: RestraurentCard,
+        DigitalIDcard: DigitalIDcard
     };
 
     const SelectedTemplate = templates[data.template];

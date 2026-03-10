@@ -5,15 +5,7 @@ import {
     Phone,
     Mail,
     MapPin,
-    Facebook,
-    Linkedin,
-    Instagram,
-    Youtube,
-    Twitter,
-    Ghost,
     ArrowUpRight,
-    MessageCircle,
-    Share2,
     Sun,
     Moon,
     ScanQrCode,
@@ -207,7 +199,7 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
                                                 {item.testName}
                                             </h5>
 
-                                            <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                            <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
                                                 {item.testPost}
                                             </p>
                                         </div>
@@ -217,7 +209,7 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
                                     <p
                                         style={{
                                             fontSize: "12px",
-                                            color: "#000000",
+                                            color: profile.colors.black,
                                             marginTop: "20px",
                                             fontWeight: "400",
                                             lineHeight: "18px",
@@ -254,7 +246,8 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
                             width: "8px",
                             height: "8px",
                             borderRadius: "50%",
-                            backgroundColor: index === i ? "#000" : "#ccc",
+                            backgroundColor: index === i ? profile.colors.black : profile.colors.black,
+                            opacity: index === i ? "1" : "0.4",
                             cursor: "pointer"
                         }}
                     />
@@ -377,7 +370,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                 rel={isExternal ? "noopener noreferrer" : ""}
                 className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
                 style={{
-                    backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
+                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
                     color: darkMode ? profile.colors.white : profile.colors.black,
                     borderRadius: "4px"
                 }}
@@ -388,7 +381,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                         style={{
                             width: "42px",
                             height: "42px",
-                            background: darkMode ? "#0f172a" : profile.colors.white,
+                            background: darkMode ? profile.colors.dark : profile.colors.white,
                             color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                             flexShrink: "0",
                         }}
@@ -470,15 +463,15 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
     return (
         <div
             className="min-vh-100 d-flex align-items-center justify-content-center p-0 p-md-3"
-            style={{ background: darkMode ? "#0f172a" : "#F1F3F5" }}
+            style={{ background: darkMode ? profile.colors.dark : profile.colors.lightBg }}
         >
             {/* Theme Toggle */}
             <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow d-flex align-items-center justify-content-center"
                 style={{
-                    background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
-                    color: darkMode ? "#1F2D3D" : "#ffffff",
+                    background: darkMode ? profile.colors.white : profile.colors.dark,
+                    color: darkMode ? profile.colors.dark : profile.colors.white,
                     padding: "13px 13px",
                     marginRight: "15px",
                     marginTop: "15px",
@@ -492,9 +485,9 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                 style={{
                     width: "100%",
                     maxWidth: isMobile ? "100%" : "402px",
-                    background: darkMode ? profile.colors.grayblack : "#ffffff",
+                    background: darkMode ? profile.colors.grayblack : profile.colors.white,
                     // paddingBottom: "20px",
-                    color: darkMode ? "#fff" : "#000",
+                    color: darkMode ? profile.colors.white : profile.colors.black,
                 }}
             >
                 {/* to header Image */}
@@ -503,7 +496,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                         height: "170px",
                         backgroundImage: `url(${profile.headerBgImage})`,
                         backgroundSize: "cover",
-                        backgroundPosition: "center",
+                        backgroundPosition: profile.headerBgImagePosition,
                         // borderRadius: "16px",
                         padding: "10px"
                     }}
@@ -700,7 +693,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                                                         opacity: "0.7",
                                                         color: darkMode ? profile.colors.white : profile.colors.black
                                                     }}
-                                                >{value}</h6>
+                                                >{value.title}</h6>
                                             </li>
                                         )
                                     })}
@@ -737,6 +730,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                                                 ? profile.colors.white
                                                 : profile.colors.black
                                     };
+
                                     return (
                                         <li key={i} className="nav-item">
                                             <button
@@ -888,7 +882,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                             <div
                                 className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
                                 style={{
-                                    backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
+                                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
                                     color: darkMode ? profile.colors.white : profile.colors.black,
                                     borderRadius: "4px"
                                 }}
@@ -899,7 +893,7 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                                         style={{
                                             width: "42px",
                                             height: "42px",
-                                            background: darkMode ? "#0f172a" : profile.colors.white,
+                                            background: darkMode ? profile.colors.dark : profile.colors.white,
                                             color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                                             flexShrink: "0",
                                         }}

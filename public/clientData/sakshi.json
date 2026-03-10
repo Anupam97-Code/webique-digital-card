@@ -1,5 +1,6 @@
 {
     "headerBgImage": "/images/restaurant.dc-head-img.webp",
+    "headerBgImagePosition":"center",
     "profileImage": "/images/reastaurant-logo.webp",
     "name": "Rameshwer Cafe",
     "title": "Shouth indian food",
@@ -295,6 +296,8 @@
         "trinery": "#BEBEBE33",
         "white": "#fff",
         "black": "#000",
+        "light": "#F1F3F5",
+        "lightBg": "#F1F3F5",
         "dark": "#0F172A",
         "darkCardBg": "#1E293B",
         "grayblack": "#17191c",

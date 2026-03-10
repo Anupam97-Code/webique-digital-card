@@ -1,0 +1,535 @@
+import React, { useMemo, useState, useEffect, memo, useRef, useLayoutEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/digitalCard.scss"
+import {
+    Phone,
+    Mail,
+    MapPin,
+    ArrowUpRight,
+    Sun,
+    Moon,
+    ScanQrCode,
+    Clock,
+    Download,
+} from "lucide-react";
+import * as Icons from "lucide-react";
+import { Carousel, Col, Row } from "react-bootstrap";
+
+
+const DigitalIDcard = ({ data, openQR, saveContact }) => {
+    const [darkMode, setDarkMode] = useState(false);
+    const safeData = data || {};
+    // make for handle responsive
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 417);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+    // console.log("is mobile:", isMobile);
+
+    // extract data from json files
+    const profile = useMemo(() => ({
+        headerBgImage: safeData.headerBgImage || "",
+        profileImage: safeData.profileImage || "/images/default-profile.png",
+
+        name: safeData.name || "John Doe",
+        title: safeData.title || "Business Owner",
+
+        description: safeData.description || "",
+        aboutDescription: safeData.aboutDescription || "",
+
+        company: safeData.company || "",
+        email: safeData.email || "",
+        whatsapp: safeData.whatsapp || "",
+
+        socialLinks: safeData.socialLinks || [],
+
+        servicesData: safeData.servicesData || [],
+
+        menuTabData: safeData.menuTabData || [],
+
+        gallerySlider: safeData.gallerySlider || [],
+
+        tesimonialSliderData: safeData.tesimonialSliderData || [],
+
+        contactData: safeData.contactData || {
+            phone_Number: "",
+            mail: "",
+            restaurant_Number: "",
+            location: {
+                address: "",
+                link: ""
+            }
+        },
+
+        openingHours: safeData.openingHours || [],
+        iframe: safeData.iframe,
+        colors: safeData.colors,
+
+        ogImage: safeData.ogImage || "",
+        darkModeImage: safeData.darkModeImage || "",
+
+        package: safeData.package || "basic",
+        template: safeData.template || "Basic1"
+
+    }), [safeData]);
+
+    const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
+    // const currentUrl = typeof window !== "undefined" ? window.location.href
+
+    // create for checking the packages and assing the styles
+    const checkUserPackage = (requiredUserPackage) => {
+        // console.log("requiredUserPackage:", requiredUserPackage);
+
+        const packageLevels = {
+            basic: 1,
+            regular: 2,
+            premium: 3
+        };
+
+        // console.log("packageLevels:",packageLevels[profile.package]);
+
+        const checkPackage = (requiredPackage) => {
+
+            const userPackage = profile.package;
+            // console.log("userPackage:", packageLevels[userPackage]);
+            // console.log("requiredPackage:", packageLevels[requiredPackage]);
+            // console.log("check package conditions:", packageLevels[userPackage] >= packageLevels[requiredPackage]);
+
+            return packageLevels[userPackage] >= packageLevels[requiredPackage];
+        };
+
+        return checkPackage(requiredUserPackage);
+    };
+
+    const ActionItemTop = ({ icon, title, subtitle, href }) => {
+        const isExternal = href.startsWith("http");
+        return (
+            <a
+                href={href}
+                target={isExternal ? "_blank" : "_self"}
+                rel={isExternal ? "noopener noreferrer" : ""}
+                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2"
+                style={{
+                    backgroundColor: profile.colors.dark,
+                    color: profile.colors.white,
+                    // borderRadius: "4px",
+                    borderBottom: `1px solid ${profile.colors.borderGray}`
+                }}
+            >
+                <div className="d-flex gap-3">
+                    <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                            width: "52px",
+                            height: "52px",
+                            background: profile.colors.Primery,
+                            color: profile.colors.white,
+                            flexShrink: "0",
+                            borderRadius: "24px 0 24px 0"
+                        }}
+                    >
+                        <div
+                            className="d-flex align-items-center justify-content-center"
+                            style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                                backgroundColor: "#022B5B"
+                            }}
+                        >
+                            {icon}
+                        </div>
+                    </div>
+                    <div
+                    // style={{ width: isMobile ? "190px" : "276px" }}
+                    >
+                        <div className="fw-semibold">{title}</div>
+                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
+                    </div>
+                </div>
+                <div className="flex-shrink-0">
+                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+                </div>
+            </a>
+        )
+    }
+
+    // make for contact data 
+    const ActionItem = ({ icon, title, subtitle, href }) => {
+        const isExternal = href.startsWith("http");
+        return (
+            <a
+                href={href}
+                target={isExternal ? "_blank" : "_self"}
+                rel={isExternal ? "noopener noreferrer" : ""}
+                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
+                style={{
+                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+                    color: darkMode ? profile.colors.white : profile.colors.black,
+                    borderRadius: "4px"
+                }}
+            >
+                <div className="d-flex gap-3">
+                    <div
+                        className="d-flex align-items-center justify-content-center rounded-3"
+                        style={{
+                            width: "42px",
+                            height: "42px",
+                            background: darkMode ? profile.colors.dark : profile.colors.white,
+                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
+                            flexShrink: "0",
+                        }}
+                    >
+                        {icon}
+                    </div>
+                    <div
+                    // style={{ width: isMobile ? "190px" : "276px" }}
+                    >
+                        <div className="fw-semibold">{title}</div>
+                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
+                    </div>
+                </div>
+                <div className="flex-shrink-0">
+                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+                </div>
+            </a>
+        )
+    }
+    //================= make for contact data 
+
+    return (
+        <>
+            <div
+                className="min-vh-100 d-flex align-items-center justify-content-center p-0 p-md-3"
+                style={{
+                    background: darkMode ? profile.colors.dark : profile.colors.lightBg
+                }}
+            >
+                {/* Theme Toggle */}
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow d-flex align-items-center justify-content-center"
+                    style={{
+                        background: darkMode ? profile.colors.white : profile.colors.dark,
+                        color: darkMode ? profile.colors.dark : profile.colors.white,
+                        padding: "13px 13px",
+                        marginRight: "15px",
+                        marginTop: "15px",
+                    }}
+                >
+                    {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+
+                <div
+                    className="position-relative "
+                    style={{
+                        width: "100%",
+                        maxWidth: isMobile ? "100%" : "402px",
+                        background: darkMode ? profile.colors.grayblack : profile.colors.white,
+                        // paddingBottom: "20px",
+                        color: darkMode ? profile.colors.white : profile.colors.black,
+                    }}
+                >
+                    {/* top card section to header Image */}
+                    <div
+                        style={{
+                            height: "207px",
+                            backgroundImage: `url(${profile.headerBgImage})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: profile.headerBgImagePosition,
+                            // borderRadius: "16px",
+                            padding: "10px"
+                        }}
+                        className="d-flex align-items-end justify-content-end"
+                    >
+                        {/* svg for stynamic color changing */}
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="402" height="206" viewBox="0 0 402 206" fill="none">
+                            <path d="M402 205.345C392.566 190.132 375.717 180 356.5 180C339.385 180 324.146 188.036 314.354 200.542C300.076 151.132 254.509 115 200.5 115C146.491 115 100.923 151.132 86.6455 200.542C76.8525 188.037 61.6149 180 44.5 180C25.9445 180 9.59611 189.447 0 203.793V0H402V205.345Z" fill={profile.colors.svgPathBg} />
+                        </svg> */}
+                    </div>
+                    {/* dynamic image calling */}
+                    <div
+                        className="overflow-hidden flex-column d-flex align-items-center justify-content-center"
+                        style={{
+                            backgroundColor: profile.colors.dark
+                        }}
+                    >
+                        <style>
+                            {`
+.id-card-profile-bg::before {
+  content: "";
+  position: absolute;
+  height: 107px;
+  width: 107px;
+  border-radius: 50%;
+  background: ${profile.colors.dark};
+  bottom: 60px;
+  left: -90px;
+  z-index: 2;
+}
+  .id-card-profile-bg::after {
+  content: "";
+  position: absolute;
+  height: 107px;
+  width: 107px;
+  border-radius: 50%;
+  background: ${profile.colors.dark};
+  bottom: 60px;
+  right: -90px;
+  z-index: 2;
+}
+`}
+                        </style>
+                        {/* top profile image */}
+                        <div className="overflow-hidden w-100 d-flex align-items-center justify-content-center"
+                            style={{
+                                position: "absolute",
+                                top: "110px"
+                            }}
+                        >
+                            <div
+                                className="id-card-profile-bg position-relative d-flex align-items-center justify-content-center"
+                                style={{
+                                    width: "237px",
+                                    height: "237px",
+                                    backgroundColor: profile.colors.dark,
+                                    borderRadius: "50%"
+                                }}
+                            >
+                                <img
+                                    style={{
+                                        width: "177px",
+                                        height: "177px",
+                                        borderRadius: "50%",
+                                        border: `6px solid ${profile.colors.Primery}`
+                                    }}
+                                    src={profile.profileImage}
+                                    alt={profile.name - profile.title}
+                                />
+                            </div>
+                        </div>
+                        {/* top profile content */}
+                        <div className="profile-content w-100"
+                            style={{ padding: "120px 16px 16px" }}
+                        >
+                            <div className="position-relative z-3 d-flex flex-column align-items-center justify-content-center">
+                                <h5 className="m-0"
+                                    style={{
+                                        color: profile.colors.white,
+                                    }}
+                                >
+                                    {profile.name}
+                                </h5>
+                                <p className="m-0"
+                                    style={{
+                                        opacity: "0.7",
+                                        color: profile.colors.white,
+                                    }}
+                                >
+                                    {profile.title}
+                                </p>
+                            </div>
+                            <div className="d-flex flex-column align-items-center justify-content-center gap-3">
+                                <ActionItemTop
+                                    icon={<Phone size={18} />}
+                                    title="Call Me"
+                                    subtitle={profile.contactData.phone_Number}
+                                    href={`tel:${profile.contactData.phone_Number}`}
+                                />
+                                <ActionItemTop
+                                    icon={<Phone size={18} />}
+                                    title="Call Me"
+                                    subtitle={profile.contactData.phone_Number}
+                                    href={`tel:${profile.contactData.phone_Number}`}
+                                />
+                                <ActionItemTop
+                                    icon={<Phone size={18} />}
+                                    title="Call Me"
+                                    subtitle={profile.contactData.phone_Number}
+                                    href={`tel:${profile.contactData.phone_Number}`}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    {/* body data */}
+                    <div
+                        className="d-flex fle-column"
+                        style={{ padding: "0 16px" }}
+                    >
+                        {/* contact section */}
+                        <div className="w-100">
+                            <h5 className="mt-4 fw-bold"
+                                style={{
+                                    opacity: "0.8",
+                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                }}
+                            >Contact me</h5>
+                            <div className="d-flex flex-column gap-3">
+                                <ActionItem
+                                    icon={<Phone size={18} />}
+                                    title="Call Me"
+                                    subtitle={profile.contactData.phone_Number}
+                                    href={`tel:${profile.contactData.phone_Number}`}
+                                />
+
+                                <ActionItem
+                                    icon={<Mail size={18} />}
+                                    title="Email"
+                                    subtitle={profile.contactData.mail}
+                                    href={`mailto:${profile.contactData.mail}`}
+                                />
+                                <ActionItem
+                                    icon={<Phone size={18} />}
+                                    title="Restaurant Number"
+                                    subtitle={profile.contactData.phone_Number}
+                                    href={`tel:${profile.contactData.phone_Number}`}
+                                />
+                                <ActionItem
+                                    icon={<MapPin size={18} />}
+                                    title="Location"
+                                    subtitle={profile.contactData.location.address}
+                                    href={profile.contactData.location.link}
+                                />
+
+                                {/* opening hours */}
+                                <div
+                                    className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
+                                    style={{
+                                        backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+                                        color: darkMode ? profile.colors.white : profile.colors.black,
+                                        borderRadius: "4px"
+                                    }}
+                                >
+                                    <div className="w-100 d-flex align-items-start gap-3">
+                                        <div
+                                            className="d-flex align-items-center justify-content-center rounded-3"
+                                            style={{
+                                                width: "42px",
+                                                height: "42px",
+                                                background: darkMode ? profile.colors.dark : profile.colors.white,
+                                                color: darkMode ? profile.colors.Primery : profile.colors.Primery,
+                                                flexShrink: "0",
+                                            }}
+                                        >
+                                            <Clock />
+                                        </div>
+
+                                        <div
+                                            style={{ width: "224px" }}
+                                        >
+                                            <h6 className="fw-bold mb-2"
+                                                style={{
+                                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                                }}
+                                            >Opening Hours</h6>
+                                            {profile.openingHours.map((day, i) => (
+                                                <div key={i} className="d-flex justify-content-between"
+                                                    style={{
+                                                        opacity: "0.7",
+                                                        fontSize: "14px",
+                                                        color: darkMode ? profile.colors.white : profile.colors.black
+                                                    }}
+                                                >
+                                                    <span>{day.dayName}</span>
+                                                    <span>{day.ocTime}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Sticky Footer Buttons */}
+                    <div
+                        className="position-sticky w-100"
+                        style={{ bottom: "0" }}
+                    >
+                        <div className="w-100 p-0 gap-0 d-flex align-items-center justify-content-center">
+                            {/* whatsapp button */}
+                            <div
+                                // xs={4}
+                                className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
+                                style={{
+                                    background: profile.colors.stickyLink1,
+                                    width: isMobile ? "33.33%" : "33.33%",
+
+                                }}>
+                                <a
+                                    href={`https://wa.me/${whatsappNumber}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="d-flex gap-1  align-items-center flex-column justify-content-center text-decoration-none"
+                                    style={{
+                                        color: profile.colors.white,
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
+                                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                    </svg>
+                                    <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Whatsapp</p>
+                                </a>
+                            </div>
+                            {/* QR button */}
+                            <div
+                                // xs={4}
+                                className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
+                                style={{
+                                    background: profile.colors.stickyLink2,
+                                    width: isMobile ? "33.33%" : "33.33%",
+
+                                }}
+                            >
+                                <button
+                                    onClick={openQR}
+                                    className="d-flex gap-1 align-items-center flex-column justify-content-center border-0"
+                                    style={{
+                                        background: profile.colors.stickyLink2,
+                                        color: profile.colors.white,
+                                    }}
+                                >
+                                    <ScanQrCode size={24} />
+                                    <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Scan QR</p>
+                                </button>
+                            </div>
+                            {/* save contact button */}
+                            <div
+                                // xs={4}
+                                className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
+                                style={{
+                                    background: profile.colors.stickyLink3,
+                                    width: isMobile ? "33.33%" : "33.33%",
+
+                                }}
+                            >
+                                <button
+                                    onClick={saveContact}
+                                    className="d-flex gap-1 align-items-center flex-column justify-content-center shadow border-0"
+                                    style={{
+                                        background: profile.colors.stickyLink3,
+                                        color: profile.colors.white,
+                                    }}
+                                >
+                                    <Download size={24} />
+                                    <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Save contact</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default DigitalIDcard
