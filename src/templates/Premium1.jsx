@@ -27,7 +27,10 @@ import {
   QrCode,
   ArrowDownToLine,
   ScanQrCode,
-  Download
+  Download,
+  Send,
+  Smartphone,
+  Youtube
 
 
 } from "lucide-react";
@@ -46,7 +49,10 @@ const iconMap = {
   officeNumber: <Building size={20} />,
   officeAddress: <MapPin size={20} />,
   officeHours: <Clock size={20} />,
-  arrowRight: <ArrowUpRight size={20} />
+  arrowRight: <ArrowUpRight size={20} />,
+  send: <Send size={20} />,
+  mobile: <Smartphone size={20} />,
+  Youtube
 };
 
 const Premium1 = ({ data, openQR, saveContact }) => {
@@ -120,12 +126,11 @@ Message: ${formData.message}`;
       whatsapp: safeData.whatsapp || "+91 919860188007",
       title: safeData.title || "CEO & Founder",
       company: safeData.company || "Quantix",
+      contactData: safeData.contactData || [],
+      openingHours: safeData.openingHours,
       headerBgImage: safeData.headerBgImage,
-      phone: safeData.phone || "+1-212-456-7890",
       profileImg: safeData.profileImg || "",
-      email: safeData.email || "marcus.whitlow@gmail.com",
-      address: safeData.address || "2093 Philadelphia Pike",
-      servicesData: safeData.servicesData || "",
+      servicesData: safeData.servicesData || [],
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
       reviewLink: safeData.reviewLink || "",
@@ -135,76 +140,25 @@ Message: ${formData.message}`;
       profileImage:
         safeData.profileImage ||
         "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
-      facebook: safeData.facebook || "#",
-      linkedin: safeData.linkedin || "#",
-      instagram: safeData.instagram || "#",
-      whatsapp: safeData.whatsapp || "+12124567890",
-
       tabs: safeData.tabs || [],
-
       testimonials: safeData.testimonials || {
         heading: "",
         viewAll: "#",
         items: []
       },
 
-      // ✅ MAP OBJECT FROM JSON
       map: safeData.map || {
         type: "map",
         label: "Location Map",
         value: "",
         className: "w-100"
       },
-      // ✅ CONTACT SECTION
-      contactInfo: safeData.contactInfo || [
-        {
-          type: "phone",
-          label: "Call me",
-          value: "+919860188007",
-          className: "align-items-center"
-        },
-        {
-          type: "email",
-          label: "Email",
-          value: "Jordan.smith@mail.com",
-          className: "align-items-center"
-        },
-        {
-          type: "officeNumber",
-          label: "Office Number",
-          value: "(0253) 555-1234",
-          className: "align-items-center"
-        },
-        {
-          type: "officeAddress",
-          label: "Office Address",
-          value: "Mumbai, Maharashtra, India",
-          className: "align-items-center"
-        },
-        {
-          type: "officeHours",
-          label: "Office Hours",
-          value: [
-            "Monday - 09:00 - 22:00",
-            "Tuesday - 09:00 - 22:00",
-            "Wednesday - 09:00 - 22:00",
-            "Thursday - 09:00 - 22:00",
-            "Friday - 09:00 - 22:00",
-            "Saturday - 09:00 - 22:00",
-            "Sunday - Closed"
-          ],
-          className: "align-items-start"
-        },
-
-      ]
     }),
     [safeData]
   );
 
-
   // const servisecJsonArr = profile.tabs
   // console.log("servisecJsonArr:", servisecJsonArr.slice(0, 1));
-
 
   // create for checking the packages and assing the styles
   const checkUserPackage = (requiredUserPackage) => {
@@ -272,6 +226,7 @@ Message: ${formData.message}`;
 
 
 
+  // make for contact data 
   const ActionItem = ({ icon, title, subtitle, href }) => {
     const isExternal = href.startsWith("http");
     return (
@@ -279,19 +234,22 @@ Message: ${formData.message}`;
         href={href}
         target={isExternal ? "_blank" : "_self"}
         rel={isExternal ? "noopener noreferrer" : ""}
-        className="d-flex align-items-center justify-content-between text-decoration-none p-2 rounded-4 border"
+        className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
         style={{
-          backgroundColor: darkMode ? "#1e293b" : "#f1f3f5",
-          color: darkMode ? "#ffffff" : "#000",
+          backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
+          color: darkMode ? profile.colors.white : profile.colors.black,
+          borderRadius: "4px"
         }}
       >
-        <div className="d-flex align-items-center gap-3">
+        <div className="d-flex gap-3">
           <div
             className="d-flex align-items-center justify-content-center rounded-3"
             style={{
               width: "42px",
               height: "42px",
               background: darkMode ? "#0f172a" : "#ffffff",
+              color: darkMode ? profile.colors.Primery : profile.colors.Primery,
+              flexShrink: "0",
             }}
           >
             {icon}
@@ -301,10 +259,13 @@ Message: ${formData.message}`;
             <small style={{ opacity: 0.7 }}>{subtitle}</small>
           </div>
         </div>
-        <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+        <div className="flex-shrink-0">
+          <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+        </div>
       </a>
     )
   }
+  //================= make for contact data 
 
   return (
     <div style={{}}>
@@ -328,7 +289,6 @@ Message: ${formData.message}`;
         </button>
 
         <div
-
           style={{
             width: "100%",
             maxWidth: "402px",
@@ -345,6 +305,50 @@ Message: ${formData.message}`;
         >
           <div className='position-relative w-100 h-auto'>
             <img src={profile.headerBgImage} alt='background' style={{ width: "100%", height: "auto" }} />
+
+
+            <div className="d-flex gap-1 position-absolute" style={{ right: "17px", bottom: "9px", position: 'absolute', zIndex:"999" }}>
+              {/* location button */}
+              <a
+                href={profile.contactData.location.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded d-flex align-items-center justify-content-center"
+                style={{
+                  padding: "6px",
+                  background: profile.colors.Primery,
+                  color: profile.colors.white,
+                }}
+              >
+                <MapPin size={20} />
+              </a>
+              {/* QR button */}
+              <button
+                className="rounded d-flex align-items-center justify-content-center border-0"
+                style={{
+                  padding: "6px",
+                  background: profile.colors.Primery,
+                  color: profile.colors.white,
+                }}
+                onClick={openQR}
+              >
+                <ScanQrCode size={20} />
+              </button>
+              {/* brosher button */}
+              {checkUserPackage("premium") && (
+                <button
+                  className="rounded d-flex align-items-center justify-content-center border-0"
+                  style={{
+                    padding: "6px",
+                    background: profile.colors.Primery,
+                    color: profile.colors.white,
+                  }}
+                  onClick={""}
+                >
+                  <Download size={20} />
+                </button>
+              )}
+            </div>
 
 
           </div>
@@ -368,18 +372,21 @@ Message: ${formData.message}`;
                 gap: "20px",
               }}
             >
-              <div>
+              <div style={{
+                width: "clamp(90px, 30vw, 120px)",
+                height: "clamp(90px, 30vw, 120px)",
+                borderRadius: "50%",
+                overflow: "hidden",
+                border: `3px solid ${profile.colors.Primery}`,
+                flexShrink: 0
+              }}>
                 <img
                   src={profile.profileImage}
                   alt={profile.name}
                   style={{
-                    maxWidth: "120px",
-                    maxHeight: "100%",
                     width: "100%",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: "0px solid #f1f3f5",
-                    transition: "0.3s",
+                    height: "100%",
+                    objectFit: "cover"
                   }}
                 />
               </div>
@@ -419,9 +426,9 @@ Message: ${formData.message}`;
                     <a key={index} href={item.url} target="_blank" rel="noopener noreferrer"
                       className='d-flex align-items-center justify-content-center'
                       style={{
-                        background: darkMode ? profile.colors.black : profile.colors.iconBakcgroundWhite,
+                        background: darkMode ? profile.colors.black : profile.colors.Secondery,
                         color: darkMode ? profile.colors.white : profile.colors.primary,
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        // border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                         width: "37px",
                         height: "37px",
                         borderRadius: "6px"
@@ -447,12 +454,12 @@ Message: ${formData.message}`;
               </h4>
               <p
                 style={{
-                  fontSize: "14px",
+                  fontSize: "12px",
                   lineHeight: "24px",
                   opacity: "0.7",
                   fontWeight: 400,
                   margin: 0,
-                  color: darkMode ? profile.colors.white : profile.colors.dark,
+                  color: darkMode ? profile.colors.white : profile.colors.black,
                 }}
               >
                 {profile.AboutContent}
@@ -744,19 +751,24 @@ Message: ${formData.message}`;
 
                     }}
                   >
-                    Servicess
+                    Services
                   </h4>
 
 
 
-                  <ul className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+                  <ul className="d-flex flex-wrap align-items-center justify-content-start" style={{ gap: " 0.625rem" }}>
                     {profile.servicesData.map((service, index) => (
                       <li
                         key={index}
                         style={{
-                          background: profile.colors.whiteBorder,
-                          padding: "7px 11px",
-                          borderRadius: "55px"
+                          background: darkMode ? profile.colors.black : profile.colors.servBack,
+                          padding: "3px 17px",
+                          borderRadius: "55px",
+                          color: profile.colors.black,
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          border: `1px solid ${profile.colors.borderGray}`
                         }}
                       >
                         {service}
@@ -1114,7 +1126,7 @@ textarea::placeholder {
                           fontWeight: "600",
                           padding: "10px",
                           color: "#fff",
-                          background: darkMode ? profile.colors.darkFields : profile.colors.primary,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
                           border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                           margin: "0 auto",
                           fontSize: "13px"
@@ -1145,117 +1157,78 @@ textarea::placeholder {
                 lineHeight: "27px"
               }}>Contact Me</h4>
 
-              <div className='gap-3 d-flex flex-column'>
+              <div className="d-flex flex-column gap-3">
+                <ActionItem
+                  icon={<Phone size={18} />}
+                  title="Call Me"
+                  subtitle={profile.contactData.phone_Number}
+                  href={`tel:${profile.contactData.phone_Number}`}
+                />
 
-                {profile.contactInfo?.map((item, index) => (
+                <ActionItem
+                  icon={<Mail size={18} />}
+                  title="Email"
+                  subtitle={profile.contactData.mail}
+                  href={`mailto:${profile.contactData.mail}`}
+                />
+                <ActionItem
+                  icon={<Phone size={18} />}
+                  title="Restaurant Number"
+                  subtitle={profile.contactData.phone_Number}
+                  href={`tel:${profile.contactData.phone_Number}`}
+                />
+                <ActionItem
+                  icon={<MapPin size={18} />}
+                  title="Location"
+                  subtitle={profile.contactData.location.address}
+                  href={profile.contactData.location.link}
+                />
 
-                  <div key={index} className="col-md-12 p-0">
-
+                {/* opening hours */}
+                <div
+                  className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
+                  style={{
+                    backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
+                    color: darkMode ? "#fff" : "#000",
+                    borderRadius: "4px"
+                  }}
+                >
+                  <div className="w-100 d-flex align-items-start gap-3">
                     <div
-                      className="d-flex justify-content-between"
+                      className="d-flex align-items-center justify-content-center rounded-3"
                       style={{
-                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                        borderRadius: "12px",
-                        padding: "13px",
-                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-
-                        height: "100%"
+                        width: "42px",
+                        height: "42px",
+                        background: darkMode ? "#0f172a" : profile.colors.white,
+                        color: darkMode ? profile.colors.Primery : profile.colors.Primery,
+                        flexShrink: "0",
                       }}
                     >
-
-                      {/* LEFT SECTION */}
-                      <div className={`d-flex gap-3 ${item.className}`}>
-
-                        {/* ICON */}
-                        <div
-                          style={{
-                            width: "35px",
-                            height: "35px",
-                            borderRadius: "6px",
-                            background: darkMode ? profile.colors.black : profile.colors.whiteFields,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: darkMode ? profile.colors.white : profile.colors.black,
-                          }}
-                        >
-                          {iconMap[item.type]}
-                        </div>
-
-                        {/* TEXT */}
-                        <div style={{ textAlign: "left" }}>
-                          <h6 style={{
-                            fontWeight: "600",
-                            marginBottom: "0px",
-                            fontSize: "15px",
-
-                            color: darkMode ? profile.colors.white : profile.colors.black,
-                          }}>
-                            {item.label}
-                          </h6>
-
-                          {Array.isArray(item.value) ? (
-                            item.value.map((v, i) => (
-                              <p key={i}
-                                style={{
-                                  margin: "0",
-                                  fontSize: "14px",
-                                  wordBreak: "break-all",
-                                  fontWeight: "500",
-                                  color: darkMode ? profile.colors.white : profile.colors.black,
-                                  opacity: darkMode ? "0.7" : "1"
-                                }}>
-                                {v}
-                              </p>
-                            ))
-                          ) : (
-                            <p style={{
-                              margin: "0",
-                              fontSize: "14px",
-                              wordBreak: "break-all",
-                              color: darkMode ? profile.colors.white : profile.colors.black,
-                              opacity: darkMode ? "0.7" : "1"
-                            }}>
-                              {item.value}
-                            </p>
-                          )}
-
-                        </div>
-
-                      </div>
-
-                      {/* ARROW (hidden for office hours) */}
-                      {item.type !== "officeHours" && (
-                        <div
-                          style={{
-                            width: "35px",
-                            height: "35px",
-                            borderRadius: "6px",
-                            background: "transparent",
-                            color: darkMode ? profile.colors.white : profile.colors.black,
-                            opacity: darkMode ? "0.7" : "1",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center"
-
-                          }}
-                        >
-                          <ArrowUpRight
-                            size={20}
-                            style={{
-                              opacity: 0.6,
-                              color: darkMode ? profile.colors.white : profile.colors.black
-                            }}
-                          />
-                        </div>
-                      )}
-
+                      <Clock />
                     </div>
 
+                    <div
+                      style={{ width: "224px" }}
+                    >
+                      <h6 className="fw-bold"
+                        style={{
+                          color: darkMode ? profile.colors.white : profile.colors.black
+                        }}
+                      >Opening Hours</h6>
+                      {profile.openingHours.map((day, i) => (
+                        <div key={i} className="d-flex justify-content-between"
+                          style={{
+                            opacity: "0.7",
+                            color: darkMode ? profile.colors.white : profile.colors.black
+                          }}
+                        >
+                          <span>{day.dayName}</span>
+                          <span>{day.ocTime}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-
-                ))}
-
+                </div>
               </div>
             </section>
 
