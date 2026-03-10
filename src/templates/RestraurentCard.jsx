@@ -31,15 +31,7 @@ import { Carousel, Col, Row } from "react-bootstrap";
    Fully Functional • Error Free
 ====================================================== */
 
-const socialIcons = [
-    <Ghost />,
-    <Facebook />,
-    <Instagram />,
-    <Twitter />,
-    <Linkedin />,
-    <Youtube />
-];
-
+// make this component for Form
 const InquiryForm = memo(({ profile, darkMode }) => {
 
     const [formData, setFormData] = useState({
@@ -79,16 +71,25 @@ Message: ${formData.message}`;
 
     const inputStyle = {
         backgroundColor: profile.colors.inputBg,
-        opacity: "0.5",
+        opacity: darkMode ? "0.8" : "0.7",
         color: darkMode ? profile.colors.white : profile.colors.black,
         border: `1px solid ${profile.colors.borderGray}`,
         borderRadius: "6px",
         padding: "10px 12px",
-        fontSize: "14px"
+        fontSize: "14px",
+        "--placeholder-color": darkMode ? profile.colors.white : profile.colors.black
     };
-
     return (
         <div className="w-100">
+            {/* this atyle tag added for to color placeholder change in dark mode */}
+            <style>
+                {`
+.form-control::placeholder {
+  color: #9CA3AF;
+}
+`}
+            </style>
+            {/* Form */}
             <form onSubmit={sendMessage}>
 
                 <input
@@ -143,13 +144,131 @@ Message: ${formData.message}`;
         </div>
     );
 });
+// make this component for Tesimonial Carousal
+const TestimonialCarousal = memo(({ profile, darkMode }) => {
+    const [index, setIndex] = useState(0);
 
-// to fetch all icons by value
+    // make for testimonial carousal
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    };
+    const groupedTestimonials = (profile?.tesimonialSliderData || []).reduce((rows, item, i) => {
+        if (i % 2 === 0) rows.push([item]);
+        else rows[rows.length - 1].push(item);
+        return rows;
+    }, []);
+    return (
+        <>
+            <Carousel
+                activeIndex={index}
+                onSelect={handleSelect}
+                indicators={false}
+                controls={false}
+                interval={3000}
+                touch={true}
+                pause={false}
 
-function RestraurentCard({ data, saveContact, openQR }) {
+            >
+
+                {groupedTestimonials.map((group, i) => (
+                    <Carousel.Item key={i}>
+
+                        <div className='d-flex' style={{ gap: "15px" }}>
+
+                            {group.map((item, idx) => (
+
+                                <div
+                                    key={idx}
+                                    style={{
+                                        flex: "1",
+                                        padding: "15px",
+                                        borderRadius: "10px",
+                                        border: `solid 1px ${profile.colors.borderGray}`,
+                                        background: darkMode ? profile.colors.darkFields : profile.colors.white,
+                                        color: darkMode ? profile.colors.white : profile.colors.dark,
+                                    }}
+                                >
+
+                                    <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
+
+                                        <img
+                                            src={item.testSrc}
+                                            alt={item.testName}
+                                            style={{
+                                                width: "40px",
+                                                height: "40px",
+                                                borderRadius: "50%",
+
+                                            }}
+                                        />
+
+                                        <div>
+                                            <h5 style={{ fontSize: "13px", margin: "0", color: profile.colors.black, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                                {item.testName}
+                                            </h5>
+
+                                            <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                                {item.testPost}
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <p
+                                        style={{
+                                            fontSize: "12px",
+                                            color: "#000000",
+                                            marginTop: "20px",
+                                            fontWeight: "400",
+                                            lineHeight: "18px",
+                                            opacity: darkMode ? "0.7" : "1",
+                                            color: darkMode ? profile.colors.white : profile.colors.black,
+                                        }}
+                                    >
+                                        {item.testReview?.slice(0, 100)}
+                                    </p>
+
+                                </div>
+
+                            ))}
+
+                        </div>
+
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+            {/* Custom Pagination */}
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "8px",
+                    marginTop: "15px"
+                }}
+            >
+                {groupedTestimonials.map((_, i) => (
+                    <div
+                        key={i}
+                        onClick={() => setIndex(i)}
+                        style={{
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            backgroundColor: index === i ? "#000" : "#ccc",
+                            cursor: "pointer"
+                        }}
+                    />
+
+                ))}
+
+            </div>
+        </>
+    )
+});
+
+const RestraurentCard = ({ data, saveContact, openQR }) => {
     const [darkMode, setDarkMode] = useState(false);
     const [activeMenuTab, setActiveMenuTab] = useState(0);
-    const [index, setIndex] = useState(0);
     const safeData = data || {};
 
     // make for handle responsive
@@ -216,7 +335,6 @@ function RestraurentCard({ data, saveContact, openQR }) {
 
     }), [safeData]);
 
-
     // create for checking the packages and assing the styles
     const checkUserPackage = (requiredUserPackage) => {
         // console.log("requiredUserPackage:", requiredUserPackage);
@@ -243,19 +361,6 @@ function RestraurentCard({ data, saveContact, openQR }) {
     };
     //==== create for checking the packages and assing the styles
 
-    // const contactArr = new Array(profile.contactData)
-    // console.log(profile);
-
-    // make for testimonial carousal
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
-    };
-    const groupedTestimonials = (profile?.tesimonialSliderData || []).reduce((rows, item, i) => {
-        if (i % 2 === 0) rows.push([item]);
-        else rows[rows.length - 1].push(item);
-        return rows;
-    }, []);
-
     // console.log("groupedTestimonials", groupedTestimonials);
     //================ make for testimonial carousal
 
@@ -277,20 +382,22 @@ function RestraurentCard({ data, saveContact, openQR }) {
                     borderRadius: "4px"
                 }}
             >
-                <div className="d-flex align-items-center gap-3 flex-wrap">
+                <div className="d-flex gap-3">
                     <div
                         className="d-flex align-items-center justify-content-center rounded-3"
                         style={{
                             width: "42px",
                             height: "42px",
-                            background: darkMode ? "#0f172a" : "#ffffff",
+                            background: darkMode ? "#0f172a" : profile.colors.white,
                             color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                             flexShrink: "0",
                         }}
                     >
                         {icon}
                     </div>
-                    <div>
+                    <div
+                    // style={{ width: isMobile ? "190px" : "276px" }}
+                    >
                         <div className="fw-semibold">{title}</div>
                         <small style={{ opacity: 0.7 }}>{subtitle}</small>
                     </div>
@@ -325,7 +432,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                 style={{
                     overflowX: "auto",
                     width: "100%",
-                    gap: "24px",
+                    gap: "16px",
                     scrollSnapType: "x mandatory"
                 }}
             >
@@ -334,14 +441,14 @@ function RestraurentCard({ data, saveContact, openQR }) {
                         className="slide"
                         key={slideIndex}
                         style={{
-                            maxWidth: "370px",
+                            maxWidth: "100%",
                             scrollSnapAlign: "start",
                             flexShrink: 0
                         }}
                     >
                         <Row>
                             {slide.map((value, index) => (
-                                <Col xs={6} key={index} className="mb-3">
+                                <Col xs={6} key={index} className="mb-3 px-2">
                                     <img
                                         src={value.galleryImage}
                                         alt={value.imageAlt}
@@ -368,16 +475,16 @@ function RestraurentCard({ data, saveContact, openQR }) {
             {/* Theme Toggle */}
             <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow"
+                className="btn position-fixed top-0 end-0 z-3 rounded-circle shadow d-flex align-items-center justify-content-center"
                 style={{
                     background: darkMode ? "rgb(255, 255, 255)" : "#1F2D3D",
                     color: darkMode ? "#1F2D3D" : "#ffffff",
-                    padding: "8px 11px",
-                    marginRight: "5px",
-                    marginTop: "5px",
+                    padding: "13px 13px",
+                    marginRight: "15px",
+                    marginTop: "15px",
                 }}
             >
-                {darkMode ? <Sun size={13} /> : <Moon size={13} />}
+                {darkMode ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
             <div
@@ -408,36 +515,39 @@ function RestraurentCard({ data, saveContact, openQR }) {
                             href={profile.contactData.location.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 rounded"
+                            className="rounded d-flex align-items-center justify-content-center"
                             style={{
+                                padding: "6px",
                                 background: profile.colors.Primery,
                                 color: profile.colors.white,
                             }}
                         >
-                            <MapPin size={24} />
+                            <MapPin size={20} />
                         </a>
                         {/* QR button */}
                         <button
-                            className="p-2 rounded border-0"
+                            className="rounded d-flex align-items-center justify-content-center border-0"
                             style={{
+                                padding: "6px",
                                 background: profile.colors.Primery,
                                 color: profile.colors.white,
                             }}
                             onClick={openQR}
                         >
-                            <ScanQrCode size={24} />
+                            <ScanQrCode size={20} />
                         </button>
                         {/* brosher button */}
                         {checkUserPackage("premium") && (
                             <button
-                                className="p-2 rounded border-0"
+                                className="rounded d-flex align-items-center justify-content-center border-0"
                                 style={{
+                                    padding: "6px",
                                     background: profile.colors.Primery,
                                     color: profile.colors.white,
                                 }}
                                 onClick={""}
                             >
-                                <Download size={24} />
+                                <Download size={20} />
                             </button>
                         )}
                     </div>
@@ -490,20 +600,20 @@ function RestraurentCard({ data, saveContact, openQR }) {
                     // }}
                     >
                         {profile.socialLinks.map((item, i) => {
-                            {/* const IconComponent = Icons[service.icon]; */ }
+                            const IconComponent = Icons[item.icon];
                             return (
                                 <li key={i}>
                                     <a
                                         href={item.socialURL}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded"
+                                        className="p-2 rounded d-flex align-items-center justify-content-center"
                                         style={{
                                             background: profile.colors.Secondery,
                                             color: profile.colors.Primery,
                                         }}
                                     >
-                                        {socialIcons[i]}
+                                        {IconComponent && <IconComponent size={20} />}
                                     </a>
                                 </li>
                             )
@@ -601,6 +711,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
 
                     {/* menu tabs */}
                     {checkUserPackage("premium") && (
+
                         <div className="w-100">
                             <h5 className="mt-4 fw-bold"
                                 style={{
@@ -610,31 +721,47 @@ function RestraurentCard({ data, saveContact, openQR }) {
                             >Our Menu</h5>
                             {/* tabs btns map */}
                             <ul className="nav nav-pills">
-                                {profile.menuTabData.map((tab, i) => (
-                                    <li key={i} className="nav-item">
-                                        <button
-                                            className={`nav-link ${activeMenuTab === i ? "active" : ""}`}
-                                            onClick={() => setActiveMenuTab(i)}
-                                            style={{
-                                                background: activeMenuTab === i ? profile.colors.Secondery : profile.colors.white,
-                                                color: activeMenuTab === i ? profile.colors.Primery : "#000",
-                                                borderRadius: "6px",
-                                                marginRight: "8px",
-                                                padding: "4px 13px",
-                                                fontSize: "13px"
-                                            }}
-                                        >
-                                            {tab.menuTabName}
-                                        </button>
-                                    </li>
-                                ))}
+                                {profile.menuTabData.map((tab, i) => {
+                                    const isActive = activeMenuTab === i;
+
+                                    const tabStyle = {
+                                        background: isActive
+                                            ? profile.colors.Secondery
+                                            : darkMode
+                                                ? profile.colors.trinery
+                                                : profile.colors.white,
+
+                                        color: isActive
+                                            ? profile.colors.Primery
+                                            : darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+                                    };
+                                    return (
+                                        <li key={i} className="nav-item">
+                                            <button
+                                                className={`nav-link ${activeMenuTab === i ? "active" : ""}`}
+                                                onClick={() => setActiveMenuTab(i)}
+                                                style={{
+                                                    ...tabStyle,
+                                                    borderRadius: "6px",
+                                                    marginRight: "8px",
+                                                    padding: "4px 13px",
+                                                    fontSize: "13px"
+                                                }}
+                                            >
+                                                {tab.menuTabName}
+                                            </button>
+                                        </li>
+                                    )
+                                })}
                             </ul>
                             {/* tab container */}
                             <div>
                                 {profile.menuTabData[activeMenuTab]?.menuTabList.map((dish, j) => (
                                     <div
                                         key={j}
-                                        className="d-flex justify-content-between align-items-center border-bottom py-3"
+                                        className="d-flex justify-content-between gap-2 align-items-center border-bottom py-3"
                                     >
                                         <div className="d-flex align-items-center gap-3">
                                             {/* {dish.menuDishSrc && ( */}
@@ -662,6 +789,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                                             style={{
                                                 color: profile.colors.Primery,
                                                 fontWeight: "600",
+                                                flexShrink: "0"
                                             }}
                                         >
                                             ₹ {dish.menuDishPrice}
@@ -701,113 +829,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                                     color: darkMode ? profile.colors.white : profile.colors.black
                                 }}
                             >Testimonials</h5>
-
-                            <Carousel
-                                activeIndex={index}
-                                onSelect={handleSelect}
-                                indicators={false}
-                                controls={false}
-                                interval={3000}
-                                touch={true}
-                                pause={false}
-
-                            >
-
-                                {groupedTestimonials.map((group, i) => (
-                                    <Carousel.Item key={i}>
-
-                                        <div className='d-flex' style={{ gap: "15px" }}>
-
-                                            {group.map((item, idx) => (
-
-                                                <div
-                                                    key={idx}
-                                                    style={{
-                                                        flex: "1",
-                                                        padding: "15px",
-                                                        borderRadius: "10px",
-                                                        border: `solid 1px ${profile.colors.borderGray}`,
-                                                        background: darkMode ? profile.colors.darkFields : profile.colors.white,
-                                                        color: darkMode ? profile.colors.white : profile.colors.dark,
-                                                    }}
-                                                >
-
-                                                    <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
-
-                                                        <img
-                                                            src={item.testSrc}
-                                                            alt={item.testName}
-                                                            style={{
-                                                                width: "40px",
-                                                                height: "40px",
-                                                                borderRadius: "50%",
-
-                                                            }}
-                                                        />
-
-                                                        <div>
-                                                            <h5 style={{ fontSize: "13px", margin: "0", color: profile.colors.black, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
-                                                                {item.testName}
-                                                            </h5>
-
-                                                            <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
-                                                                {item.testPost}
-                                                            </p>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p
-                                                        style={{
-                                                            fontSize: "12px",
-                                                            color: "#000000",
-                                                            marginTop: "20px",
-                                                            fontWeight: "400",
-                                                            lineHeight: "18px",
-                                                            opacity: darkMode ? "0.7" : "1",
-                                                            color: darkMode ? profile.colors.white : profile.colors.black,
-                                                        }}
-                                                    >
-                                                        {item.testReview?.slice(0, 100)}
-                                                    </p>
-
-                                                </div>
-
-                                            ))}
-
-                                        </div>
-
-                                    </Carousel.Item>
-                                ))}
-
-                            </Carousel>
-                            {/* Custom Pagination */}
-                            <div
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    gap: "8px",
-                                    marginTop: "15px"
-                                }}
-                            >
-
-                                {groupedTestimonials.map((_, i) => (
-
-                                    <div
-                                        key={i}
-                                        onClick={() => setIndex(i)}
-                                        style={{
-                                            width: "8px",
-                                            height: "8px",
-                                            borderRadius: "50%",
-                                            backgroundColor: index === i ? "#000" : "#ccc",
-                                            cursor: "pointer"
-                                        }}
-                                    />
-
-                                ))}
-
-                            </div>
+                            <TestimonialCarousal profile={profile} darkMode={darkMode} />
                         </div>
                     )}
 
@@ -823,13 +845,12 @@ function RestraurentCard({ data, saveContact, openQR }) {
                             >
                                 Inquiries
                             </h5>
-
-                            <InquiryForm profile={profile} />
+                            <InquiryForm profile={profile} darkMode={darkMode} />
                         </div>
                     )}
 
                     {/* contact section */}
-                    <div>
+                    <div className="w-100">
                         <h5 className="mt-4 fw-bold"
                             style={{
                                 opacity: "0.8",
@@ -868,7 +889,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                                 className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
                                 style={{
                                     backgroundColor: darkMode ? "#1e293b" : profile.colors.trinery,
-                                    color: darkMode ? "#fff" : "#000",
+                                    color: darkMode ? profile.colors.white : profile.colors.black,
                                     borderRadius: "4px"
                                 }}
                             >
@@ -889,7 +910,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                                     <div
                                         style={{ width: "224px" }}
                                     >
-                                        <h6 className="fw-bold"
+                                        <h6 className="fw-bold mb-2"
                                             style={{
                                                 color: darkMode ? profile.colors.white : profile.colors.black
                                             }}
@@ -898,6 +919,7 @@ function RestraurentCard({ data, saveContact, openQR }) {
                                             <div key={i} className="d-flex justify-content-between"
                                                 style={{
                                                     opacity: "0.7",
+                                                    fontSize: "14px",
                                                     color: darkMode ? profile.colors.white : profile.colors.black
                                                 }}
                                             >

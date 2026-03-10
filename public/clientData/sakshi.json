@@ -5,28 +5,24 @@
     "title": "Shouth indian food",
     "socialLinks": [
         {
-            "socialName": "Dribble",
-            "socialURL": "https://dribbble.com"
-        },
-        {
             "socialName": "Facebook",
-            "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/"
+            "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/",
+            "icon": "Facebook"
         },
         {
             "socialName": "Instagram",
-            "socialURL": "https://www.instagram.com/webique_tech"
-        },
-        {
-            "socialName": "Twitter / X",
-            "socialURL": "https://x.com"
+            "socialURL": "https://www.instagram.com/webique_tech",
+            "icon": "Instagram"
         },
         {
             "socialName": "LinkedIn",
-            "socialURL": "https://www.linkedin.com/company/webiquetech"
+            "socialURL": "https://www.linkedin.com/company/webiquetech",
+            "icon": "Linkedin"
         },
         {
             "socialName": "Youtube",
-            "socialURL": "https://www.youtube.com"
+            "socialURL": "https://www.youtube.com",
+            "icon": "Youtube"
         }
     ],
     "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
@@ -180,75 +176,75 @@
     ],
     "gallerySlider": [
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         },
         {
-            "galleryImage": "/images/placeholder-img.jpg",
+            "galleryImage": "/images/placeholder-img.webp",
             "imageAlt": "Demo Image"
         }
     ],
     "tesimonialSliderData": [
         {
-            "testSrc": "/images/user-profile.png",
+            "testSrc": "/images/user-profile.webp",
             "testName": "Cole Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "/images/user-profile.png",
+            "testSrc": "/images/user-profile.webp",
             "testName": "Richi Rich",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "/images/user-profile.png",
+            "testSrc": "/images/user-profile.webp",
             "testName": "Solomon",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         },
         {
-            "testSrc": "/images/user-profile.png",
+            "testSrc": "/images/user-profile.webp",
             "testName": "Sanju",
             "testPost": "Customer",
             "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
@@ -311,10 +307,8 @@
     "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.666904269915!2d73.7666468!3d19.9537683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772874905998!5m2!1sen!2sin",
     "description": "Professional Digital Visiting Card for Local Businesses",
     "ogImage": "/images/webique-og-image.png",
-    "darkModeImage": "/images/reastaurant-logo.png",
+    "darkModeImage": "/images/reastaurant-logo.webp",
     "company": "Webique Technology",
-    "email": "contact@webique.in",
-    "whatsapp": "919860188007",
     "package": "premium",
     "template": "RestraurentCard"
 }

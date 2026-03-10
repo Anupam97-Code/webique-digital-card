@@ -5,28 +5,24 @@
     "title": "Cafeteria",
     "socialLinks": [
         {
-            "socialName": "Dribble",
-            "socialURL": "https://dribbble.com"
-        },
-        {
             "socialName": "Facebook",
-            "socialURL": "https://www.facebook.com"
+            "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/",
+            "icon": "Facebook"
         },
         {
             "socialName": "Instagram",
-            "socialURL": "https://www.instagram.com"
-        },
-        {
-            "socialName": "Twitter / X",
-            "socialURL": "https://x.com"
+            "socialURL": "https://www.instagram.com/webique_tech",
+            "icon": "Instagram"
         },
         {
             "socialName": "LinkedIn",
-            "socialURL": "https://www.linkedin.com"
+            "socialURL": "https://www.linkedin.com/company/webiquetech",
+            "icon": "Linkedin"
         },
         {
             "socialName": "Youtube",
-            "socialURL": "https://www.youtube.com"
+            "socialURL": "https://www.youtube.com",
+            "icon": "Youtube"
         }
     ],
     "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
@@ -117,7 +113,7 @@
     "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
     "description": "Professional Digital Visiting Card for Local Businesses",
     "ogImage": "/images/webique-og-image.png",
-    "darkModeImage": "/images/reastaurant-logo.png",
+    "darkModeImage": "/images/user-profile.webp",
     "company": "Webique Technology",
     "email": "contact@webique.in",
     "whatsapp": "919860188007",

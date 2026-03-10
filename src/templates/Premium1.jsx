@@ -148,63 +148,19 @@ Message: ${formData.message}`;
         items: []
       },
 
-      // ✅ MAP OBJECT FROM JSON
       map: safeData.map || {
         type: "map",
         label: "Location Map",
         value: "",
         className: "w-100"
       },
-      // ✅ CONTACT SECTION
-      contactInfo: safeData.contactInfo || [
-        {
-          type: "phone",
-          label: "Call me",
-          value: "+919860188007",
-          className: "align-items-center"
-        },
-        {
-          type: "email",
-          label: "Email",
-          value: "Jordan.smith@mail.com",
-          className: "align-items-center"
-        },
-        {
-          type: "officeNumber",
-          label: "Office Number",
-          value: "(0253) 555-1234",
-          className: "align-items-center"
-        },
-        {
-          type: "officeAddress",
-          label: "Office Address",
-          value: "Mumbai, Maharashtra, India",
-          className: "align-items-center"
-        },
-        {
-          type: "officeHours",
-          label: "Office Hours",
-          value: [
-            "Monday - 09:00 - 22:00",
-            "Tuesday - 09:00 - 22:00",
-            "Wednesday - 09:00 - 22:00",
-            "Thursday - 09:00 - 22:00",
-            "Friday - 09:00 - 22:00",
-            "Saturday - 09:00 - 22:00",
-            "Sunday - Closed"
-          ],
-          className: "align-items-start"
-        },
-
-      ]
+      contactInfo: safeData.contactInfo || []
     }),
     [safeData]
   );
 
-
   // const servisecJsonArr = profile.tabs
   // console.log("servisecJsonArr:", servisecJsonArr.slice(0, 1));
-
 
   // create for checking the packages and assing the styles
   const checkUserPackage = (requiredUserPackage) => {
@@ -221,9 +177,9 @@ Message: ${formData.message}`;
     const checkPackage = (requiredPackage) => {
 
       const userPackage = profile.package;
-      console.log("userPackage:", packageLevels[userPackage]);
-      console.log("requiredPackage:", packageLevels[requiredPackage]);
-      console.log("check package conditions:", packageLevels[userPackage] >= packageLevels[requiredPackage]);
+      // console.log("userPackage:", packageLevels[userPackage]);
+      // console.log("requiredPackage:", packageLevels[requiredPackage]);
+      // console.log("check package conditions:", packageLevels[userPackage] >= packageLevels[requiredPackage]);
 
       return packageLevels[userPackage] >= packageLevels[requiredPackage];
     };
@@ -250,27 +206,6 @@ Message: ${formData.message}`;
 
   const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
-  const shareCard = () => {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: profile.name,
-          text: `Connect with ${profile.name}`,
-          url: currentUrl,
-        })
-        .catch(() => { });
-    } else {
-      window.open(
-        `https://wa.me/?text=${encodeURIComponent(
-          `Connect with ${profile.name} - ${currentUrl}`
-        )}`,
-        "_blank"
-      );
-    }
-  };
-
-
 
   const ActionItem = ({ icon, title, subtitle, href }) => {
     const isExternal = href.startsWith("http");
@@ -328,15 +263,12 @@ Message: ${formData.message}`;
         </button>
 
         <div
-
+          className='d-flex flex-column'
           style={{
             width: "100%",
             maxWidth: "402px",
             display: "flex",
-            flexDirection: "column",
             gap: "16px",
-            // borderRadius: "0px",
-            // border: "3px solid #000",
             background: darkMode ? profile.colors.bdyColor : profile.colors.white,
             paddingTop: "0px",
             paddingBottom: "0px",
@@ -345,12 +277,7 @@ Message: ${formData.message}`;
         >
           <div className='position-relative w-100 h-auto'>
             <img src={profile.headerBgImage} alt='background' style={{ width: "100%", height: "auto" }} />
-
-
           </div>
-
-
-
           <div
             style={{
               padding: "0 16px",
@@ -383,7 +310,6 @@ Message: ${formData.message}`;
                   }}
                 />
               </div>
-
               <div>
                 <h4
                   className="fw-bold"
@@ -396,7 +322,6 @@ Message: ${formData.message}`;
                 >
                   {profile.name}
                 </h4>
-
                 <p style={{ color: darkMode ? "#fff" : "#000" }}>
                   {profile.title}
                 </p>
@@ -404,14 +329,9 @@ Message: ${formData.message}`;
             </div>
           </div>
 
+          {/* social media icons */}
           <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
-
-            {/* social media icons */}
-
-
-
-
-            <ul style={{ display: "flex", flexWrap: "wrap", gap: "17px", }}>
+            <ul style={{ gap: "17px", }} className='d-flex flex-wrap'>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
                 return (
@@ -434,13 +354,11 @@ Message: ${formData.message}`;
             </ul>
 
             {/* About Me */}
-            <section className='d-flex flex-column gap-2'>
-
+            <div className='d-flex flex-column gap-2'>
               <h4 style={{
                 fontSize: "18px",
                 fontWeight: 600, lineHeight: "27px",
                 color: darkMode ? profile.colors.white : profile.colors.dark,
-
               }}
               >
                 {profile.AboutMe}
@@ -457,11 +375,11 @@ Message: ${formData.message}`;
               >
                 {profile.AboutContent}
               </p>
-            </section>
+            </div>
 
-            <>
-              <style>
-                {`
+            {/* tabs */}
+            <style>
+              {`
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{background:transparent;}
 .nav-tabs{gap:10px; margin: 0 0 13px !important;}
 .nav-item{
@@ -479,12 +397,7 @@ Message: ${formData.message}`;
 
 }
 `}
-              </style>
-
-
-            </>
-
-            {/* tabs */}
+            </style>
             <div>
               {/* to show premium cardc data and grid services */}
               {checkUserPackage("premium") && (
@@ -496,17 +409,13 @@ Message: ${formData.message}`;
                         onSelect={(k) => setActiveTab(k)}
                         style={{
                           border: "none",
-                          margin: 0,
-                          padding: 0,
-
                         }}
-                        className="border-0"
+                        className="border-0 m-0 p-0"
                       >
                         {profile.tabs.slice(0, 3).map((tab, tabIndex) => (
                           <Tab
                             key={`tab-${tabIndex}`}
                             eventKey={tab.tabName}
-
                             title={
                               <div className='tab-block'
                                 style={{
@@ -526,8 +435,6 @@ Message: ${formData.message}`;
                                       : (darkMode ? profile.colors.white : profile.colors.black),
 
                                   opacity: activeTab === tab.tabName ? 1 : (darkMode ? 0.7 : 1),
-
-
                                   margin: 0,
                                   width: "100%",     // 3 equal buttons
                                   textAlign: "center",
@@ -542,8 +449,6 @@ Message: ${formData.message}`;
                             }
                           >
                             <div className='d-flex flex-column gap-3'>
-
-
                               {tab.tabName === "Service" && (
                                 <div className="d-flex flex-column gap-3">
                                   {tab.items?.map((item, itemIndex) => (
@@ -568,12 +473,9 @@ Message: ${formData.message}`;
                                             // height: "100%",
                                             // objectFit: "cover",
                                             // flexShrink: 0,
-
-
                                           }}
                                         />
                                       </div>
-
                                       <div className='d-flex flex-column' style={{ gap: "3px" }}>
                                         <h5 className='mb-0'
                                           style={{
@@ -585,7 +487,6 @@ Message: ${formData.message}`;
                                         >
                                           {item.title}
                                         </h5>
-
                                         <p
                                           style={{
                                             fontSize: "12px",
@@ -603,8 +504,6 @@ Message: ${formData.message}`;
                                   ))}
                                 </div>
                               )}
-
-
                               {(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
                                 <div
                                   style={{
@@ -689,7 +588,6 @@ Message: ${formData.message}`;
                                   ))}
                                 </div>
                               )}
-
                             </div>
                           </Tab>
                         ))}
@@ -697,58 +595,19 @@ Message: ${formData.message}`;
                     </Container>
                   )}
                 </div>
-
               )}
+
               {/* to show regular & basic services */}
               {(profile.package === "regular" || profile.package === "basic") && (
-                // <div className='d-flex flex-column gap-2'>
-                //   <h4
-                //     style={{
-                //       fontSize: "18px",
-                //       fontWeight: 600,
-                //       color: darkMode ? profile.colors.white : profile.colors.dark,
-
-                //       lineHeight: "27px"
-
-                //     }}
-                //   >
-                //     Services
-                //   </h4>
-                //   {profile.tabs.slice(0, 1).map((value, i) => {
-                //     return (
-                //       <ul className='d-flex flex-wrap align-items-center gap-2 justify-content-start' key={index}>
-                //         {value.items.map((item, index) => (
-                //           <li
-                //             style={{
-                //               background: profile.colors.whiteBorder,
-                //               padding: "7px 11px 7px",
-                //               borderRadius: "55px"
-                //             }}
-                //           >
-                //             {item.title}
-                //           </li>
-                //         ))}
-                //       </ul>
-                //     )
-                //   })}
-                // </div>
-
                 <div className='d-flex flex-column gap-2'>
                   <h4
                     style={{
                       fontSize: "18px",
                       fontWeight: 600,
                       color: darkMode ? profile.colors.white : profile.colors.dark,
-
                       lineHeight: "27px"
-
                     }}
-                  >
-                    Servicess
-                  </h4>
-
-
-
+                  >Servicess</h4>
                   <ul className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
                     {profile.servicesData.map((service, index) => (
                       <li
@@ -763,14 +622,11 @@ Message: ${formData.message}`;
                       </li>
                     ))}
                   </ul>
-
-
-
                 </div>
-
               )}
             </div>
 
+            {/* testimonial carousal */}
             <style>
               {`
 .testimonial-card {
@@ -791,98 +647,27 @@ Message: ${formData.message}`;
 .swiper-pagination{position:relative; margin-top:10px;}
 `}
             </style>
-
-
-            {/* testimonials Carousel */}
-
-            {/* <section className="testimonial-section mt-5">
-
-              <div className="d-flex justify-content-between align-items-center">
-                <h4 style={{
-                  fontSize: "18px",
-                  fontWeight: 600,
-                  color: "#000000",
-                  margin: "0 0 5px"
-                }}>{profile.testimonials.heading}</h4>
-
-                <a href={profile.testimonials.viewAll}>
-                  View All
-                </a>
-              </div>
-
-              <Swiper
-                modules={[Pagination]}
-                spaceBetween={20}
-                slidesPerView={2}
-                slidesPerGroup={1}
-                pagination={{ clickable: true }}
-                breakpoints={{
-                  0: { slidesPerView: 1 },
-                  768: { slidesPerView: 2 }
-                }}
-              >
-
-                {profile.testimonials.items.map((item, index) => (
-
-                  <SwiperSlide key={index}>
-
-                    <div className="testimonial-card">
-
-                      <div className='d-flex align-items-center justify-content-between gap-2'>
-                        <div className="testimonial-top">
-
-                          <img
-                            src={item.photo}
-                            alt={item.name}
-                            className="testimonial-photo"
-                          />
-                        </div>
-                        <div className='d-flex flex-column gap-1'>
-                          <h5 style={{ fontSize: "13px", marginBottom: "0px" }}>{item.name}</h5>
-                          <p style={{ fontSize: "12px", lineHeight: "100%", marginBottom: "0px" }}>{item.designation}</p>
-                        </div>
-
-                      </div>
-
-                      <p className="testimonial-desc" style={{ fontSize: "12px", fontWeight: "400", lineHeight: "100%", color: "#000", marginTop: "28px" }}>
-                        {item.description
-                          ? item.description.slice(0, 100) + (item.description.length > 100 ? "..." : "")
-                          : ""}
-                      </p>
-
-                    </div>
-
-                  </SwiperSlide>
-
-                ))}
-
-              </Swiper>
-
-            </section> */}
-            {(profile.package === "regular" || profile.package === "premium") && (
-              <section className='d-flex flex-column gap-2'>
-
+            {checkUserPackage("regular") && (
+              <div className='d-flex flex-column gap-2'>
                 <div className="d-flex justify-content-between align-items-center">
                   <h4
                     style={{
                       fontSize: "18px",
                       fontWeight: 600,
                       color: darkMode ? profile.colors.white : profile.colors.dark,
-
                       lineHeight: "27px"
-
                     }}
                   >
                     {profile.testimonials.heading}
                   </h4>
-
-                  <a href={profile.reviewLink} target='_blank'
+                  <a
+                    href={profile.reviewLink}
+                    target='_blank'
                     style={{
                       color: darkMode ? profile.colors.white : profile.colors.primary
                     }}
                   >View All</a>
                 </div>
-
                 <Carousel
                   activeIndex={index}
                   onSelect={handleSelect}
@@ -893,14 +678,10 @@ Message: ${formData.message}`;
                   pause={false}
 
                 >
-
                   {groupedTestimonials.map((group, i) => (
                     <Carousel.Item key={i}>
-
                       <div className='d-flex' style={{ gap: "15px" }}>
-
                         {group.map((item, idx) => (
-
                           <div
                             key={idx}
                             style={{
@@ -912,9 +693,7 @@ Message: ${formData.message}`;
                               color: darkMode ? profile.colors.white : profile.colors.dark,
                             }}
                           >
-
                             <div style={{ display: "flex", gap: "10px", alignItems: "center", }}>
-
                               <img
                                 src={item.photo}
                                 alt={item.name}
@@ -925,19 +704,15 @@ Message: ${formData.message}`;
 
                                 }}
                               />
-
                               <div>
                                 <h5 style={{ fontSize: "13px", margin: "0", color: "#000000", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
                                   {item.name}
                                 </h5>
-
                                 <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: "#A09899", color: darkMode ? "#fff" : "#000", opacity: darkMode ? "0.7" : "1" }}>
                                   {item.designation}
                                 </p>
                               </div>
-
                             </div>
-
                             <p
                               style={{
                                 fontSize: "12px",
@@ -951,16 +726,11 @@ Message: ${formData.message}`;
                             >
                               {item.description?.slice(0, 100)}
                             </p>
-
                           </div>
-
                         ))}
-
                       </div>
-
                     </Carousel.Item>
                   ))}
-
                 </Carousel>
 
                 {/* Custom Pagination */}
@@ -972,9 +742,7 @@ Message: ${formData.message}`;
                     marginTop: "15px"
                   }}
                 >
-
                   {groupedTestimonials.map((_, i) => (
-
                     <div
                       key={i}
                       onClick={() => setIndex(i)}
@@ -986,19 +754,14 @@ Message: ${formData.message}`;
                         cursor: "pointer"
                       }}
                     />
-
                   ))}
-
                 </div>
-
-              </section>
-
+              </div>
             )}
+
+            {/* Inquiry div (form) */}
             <style>
-
               {`
-
-
 textarea::placeholder {
   color: #6c757d;
 }
@@ -1008,27 +771,14 @@ textarea::placeholder {
 }
 `}
             </style>
-
-
-
-
-
-            {/* Inquiry Section (form) */}
-
-
             {(profile.package === "regular" || profile.package === "premium") && (
-
-              <section className='d-flex flex-column gap-2'>
+              <div className='d-flex flex-column gap-2'>
                 <h4 style={{
                   fontSize: "18px",
                   fontWeight: 600,
                   lineHeight: "27px",
                   color: darkMode ? profile.colors.white : profile.colors.black,
-
-
                 }}>Inquiries</h4>
-
-
                 <div>
                   <form
                     onSubmit={sendMessage}
@@ -1126,31 +876,22 @@ textarea::placeholder {
                   </form>
                 </div>
 
-              </section>
+              </div>
 
 
             )}
 
-
-
-
-
             {/* Contact me */}
-            <section className='d-flex flex-column gap-2'>
-
+            <div className='d-flex flex-column gap-2'>
               <h4 style={{
                 fontSize: "18px",
                 fontWeight: 600,
                 color: darkMode ? "#fff" : "#000",
                 lineHeight: "27px"
               }}>Contact Me</h4>
-
               <div className='gap-3 d-flex flex-column'>
-
                 {profile.contactInfo?.map((item, index) => (
-
                   <div key={index} className="col-md-12 p-0">
-
                     <div
                       className="d-flex justify-content-between"
                       style={{
@@ -1162,10 +903,8 @@ textarea::placeholder {
                         height: "100%"
                       }}
                     >
-
-                      {/* LEFT SECTION */}
+                      {/* LEFT div */}
                       <div className={`d-flex gap-3 ${item.className}`}>
-
                         {/* ICON */}
                         <div
                           style={{
@@ -1181,19 +920,16 @@ textarea::placeholder {
                         >
                           {iconMap[item.type]}
                         </div>
-
                         {/* TEXT */}
                         <div style={{ textAlign: "left" }}>
                           <h6 style={{
                             fontWeight: "600",
                             marginBottom: "0px",
                             fontSize: "15px",
-
                             color: darkMode ? profile.colors.white : profile.colors.black,
                           }}>
                             {item.label}
                           </h6>
-
                           {Array.isArray(item.value) ? (
                             item.value.map((v, i) => (
                               <p key={i}
@@ -1219,14 +955,13 @@ textarea::placeholder {
                               {item.value}
                             </p>
                           )}
-
                         </div>
-
                       </div>
 
                       {/* ARROW (hidden for office hours) */}
                       {item.type !== "officeHours" && (
                         <div
+                          className='d-flex align-items-center justify-content-center'
                           style={{
                             width: "35px",
                             height: "35px",
@@ -1234,10 +969,6 @@ textarea::placeholder {
                             background: "transparent",
                             color: darkMode ? profile.colors.white : profile.colors.black,
                             opacity: darkMode ? "0.7" : "1",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center"
-
                           }}
                         >
                           <ArrowUpRight
@@ -1249,33 +980,17 @@ textarea::placeholder {
                           />
                         </div>
                       )}
-
                     </div>
-
                   </div>
-
                 ))}
-
               </div>
-            </section>
+            </div>
 
-
-
-
-
-
-
-
-
-
-            {/* map section */}
-            {profile.package === "premium" && (
-              <section>
-
+            {/* map div */}
+            {checkUserPackage("premium") && (
+              <div>
                 {profile.map?.value && (
                   <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
-
-
                     <div className="ratio ratio-16x9">
                       <iframe
                         src={profile.map.value}
@@ -1286,13 +1001,12 @@ textarea::placeholder {
                     </div>
                   </div>
                 )}
-              </section>
+              </div>
             )}
-
           </div>
 
+          {/* bottom sticky buttons group */}
           <div className='position-sticky bottom-0 left-0 w-100%' style={{ height: "auto" }}>
-
             {/* Sticky Footer Buttons */}
             <div
               className="position-sticky w-100"
@@ -1306,7 +1020,6 @@ textarea::placeholder {
                   style={{
                     background: profile.colors.stickyLink1,
                     width: isMobile ? "33.33%" : "33.33%",
-
                   }}>
                   <a
                     href={`https://wa.me/${whatsappNumber}`}
