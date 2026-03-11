@@ -128,8 +128,8 @@ useEffect(() => {
           <div className="button-wrap">
             <ButtonCall
               className='nav-btn-new'
-              phone="+919876543210"
-              label="Call Us"
+              phone="+919860188007"
+              label="Order Now"
               icon={arrowOne}
             />
           </div>

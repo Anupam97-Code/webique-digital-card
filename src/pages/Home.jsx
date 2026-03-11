@@ -42,7 +42,7 @@ const Home = () => {
       </a>
 
       <a
-        href="tel:+919876543210"
+        href="tel:+919860188007"
         className="call-btn d-flex align-items-center justify-content-center"
         aria-label="Call us"
       >
