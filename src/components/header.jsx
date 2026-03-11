@@ -32,21 +32,81 @@ import { BlurText } from "./shared/TextAnimation";
 
 
 const webImages = [
-  { src: imgOne, alt: "Modern website design" },
-  { src: imgTwo, alt: "Creative UI UX design" },
-  { src: imgThree, alt: "Web development dashboard" },
-  { src: imgFour, alt: "Mobile app interface" },
-  { src: imgFive, alt: "Digital branding concept" },
-  { src: imgSix, alt: "Modern website design" },
-  { src: imgSeven, alt: "Creative UI UX design" },
-  { src: imgEight, alt: "Web development dashboard" },
-  { src: imgNine, alt: "Mobile app interface" },
-  { src: imgTen, alt: "Digital branding concept" },
-  { src: imgOne, alt: "Modern website design" },
-  { src: imgTwo, alt: "Creative UI UX design" },
-  { src: imgThree, alt: "Web development dashboard" },
-  { src: imgFour, alt: "Mobile app interface" },
-  { src: imgFive, alt: "Digital branding concept" },
+  {
+    src: imgOne,
+    alt: "Modern website design",
+    link: ""
+  },
+  {
+    src: imgTwo,
+    alt: "Creative UI UX design",
+    link: ""
+  },
+  {
+    src: imgThree,
+    alt: "Web development dashboard",
+    link: ""
+  },
+  {
+    src: imgFour,
+    alt: "Mobile app interface",
+    link: ""
+  },
+  {
+    src: imgFive,
+    alt: "Digital branding concept",
+    link: ""
+  },
+  {
+    src: imgSix,
+    alt: "Modern website design",
+    link: ""
+  },
+  {
+    src: imgSeven,
+    alt: "Creative UI UX design",
+    link: ""
+  },
+  {
+    src: imgEight,
+    alt: "Web development dashboard",
+    link: ""
+  },
+  {
+    src: imgNine,
+    alt: "Mobile app interface",
+    link: ""
+  },
+  {
+    src: imgTen,
+    alt: "Digital branding concept",
+    link: ""
+  },
+  {
+    src: imgOne,
+    alt: "Modern website design",
+    link: ""
+  },
+  {
+    src: imgTwo,
+    alt: "Creative UI UX design",
+    link: ""
+  },
+  {
+    src: imgThree,
+    alt: "Web development dashboard",
+    link: ""
+  },
+  {
+    src: imgFour,
+    alt: "Mobile app interface",
+    link: ""
+  },
+  {
+    src: imgFive,
+    alt: "Digital branding concept",
+    link: ""
+  },
 ]
 
 const Header = () => {
