@@ -1,9 +1,11 @@
 {
-    "headerBgImage": "/images/idcard-bg.png",
+    "headerBgImage": "",
     "headerBgImagePosition": "top",
-    "profileImage": "/images/user-profile.webp",
+    "headerOverlayLogoImg": "/images/webique-logo-white.png",
+    "profileImage": "/images/ab-profile.png",
     "name": "Aniket Bhalerao",
     "title": "Fullstack Developer",
+    "visitingLink": "www.webiquecard.in",
     "socialLinks": [
         {
             "socialName": "Facebook",
@@ -26,40 +28,46 @@
             "icon": "Youtube"
         }
     ],
-    "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
+    "aboutDescription": "Hi, I’m a Full Stack Developer passionate about building modern, scalable, and high-performance web applications. I specialize in creating seamless digital experiences from front-end interfaces to powerful back-end systems.",
     "servicesData": [
         {
-            "title": "Veg Food",
+            "title": "WordPress Development",
             "icon": "Salad"
         },
         {
-            "title": "Lunch & Dinner",
+            "title": "UI & UX Design",
             "icon": "Utensils"
         },
         {
-            "title": "Family Restaurant",
+            "title": "Custom Website",
             "icon": "Users"
         },
         {
-            "title": "Party Lawn Available",
+            "title": "Branding Support",
             "icon": "Trees"
         },
         {
-            "title": "Birthday Party Booking",
+            "title": "E-commerce / WooCommerce",
             "icon": "Cake"
         },
         {
-            "title": "Wedding Lawn",
+            "title": "Performance, SEO & Lead Enablement",
             "icon": "HeartHandshake"
         },
         {
-            "title": "Catering Service",
+            "title": "Emailer Template Design",
+            "icon": "ChefHat"
+        },
+        {
+            "title": "Security, Maintenance & Support",
             "icon": "ChefHat"
         }
     ],
     "contactData": {
         "phone_Number": "+918795462310",
+        "phone_Number2": "+919876543215",
         "mail": "buzzCafe@gmail.com",
+        "mail2": "cageBuzz@gmail.com",
         "restaurant_Number": "+918795462310",
         "location": {
             "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
@@ -102,7 +110,7 @@
         "trinery": "#BEBEBE33",
         "white": "#fff",
         "black": "#000",
-        "light": "#F1F3F5",
+        "light": "#FFF5DD",
         "lightBg": "#F1F3F5",
         "dark": "#0F172A",
         "darkCardBg": "#1E293B",
@@ -113,7 +121,7 @@
         "stickyLink2": "#1680FB",
         "stickyLink3": "#022B5B",
         "svgPathBg": "#0F6DDA",
-        "profileBg": ""
+        "headerBg": "#1680FB"
     },
     "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
     "description": "Professional Digital Visiting Card for Local Businesses",

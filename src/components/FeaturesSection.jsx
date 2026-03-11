@@ -67,6 +67,9 @@ const FeaturesSection = () => {
                 src={featuresData.image}
                 alt="feature"
                 className="img-fluid"
+                style={{
+                  width: "90%"
+                }}
               />
             </div>
           </Col>
