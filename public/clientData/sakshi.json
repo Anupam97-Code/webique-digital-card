@@ -252,7 +252,10 @@
         }
     ],
     "contactData": {
-        "phone_Number": "+919876543210",
+        "phone_Number": [
+            "+918795462310",
+            "+91 9763771751"
+        ],
         "mail": "contact@gmail.com",
         "restaurant_Number": "+917894561230",
         "location": {

@@ -35,6 +35,7 @@ import {
 
 } from "lucide-react";
 import { link } from 'framer-motion/client';
+import ContactSection from './components/ContactSection';
 
 
 
@@ -228,12 +229,16 @@ Message: ${formData.message}`;
 
   // make for contact data 
   const ActionItem = ({ icon, title, subtitle, href }) => {
-    const isExternal = href.startsWith("http");
+
+    const isExternal = href?.startsWith("http");
+
+    const Wrapper = href ? "a" : "div";
+
     return (
-      <a
+      <Wrapper
         href={href}
-        target={isExternal ? "_blank" : "_self"}
-        rel={isExternal ? "noopener noreferrer" : ""}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
         className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
         style={{
           backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
@@ -247,24 +252,25 @@ Message: ${formData.message}`;
             style={{
               width: "42px",
               height: "42px",
-              color: darkMode ? profile.colors.dark : profile.colors.white,
-              color: darkMode ? profile.colors.Primery : profile.colors.Primery,
+              color: profile.colors.Primery,
               flexShrink: "0",
             }}
           >
             {icon}
           </div>
+
           <div>
             <div className="fw-semibold">{title}</div>
             <small style={{ opacity: 0.7 }}>{subtitle}</small>
           </div>
         </div>
+
         <div className="flex-shrink-0">
           <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
         </div>
-      </a>
-    )
-  }
+      </Wrapper>
+    );
+  };
   //================= make for contact data 
 
   return (
@@ -980,91 +986,14 @@ textarea::placeholder {
             )}
 
             {/* Contact me */}
-            <div className='d-flex flex-column gap-2'>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                color: darkMode ? profile.colors.white : profile.colors.black,
-                lineHeight: "27px"
-              }}>Contact Me</h4>
-
-              <div className="d-flex flex-column gap-3">
-                <ActionItem
-                  icon={<Phone size={18} />}
-                  title="Call Me"
-                  subtitle={profile.contactData.phone_Number}
-                  href={`tel:${profile.contactData.phone_Number}`}
-                />
-
-                <ActionItem
-                  icon={<Mail size={18} />}
-                  title="Email"
-                  subtitle={profile.contactData.mail}
-                  href={`mailto:${profile.contactData.mail}`}
-                />
-                <ActionItem
-                  icon={<Phone size={18} />}
-                  title="Restaurant Number"
-                  subtitle={profile.contactData.phone_Number}
-                  href={`tel:${profile.contactData.phone_Number}`}
-                />
-                <ActionItem
-                  icon={<MapPin size={18} />}
-                  title="Location"
-                  subtitle={profile.contactData.location.address}
-                  href={profile.contactData.location.link}
-                />
-
-                {/* opening hours */}
-                <div
-                  className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
-                  style={{
-                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                    color: darkMode ? profile.colors.white : profile.colors.black,
-                    borderRadius: "4px"
-                  }}
-                >
-                  <div className="w-100 d-flex align-items-start gap-3">
-                    <div
-                      className="d-flex align-items-center justify-content-center rounded-3"
-                      style={{
-                        width: "42px",
-                        height: "42px",
-                        background: darkMode ? profile.colors.dark : profile.colors.white,
-                        color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                        flexShrink: "0",
-                      }}
-                    >
-                      <Clock />
-                    </div>
-
-                    <div
-                      style={{ width: "224px" }}
-                    >
-                      <h6 className="fw-bold"
-                        style={{
-                          color: darkMode ? profile.colors.white : profile.colors.black
-                        }}
-                      >Opening Hours</h6>
-                      {profile.openingHours.map((day, i) => (
-                        <div key={i} className="d-flex justify-content-between"
-                          style={{
-                            opacity: "0.7",
-                            color: darkMode ? profile.colors.white : profile.colors.black
-                          }}
-                        >
-                          <span>{day.dayName}</span>
-                          <span>{day.ocTime}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ContactSection
+  profile={profile}
+  darkMode={darkMode}
+  ActionItem={ActionItem}
+/>
 
             {/* map div */}
-            {checkUserPackage("premium") && (
+   
               <div>
                 {profile.map?.value && (
                   <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
@@ -1079,7 +1008,7 @@ textarea::placeholder {
                   </div>
                 )}
               </div>
-            )}
+    
           </div>
 
           {/* bottom sticky buttons group */}

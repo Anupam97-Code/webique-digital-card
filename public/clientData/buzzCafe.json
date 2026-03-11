@@ -58,7 +58,10 @@
         }
     ],
     "contactData": {
-        "phone_Number": "+918795462310",
+        "phone_Number": [
+            "+918795462310",
+            "+91 9763771751"
+        ],
         "mail": "buzzCafe@gmail.com",
         "restaurant_Number": "+918795462310",
         "location": {

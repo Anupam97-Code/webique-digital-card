@@ -15,6 +15,7 @@ import {
     Moon,
     ScanQrCode,
 } from "lucide-react";
+import ContactSection from "./components/ContactSection";
 
 /* ======================================================
    FACEBOOK STYLE DIGITAL BUSINESS CARD
@@ -76,37 +77,43 @@ function Basic2({ data, saveContact, openQR }) {
     };
 
     const ActionItem = ({ icon, title, subtitle, href }) => {
-        const isExternal = href.startsWith("http");
+         const isExternal = href?.startsWith("http");
+         const Wrapper = href ? "a" : "div";
         return (
-            <a
-                href={href}
-                target={isExternal ? "_blank" : "_self"}
-                rel={isExternal ? "noopener noreferrer" : ""}
-                className="d-flex align-items-center justify-content-between text-decoration-none p-2 rounded-4 border"
-                style={{
-                    backgroundColor: darkMode ? "#1e293b" : "#f1f3f5",
-                    color: darkMode ? "#fff" : "#000",
-                }}
-            >
-                <div className="d-flex align-items-center gap-3">
-                    <div
+            <Wrapper
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
+                    style={{
+                      backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+                      color: darkMode ? profile.colors.white : profile.colors.black,
+                      borderRadius: "4px"
+                    }}
+                  >
+                    <div className="d-flex gap-3">
+                      <div
                         className="d-flex align-items-center justify-content-center rounded-3"
                         style={{
-                            width: "42px",
-                            height: "42px",
-                            background: darkMode ? "#0f172a" : "#ffffff",
-                            flexShrink: "0",
+                          width: "42px",
+                          height: "42px",
+                          color: profile.colors.Primery,
+                          flexShrink: "0",
                         }}
-                    >
+                      >
                         {icon}
-                    </div>
-                    <div>
+                      </div>
+            
+                      <div>
                         <div className="fw-semibold">{title}</div>
                         <small style={{ opacity: 0.7 }}>{subtitle}</small>
+                      </div>
                     </div>
-                </div>
-                <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-            </a>
+            
+                    <div className="flex-shrink-0">
+                      <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+                    </div>
+                  </Wrapper>
         )
     }
 
@@ -161,81 +168,13 @@ function Basic2({ data, saveContact, openQR }) {
                     />
                 </div>
 
-                <div className="text-center">
-                    <h4 className="mt-4 fw-bold"
-                        style={{
-                            color: darkMode ? "#fff" : "#000",
-                        }}
-                    >{profile.name}</h4>
-                    <p
-                        style={{
-                            opacity: 0.7,
-                            color: darkMode ? "#fff" : "#000",
-                        }} className="mb-3">
-                        {profile.title} | <strong>{profile.company}</strong>
-                    </p>
+                {/* Contact me */}
+                <ContactSection
+                    profile={profile}
+                    darkMode={darkMode}
+                    ActionItem={ActionItem}
+                />
 
-                    {/* Save Contact Button */}
-                    <button
-                        className="btn w-100 mb-4"
-                        style={{
-                            background: "#1f2d3d",
-                            color: "#fff",
-                            padding: "12px",
-                            borderRadius: "14px",
-                            fontWeight: "500",
-                        }}
-                        onClick={saveContact}>
-                        Save Contact
-                    </button>
-
-                    <div className="d-grid gap-3 text-start">
-                        <ActionItem
-                            icon={<Phone size={18} className="text-success" />}
-                            title="Call me"
-                            subtitle={profile.phone}
-                            href={`tel:${profile.phone}`}
-                        />
-
-                        <ActionItem
-                            icon={<Facebook size={18} className="text-primary" />}
-                            title="Follow me"
-                            subtitle={profile.facebookName}
-                            href={profile.facebook}
-                        />
-
-                        <ActionItem
-                            icon={<Instagram size={18} className="text-danger" />}
-                            title="Follow on Instagram"
-                            subtitle={profile.instagramId}
-                            href={profile.instagram}
-                        />
-
-                        <ActionItem
-                            icon={<MapPin size={18} className="text-danger" />}
-                            title="Visit my office"
-                            subtitle={profile.address}
-                            href={profile.addressLink}
-                        // href={`https://maps.google.com/?q=${encodeURIComponent(
-                        //     profile.address
-                        // )}`}
-                        />
-
-                        <ActionItem
-                            icon={<Mail size={18} className="text-info" />}
-                            title="Email me"
-                            subtitle={profile.email}
-                            href={`mailto:${profile.email}`}
-                        />
-
-                        <ActionItem
-                            icon={<Linkedin size={18} className="text-primary" />}
-                            title="Follow my Linkedin"
-                            subtitle={profile.linkedinName}
-                            href={profile.linkedin}
-                        />
-                    </div>
-                </div>
 
                 {/* Sticky Footer Buttons */}
                 <div

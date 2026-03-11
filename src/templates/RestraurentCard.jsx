@@ -15,6 +15,7 @@ import {
 import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
 import { Carousel, Col, Row } from "react-bootstrap";
+import ContactSection from "./components/ContactSection";
 
 
 /* ======================================================
@@ -362,43 +363,43 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
 
     // make for contact data 
     const ActionItem = ({ icon, title, subtitle, href }) => {
-        const isExternal = href.startsWith("http");
+         const isExternal = href?.startsWith("http");
+    const Wrapper = href ? "a" : "div";
         return (
-            <a
-                href={href}
-                target={isExternal ? "_blank" : "_self"}
-                rel={isExternal ? "noopener noreferrer" : ""}
-                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-                style={{
-                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                    color: darkMode ? profile.colors.white : profile.colors.black,
-                    borderRadius: "4px"
-                }}
-            >
-                <div className="d-flex gap-3">
-                    <div
+            <Wrapper
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
+                    style={{
+                      backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+                      color: darkMode ? profile.colors.white : profile.colors.black,
+                      borderRadius: "4px"
+                    }}
+                  >
+                    <div className="d-flex gap-3">
+                      <div
                         className="d-flex align-items-center justify-content-center rounded-3"
                         style={{
-                            width: "42px",
-                            height: "42px",
-                            background: darkMode ? profile.colors.dark : profile.colors.white,
-                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                            flexShrink: "0",
+                          width: "42px",
+                          height: "42px",
+                          color: profile.colors.Primery,
+                          flexShrink: "0",
                         }}
-                    >
+                      >
                         {icon}
-                    </div>
-                    <div
-                    // style={{ width: isMobile ? "190px" : "276px" }}
-                    >
+                      </div>
+            
+                      <div>
                         <div className="fw-semibold">{title}</div>
                         <small style={{ opacity: 0.7 }}>{subtitle}</small>
+                      </div>
                     </div>
-                </div>
-                <div className="flex-shrink-0">
-                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-                </div>
-            </a>
+            
+                    <div className="flex-shrink-0">
+                      <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+                    </div>
+                  </Wrapper>
         )
     }
     //================= make for contact data 
@@ -844,88 +845,13 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                     )}
 
                     {/* contact section */}
-                    <div className="w-100">
-                        <h5 className="mt-4 fw-bold"
-                            style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
-                            }}
-                        >Contact me</h5>
-                        <div className="d-flex flex-column gap-3">
-                            <ActionItem
-                                icon={<Phone size={18} />}
-                                title="Call Me"
-                                subtitle={profile.contactData.phone_Number}
-                                href={`tel:${profile.contactData.phone_Number}`}
-                            />
+                                {/* Contact me */}
+            <ContactSection
+  profile={profile}
+  darkMode={darkMode}
+  ActionItem={ActionItem}
+/>
 
-                            <ActionItem
-                                icon={<Mail size={18} />}
-                                title="Email"
-                                subtitle={profile.contactData.mail}
-                                href={`mailto:${profile.contactData.mail}`}
-                            />
-                            <ActionItem
-                                icon={<Phone size={18} />}
-                                title="Restaurant Number"
-                                subtitle={profile.contactData.phone_Number}
-                                href={`tel:${profile.contactData.phone_Number}`}
-                            />
-                            <ActionItem
-                                icon={<MapPin size={18} />}
-                                title="Location"
-                                subtitle={profile.contactData.location.address}
-                                href={profile.contactData.location.link}
-                            />
-
-                            {/* opening hours */}
-                            <div
-                                className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
-                                style={{
-                                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                                    color: darkMode ? profile.colors.white : profile.colors.black,
-                                    borderRadius: "4px"
-                                }}
-                            >
-                                <div className="w-100 d-flex align-items-start gap-3">
-                                    <div
-                                        className="d-flex align-items-center justify-content-center rounded-3"
-                                        style={{
-                                            width: "42px",
-                                            height: "42px",
-                                            background: darkMode ? profile.colors.dark : profile.colors.white,
-                                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                                            flexShrink: "0",
-                                        }}
-                                    >
-                                        <Clock />
-                                    </div>
-
-                                    <div
-                                        style={{ width: "224px" }}
-                                    >
-                                        <h6 className="fw-bold mb-2"
-                                            style={{
-                                                color: darkMode ? profile.colors.white : profile.colors.black
-                                            }}
-                                        >Opening Hours</h6>
-                                        {profile.openingHours.map((day, i) => (
-                                            <div key={i} className="d-flex justify-content-between"
-                                                style={{
-                                                    opacity: "0.7",
-                                                    fontSize: "14px",
-                                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                                }}
-                                            >
-                                                <span>{day.dayName}</span>
-                                                <span>{day.ocTime}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     {/* map */}
                     <div
