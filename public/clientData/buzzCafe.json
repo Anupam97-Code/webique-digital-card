@@ -1,9 +1,9 @@
 {
     "headerBgImage": "/images/restaurant.dc-head-img.webp",
     "headerBgImagePosition": "center",
-    "profileImage": "/images/user-profile.webp",
-    "name": "Buzz Cafe",
-    "title": "Cafeteria",
+    "profileImage": "/images/reastaurant-logo.webp",
+    "name": "Rameshwer Cafe",
+    "title": "Shouth indian food",
     "socialLinks": [
         {
             "socialName": "Facebook",
@@ -26,50 +26,296 @@
             "icon": "Youtube"
         }
     ],
-    "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
+    "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
     "servicesData": [
         {
-            "title": "Veg Food",
-            "icon": "Salad"
+            "title": "Fresh Food",
+            "icon": "Soup"
         },
         {
-            "title": "Lunch & Dinner",
-            "icon": "Utensils"
+            "title": "Customer reviews",
+            "icon": "UserStar"
         },
         {
-            "title": "Family Restaurant",
-            "icon": "Users"
+            "title": "Online Ordering",
+            "icon": "ShoppingCart"
         },
         {
-            "title": "Party Lawn Available",
-            "icon": "Trees"
+            "title": "Special Offers",
+            "icon": "BadgePercent"
         },
         {
-            "title": "Birthday Party Booking",
-            "icon": "Cake"
+            "title": "Party Orders",
+            "icon": "PartyPopper"
         },
         {
-            "title": "Wedding Lawn",
-            "icon": "HeartHandshake"
+            "title": "Custome Meal Plans",
+            "icon": "CookingPot"
+        }
+    ],
+    "menuTabData": [
+ 
+            {
+                "menuTabName": "Sandwich",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Chilli Garlic Toast",
+                        "menuDishPrice": "50"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Cheese Sandwich",
+                        "menuDishPrice": "60"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Veg Salad Sandwich",
+                        "menuDishPrice": "80"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Veg Cheese Grill Sandwich",
+                        "menuDishPrice": "100"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Paneer Sandwich",
+                        "menuDishPrice": "100"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Veg Club Sandwich",
+                        "menuDishPrice": "150"
+                    }
+                ]
+            },
+            {
+                "menuTabName": "Salad",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Veg Salad",
+                        "menuDishPrice": "100"
+                    }
+                ]
+            },
+            {
+                "menuTabName": "Maggie",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Masala Maggie",
+                        "menuDishPrice": "40"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Butter Masala Maggie",
+                        "menuDishPrice": "50"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Vegetable Maggie",
+                        "menuDishPrice": "60"
+                    }
+                ]
+            },
+            {
+                "menuTabName": "Quick Bites",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Potato Cheese Shot",
+                        "menuDishPrice": "80"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Veg Finger Chips",
+                        "menuDishPrice": "80"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Cheese Ball",
+                        "menuDishPrice": "80"
+                    }
+                ]
+            },
+            {
+                "menuTabName": "Buzz Shots",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Jamun Shots",
+                        "menuDishPrice": "40"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Guava Shots",
+                        "menuDishPrice": "40"
+                    }
+                ]
+            },
+            {
+                "menuTabName": "Beverage",
+                "menuTabList": [
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Tea",
+                        "menuDishPrice": "10"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Black Tea",
+                        "menuDishPrice": "20"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Lemon Tea",
+                        "menuDishPrice": "20"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Green Tea",
+                        "menuDishPrice": "20"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Hot Coffee",
+                        "menuDishPrice": "20"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Lemon Ice Tea",
+                        "menuDishPrice": "40"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Cold Coffee",
+                        "menuDishPrice": "50"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Cold Coffee with Crush",
+                        "menuDishPrice": "60"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Mango Milk Shake",
+                        "menuDishPrice": "90"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Strawberry Milk Shake",
+                        "menuDishPrice": "90"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Kitkat Milk Shake",
+                        "menuDishPrice": "100"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Mint Mojito",
+                        "menuDishPrice": "80"
+                    },
+                    {
+                        "menuDishSrc": "",
+                        "menuDishName": "Blue Berry Mojito",
+                        "menuDishPrice": "80"
+                    }
+                ]
+            }
+       
+    ],
+    "gallerySlider": [
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
         },
         {
-            "title": "Catering Service",
-            "icon": "ChefHat"
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        }
+    ],
+    "tesimonialSliderData": [
+        {
+            "testSrc": "/images/user-profile.webp",
+            "testName": "Cole Rich",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "/images/user-profile.webp",
+            "testName": "Richi Rich",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "/images/user-profile.webp",
+            "testName": "Solomon",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+        },
+        {
+            "testSrc": "/images/user-profile.webp",
+            "testName": "Sanju",
+            "testPost": "Customer",
+            "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
         }
     ],
     "contactData": {
         "phone_Number": [
             "+918795462310",
-            "+919763771751"
+            "+919876543210"
         ],
         "mail": [
-            "buzzCafe@gmail.com",
-            "cafeBuzz@gmail.com"
+            "restraurent@gmail.com",
+            "restraurent2@gmail.com"
         ],
-        "restaurant_Number": "+918795462310",
+        "restaurant_Number": "+917894561230",
         "location": {
-            "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
-            "link": "https://maps.app.goo.gl/FTReqpPZDG3xzv279"
+            "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
+            "link": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167"
         }
     },
     "openingHours": [
@@ -119,13 +365,11 @@
         "stickyLink2": "#1680FB",
         "stickyLink3": "#022B5B"
     },
-    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
+    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.666904269915!2d73.7666468!3d19.9537683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772874905998!5m2!1sen!2sin",
     "description": "Professional Digital Visiting Card for Local Businesses",
     "ogImage": "/images/webique-og-image.png",
-    "darkModeImage": "/images/user-profile.webp",
+    "darkModeImage": "/images/reastaurant-logo.webp",
     "company": "Webique Technology",
-    "email": "contact@webique.in",
-    "whatsapp": "919767724426",
-    "package": "basic",
+    "package": "premium",
     "template": "RestraurentCard"
 }
