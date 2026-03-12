@@ -87,7 +87,8 @@ const HospitalCard = ({ data, openQR, saveContact }) => {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    const text = `Hello,
+    const text = `Hello Doctor,
+I would like to book an appointment.,
 Name: ${formData.name}
 Phone: ${formData.phone}
 Email: ${formData.email}
@@ -847,6 +848,22 @@ Message: ${formData.message}`;
             {/* Inquiry div (form) */}
             <style>
               {`
+/* Fix Chrome autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px transparent inset;
+}
+
+/* Dark mode fix */
+.dark-placeholder:-webkit-autofill{
+  -webkit-text-fill-color: white;
+  box-shadow: 0 0 0px 1000px #1a1a1a inset;
+}
+
 textarea::placeholder {
   color: #6c757d;
 }
@@ -899,6 +916,24 @@ textarea::placeholder {
   transform:translateY(-50%);
   pointer-events:none;
   font-size:16px;
+}
+
+/* Force date text color */
+.date-time-input::-webkit-datetime-edit {
+  color: inherit;
+}
+
+/* Fix faint selected date text */
+.date-time-input::-webkit-datetime-edit-text,
+.date-time-input::-webkit-datetime-edit-month-field,
+.date-time-input::-webkit-datetime-edit-day-field,
+.date-time-input::-webkit-datetime-edit-year-field {
+  color: inherit;
+}
+
+/* Cursor pointer for better UX */
+.date-time-input{
+  cursor:pointer;
 }
 `}
             </style>
