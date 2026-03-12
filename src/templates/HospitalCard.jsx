@@ -30,7 +30,9 @@ import {
   Download,
   Send,
   Smartphone,
-  Youtube
+  Youtube,
+  Clock4,
+  CalendarCheck  
 
 
 } from "lucide-react";
@@ -67,7 +69,10 @@ const HospitalCard = ({ data, openQR, saveContact }) => {
 
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
+    date: "",
+    time: "",
     message: ""
   });
 
@@ -84,7 +89,10 @@ const HospitalCard = ({ data, openQR, saveContact }) => {
 
     const text = `Hello,
 Name: ${formData.name}
+Phone: ${formData.phone}
 Email: ${formData.email}
+Date: ${formData.date}
+Time: ${formData.time}
 Message: ${formData.message}`;
 
     const whatsappURL = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(
@@ -96,7 +104,10 @@ Message: ${formData.message}`;
     // clear form
     setFormData({
       name: "",
+      phone: "",
       email: "",
+      date: "",
+      time: "",
       message: ""
     });
   };
@@ -132,7 +143,7 @@ Message: ${formData.message}`;
       openingHours: safeData.openingHours,
       headerBgImage: safeData.headerBgImage,
       HospitalData: safeData.HospitalData || [],
-      profileImg: safeData.profileImg || "",
+      profileImg: safeData.profileImg,
       servicesData: safeData.servicesData || [],
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
@@ -140,9 +151,7 @@ Message: ${formData.message}`;
       colors: safeData.colors,
       AboutContent: safeData.AboutContent || "",
       package: safeData.package,
-      profileImage:
-        safeData.profileImage ||
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
+      profileImg: safeData.profileImg,
       tabs: safeData.tabs || [],
       testimonials: safeData.testimonials || {
         heading: "",
@@ -341,7 +350,7 @@ Message: ${formData.message}`;
                 flexShrink: 0
               }}>
                 <img
-                  src={profile.profileImage}
+                  src={profile.profileImg}
                   alt={profile.name}
                   style={{
                     width: "100%",
@@ -381,7 +390,7 @@ Message: ${formData.message}`;
                       className='d-flex align-items-center justify-content-center'
                       style={{
                         background: darkMode ? profile.colors.black : profile.colors.Secondery,
-                        color: darkMode ? profile.colors.Primery:profile.colors.Primery,
+                        color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                         // border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                         width: "37px",
                         height: "37px",
@@ -417,7 +426,7 @@ Message: ${formData.message}`;
                 {profile.AboutContent}
               </p>
             </div>
-
+{(profile.package === "regular" || profile.package === "premium") && (
             <div>
               <Row className='text-center g-3' >
                 {profile.HospitalData.map((item, index) => (
@@ -447,6 +456,7 @@ Message: ${formData.message}`;
 
 
             </div>
+)}
 
 
 
@@ -482,7 +492,7 @@ Message: ${formData.message}`;
             </style>
             <div>
               {/* to show premium cardc data and grid services */}
-              {checkUserPackage("premium") && (
+              {(profile.package === "regular" || profile.package === "premium") && (
                 <div>
                   {profile.tabs?.length > 0 && (
                     <Container style={{ padding: 0 }}>
@@ -771,7 +781,7 @@ Message: ${formData.message}`;
               )}
 
               {/* to show regular & basic services */}
-              {(profile.package === "regular" || profile.package === "basic") && (
+              {(profile.package === "basic") && (
                 <div className='d-flex flex-column gap-2'>
                   <h4
                     style={{
@@ -833,7 +843,228 @@ Message: ${formData.message}`;
 
 
 
-            {(profile.package === "regular" || profile.package === "premium") && (
+      
+            {/* Inquiry div (form) */}
+            <style>
+              {`
+textarea::placeholder {
+  color: #6c757d;
+}
+
+.dark-placeholder::placeholder {
+  color: #9CA3AF;
+}
+
+.date-time-input::-webkit-datetime-edit {
+  color: #888;
+}
+
+.date-time-input.dark::-webkit-datetime-edit {
+  color: #fff;
+}
+
+.date-time-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.date-time-input.dark::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.date-time-wrapper{
+  position: relative;
+}
+
+.date-time-input{
+  width: 100%;
+  padding: 11px 35px 11px 12px;
+  cursor:pointer;
+}
+
+/* Hide default icons */
+.date-time-input::-webkit-calendar-picker-indicator{
+  opacity:0;
+  position:absolute;
+  right:10px;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+}
+
+/* Custom icon */
+.custom-icon{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+  font-size:16px;
+}
+`}
+            </style>
+
+
+            {(profile.package === "premium") && (
+              <div className='d-flex flex-column gap-2'>
+                <h4 style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  lineHeight: "27px",
+                  color: darkMode ? profile.colors.white : profile.colors.black,
+                }}>Make an Appointment</h4>
+                <div>
+                  <form
+                    onSubmit={sendMessage}
+                    style={{
+                      padding: "0px",
+
+                    }}
+                  >
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
+                        type="text"
+                        name="name"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        placeholder="Enter your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <input
+                        type="tel"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
+
+                        type="email"
+                        name="email"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        placeholder="Email Address"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ margin: "0 0 13px", position:"relative" }}>
+                      <input
+                        type="time"
+                        name="time"
+                        className={`form-control date-time-input ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        value={formData.time}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px",
+                          fontSize: "12px"
+                        }}
+                      />
+                      <div className='custom-icon' style={{color: darkMode ? profile.colors.white : profile.colors.black,}}>
+                      <Clock4 size={15}/>
+                      </div>
+                    </div>
+                    <div style={{ margin: "0 0 13px", position:"relative" }}>
+                      <input
+                        type="date"
+                        name="date"
+                        className={`form-control date-time-input ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        value={formData.date}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px",
+                          fontSize: "12px"
+                        }}
+                      />
+                      <div className='custom-icon' style={{color: darkMode ? profile.colors.white : profile.colors.black,}}>
+                      <CalendarCheck size={15}/>
+                      </div>
+                    </div>
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <textarea
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        name="message"
+                        rows="4"
+                        placeholder="Write your message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          padding: "11px 12px",
+                          fontSize: "12px",
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                        }}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <button
+                        type="submit"
+                        className="btn  w-50"
+                        style={{
+                          fontWeight: "600",
+                          padding: "10px",
+                          color: profile.colors.white,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          margin: "0 auto",
+                          fontSize: "13px"
+                        }}
+                      >
+                        Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+
+            )}
+
+
+
+
+
+                  {(profile.package === "regular" || profile.package === "premium") && (
               <section className='d-flex flex-column gap-2'>
 
                 <div className="d-flex justify-content-between align-items-center">
@@ -950,127 +1181,6 @@ Message: ${formData.message}`;
               </section>
             )}
 
-            {/* Inquiry div (form) */}
-            <style>
-              {`
-textarea::placeholder {
-  color: #6c757d;
-}
-
-.dark-placeholder::placeholder {
-  color: #9CA3AF;
-}
-`}
-            </style>
-            {(profile.package === "regular" || profile.package === "premium") && (
-              <div className='d-flex flex-column gap-2'>
-                <h4 style={{
-                  fontSize: "18px",
-                  fontWeight: 600,
-                  lineHeight: "27px",
-                  color: darkMode ? profile.colors.white : profile.colors.black,
-                }}>Inquiries</h4>
-                <div>
-                  <form
-                    onSubmit={sendMessage}
-                    style={{
-                      padding: "0px",
-
-                    }}
-                  >
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <input
-                        type="text"
-                        name="name"
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                          padding: "11px 12px", fontSize: "12px"
-                        }}
-                      />
-                    </div>
-
-                    {/* <div className="mb-3">
-                  <input
-                    type="tel"
-                    className="form-control"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    style={{ border: "1px solid #DEE2E6", backgroundColor: "#F1F3F5", padding: "11px 12px", fontSize: "12px" }}
-                  />
-                </div> */}
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <input
-
-                        type="email"
-                        name="email"
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                          padding: "11px 12px", fontSize: "12px"
-                        }}
-                      />
-                    </div>
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <textarea
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
-                        name="message"
-                        rows="4"
-                        placeholder="Write your message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          padding: "11px 12px",
-                          fontSize: "12px",
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                        }}
-                      />
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                      <button
-                        type="submit"
-                        className="btn  w-50"
-                        style={{
-                          fontWeight: "600",
-                          padding: "10px",
-                          color: profile.colors.white,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          margin: "0 auto",
-                          fontSize: "13px"
-                        }}
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-
-              </div>
-
-
-            )}
 
             {/* Contact me */}
             <ContactSection
@@ -1079,22 +1189,27 @@ textarea::placeholder {
             />
 
             {/* map div */}
-            {checkUserPackage("premium") && (
-              <div>
-                {profile.map?.value && (
-                  <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
-                    <div className="ratio ratio-16x9">
-                      <iframe
-                        src={profile.map.value}
-                        style={{ border: "0" }}
-                        loading="lazy"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
+          {(profile.package === "premium" ||
+  profile.package === "regular" ||
+  profile.package === "basic") && (
+  <div>
+    {profile.map?.value && (
+      <div
+        className="container p-0"
+        style={{ borderRadius: "6px", overflow: "hidden" }}
+      >
+        <div className="ratio ratio-16x9">
+          <iframe
+            src={profile.map.value}
+            style={{ border: "0" }}
+            loading="lazy"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    )}
+  </div>
+)}
           </div>
 
           {/* bottom sticky buttons group */}
