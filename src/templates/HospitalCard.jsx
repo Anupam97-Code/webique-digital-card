@@ -7,7 +7,7 @@ import FuterIcnTwo from "../../public/images/footer-share.svg";
 import FuterIcnThr from "../../public/images/footer-adduser.svg";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Tabs, Tab, Container, Carousel } from "react-bootstrap";
+import { Tabs, Tab, Container, Carousel, Row, Col } from "react-bootstrap";
 import {
   IndianRupee,
   Phone,
@@ -31,11 +31,13 @@ import {
   Download,
   Send,
   Smartphone,
-  Youtube
+  Youtube,
+  Clock4,
+  CalendarCheck
 
 
 } from "lucide-react";
-import { link, span } from 'framer-motion/client';
+import { link } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 
@@ -58,7 +60,7 @@ const iconMap = {
   Youtube
 };
 
-const Premium1 = ({ data, openQR, saveContact, openUPI }) => {
+const HospitalCard = ({ data, openQR, saveContact, openUPI }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const [activeTab, setActiveTab] = useState("");
@@ -68,7 +70,10 @@ const Premium1 = ({ data, openQR, saveContact, openUPI }) => {
 
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
+    date: "",
+    time: "",
     message: ""
   });
 
@@ -83,9 +88,13 @@ const Premium1 = ({ data, openQR, saveContact, openUPI }) => {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    const text = `Hello,
+    const text = `Hello Doctor,
+I would like to book an appointment.,
 Name: ${formData.name}
+Phone: ${formData.phone}
 Email: ${formData.email}
+Date: ${formData.date}
+Time: ${formData.time}
 Message: ${formData.message}`;
 
     const whatsappURL = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(
@@ -97,7 +106,10 @@ Message: ${formData.message}`;
     // clear form
     setFormData({
       name: "",
+      phone: "",
       email: "",
+      date: "",
+      time: "",
       message: ""
     });
   };
@@ -127,13 +139,13 @@ Message: ${formData.message}`;
     () => ({
       name: safeData.name || "Marcus Whitlow",
       whatsapp: safeData.whatsapp || "+91 919860188007",
-      title: safeData.title,
-      designation: safeData.designation,
-      company: safeData.company,
+      title: safeData.title || "CEO & Founder",
+      company: safeData.company || "Quantix",
       contactData: safeData.contactData || [],
       openingHours: safeData.openingHours,
       headerBgImage: safeData.headerBgImage,
-      profileImg: safeData.profileImg || "",
+      HospitalData: safeData.HospitalData || [],
+      profileImg: safeData.profileImg,
       servicesData: safeData.servicesData || [],
       link: safeData.link || [],
       AboutMe: safeData.AboutMe || "",
@@ -141,9 +153,7 @@ Message: ${formData.message}`;
       colors: safeData.colors,
       AboutContent: safeData.AboutContent || "",
       package: safeData.package,
-      profileImage:
-        safeData.profileImage ||
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
+      profileImg: safeData.profileImg,
       tabs: safeData.tabs || [],
       testimonials: safeData.testimonials || {
         heading: "",
@@ -227,6 +237,12 @@ Message: ${formData.message}`;
       );
     }
   };
+
+
+
+
+
+  //================= make for contact data 
 
   return (
     <div style={{}}>
@@ -336,7 +352,7 @@ Message: ${formData.message}`;
                 flexShrink: 0
               }}>
                 <img
-                  src={profile.profileImage}
+                  src={profile.profileImg}
                   alt={profile.name}
                   style={{
                     width: "100%",
@@ -360,12 +376,6 @@ Message: ${formData.message}`;
 
                 <p style={{ color: darkMode ? profile.colors.white : profile.colors.black }}>
                   {profile.title}
-
-                  {profile.title !== "" && profile.designation && (
-                    <span> / </span>
-                  )}
-
-                  {profile.designation}
                 </p>
               </div>
             </div>
@@ -382,7 +392,7 @@ Message: ${formData.message}`;
                       className='d-flex align-items-center justify-content-center'
                       style={{
                         background: darkMode ? profile.colors.black : profile.colors.Secondery,
-                        color: darkMode ? profile.colors.white : profile.colors.primary,
+                        color: darkMode ? profile.colors.Primery : profile.colors.Primery,
                         // border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                         width: "37px",
                         height: "37px",
@@ -418,6 +428,42 @@ Message: ${formData.message}`;
                 {profile.AboutContent}
               </p>
             </div>
+            {(profile.package === "regular" || profile.package === "premium") && (
+              <div>
+                <Row className='text-center g-3' >
+                  {profile.HospitalData.map((item, index) => (
+
+                    <Col xs={6}>
+                      <div style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        borderRadius: "6px", padding: "15px", minHeight: "92px",
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
+                      }}>
+                        <h2 style={{
+                          fontSize: "30px", fontWeight: "600",
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                        }}>{item.Htitle}</h2>
+                        <p className='m-0'
+                          style={{
+                            fontSize: "12px",
+                            lineHeight: '100%',
+                            color: darkMode ? profile.colors.white : profile.colors.black,
+                          }}>{item.Hcontent}</p>
+                      </div>
+                    </Col>
+
+
+                  ))}
+                </Row>
+
+
+              </div>
+            )}
+
+
+
+
+
 
             {/* tabs */}
             <style>
@@ -448,7 +494,7 @@ Message: ${formData.message}`;
             </style>
             <div>
               {/* to show premium cardc data and grid services */}
-              {checkUserPackage("premium") && (
+              {(profile.package === "regular" || profile.package === "premium") && (
                 <div>
                   {profile.tabs?.length > 0 && (
                     <Container style={{ padding: 0 }}>
@@ -552,7 +598,7 @@ Message: ${formData.message}`;
                                   ))}
                                 </div>
                               )}
-                              {(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
+                              {(tab.tabName === "Gallery") && (
                                 <div
                                   style={{
                                     display: "grid",
@@ -578,12 +624,13 @@ Message: ${formData.message}`;
                                         style={{
                                           width: "100%",
                                           height: "150px",
-                                          objectFit: "cover"
+                                          objectFit: "cover",
+
                                         }}
                                       />
 
                                       {/* Gradient overlay */}
-                                      {tab.tabName === "Portfolio" && (
+                                      {tab.tabName === "Doctors" && (
                                         <div
                                           style={{
                                             position: "absolute",
@@ -597,44 +644,135 @@ Message: ${formData.message}`;
                                         />
                                       )}
 
-                                      <p
-                                        style={
-                                          tab.tabName === "Portfolio"
-                                            ? {
-                                              margin: 0,
-                                              padding: 0,
-                                              fontSize: "13px",
-                                              textAlign: "center",
-                                              position: "absolute",
-                                              color: profile.colors.white,
-                                              lineHeight: "100%",
-                                              left: "11px",
-                                              bottom: "20px",
-                                              fontWeight: 500
-                                            }
-                                            : tab.tabName === "Gallery"
-                                              ? {
-                                                position: "absolute",
-                                                bottom: "10px",
-                                                left: 0,
-                                                width: "100%",
-                                                color: profile.colors.white,
-                                                fontSize: "12px",
-                                                textAlign: "center",
-                                                margin: 0,
-                                                opacity: 0,
-                                                transition: "opacity 0.3s"
-                                              }
-                                              : {}
-                                        }
-                                        className={tab.tabName === "Gallery" ? "gallery-hover-text" : ""}
-                                      >
-                                        {item.altTab}
-                                      </p>
+
                                     </div>
                                   ))}
                                 </div>
                               )}
+
+                              <style>
+                                {`
+
+
+@media (max-width:320px){
+  .doctor-specialization{
+    padding:0px; display:block !important;
+     color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+  }
+}
+`}
+                              </style>
+                              {tab.tabName === "Doctors" && (
+                                <div className="d-flex flex-column gap-3">
+                                  {tab.items?.map((item, index) => (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        borderRadius: "6px",
+                                        border: `1px solid ${darkMode ? profile.colors.darkBorder : "#dee2e6"}`,
+                                        background: darkMode
+                                          ? profile.colors.darkFields
+                                          : profile.colors.whiteFields,
+                                        padding: "12px"
+                                      }}
+                                    >
+                                      {/* Top Row (Image + Name + Degree) */}
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          gap: "10px",
+                                          alignItems: "center",
+                                          marginBottom: "10px"
+                                        }}
+                                      >
+                                        <img
+                                          src={item.image}
+                                          alt={item.name}
+                                          style={{
+                                            width: "56px",
+                                            height: "56px",
+                                            objectFit: "cover",
+                                            borderRadius: "6px"
+                                          }}
+                                        />
+
+                                        <div>
+                                          <p
+                                            style={{
+                                              margin: 0,
+                                              fontSize: "14px",
+                                              fontWeight: "600",
+                                              color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+                                            }}
+                                          >
+                                            {item.name}
+                                          </p>
+
+                                          <p
+                                            style={{
+                                              margin: 0,
+                                              fontSize: "12px",
+                                              color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+                                            }}
+                                          >
+                                            {item.degree}
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      {/* Specializations */}
+                                      <p
+                                        style={{
+                                          margin: "0 0 6px",
+                                          fontSize: "14px",
+                                          fontWeight: "600",
+                                          color: darkMode
+                                            ? profile.colors.white
+                                            : profile.colors.black
+                                        }}
+                                      >
+                                        Specializations
+                                      </p>
+
+                                      {/* 2 Column Specializations */}
+                                      <ul className='doctor-specialization'
+                                        style={{
+                                          display: "grid",
+                                          gridTemplateColumns: "1fr 1fr",
+                                          gap: "4px",
+                                          fontSize: "12px",
+                                          color: darkMode
+                                            ? profile.colors.white
+                                            : profile.colors.black
+                                        }}
+                                      >
+
+                                        {item.specializations?.map((spec, i) => (
+                                          <li key={i} style={{
+                                            fontSize: "12px",
+                                            color: darkMode
+                                              ? profile.colors.white
+                                              : profile.colors.black
+                                          }}>•  {spec}</li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+
+
+
+
+
+
+
                             </div>
                           </Tab>
                         ))}
@@ -645,7 +783,7 @@ Message: ${formData.message}`;
               )}
 
               {/* to show regular & basic services */}
-              {(profile.package === "regular" || profile.package === "basic") && (
+              {(profile.package === "basic") && (
                 <div className='d-flex flex-column gap-2'>
                   <h4
                     style={{
@@ -704,6 +842,261 @@ Message: ${formData.message}`;
 .swiper-pagination{position:relative; margin-top:10px;}
 `}
             </style>
+
+
+
+
+            {/* Inquiry div (form) */}
+            <style>
+              {`
+/* Fix Chrome autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px transparent inset;
+}
+
+/* Dark mode fix */
+.dark-placeholder:-webkit-autofill{
+  -webkit-text-fill-color: white;
+  box-shadow: 0 0 0px 1000px #1a1a1a inset;
+}
+
+textarea::placeholder {
+  color: #6c757d;
+}
+
+.dark-placeholder::placeholder {
+  color: #9CA3AF;
+}
+
+.date-time-input::-webkit-datetime-edit {
+  color: #888;
+}
+
+.date-time-input.dark::-webkit-datetime-edit {
+  color: #fff;
+}
+
+.date-time-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.date-time-input.dark::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.date-time-wrapper{
+  position: relative;
+}
+
+.date-time-input{
+  width: 100%;
+  padding: 11px 35px 11px 12px;
+  cursor:pointer;
+}
+
+/* Hide default icons */
+.date-time-input::-webkit-calendar-picker-indicator{
+  opacity:0;
+  position:absolute;
+  right:10px;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+}
+
+/* Custom icon */
+.custom-icon{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+  font-size:16px;
+}
+
+/* Force date text color */
+.date-time-input::-webkit-datetime-edit {
+  color: inherit;
+}
+
+/* Fix faint selected date text */
+.date-time-input::-webkit-datetime-edit-text,
+.date-time-input::-webkit-datetime-edit-month-field,
+.date-time-input::-webkit-datetime-edit-day-field,
+.date-time-input::-webkit-datetime-edit-year-field {
+  color: inherit;
+}
+
+/* Cursor pointer for better UX */
+.date-time-input{
+  cursor:pointer;
+}
+`}
+            </style>
+
+
+            {(profile.package === "premium") && (
+              <div className='d-flex flex-column gap-2'>
+                <h4 style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  lineHeight: "27px",
+                  color: darkMode ? profile.colors.white : profile.colors.black,
+                }}>Make an Appointment</h4>
+                <div>
+                  <form
+                    onSubmit={sendMessage}
+                    style={{
+                      padding: "0px",
+
+                    }}
+                  >
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
+                        type="text"
+                        name="name"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        placeholder="Enter your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <input
+                        type="tel"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <input
+
+                        type="email"
+                        name="email"
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
+                        placeholder="Email Address"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px", fontSize: "12px"
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ margin: "0 0 13px", position: "relative" }}>
+                      <input
+                        type="time"
+                        name="time"
+                        className={`form-control date-time-input ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        value={formData.time}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px",
+                          fontSize: "12px"
+                        }}
+                      />
+                      <div className='custom-icon' style={{ color: darkMode ? profile.colors.white : profile.colors.black, }}>
+                        <Clock4 size={15} />
+                      </div>
+                    </div>
+                    <div style={{ margin: "0 0 13px", position: "relative" }}>
+                      <input
+                        type="date"
+                        name="date"
+                        className={`form-control date-time-input ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        value={formData.date}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                          padding: "11px 12px",
+                          fontSize: "12px"
+                        }}
+                      />
+                      <div className='custom-icon' style={{ color: darkMode ? profile.colors.white : profile.colors.black, }}>
+                        <CalendarCheck size={15} />
+                      </div>
+                    </div>
+
+                    <div style={{ margin: "0 0 13px" }}>
+                      <textarea
+                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
+                        name="message"
+                        rows="4"
+                        placeholder="Write your message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          padding: "11px 12px",
+                          fontSize: "12px",
+                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                        }}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <button
+                        type="submit"
+                        className="btn  w-50"
+                        style={{
+                          fontWeight: "600",
+                          padding: "10px",
+                          color: profile.colors.white,
+                          background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
+                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                          margin: "0 auto",
+                          fontSize: "13px"
+                        }}
+                      >
+                        Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+
+            )}
+
+
 
 
 
@@ -824,127 +1217,6 @@ Message: ${formData.message}`;
               </section>
             )}
 
-            {/* Inquiry div (form) */}
-            <style>
-              {`
-textarea::placeholder {
-  color: #6c757d;
-}
-
-.dark-placeholder::placeholder {
-  color: #9CA3AF;
-}
-`}
-            </style>
-            {(profile.package === "regular" || profile.package === "premium") && (
-              <div className='d-flex flex-column gap-2'>
-                <h4 style={{
-                  fontSize: "18px",
-                  fontWeight: 600,
-                  lineHeight: "27px",
-                  color: darkMode ? profile.colors.white : profile.colors.black,
-                }}>Inquiries</h4>
-                <div>
-                  <form
-                    onSubmit={sendMessage}
-                    style={{
-                      padding: "0px",
-
-                    }}
-                  >
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <input
-                        type="text"
-                        name="name"
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                          padding: "11px 12px", fontSize: "12px"
-                        }}
-                      />
-                    </div>
-
-                    {/* <div className="mb-3">
-                  <input
-                    type="tel"
-                    className="form-control"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    style={{ border: "1px solid #DEE2E6", backgroundColor: "#F1F3F5", padding: "11px 12px", fontSize: "12px" }}
-                  />
-                </div> */}
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <input
-
-                        type="email"
-                        name="email"
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.black}`}
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                          padding: "11px 12px", fontSize: "12px"
-                        }}
-                      />
-                    </div>
-
-                    <div style={{ margin: "0 0 13px" }}>
-                      <textarea
-                        className={`form-control ${darkMode ? "dark-placeholder" : profile.colors.dark}`}
-                        name="message"
-                        rows="4"
-                        placeholder="Write your message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        style={{
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          padding: "11px 12px",
-                          fontSize: "12px",
-                          background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields,
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                        }}
-                      />
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                      <button
-                        type="submit"
-                        className="btn  w-50"
-                        style={{
-                          fontWeight: "600",
-                          padding: "10px",
-                          color: profile.colors.white,
-                          background: darkMode ? profile.colors.darkFields : profile.colors.Primery,
-                          border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                          margin: "0 auto",
-                          fontSize: "13px"
-                        }}
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-
-              </div>
-
-
-            )}
 
             {/* Contact me */}
             <ContactSection
@@ -953,22 +1225,27 @@ textarea::placeholder {
             />
 
             {/* map div */}
-            {checkUserPackage("premium") && (
-              <div>
-                {profile.map?.value && (
-                  <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
-                    <div className="ratio ratio-16x9">
-                      <iframe
-                        src={profile.map.value}
-                        style={{ border: "0" }}
-                        loading="lazy"
-                        allowFullScreen
-                      ></iframe>
+            {(profile.package === "premium" ||
+              profile.package === "regular" ||
+              profile.package === "basic") && (
+                <div>
+                  {profile.map?.value && (
+                    <div
+                      className="container p-0"
+                      style={{ borderRadius: "6px", overflow: "hidden" }}
+                    >
+                      <div className="ratio ratio-16x9">
+                        <iframe
+                          src={profile.map.value}
+                          style={{ border: "0" }}
+                          loading="lazy"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            )}
+                  )}
+                </div>
+              )}
           </div>
 
           {/* bottom sticky buttons group */}
@@ -986,4 +1263,4 @@ textarea::placeholder {
   )
 }
 
-export default Premium1;
+export default HospitalCard;

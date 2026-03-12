@@ -28,8 +28,6 @@ import imgTen from "../assets/images/mockup-20.png";
 
 import { BlurText } from "./shared/TextAnimation";
 
-
-
 const webImages = [
   {
     src: imgFive,
@@ -49,7 +47,7 @@ const webImages = [
   {
     src: imgTen,
     alt: "Web development dashboard",
-    link: ""
+    link: "https://webiquecard.in/hospital"
   },
   {
     src: imgFour,
@@ -74,7 +72,7 @@ const webImages = [
   {
     src: imgNine,
     alt: "Mobile app interface",
-    link: ""
+    link: "https://webiquecard.in/hospital"
   },
   {
     src: imgFive,
@@ -84,7 +82,7 @@ const webImages = [
   {
     src: imgTen,
     alt: "Digital branding concept",
-    link: ""
+    link: "https://webiquecard.in/hospital"
   },
   {
     src: imgOne,
@@ -99,7 +97,7 @@ const webImages = [
   {
     src: imgTen,
     alt: "Web development dashboard",
-    link: ""
+    link: "https://webiquecard.in/hospital"
   },
   {
     src: imgFour,

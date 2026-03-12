@@ -376,7 +376,7 @@ const DigitalIDcard = ({ data, openQR, saveContact, openUPI }) => {
                                 }}
                             >
                                 <a
-                                    href={profile.visitingLink}
+                                    href={`https://${profile.visitingLink}`}
                                     target="_blank"
                                     className="text-decoration-none"
                                     style={{

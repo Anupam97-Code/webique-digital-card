@@ -7,8 +7,8 @@
     "ownerName": "",
     "designation": "",
     "payment": {
-        "upi_id": "restraurent@upi",
-        "qr_image": ""
+        "upi_id": "buzzCafe@upi",
+        "qr_image": "/images/user-profile.webp"
     },
     "socialLinks": [
         {

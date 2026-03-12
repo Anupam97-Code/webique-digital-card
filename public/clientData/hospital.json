@@ -1,15 +1,15 @@
 {
   "name": "Anupam Shimpi",
   "title": "Forntend Developer",
-  "headerBgImage": "/images/profile-backgrd.webp",
-  "profileI ": "https://www.webiquecard.in/dgcard-img/panchkrushna/user.webp",
+  "headerBgImage": "/images/hospital-background.webp",
+  "profileImg": "/images/hospital-logo.webp",
   "company": "Webique Technology",
   "phone": "+919860188007",
   "email": "anupam@example.com",
   "address": "Mumbai, Maharashtra, India",
   "payment": {
-    "upi_id": "anupam@upi",
-    "qr_image": "https://www.webiquecard.in/dgcard-img/panchkrushna/user.webp"
+    "upi_id": "hospital@upi",
+    "qr_image": "/images/hospital-logo.webp"
   },
   "map": {
     "type": "map",
@@ -22,11 +22,29 @@
   "instagram": "https://instagram.com/marcus",
   "whatsapp": "919767724425",
   "package": "premium",
-  "template": "Premium1",
+  "template": "HospitalCard",
   "primaryColor": "#000000",
   "SecondaryColor": "#000000",
   "AboutMe": "About Me",
-  "AboutContent": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
+  "AboutContent": "Sunrise Multispeciality Hospital is dedicated to providing high-quality healthcare services with modern medical technology and experienced doctors. Our goal is to deliver compassionate care for every patient.",
+  "HospitalData": [
+    {
+      "Htitle": "10+",
+      "Hcontent": "Years Of Expireance "
+    },
+    {
+      "Htitle": "25+",
+      "Hcontent": "Beds"
+    },
+    {
+      "Htitle": "10+",
+      "Hcontent": "Doctors visit"
+    },
+    {
+      "Htitle": "1000+",
+      "Hcontent": "Patients Treated"
+    }
+  ],
   "link": [
     {
       "name": "Dribbble",
@@ -121,51 +139,40 @@
       ]
     },
     {
-      "tabName": "Portfolio",
+      "tabName": "Doctors",
       "items": [
         {
           "image": "/images/placeholder-img.webp",
-          "altTab": "Logo Design"
+          "name": "Dr. Neha Sharma",
+          "degree": "MBBS – General Physician",
+          "specializations": [
+            "General Consultation",
+            "Diabetes Care",
+            "Blood Pressure",
+            "Preventive Healthcare"
+          ]
         },
         {
           "image": "/images/placeholder-img.webp",
-          "altTab": "UI/UX design"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "Wireframes"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "Banner Design"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "Illustrations"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "Photoshop Design"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "Figma Mockups"
-        },
-        {
-          "image": "/images/placeholder-img.webp",
-          "altTab": "App Design"
+          "name": "Dr. Amit Verma",
+          "degree": "MD – Cardiologist",
+          "specializations": [
+            "Heart Checkup",
+            "ECG",
+            "Hypertension",
+            "Cardiac Consultation"
+          ]
         }
       ]
     }
   ],
   "servicesData": [
-    "Electrical Wiring & Installation",
-    "Electrical Repair",
-    "CCTV Camera Installation",
-    "Maintenance",
-    "Lighting Solutions",
-    "Security System Setup",
-    "Inverter & Battery Installation"
+    "Emergency Care",
+    "Pediatrics",
+    "Maternity Care",
+    "Diagnostic",
+    "Orthopedic Care",
+    "Orthopedic Care"
   ],
   "testimonials": {
     "heading": "Testimonials",
@@ -235,8 +242,8 @@
   },
   "colors": {
     "GredientOne": "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
-    "Primery": "#1680FB",
-    "Secondery": "#00D4FF26",
+    "Primery": "#00BF63",
+    "Secondery": "#00BF6326",
     "trinery": "#BEBEBE33",
     "servBack": "#ebebeb",
     "white": "#fff",
@@ -256,7 +263,7 @@
     "iconBakcgorundDark": "#0f172a",
     "iconBakcgroundWhite": "#DCECFE",
     "bdyColor": "#1d2537",
-    "tabBackground": "#1680FB26",
+    "tabBackground": "#00BF6326",
     "deactiveTabs": "#FFFFFF26",
     "decativeWhite": "#9a999926"
   },
@@ -264,10 +271,7 @@
     "phone_Number": [
       "+919860188007"
     ],
-    "mail": [
-      "contactAnupam@gmail.com",
-      "contact2Anupam@gmail.com"
-    ],
+    "mail": "contact@gmail.com",
     "restaurant_Number": "+917894561230",
     "location": {
       "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
