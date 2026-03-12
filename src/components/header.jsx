@@ -44,7 +44,7 @@ const webImages = [
   {
     src: imgTwo,
     alt: "Creative UI UX design",
-    link: "https://webiquecard.in/panchaKrushna"
+    link: "https://webiquecard.in/panchakrushna"
   },
   {
     src: imgTen,
@@ -94,7 +94,7 @@ const webImages = [
   {
     src: imgTwo,
     alt: "Creative UI UX design",
-    link: "https://webiquecard.in/panchaKrushna"
+    link: "https://webiquecard.in/panchakrushna"
   },
   {
     src: imgTen,

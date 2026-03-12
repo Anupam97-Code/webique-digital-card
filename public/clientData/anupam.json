@@ -16,7 +16,7 @@
   "facebook": "https://facebook.com/anupam",
   "linkedin": "https://linkedin.com/in/anupam",
   "instagram": "https://instagram.com/marcus",
-  "whatsapp": "919860188007",
+  "whatsapp": "919767724425",
   "package": "premium",
   "template": "Premium1",
   "primaryColor": "#000000",
@@ -230,7 +230,7 @@
     ]
   },
   "colors": {
-    "GredientOne":"linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+    "GredientOne": "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
     "Primery": "#1680FB",
     "Secondery": "#00D4FF26",
     "trinery": "#BEBEBE33",
@@ -252,20 +252,22 @@
     "iconBakcgorundDark": "#0f172a",
     "iconBakcgroundWhite": "#DCECFE",
     "bdyColor": "#1d2537",
-    "tabBackground":"#1680FB26",
-    "deactiveTabs":"#FFFFFF26",
-    "decativeWhite":"#9a999926"
-
-
-
+    "tabBackground": "#1680FB26",
+    "deactiveTabs": "#FFFFFF26",
+    "decativeWhite": "#9a999926"
   },
   "contactData": {
-    "phone_Number": "+919876543210",
-    "mail": "contact@gmail.com",
+    "phone_Number": [
+      "+919860188007"
+    ],
+    "mail": [
+      "contactAnupam@gmail.com",
+      "contact2Anupam@gmail.com"
+    ],
     "restaurant_Number": "+917894561230",
     "location": {
       "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
-      "link": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167"
+      "link": "https://www.google.com/maps/place/Webique+technology"
     }
   },
   "openingHours": [

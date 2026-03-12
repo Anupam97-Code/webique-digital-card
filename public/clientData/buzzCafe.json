@@ -58,8 +58,14 @@
         }
     ],
     "contactData": {
-        "phone_Number": "+918795462310",
-        "mail": "buzzCafe@gmail.com",
+        "phone_Number": [
+            "+918795462310",
+            "+919763771751"
+        ],
+        "mail": [
+            "buzzCafe@gmail.com",
+            "cafeBuzz@gmail.com"
+        ],
         "restaurant_Number": "+918795462310",
         "location": {
             "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
@@ -119,7 +125,7 @@
     "darkModeImage": "/images/user-profile.webp",
     "company": "Webique Technology",
     "email": "contact@webique.in",
-    "whatsapp": "919860188007",
+    "whatsapp": "919767724426",
     "package": "basic",
     "template": "RestraurentCard"
 }

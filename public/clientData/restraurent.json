@@ -1,6 +1,6 @@
 {
     "headerBgImage": "/images/restaurant.dc-head-img.webp",
-    "headerBgImagePosition":"center",
+    "headerBgImagePosition": "center",
     "profileImage": "/images/reastaurant-logo.webp",
     "name": "Rameshwer Cafe",
     "title": "Shouth indian food",
@@ -252,8 +252,14 @@
         }
     ],
     "contactData": {
-        "phone_Number": "+919876543210",
-        "mail": "contact@gmail.com",
+        "phone_Number": [
+            "+918795462310",
+            "+919876543210"
+        ],
+        "mail": [
+            "restraurent@gmail.com",
+            "restraurent2@gmail.com"
+        ],
         "restaurant_Number": "+917894561230",
         "location": {
             "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",

@@ -15,6 +15,8 @@ import {
 import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
 import { Carousel, Col, Row } from "react-bootstrap";
+import ContactSection from "./components/ContactSection";
+import StickyFooter from "./components/StickyFooter";
 
 
 /* ======================================================
@@ -49,7 +51,9 @@ Phone: ${formData.phone}
 Email: ${formData.email}
 Message: ${formData.message}`;
 
-        const whatsappURL = `https://wa.me/${profile.contactData.phone_Number}?text=${encodeURIComponent(text)}`;
+        const phone = profile?.contactData?.phone_Number?.[0] || "";
+
+        const whatsappURL = `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
 
         window.open(whatsappURL, "_blank");
 
@@ -359,49 +363,6 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
 
     const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
     // const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
-    // make for contact data 
-    const ActionItem = ({ icon, title, subtitle, href }) => {
-        const isExternal = href.startsWith("http");
-        return (
-            <a
-                href={href}
-                target={isExternal ? "_blank" : "_self"}
-                rel={isExternal ? "noopener noreferrer" : ""}
-                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-                style={{
-                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                    color: darkMode ? profile.colors.white : profile.colors.black,
-                    borderRadius: "4px"
-                }}
-            >
-                <div className="d-flex gap-3">
-                    <div
-                        className="d-flex align-items-center justify-content-center rounded-3"
-                        style={{
-                            width: "42px",
-                            height: "42px",
-                            background: darkMode ? profile.colors.dark : profile.colors.white,
-                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                            flexShrink: "0",
-                        }}
-                    >
-                        {icon}
-                    </div>
-                    <div
-                    // style={{ width: isMobile ? "190px" : "276px" }}
-                    >
-                        <div className="fw-semibold">{title}</div>
-                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
-                    </div>
-                </div>
-                <div className="flex-shrink-0">
-                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-                </div>
-            </a>
-        )
-    }
-    //================= make for contact data 
 
     // Gallery slider component
     const GallerySlider = ({ slideData }) => {
@@ -844,88 +805,10 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                     )}
 
                     {/* contact section */}
-                    <div className="w-100">
-                        <h5 className="mt-4 fw-bold"
-                            style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
-                            }}
-                        >Contact me</h5>
-                        <div className="d-flex flex-column gap-3">
-                            <ActionItem
-                                icon={<Phone size={18} />}
-                                title="Call Me"
-                                subtitle={profile.contactData.phone_Number}
-                                href={`tel:${profile.contactData.phone_Number}`}
-                            />
-
-                            <ActionItem
-                                icon={<Mail size={18} />}
-                                title="Email"
-                                subtitle={profile.contactData.mail}
-                                href={`mailto:${profile.contactData.mail}`}
-                            />
-                            <ActionItem
-                                icon={<Phone size={18} />}
-                                title="Restaurant Number"
-                                subtitle={profile.contactData.phone_Number}
-                                href={`tel:${profile.contactData.phone_Number}`}
-                            />
-                            <ActionItem
-                                icon={<MapPin size={18} />}
-                                title="Location"
-                                subtitle={profile.contactData.location.address}
-                                href={profile.contactData.location.link}
-                            />
-
-                            {/* opening hours */}
-                            <div
-                                className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
-                                style={{
-                                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                                    color: darkMode ? profile.colors.white : profile.colors.black,
-                                    borderRadius: "4px"
-                                }}
-                            >
-                                <div className="w-100 d-flex align-items-start gap-3">
-                                    <div
-                                        className="d-flex align-items-center justify-content-center rounded-3"
-                                        style={{
-                                            width: "42px",
-                                            height: "42px",
-                                            background: darkMode ? profile.colors.dark : profile.colors.white,
-                                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                                            flexShrink: "0",
-                                        }}
-                                    >
-                                        <Clock />
-                                    </div>
-
-                                    <div
-                                        style={{ width: "224px" }}
-                                    >
-                                        <h6 className="fw-bold mb-2"
-                                            style={{
-                                                color: darkMode ? profile.colors.white : profile.colors.black
-                                            }}
-                                        >Opening Hours</h6>
-                                        {profile.openingHours.map((day, i) => (
-                                            <div key={i} className="d-flex justify-content-between"
-                                                style={{
-                                                    opacity: "0.7",
-                                                    fontSize: "14px",
-                                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                                }}
-                                            >
-                                                <span>{day.dayName}</span>
-                                                <span>{day.ocTime}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ContactSection
+                        profile={profile}
+                        darkMode={darkMode}
+                    />
 
                     {/* map */}
                     <div
@@ -948,81 +831,14 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                 </div>
 
                 {/* Sticky Footer Buttons */}
-                <div
-                    className="position-sticky w-100"
-                    style={{ bottom: "0" }}
-                >
-                    <div className="w-100 p-0 gap-0 d-flex align-items-center justify-content-center">
-                        {/* whatsapp button */}
-                        <div
-                            // xs={4}
-                            className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
-                            style={{
-                                background: profile.colors.stickyLink1,
-                                width: isMobile ? "33.33%" : "33.33%",
-
-                            }}>
-                            <a
-                                href={`https://wa.me/${whatsappNumber}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="d-flex gap-1  align-items-center flex-column justify-content-center text-decoration-none"
-                                style={{
-                                    color: profile.colors.white,
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
-                                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                                </svg>
-                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Whatsapp</p>
-                            </a>
-                        </div>
-                        {/* QR button */}
-                        <div
-                            // xs={4}
-                            className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
-                            style={{
-                                background: profile.colors.stickyLink2,
-                                width: isMobile ? "33.33%" : "33.33%",
-
-                            }}
-                        >
-                            <button
-                                onClick={openQR}
-                                className="d-flex gap-1 align-items-center flex-column justify-content-center border-0"
-                                style={{
-                                    background: profile.colors.stickyLink2,
-                                    color: profile.colors.white,
-                                }}
-                            >
-                                <ScanQrCode size={24} />
-                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Scan QR</p>
-                            </button>
-                        </div>
-                        {/* save contact button */}
-                        <div
-                            // xs={4}
-                            className="p-0 d-flex justify-content-center align-items-center p-2 flex-shrink-0"
-                            style={{
-                                background: profile.colors.stickyLink3,
-                                width: isMobile ? "33.33%" : "33.33%",
-
-                            }}
-                        >
-                            <button
-                                onClick={saveContact}
-                                className="d-flex gap-1 align-items-center flex-column justify-content-center shadow border-0"
-                                style={{
-                                    background: profile.colors.stickyLink3,
-                                    color: profile.colors.white,
-                                }}
-                            >
-                                <Download size={24} />
-                                <p style={{ color: profile.colors.white, fontSize: "12px", lineHeight: "1" }} className="m-0">Save contact</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <StickyFooter
+                    profile={profile}
+                    isMobile={isMobile}
+                    darkMode={darkMode}
+                    whatsappNumber={whatsappNumber}
+                    saveContact={saveContact}
+                    openQR={openQR}
+                />
             </div>
         </div >
     );
