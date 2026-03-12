@@ -19,7 +19,7 @@ import StickyFooter from "./components/StickyFooter";
 import ContactSection from "./components/ContactSection";
 
 
-const DigitalIDcard = ({ data, openQR, saveContact }) => {
+const DigitalIDcard = ({ data, openQR, saveContact, openUPI }) => {
     const [darkMode, setDarkMode] = useState(false);
     const safeData = data || {};
     // make for handle responsive

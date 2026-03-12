@@ -173,10 +173,10 @@ const Header = () => {
           centeredSlides
           loop
           loopAdditionalSlides={4}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           modules={[Autoplay]}
           onInit={(swiper) => {
             swiperRef.current = swiper;

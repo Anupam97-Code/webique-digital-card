@@ -2,15 +2,14 @@ import React, { useMemo, useState, useEffect, memo, useRef, useLayoutEffect } fr
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/digitalCard.scss"
 import {
-    Phone,
-    Mail,
     MapPin,
-    ArrowUpRight,
     Sun,
     Moon,
     ScanQrCode,
-    Clock,
-    Download,
+    X,
+    ChevronLeft,
+    ChevronRight,
+    IndianRupee 
 } from "lucide-react";
 import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
@@ -263,7 +262,166 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
     )
 });
 
-const RestraurentCard = ({ data, saveContact, openQR }) => {
+const GallerySlider = memo(({ slideData }) => {
+
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // split array into groups of 4
+    const chunkArray = (arr, size) => {
+        const result = [];
+        for (let i = 0; i < arr.length; i += size) {
+            result.push(arr.slice(i, i + size));
+        }
+        return result;
+    };
+
+    const slides = chunkArray(slideData, 4);
+
+    const openLightbox = (index) => {
+        setCurrentIndex(index);
+        setLightboxOpen(true);
+    };
+
+    const nextImage = () => {
+        setCurrentIndex((prev) =>
+            prev === slideData.length - 1 ? 0 : prev + 1
+        );
+    };
+
+    const prevImage = () => {
+        setCurrentIndex((prev) =>
+            prev === 0 ? slideData.length - 1 : prev - 1
+        );
+    };
+
+    return (
+        <>
+            {/* gallery slider */}
+            <div
+                className="slider-container d-flex"
+                style={{
+                    overflowX: "auto",
+                    width: "100%",
+                    gap: "16px",
+                    scrollSnapType: "x mandatory"
+                }}
+            >
+                {slides.map((slide, slideIndex) => (
+                    <div
+                        className="slide"
+                        key={slideIndex}
+                        style={{
+                            maxWidth: "100%",
+                            scrollSnapAlign: "start",
+                            flexShrink: 0
+                        }}
+                    >
+                        <Row>
+                            {slide.map((value, index) => {
+                                const realIndex = slideIndex * 4 + index;
+                                // console.log("find active index onClick:", realIndex);
+
+                                return (
+                                    <Col xs={6} key={index} className="mb-3 px-2">
+                                        <img
+                                            src={value.galleryImage}
+                                            alt={value.imageAlt}
+                                            onClick={() => openLightbox(realIndex)}
+                                            style={{
+                                                width: "100%",
+                                                borderRadius: "4px",
+                                                objectFit: "cover",
+                                                cursor: "pointer"
+                                            }}
+                                        />
+                                    </Col>
+                                );
+                            })}
+                        </Row>
+                    </div>
+                ))}
+            </div>
+
+            {/* lightBox */}
+            {lightboxOpen && (
+                <div
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        // opacity:"0.8",
+                        background: "#0000007e",
+                        zIndex: 9999,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}
+                >
+
+                    {/* Close */}
+                    <button
+                        onClick={() => setLightboxOpen(false)}
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            padding: "10px",
+                            borderRadius: "50%",
+                            background: "#000",
+                            border: "none",
+                            color: "#fff"
+                        }}
+                    >
+                        <X size={32} />
+                    </button>
+
+                    {/* Prev */}
+                    <button
+                        onClick={prevImage}
+                        style={{
+                            position: "absolute",
+                            left: 20,
+                            background: "transparent",
+                            border: "none",
+                            color: "#fff"
+                        }}
+                    >
+                        <ChevronLeft size={40} />
+                    </button>
+
+                    {/* onclick index image */}
+                    <img
+                        src={slideData[currentIndex].galleryImage}
+                        alt={slideData[currentIndex].imageAlt}
+                        style={{
+                            maxWidth: "90%",
+                            maxHeight: "90%",
+                            borderRadius: "8px"
+                        }}
+                    />
+
+                    {/* next slide */}
+                    <button
+                        onClick={nextImage}
+                        style={{
+                            position: "absolute",
+                            right: 20,
+                            background: "transparent",
+                            border: "none",
+                            color: "#fff"
+                        }}
+                    >
+                        <ChevronRight size={40} />
+                    </button>
+                </div>
+            )}
+        </>
+    );
+});
+
+
+const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
     const [darkMode, setDarkMode] = useState(false);
     const [activeMenuTab, setActiveMenuTab] = useState(0);
     const safeData = data || {};
@@ -364,63 +522,6 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
     const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
     // const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
-    // Gallery slider component
-    const GallerySlider = ({ slideData }) => {
-        const [sliderRef, setSliderRef] = useState();
-        // console.log(sliderRef);
-
-        // function to split array into chunks of 4
-        const chunkArray = (arr, size) => {
-            const result = [];
-            for (let i = 0; i < arr.length; i += size) {
-                result.push(arr.slice(i, i + size));
-            }
-            return result;
-        };
-
-        const slides = chunkArray(slideData, 4);
-
-        return (
-            <div
-                className="slider-container d-flex"
-                style={{
-                    overflowX: "auto",
-                    width: "100%",
-                    gap: "16px",
-                    scrollSnapType: "x mandatory"
-                }}
-            >
-                {slides.map((slide, slideIndex) => (
-                    <div
-                        className="slide"
-                        key={slideIndex}
-                        style={{
-                            maxWidth: "100%",
-                            scrollSnapAlign: "start",
-                            flexShrink: 0
-                        }}
-                    >
-                        <Row>
-                            {slide.map((value, index) => (
-                                <Col xs={6} key={index} className="mb-3 px-2">
-                                    <img
-                                        src={value.galleryImage}
-                                        alt={value.imageAlt}
-                                        style={{
-                                            width: "100%",
-                                            borderRadius: "4px",
-                                            objectFit: "cover"
-                                        }}
-                                    />
-                                </Col>
-                            ))}
-                        </Row>
-                    </div>
-                ))}
-            </div>
-        );
-    };
-
     return (
         <div
             className="min-vh-100 d-flex align-items-center justify-content-center p-0 p-md-3"
@@ -486,12 +587,13 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                                 background: profile.colors.Primery,
                                 color: profile.colors.white,
                             }}
-                            onClick={openQR}
+                            onClick={openUPI}
                         >
-                            <ScanQrCode size={20} />
+                            <IndianRupee size={20} />
                         </button>
+
                         {/* brosher button */}
-                        {checkUserPackage("premium") && (
+                        {/* {checkUserPackage("premium") && (
                             <button
                                 className="rounded d-flex align-items-center justify-content-center border-0"
                                 style={{
@@ -503,7 +605,8 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                             >
                                 <Download size={20} />
                             </button>
-                        )}
+                        )} */}
+
                     </div>
                 </div>
                 {/* make this wrapper div to wrapp all the filds */}

@@ -4,6 +4,12 @@
     "profileImage": "/images/user-profile.webp",
     "name": "Buzz Cafe",
     "title": "Cafeteria",
+    "ownerName": "",
+    "designation": "",
+    "payment": {
+        "upi_id": "restraurent@upi",
+        "qr_image": ""
+    },
     "socialLinks": [
         {
             "socialName": "Facebook",

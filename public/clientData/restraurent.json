@@ -4,6 +4,12 @@
     "profileImage": "/images/reastaurant-logo.webp",
     "name": "Rameshwer Cafe",
     "title": "Shouth indian food",
+    "ownerName": "",
+    "designation": "",
+    "payment": {
+        "upi_id": "restraurent@upi",
+        "qr_image": "/images/reastaurant-logo.webp"
+    },
     "socialLinks": [
         {
             "socialName": "Facebook",
