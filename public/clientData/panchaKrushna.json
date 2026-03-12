@@ -1,10 +1,10 @@
 {
   "headerBgImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/background-pk.webp",
   "profileImage": "/images/user-profile.webp",
-  "name": "PanchaKrushna Electrical",
-  "title": "Mr. Kishor Kapate",
+  "name": "Mr. Kishor Kapate",
+  "title": "",
   "phone": "+91 98765 43210",
-  "designation": "Owner",
+  "designation": "Proprietor",
   "link": [
     {
       "name": "Facebook",
@@ -108,27 +108,27 @@
   "openingHours": [
     {
       "dayName": "Monday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Tuesday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Wednesday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Thursday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Friday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Saturday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 AM - 07:00 PM"
     },
     {
       "dayName": "Sunday",

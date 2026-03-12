@@ -1,0 +1,315 @@
+{
+  "name": "Anupam Shimpi",
+  "title": "Forntend Developer",
+  "headerBgImage": "/images/profile-backgrd.webp",
+  "profileI ": "https://www.webiquecard.in/dgcard-img/panchkrushna/user.webp",
+  "company": "Webique Technology",
+  "phone": "+919860188007",
+  "email": "anupam@example.com",
+  "address": "Mumbai, Maharashtra, India",
+  "map": {
+    "type": "map",
+    "label": "Location Map",
+    "value": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9307.391877908936!2d73.766647!3d19.953768!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772712380755!5m2!1sen!2sin",
+    "className": "w-100"
+  },
+  "facebook": "https://facebook.com/anupam",
+  "linkedin": "https://linkedin.com/in/anupam",
+  "instagram": "https://instagram.com/marcus",
+  "whatsapp": "919767724425",
+  "package": "premium",
+  "template": "HospitalCard",
+  "primaryColor": "#000000",
+  "SecondaryColor": "#000000",
+  "AboutMe": "About Me",
+  "AboutContent": "Sunrise Multispeciality Hospital is dedicated to providing high-quality healthcare services with modern medical technology and experienced doctors. Our goal is to deliver compassionate care for every patient.",
+  "HospitalData": [
+        {
+
+          "Htitle": "10+",
+          "Hcontent": "Years Of Expireance "
+        },
+        {
+
+          "Htitle": "25+",
+          "Hcontent": "Beds"
+        },
+        {
+
+          "Htitle": "10+",
+          "Hcontent": "Doctors visit"
+        },
+        {
+
+          "Htitle": "1000+",
+          "Hcontent": "Patients Treated"
+        }
+      ],
+  
+  
+  "link": [
+    {
+      "name": "Dribbble",
+      "url": "https://dribbble.com/anupam"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://facebook.com/anupam"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/anupam"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/anupam"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://linkedin.com/in/anupam"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://linkedin.com/in/anupam"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://linkedin.com/in/anupam"
+    }
+  ],
+  "tabs": [
+    {
+      "tabName": "Service",
+      "items": [
+        {
+          "image": "/images/tab-img-1.webp",
+          "title": "Web Design & Development",
+          "content": "Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas vitae congue "
+        },
+        {
+          "image": "/images/tab-img-2.webp",
+          "title": "UI/UX Design",
+          "content": "Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas vitae congue "
+        },
+        {
+          "image": "/images/tab-img-3.webp",
+          "title": "Video Editing & Production",
+          "content": "Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas vitae congue "
+        },
+        {
+          "image": "/images/tab-img-4.webp",
+          "title": "Digital Marketing",
+          "content": "Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas Laoreet sit leo vitae eget convallis. Sodales id in sit maecenas vitae congue "
+        }
+      ]
+    },
+    {
+      "tabName": "Gallery",
+      "items": [
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-1"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-2"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-3"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-4"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-5"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-6"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-7"
+        },
+        {
+          "image": "/images/placeholder-img.webp",
+          "altTab": "gallery-8"
+        }
+      ]
+    },
+{
+  "tabName": "Doctors",
+  "items": [
+    {
+      "image": "/images/placeholder-img.webp",
+      "name": "Dr. Neha Sharma",
+      "degree": "MBBS – General Physician",
+      "specializations": [
+        "General Consultation",
+        "Diabetes Care",
+        "Blood Pressure",
+        "Preventive Healthcare"
+      ]
+    },
+    {
+      "image": "/images/placeholder-img.webp",
+      "name": "Dr. Amit Verma",
+      "degree": "MD – Cardiologist",
+      "specializations": [
+        "Heart Checkup",
+        "ECG",
+        "Hypertension",
+        "Cardiac Consultation"
+      ]
+    }
+  ]
+}
+  ],
+  "servicesData": [
+    "Electrical Wiring & Installation",
+    "Electrical Repair",
+    "CCTV Camera Installation",
+    "Maintenance",
+    "Lighting Solutions",
+    "Security System Setup",
+    "Inverter & Battery Installation"
+  ],
+  "testimonials": {
+    "heading": "Testimonials",
+    "viewAll": "/testimonials",
+    "items": [
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Rahul Sharma",
+        "designation": "Customer",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Sneha Patel",
+        "designation": "Customer",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Amit Verma",
+        "designation": "Founder, StartupHub",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Priya Kapoor",
+        "designation": "Product Manager",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Arjun Singh",
+        "designation": "Creative Director",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Neha Gupta",
+        "designation": "UI Designer",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Vikram Joshi",
+        "designation": "Tech Lead",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Pooja Mehta",
+        "designation": "Entrepreneur",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Rohan Desai",
+        "designation": "Digital Marketer",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      },
+      {
+        "photo": "/images/user-profile.webp",
+        "name": "Karan Shah",
+        "designation": "Startup Founder",
+        "description": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+      }
+    ]
+  },
+  "colors": {
+    "GredientOne":"linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+    "Primery": "#00BF63",
+    "Secondery": "#00BF6326",
+    "trinery": "#BEBEBE33",
+    "servBack": "#ebebeb",
+    "white": "#fff",
+    "black": "#000",
+    "dark": "#0F172A",
+    "darkCardBg": "#1E293B",
+    "grayblack": "#17191c",
+    "inputBg": "#BEBEBE26",
+    "borderGray": "#B4B4B4",
+    "stickyLink1": "#00BF63",
+    "stickyLink2": "#1680FB",
+    "stickyLink3": "#022B5B",
+    "whiteFields": "#f1f3f5",
+    "darkFields": "#1f2d3d",
+    "darkBorder": "#47535f",
+    "whiteBorder": "#dee2e6",
+    "iconBakcgorundDark": "#0f172a",
+    "iconBakcgroundWhite": "#DCECFE",
+    "bdyColor": "#1d2537",
+    "tabBackground":"#00BF6326",
+    "deactiveTabs":"#FFFFFF26",
+    "decativeWhite":"#9a999926"
+  },
+"contactData": {
+  "phone_Number": [
+    "+919860188007"
+  ],
+  "mail": "contact@gmail.com",
+  "restaurant_Number": "+917894561230",
+  "location": {
+    "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
+    "link": "https://www.google.com/maps/place/Webique+technology"
+  }
+},
+  "openingHours": [
+    {
+      "dayName": "Monday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Tuesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Wednesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Thursday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Friday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Saturday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Sunday",
+      "ocTime": "Closed"
+    }
+  ],
+  "reviewLink": "https://share.google/BZxCSRgmArhrWKDfO"
+}

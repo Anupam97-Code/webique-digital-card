@@ -7,7 +7,7 @@ import FuterIcnTwo from "../../public/images/footer-share.svg";
 import FuterIcnThr from "../../public/images/footer-adduser.svg";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Tabs, Tab, Container, Carousel } from "react-bootstrap";
+import { Tabs, Tab, Container, Carousel, Row, Col } from "react-bootstrap";
 import {
   Phone,
   Mail,
@@ -34,7 +34,7 @@ import {
 
 
 } from "lucide-react";
-import { link, span } from 'framer-motion/client';
+import { link } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 
@@ -57,7 +57,7 @@ const iconMap = {
   Youtube
 };
 
-const Premium1 = ({ data, openQR, saveContact }) => {
+const HospitalCard = ({ data, openQR, saveContact }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const [activeTab, setActiveTab] = useState("");
@@ -126,12 +126,12 @@ Message: ${formData.message}`;
     () => ({
       name: safeData.name || "Marcus Whitlow",
       whatsapp: safeData.whatsapp || "+91 919860188007",
-      title: safeData.title,
-      designation: safeData.designation,
-      company: safeData.company,
+      title: safeData.title || "CEO & Founder",
+      company: safeData.company || "Quantix",
       contactData: safeData.contactData || [],
       openingHours: safeData.openingHours,
       headerBgImage: safeData.headerBgImage,
+      HospitalData: safeData.HospitalData || [],
       profileImg: safeData.profileImg || "",
       servicesData: safeData.servicesData || [],
       link: safeData.link || [],
@@ -407,12 +407,6 @@ Message: ${formData.message}`;
 
                 <p style={{ color: darkMode ? profile.colors.white : profile.colors.black }}>
                   {profile.title}
-
-                  {profile.title !== "" && profile.designation && (
-                    <span> / </span>
-                  )}
-
-                  {profile.designation}
                 </p>
               </div>
             </div>
@@ -429,7 +423,7 @@ Message: ${formData.message}`;
                       className='d-flex align-items-center justify-content-center'
                       style={{
                         background: darkMode ? profile.colors.black : profile.colors.Secondery,
-                        color: darkMode ? profile.colors.white : profile.colors.primary,
+                        color: darkMode ? profile.colors.Primery:profile.colors.Primery,
                         // border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
                         width: "37px",
                         height: "37px",
@@ -465,6 +459,41 @@ Message: ${formData.message}`;
                 {profile.AboutContent}
               </p>
             </div>
+
+            <div>
+              <Row className='text-center g-3' >
+                {profile.HospitalData.map((item, index) => (
+
+                  <Col xs={6}>
+                    <div style={{
+                      border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                      borderRadius: "6px", padding: "15px", minHeight: "92px",
+                      background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
+                    }}>
+                      <h2 style={{
+                        fontSize: "30px", fontWeight: "600",
+                        color: darkMode ? profile.colors.white : profile.colors.black,
+                      }}>{item.Htitle}</h2>
+                      <p className='m-0'
+                        style={{
+                          fontSize: "12px",
+                          lineHeight: '100%',
+                          color: darkMode ? profile.colors.white : profile.colors.black,
+                        }}>{item.Hcontent}</p>
+                    </div>
+                  </Col>
+
+
+                ))}
+              </Row>
+
+
+            </div>
+
+
+
+
+
 
             {/* tabs */}
             <style>
@@ -599,7 +628,7 @@ Message: ${formData.message}`;
                                   ))}
                                 </div>
                               )}
-                              {(tab.tabName === "Gallery" || tab.tabName === "Portfolio") && (
+                              {(tab.tabName === "Gallery") && (
                                 <div
                                   style={{
                                     display: "grid",
@@ -625,12 +654,13 @@ Message: ${formData.message}`;
                                         style={{
                                           width: "100%",
                                           height: "150px",
-                                          objectFit: "cover"
+                                          objectFit: "cover",
+
                                         }}
                                       />
 
                                       {/* Gradient overlay */}
-                                      {tab.tabName === "Portfolio" && (
+                                      {tab.tabName === "Doctors" && (
                                         <div
                                           style={{
                                             position: "absolute",
@@ -644,44 +674,135 @@ Message: ${formData.message}`;
                                         />
                                       )}
 
-                                      <p
-                                        style={
-                                          tab.tabName === "Portfolio"
-                                            ? {
-                                              margin: 0,
-                                              padding: 0,
-                                              fontSize: "13px",
-                                              textAlign: "center",
-                                              position: "absolute",
-                                              color: profile.colors.white,
-                                              lineHeight: "100%",
-                                              left: "11px",
-                                              bottom: "20px",
-                                              fontWeight: 500
-                                            }
-                                            : tab.tabName === "Gallery"
-                                              ? {
-                                                position: "absolute",
-                                                bottom: "10px",
-                                                left: 0,
-                                                width: "100%",
-                                                color: profile.colors.white,
-                                                fontSize: "12px",
-                                                textAlign: "center",
-                                                margin: 0,
-                                                opacity: 0,
-                                                transition: "opacity 0.3s"
-                                              }
-                                              : {}
-                                        }
-                                        className={tab.tabName === "Gallery" ? "gallery-hover-text" : ""}
-                                      >
-                                        {item.altTab}
-                                      </p>
+
                                     </div>
                                   ))}
                                 </div>
                               )}
+
+                              <style>
+                                {`
+
+
+@media (max-width:320px){
+  .doctor-specialization{
+    padding:0px; display:block !important;
+     color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+  }
+}
+`}
+                              </style>
+                              {tab.tabName === "Doctors" && (
+                                <div className="d-flex flex-column gap-3">
+                                  {tab.items?.map((item, index) => (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        borderRadius: "6px",
+                                        border: `1px solid ${darkMode ? profile.colors.darkBorder : "#dee2e6"}`,
+                                        background: darkMode
+                                          ? profile.colors.darkFields
+                                          : profile.colors.whiteFields,
+                                        padding: "12px"
+                                      }}
+                                    >
+                                      {/* Top Row (Image + Name + Degree) */}
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          gap: "10px",
+                                          alignItems: "center",
+                                          marginBottom: "10px"
+                                        }}
+                                      >
+                                        <img
+                                          src={item.image}
+                                          alt={item.name}
+                                          style={{
+                                            width: "56px",
+                                            height: "56px",
+                                            objectFit: "cover",
+                                            borderRadius: "6px"
+                                          }}
+                                        />
+
+                                        <div>
+                                          <p
+                                            style={{
+                                              margin: 0,
+                                              fontSize: "14px",
+                                              fontWeight: "600",
+                                              color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+                                            }}
+                                          >
+                                            {item.name}
+                                          </p>
+
+                                          <p
+                                            style={{
+                                              margin: 0,
+                                              fontSize: "12px",
+                                              color: darkMode
+                                                ? profile.colors.white
+                                                : profile.colors.black
+                                            }}
+                                          >
+                                            {item.degree}
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      {/* Specializations */}
+                                      <p
+                                        style={{
+                                          margin: "0 0 6px",
+                                          fontSize: "14px",
+                                          fontWeight: "600",
+                                          color: darkMode
+                                            ? profile.colors.white
+                                            : profile.colors.black
+                                        }}
+                                      >
+                                        Specializations
+                                      </p>
+
+                                      {/* 2 Column Specializations */}
+                                      <ul className='doctor-specialization'
+                                        style={{
+                                          display: "grid",
+                                          gridTemplateColumns: "1fr 1fr",
+                                          gap: "4px",
+                                          fontSize: "12px",
+                                          color: darkMode
+                                            ? profile.colors.white
+                                            : profile.colors.black
+                                        }}
+                                      >
+
+                                        {item.specializations?.map((spec, i) => (
+                                          <li key={i} style={{
+                                            fontSize: "12px",
+                                            color: darkMode
+                                              ? profile.colors.white
+                                              : profile.colors.black
+                                          }}>•  {spec}</li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+
+
+
+
+
+
+
                             </div>
                           </Tab>
                         ))}
@@ -1034,4 +1155,4 @@ textarea::placeholder {
   )
 }
 
-export default Premium1;
+export default HospitalCard;
