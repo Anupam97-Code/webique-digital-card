@@ -3,13 +3,9 @@
     "title": "Software Agency",
     "description": "Professional Digital Visiting Card for Local Businesses",
     "ogImage": "/images/webique-og-image.png",
-    "profileImage": "/images/logo-futar.svg",
-    "darkModeImage": "/images/webique-logo-white.svg",
+    "profileImage": "/images/ab-profile.png",
+    "darkModeImage": "/images/ab-profile.png",
     "company": "Webique Technology",
-    "phone": "+919860188007",
-    "email": "contact@webique.in",
-    "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
-    "addressLink": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167",
     "facebook": "https://www.facebook.com/people/Webique-Technology/61568650401785/",
     "facebookName": "@Webique Technology ",
     "linkedin": "https://www.linkedin.com/company/webiquetech",
@@ -18,5 +14,34 @@
     "instagramId": "@webique_tech",
     "whatsapp": "919860188007",
     "package": "basic",
-    "template": "Basic2"
+    "template": "Basic2",
+    "contactData": {
+        "phone_Number": [
+            "+918795462310"
+        ],
+        "mail": [
+            "aniket@example.com"
+        ],
+        "location": {
+            "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
+            "link": "https://maps.app.goo.gl/FTReqpPZDG3xzv279"
+        }
+    },
+    "colors": {
+        "Primery": "#DE0400",
+        "Secondery": "#DE040033",
+        "trinery": "#BEBEBE33",
+        "white": "#fff",
+        "black": "#000",
+        "light": "#F1F3F5",
+        "lightBg": "#F1F3F5",
+        "dark": "#0F172A",
+        "darkCardBg": "#1E293B",
+        "grayblack": "#17191c",
+        "inputBg": "#BEBEBE26",
+        "borderGray": "#B4B4B4",
+        "stickyLink1": "#00BF63",
+        "stickyLink2": "#1680FB",
+        "stickyLink3": "#022B5B"
+    }
 }

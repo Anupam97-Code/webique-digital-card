@@ -60,9 +60,12 @@
     "contactData": {
         "phone_Number": [
             "+918795462310",
-            "+91 9763771751"
+            "+919763771751"
         ],
-        "mail": "buzzCafe@gmail.com",
+        "mail": [
+            "buzzCafe@gmail.com",
+            "cafeBuzz@gmail.com"
+        ],
         "restaurant_Number": "+918795462310",
         "location": {
             "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",

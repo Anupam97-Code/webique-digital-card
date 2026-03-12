@@ -16,6 +16,7 @@ import {
 import * as Icons from "lucide-react";
 import { Carousel, Col, Row } from "react-bootstrap";
 import StickyFooter from "./components/StickyFooter";
+import ContactSection from "./components/ContactSection";
 
 
 const DigitalIDcard = ({ data, openQR, saveContact }) => {
@@ -66,7 +67,6 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
         contactData: safeData.contactData || {
             phone_Number: "",
             mail: "",
-            restaurant_Number: "",
             location: {
                 address: "",
                 link: ""
@@ -88,47 +88,38 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
     const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
     // const currentUrl = typeof window !== "undefined" ? window.location.href
 
-    // create for checking the packages and assing the styles
-    const checkUserPackage = (requiredUserPackage) => {
-        // console.log("requiredUserPackage:", requiredUserPackage);
+    const ActionItemTop = ({ icon, title, values = [], type, href, className }) => {
 
-        const packageLevels = {
-            basic: 1,
-            regular: 2,
-            premium: 3
-        };
+        const isSingle = values.length === 1;
+        const isExternal = href?.startsWith("http");
 
-        // console.log("packageLevels:",packageLevels[profile.package]);
+        const Wrapper = isSingle ? "a" : "div";
 
-        const checkPackage = (requiredPackage) => {
+        const wrapperProps = isSingle
+            ? {
+                href: type === "tel"
+                    ? `tel:${values[0]}`
+                    : type === "mailto"
+                        ? `mailto:${values[0]}`
+                        : href,
+                target: isExternal ? "_blank" : "_self",
+                rel: isExternal ? "noopener noreferrer" : ""
+            }
+            : {};
 
-            const userPackage = profile.package;
-            // console.log("userPackage:", packageLevels[userPackage]);
-            // console.log("requiredPackage:", packageLevels[requiredPackage]);
-            // console.log("check package conditions:", packageLevels[userPackage] >= packageLevels[requiredPackage]);
-
-            return packageLevels[userPackage] >= packageLevels[requiredPackage];
-        };
-
-        return checkPackage(requiredUserPackage);
-    };
-
-    const ActionItemTop = ({ icon, title, subtitle, subtitle2, href, className }) => {
-        const isExternal = href.startsWith("http");
         return (
-            <a
-                href={href}
-                target={isExternal ? "_blank" : "_self"}
-                rel={isExternal ? "noopener noreferrer" : ""}
-                className={`w-100 d-flex align-items-center justify-content-between text-decoration-none ${className}`}
+            <Wrapper
+                {...wrapperProps}
+                className={`w-100 d-flex align-items-center justify-content-between text-decoration-none ${className || ""}`}
                 style={{
                     color: darkMode ? profile.colors.white : profile.colors.black,
-                    // borderRadius: "4px",
                     padding: "14px 16px",
                     borderBottom: `1px solid ${profile.colors.borderGray}`
                 }}
             >
                 <div className="d-flex gap-3">
+
+                    {/* Icon */}
                     <div
                         className="d-flex align-items-center justify-content-center"
                         style={{
@@ -152,25 +143,48 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
                             {icon}
                         </div>
                     </div>
+
+                    {/* Text */}
                     <div className="d-flex flex-column align-items-start justify-content-center">
 
-                        {/* Show title only if subtitle2 does not exist */}
-                        {!subtitle2 && (
+                        {/* Show title only when single value */}
+                        {isSingle && (
                             <div className="fw-semibold">{title}</div>
                         )}
 
-                        {/* first value */}
-                        {subtitle && (
-                            <small style={{ opacity: 0.9 }}>{subtitle}</small>
+                        {/* Single value */}
+                        {isSingle && (
+                            <small style={{ opacity: 0.9 }}>
+                                {values[0]}
+                            </small>
                         )}
 
-                        {/* second value if exists */}
-                        {subtitle2 && (
-                            <small style={{ opacity: 0.9 }}>{subtitle2}</small>
-                        )}
+                        {/* Multiple values */}
+                        {!isSingle &&
+                            values.map((value, i) => (
+                                <a
+                                    key={i}
+                                    href={
+                                        type === "tel"
+                                            ? `tel:${value}`
+                                            : type === "mailto"
+                                                ? `mailto:${value}`
+                                                : href
+                                    }
+                                    style={{
+                                        opacity: 0.9,
+                                        textDecoration: "none",
+                                        color: "inherit"
+                                    }}
+                                >
+                                    {value}
+                                </a>
+                            ))
+                        }
 
                     </div>
                 </div>
+
                 <div
                     className="flex-shrink-0"
                     style={{
@@ -179,52 +193,9 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
                 >
                     <ArrowUpRight size={18} />
                 </div>
-            </a>
-        )
-    }
-
-    // make for contact data 
-    const ActionItem = ({ icon, title, subtitle, href }) => {
-        const isExternal = href.startsWith("http");
-        return (
-            <a
-                href={href}
-                target={isExternal ? "_blank" : "_self"}
-                rel={isExternal ? "noopener noreferrer" : ""}
-                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-                style={{
-                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                    color: darkMode ? profile.colors.white : profile.colors.black,
-                    borderRadius: "4px"
-                }}
-            >
-                <div className="d-flex gap-3">
-                    <div
-                        className="d-flex align-items-center justify-content-center rounded-3"
-                        style={{
-                            width: "42px",
-                            height: "42px",
-                            background: darkMode ? profile.colors.dark : profile.colors.white,
-                            color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                            flexShrink: "0",
-                        }}
-                    >
-                        {icon}
-                    </div>
-                    <div
-                    // style={{ width: isMobile ? "190px" : "276px" }}
-                    >
-                        <div className="fw-semibold">{title}</div>
-                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
-                    </div>
-                </div>
-                <div className="flex-shrink-0">
-                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-                </div>
-            </a>
-        )
-    }
-    //================= make for contact data 
+            </Wrapper>
+        );
+    };
 
     return (
         <>
@@ -343,7 +314,7 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
                                         border: `6px solid ${profile.colors.Primery}`
                                     }}
                                     src={profile.profileImage}
-                                    alt={profile.name - profile.title}
+                                    alt={profile.name + profile.title}
                                 />
                             </div>
                         </div>
@@ -378,25 +349,22 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
                                 <ActionItemTop
                                     icon={<Phone size={18} />}
                                     title="Call Me"
-                                    subtitle={profile.contactData.phone_Number}
-                                    subtitle2={profile.contactData.phone_Number2}
-                                    href={`tel:${profile.contactData.phone_Number}`}
-                                    className={""}
+                                    values={profile.contactData.phone_Number}
+                                    type="tel"
                                 />
+
                                 <ActionItemTop
-                                    icon={<Send size={18} />}
-                                    title="Mail"
-                                    subtitle={profile.contactData.mail}
-                                    subtitle2={profile.contactData.mail2}
-                                    href={`mailto:${profile.contactData.mail}`}
-                                    className={""}
+                                    icon={<Mail size={18} />}
+                                    title="Email"
+                                    values={profile.contactData.mail}
+                                    type="mailto"
                                 />
+
                                 <ActionItemTop
                                     icon={<MapPin size={18} />}
                                     title="Location"
-                                    subtitle={profile.contactData.location.address}
+                                    values={[profile.contactData.location.address]}
                                     href={profile.contactData.location.link}
-                                    className={"border-0"}
                                 />
                             </div>
                             {/* visiting link div */}
@@ -479,100 +447,21 @@ const DigitalIDcard = ({ data, openQR, saveContact }) => {
                         </div>
 
                         {/* contact section */}
-                        <div className="w-100">
-                            <h5 className="my-2 fw-bold"
-                                style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                }}
-                            >Contact me</h5>
-                            <div className="d-flex flex-column gap-3">
-                                <ActionItem
-                                    icon={<Phone size={18} />}
-                                    title="Call Me"
-                                    subtitle={profile.contactData.phone_Number}
-                                    subtitle2={profile.contactData.phone_Number2}
-                                    href={`tel:${profile.contactData.phone_Number}`}
-                                />
-
-                                <ActionItem
-                                    icon={<Mail size={18} />}
-                                    title="Email"
-                                    subtitle={profile.contactData.mail}
-                                    href={`mailto:${profile.contactData.mail}`}
-                                />
-                                <ActionItem
-                                    icon={<Phone size={18} />}
-                                    title="Restaurant Number"
-                                    subtitle={profile.contactData.phone_Number}
-                                    href={`tel:${profile.contactData.phone_Number}`}
-                                />
-                                <ActionItem
-                                    icon={<MapPin size={18} />}
-                                    title="Location"
-                                    subtitle={profile.contactData.location.address}
-                                    href={profile.contactData.location.link}
-                                />
-
-                                {/* opening hours */}
-                                <div
-                                    className="w-100 d-flex align-items-start justify-content-between text-decoration-none p-2 border"
-                                    style={{
-                                        backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                                        color: darkMode ? profile.colors.white : profile.colors.black,
-                                        borderRadius: "4px"
-                                    }}
-                                >
-                                    <div className="w-100 d-flex align-items-start gap-3">
-                                        <div
-                                            className="d-flex align-items-center justify-content-center rounded-3"
-                                            style={{
-                                                width: "42px",
-                                                height: "42px",
-                                                background: darkMode ? profile.colors.dark : profile.colors.white,
-                                                color: darkMode ? profile.colors.Primery : profile.colors.Primery,
-                                                flexShrink: "0",
-                                            }}
-                                        >
-                                            <Clock />
-                                        </div>
-
-                                        <div
-                                            style={{ width: "224px" }}
-                                        >
-                                            <h6 className="fw-bold mb-2"
-                                                style={{
-                                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                                }}
-                                            >Opening Hours</h6>
-                                            {profile.openingHours.map((day, i) => (
-                                                <div key={i} className="d-flex justify-content-between"
-                                                    style={{
-                                                        opacity: "0.7",
-                                                        fontSize: "14px",
-                                                        color: darkMode ? profile.colors.white : profile.colors.black
-                                                    }}
-                                                >
-                                                    <span>{day.dayName}</span>
-                                                    <span>{day.ocTime}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ContactSection
+                            profile={profile}
+                            darkMode={darkMode}
+                        />
                     </div>
 
                     {/* Sticky Footer Buttons */}
                     <StickyFooter
-            profile={profile}
-            isMobile={isMobile}
-            darkMode={darkMode}
-            whatsappNumber={whatsappNumber}
-            saveContact={saveContact}
-            openQR={openQR}
-          />
+                        profile={profile}
+                        isMobile={isMobile}
+                        darkMode={darkMode}
+                        whatsappNumber={whatsappNumber}
+                        saveContact={saveContact}
+                        openQR={openQR}
+                    />
                 </div>
             </div >
         </>

@@ -16,7 +16,6 @@ import arrowOne from "../assets/images/arrow-one.svg";
 // images
 import imgOne from "../assets/images/mockup-11.png";
 import imgTwo from "../assets/images/mockup-12.png";
-import imgThree from "../assets/images/mockup-13.png";
 import imgFour from "../assets/images/mockup-14.png";
 import imgFive from "../assets/images/mockup-15.png";
 
@@ -33,39 +32,39 @@ import { BlurText } from "./shared/TextAnimation";
 
 const webImages = [
   {
+    src: imgFive,
+    alt: "Digital branding concept",
+    link: "https://webiquecard.in/clientid"
+  },
+  {
     src: imgOne,
     alt: "Modern website design",
-    link: ""
+    link: "https://webiquecard.in/restraurent"
   },
   {
     src: imgTwo,
     alt: "Creative UI UX design",
-    link: ""
+    link: "https://webiquecard.in/panchakrushna"
   },
   {
-    src: imgThree,
+    src: imgTen,
     alt: "Web development dashboard",
     link: ""
   },
   {
     src: imgFour,
     alt: "Mobile app interface",
-    link: ""
-  },
-  {
-    src: imgFive,
-    alt: "Digital branding concept",
-    link: ""
+    link: "https://webiquecard.in/buzzcafe"
   },
   {
     src: imgSix,
     alt: "Modern website design",
-    link: ""
+    link: "https://webiquecard.in/anupam"
   },
   {
     src: imgSeven,
     alt: "Creative UI UX design",
-    link: ""
+    link: "https://webiquecard.in/restraurent"
   },
   {
     src: imgEight,
@@ -78,6 +77,11 @@ const webImages = [
     link: ""
   },
   {
+    src: imgFive,
+    alt: "Digital branding concept",
+    link: "https://webiquecard.in/clientid"
+  },
+  {
     src: imgTen,
     alt: "Digital branding concept",
     link: ""
@@ -85,27 +89,22 @@ const webImages = [
   {
     src: imgOne,
     alt: "Modern website design",
-    link: ""
+    link: "https://webiquecard.in/restraurent"
   },
   {
     src: imgTwo,
     alt: "Creative UI UX design",
-    link: ""
+    link: "https://webiquecard.in/panchakrushna"
   },
   {
-    src: imgThree,
+    src: imgTen,
     alt: "Web development dashboard",
     link: ""
   },
   {
     src: imgFour,
     alt: "Mobile app interface",
-    link: ""
-  },
-  {
-    src: imgFive,
-    alt: "Digital branding concept",
-    link: ""
+    link: "https://webiquecard.in/buzzcafe"
   },
 ]
 
@@ -169,7 +168,7 @@ const Header = () => {
           </div>
         </div>
         <Swiper
-          slidesPerView={7}
+          slidesPerView={6}
           spaceBetween={20}
           centeredSlides
           loop
@@ -186,22 +185,18 @@ const Header = () => {
           breakpoints={{
             0: {
               slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            576: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            1200: {
+              slidesPerView: 5,
               spaceBetween: 20,
             },
-            420: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 7,
+            1440: {
+              slidesPerView: 6,
               spaceBetween: 20,
             },
           }}
@@ -209,10 +204,18 @@ const Header = () => {
           className="mySwiper"
 
         >
-          {webImages.map((img, index) => (
+          {webImages.map((value, index) => (
             <SwiperSlide key={index}>
-              <a href="#" className="portfolio-slide">
-                <img className="" src={img.src} alt={`slide-${img.alt}${index}`} />
+              <a
+                href={value.link}
+                className="portfolio-slide"
+                target="_blank"
+              >
+                <img
+                  className=""
+                  src={value.src}
+                  alt={`slide-${value.alt}${index}`}
+                />
               </a>
             </SwiperSlide>
           ))}

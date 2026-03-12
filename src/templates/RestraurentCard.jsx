@@ -51,7 +51,9 @@ Phone: ${formData.phone}
 Email: ${formData.email}
 Message: ${formData.message}`;
 
-        const whatsappURL = `https://wa.me/${profile.contactData.phone_Number}?text=${encodeURIComponent(text)}`;
+        const phone = profile?.contactData?.phone_Number?.[0] || "";
+
+        const whatsappURL = `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
 
         window.open(whatsappURL, "_blank");
 
@@ -361,49 +363,6 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
 
     const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
     // const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
-    // make for contact data 
-    const ActionItem = ({ icon, title, subtitle, href }) => {
-         const isExternal = href?.startsWith("http");
-    const Wrapper = href ? "a" : "div";
-        return (
-            <Wrapper
-                    href={href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-                    style={{
-                      backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                      color: darkMode ? profile.colors.white : profile.colors.black,
-                      borderRadius: "4px"
-                    }}
-                  >
-                    <div className="d-flex gap-3">
-                      <div
-                        className="d-flex align-items-center justify-content-center rounded-3"
-                        style={{
-                          width: "42px",
-                          height: "42px",
-                          color: profile.colors.Primery,
-                          flexShrink: "0",
-                        }}
-                      >
-                        {icon}
-                      </div>
-            
-                      <div>
-                        <div className="fw-semibold">{title}</div>
-                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
-                      </div>
-                    </div>
-            
-                    <div className="flex-shrink-0">
-                      <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-                    </div>
-                  </Wrapper>
-        )
-    }
-    //================= make for contact data 
 
     // Gallery slider component
     const GallerySlider = ({ slideData }) => {
@@ -846,13 +805,10 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                     )}
 
                     {/* contact section */}
-                                {/* Contact me */}
-            <ContactSection
-  profile={profile}
-  darkMode={darkMode}
-  ActionItem={ActionItem}
-/>
-
+                    <ContactSection
+                        profile={profile}
+                        darkMode={darkMode}
+                    />
 
                     {/* map */}
                     <div
@@ -875,14 +831,14 @@ const RestraurentCard = ({ data, saveContact, openQR }) => {
                 </div>
 
                 {/* Sticky Footer Buttons */}
-                 <StickyFooter
-            profile={profile}
-            isMobile={isMobile}
-            darkMode={darkMode}
-            whatsappNumber={whatsappNumber}
-            saveContact={saveContact}
-            openQR={openQR}
-          />
+                <StickyFooter
+                    profile={profile}
+                    isMobile={isMobile}
+                    darkMode={darkMode}
+                    whatsappNumber={whatsappNumber}
+                    saveContact={saveContact}
+                    openQR={openQR}
+                />
             </div>
         </div >
     );

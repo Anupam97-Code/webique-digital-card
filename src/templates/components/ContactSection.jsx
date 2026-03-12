@@ -1,7 +1,104 @@
 import React from "react";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
 
-const ContactSection = ({ profile, darkMode, ActionItem }) => {
+const ContactSection = ({ profile, darkMode }) => {
+
+  // make for contact data 
+  const ActionItem = ({ icon, title, subtitle, href }) => {
+
+    const values = Array.isArray(subtitle) ? subtitle : [subtitle];
+    const isSingle = values.length === 1;
+    const isExternal = href?.startsWith("http");
+
+    const Wrapper = isSingle ? "a" : "div";
+
+    const wrapperProps = isSingle
+      ? {
+        href: href,
+        target: isExternal ? "_blank" : "_self",
+        rel: isExternal ? "noopener noreferrer" : ""
+      }
+      : {};
+
+    return (
+      <Wrapper
+        {...wrapperProps}
+        className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
+        style={{
+          backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
+          color: darkMode ? profile.colors.white : profile.colors.black,
+          borderRadius: "4px"
+        }}
+      >
+        <div className="d-flex gap-3">
+
+          {/* Icon */}
+          <div
+            className="d-flex align-items-center justify-content-center rounded-3"
+            style={{
+              width: "42px",
+              height: "42px",
+              background: darkMode ? profile.colors.dark : profile.colors.white,
+              color: profile.colors.Primery,
+              flexShrink: "0",
+            }}
+          >
+            {icon}
+          </div>
+
+          {/* Text */}
+          <div
+            className="d-flex align-items-start flex-column"
+          >
+
+            {/* show title only when single value */}
+            {isSingle && (
+              <div className="fw-semibold">{title}</div>
+            )}
+
+            {/* Single value */}
+            {isSingle && (
+              <small className="text-start" style={{ opacity: 0.7 }}>
+                {values[0]}
+              </small>
+            )}
+
+            {/* Multiple values */}
+            {!isSingle &&
+              values.map((val, i) => (
+                <a
+                  key={i}
+                  href={
+                    href?.startsWith("mailto")
+                      ? `mailto:${val}`
+                      : href?.startsWith("tel")
+                        ? `tel:${val}`
+                        : href
+                  }
+                  style={{
+                    display: "block",
+                    opacity: 0.7,
+                    textDecoration: "none",
+                    color: "inherit"
+                  }}
+                >
+                  {val}
+                </a>
+              ))
+            }
+
+          </div>
+
+        </div>
+
+        <div className="flex-shrink-0">
+          <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
+        </div>
+
+      </Wrapper>
+    );
+  };
+
   return (
     <div className="d-flex flex-column gap-2">
       <h4
@@ -33,17 +130,8 @@ const ContactSection = ({ profile, darkMode, ActionItem }) => {
             </div>
           }
           title="Call Me"
-          subtitle={profile.contactData?.phone_Number?.map((phone, i) => (
-            <span key={i}>
-              <a
-                href={`tel:${phone.replace(/\s/g, "")}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                {phone}
-              </a>
-              {i !== profile.contactData.phone_Number.length - 1 && " / "}
-            </span>
-          ))}
+          subtitle={profile.contactData?.phone_Number}
+          href={`tel:${profile.contactData?.phone_Number?.[0]}`}
         />
 
         {/* Email */}

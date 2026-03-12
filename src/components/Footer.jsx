@@ -1,70 +1,3 @@
-// import React from "react";
-// import "../styles/Footer.scss";
-// import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-
-// const footerData = {
-//   socials: [
-//     {
-//       name: "Facebook",
-//       url: "https://facebook.com",
-//       icon: <FaFacebookF />,
-//     },
-//     {
-//       name: "Twitter",
-//       url: "https://twitter.com",
-//       icon: <FaTwitter />,
-//     },
-//     {
-//       name: "LinkedIn",
-//       url: "https://linkedin.com",
-//       icon: <FaLinkedinIn />,
-//     },
-//     {
-//       name: "Instagram",
-//       url: "https://instagram.com",
-//       icon: <FaInstagram />,
-//     },
-//   ],
-//   copyrightText: "All Rights Reserved",
-// };
-
-// const Footer = () => {
-//   const currentYear = new Date().getFullYear();
-
-//   return (
-//     <footer className="footer bg-dark text-white py-4">
-//       <div className="container text-center">
-
-//         {/* SOCIAL ICONS */}
-//         <div className="footer-socials mb-3 d-flex justify-content-center gap-3">
-//           {footerData.socials.map((social, index) => (
-//             <a
-//               key={index}
-//               href={social.url}
-//               target="_blank"
-//               rel="noreferrer"
-//               aria-label={social.name}
-//               className="social-icon"
-//             >
-//               {social.icon}
-//             </a>
-//           ))}
-//         </div>
-
-//         {/* COPYRIGHT */}
-//         <p className="mb-0 footer-copy">
-//           © {currentYear} {footerData.copyrightText}
-//         </p>
-
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
-
-
 import React from 'react'
 import "../styles/Footer.scss"
 import { Link } from 'react-router-dom'
@@ -85,7 +18,7 @@ const Footer = () => {
         <Container>
           <Row className="align-items-center justify-content-center d-flex flex-column text-white">
             <h2>
-              Ready To Upgrade<br/> Your Business &nbsp;
+              Ready To Upgrade<br /> Your Business &nbsp;
               <span>Card&nbsp;
                 <motion.span
                   className='idea-mark'
@@ -101,13 +34,13 @@ const Footer = () => {
                   ?
                 </motion.span>
               </span><br />
-             
+
             </h2>
             <p>Create a smart digital business card that’s easy to share, simple to update, and designed to help your business stand out.</p>
 
             <ButtonCall
               className='hero-btn my-4 '
-              phone="+919876543210"
+              phone="+919860188007"
               label="Create Digital Card"
               icon={phoneIcon}
             />

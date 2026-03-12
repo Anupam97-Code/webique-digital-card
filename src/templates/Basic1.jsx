@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/digitalCard.scss"
 import {
@@ -37,6 +37,8 @@ function Basic1({ data, saveContact, openQR }) {
             phone: safeData.phone || "+1-212-456-7890",
             email: safeData.email || "marcus.whitlow@gmail.com",
             address: safeData.address || "2093 Philadelphia Pike",
+            contactData: safeData.contactData,
+            colors: safeData.colors,
             profileImage:
                 safeData.profileImage ||
                 "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
@@ -47,6 +49,23 @@ function Basic1({ data, saveContact, openQR }) {
         }),
         [safeData]
     );
+
+    // make for handle responsive
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 417);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+    // console.log("is mobile:", isMobile);
 
     const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
     const currentUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -69,47 +88,6 @@ function Basic1({ data, saveContact, openQR }) {
             );
         }
     };
-
-    const ActionItem = ({ icon, title, subtitle, href }) => {
-        const isExternal = href?.startsWith("http");
-        const Wrapper = href ? "a" : "div";
-        return (
-            <Wrapper
-                href={href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-                style={{
-                    backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-                    color: darkMode ? profile.colors.white : profile.colors.black,
-                    borderRadius: "4px"
-                }}
-            >
-                <div className="d-flex gap-3">
-                    <div
-                        className="d-flex align-items-center justify-content-center rounded-3"
-                        style={{
-                            width: "42px",
-                            height: "42px",
-                            color: profile.colors.Primery,
-                            flexShrink: "0",
-                        }}
-                    >
-                        {icon}
-                    </div>
-
-                    <div>
-                        <div className="fw-semibold">{title}</div>
-                        <small style={{ opacity: 0.7 }}>{subtitle}</small>
-                    </div>
-                </div>
-
-                <div className="flex-shrink-0">
-                    <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-                </div>
-            </Wrapper>
-        )
-    }
 
     return (
         <div
@@ -193,19 +171,18 @@ function Basic1({ data, saveContact, openQR }) {
                     <ContactSection
                         profile={profile}
                         darkMode={darkMode}
-                        ActionItem={ActionItem}
                     />
                 </div>
 
                 {/* Sticky Footer Buttons */}
-                 <StickyFooter
-            profile={profile}
-            isMobile={isMobile}
-            darkMode={darkMode}
-            whatsappNumber={whatsappNumber}
-            saveContact={saveContact}
-            openQR={openQR}
-          />
+                <StickyFooter
+                    profile={profile}
+                    isMobile={isMobile}
+                    darkMode={darkMode}
+                    whatsappNumber={whatsappNumber}
+                    saveContact={saveContact}
+                    openQR={openQR}
+                />
             </div>
         </div>
     );

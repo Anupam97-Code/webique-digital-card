@@ -227,54 +227,6 @@ Message: ${formData.message}`;
     }
   };
 
-
-
-  // make for contact data 
-  const ActionItem = ({ icon, title, subtitle, href }) => {
-
-    const isExternal = href?.startsWith("http");
-
-    const Wrapper = href ? "a" : "div";
-
-    return (
-      <Wrapper
-        href={href}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-        className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
-        style={{
-          backgroundColor: darkMode ? profile.colors.darkCardBg : profile.colors.trinery,
-          color: darkMode ? profile.colors.white : profile.colors.black,
-          borderRadius: "4px"
-        }}
-      >
-        <div className="d-flex gap-3">
-          <div
-            className="d-flex align-items-center justify-content-center rounded-3"
-            style={{
-              width: "42px",
-              height: "42px",
-              color: profile.colors.Primery,
-              flexShrink: "0",
-            }}
-          >
-            {icon}
-          </div>
-
-          <div>
-            <div className="fw-semibold">{title}</div>
-            <small style={{ opacity: 0.7 }}>{subtitle}</small>
-          </div>
-        </div>
-
-        <div className="flex-shrink-0">
-          <ArrowUpRight size={18} style={{ opacity: 0.5 }} />
-        </div>
-      </Wrapper>
-    );
-  };
-  //================= make for contact data 
-
   return (
     <div style={{}}>
       <div className="min-vh-100 d-flex align-items-center justify-content-center "
@@ -997,7 +949,6 @@ textarea::placeholder {
             <ContactSection
               profile={profile}
               darkMode={darkMode}
-              ActionItem={ActionItem}
             />
 
             {/* map div */}
