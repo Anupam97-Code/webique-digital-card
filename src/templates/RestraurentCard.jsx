@@ -9,13 +9,14 @@ import {
     X,
     ChevronLeft,
     ChevronRight,
-    IndianRupee 
+    IndianRupee
 } from "lucide-react";
 import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
 import { Carousel, Col, Row } from "react-bootstrap";
 import ContactSection from "./components/ContactSection";
 import StickyFooter from "./components/StickyFooter";
+import GallerySlider from "./components/GallerySlider";
 
 
 /* ======================================================
@@ -261,165 +262,6 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
         </>
     )
 });
-
-const GallerySlider = memo(({ slideData }) => {
-
-    const [lightboxOpen, setLightboxOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    // split array into groups of 4
-    const chunkArray = (arr, size) => {
-        const result = [];
-        for (let i = 0; i < arr.length; i += size) {
-            result.push(arr.slice(i, i + size));
-        }
-        return result;
-    };
-
-    const slides = chunkArray(slideData, 4);
-
-    const openLightbox = (index) => {
-        setCurrentIndex(index);
-        setLightboxOpen(true);
-    };
-
-    const nextImage = () => {
-        setCurrentIndex((prev) =>
-            prev === slideData.length - 1 ? 0 : prev + 1
-        );
-    };
-
-    const prevImage = () => {
-        setCurrentIndex((prev) =>
-            prev === 0 ? slideData.length - 1 : prev - 1
-        );
-    };
-
-    return (
-        <>
-            {/* gallery slider */}
-            <div
-                className="slider-container d-flex"
-                style={{
-                    overflowX: "auto",
-                    width: "100%",
-                    gap: "16px",
-                    scrollSnapType: "x mandatory"
-                }}
-            >
-                {slides.map((slide, slideIndex) => (
-                    <div
-                        className="slide"
-                        key={slideIndex}
-                        style={{
-                            maxWidth: "100%",
-                            scrollSnapAlign: "start",
-                            flexShrink: 0
-                        }}
-                    >
-                        <Row>
-                            {slide.map((value, index) => {
-                                const realIndex = slideIndex * 4 + index;
-                                // console.log("find active index onClick:", realIndex);
-
-                                return (
-                                    <Col xs={6} key={index} className="mb-3 px-2">
-                                        <img
-                                            src={value.galleryImage}
-                                            alt={value.imageAlt}
-                                            onClick={() => openLightbox(realIndex)}
-                                            style={{
-                                                width: "100%",
-                                                borderRadius: "4px",
-                                                objectFit: "cover",
-                                                cursor: "pointer"
-                                            }}
-                                        />
-                                    </Col>
-                                );
-                            })}
-                        </Row>
-                    </div>
-                ))}
-            </div>
-
-            {/* lightBox */}
-            {lightboxOpen && (
-                <div
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        // opacity:"0.8",
-                        background: "#0000007e",
-                        zIndex: 9999,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}
-                >
-
-                    {/* Close */}
-                    <button
-                        onClick={() => setLightboxOpen(false)}
-                        className="d-flex align-items-center justify-content-center"
-                        style={{
-                            position: "absolute",
-                            top: 10,
-                            right: 10,
-                            padding: "10px",
-                            borderRadius: "50%",
-                            background: "#000",
-                            border: "none",
-                            color: "#fff"
-                        }}
-                    >
-                        <X size={32} />
-                    </button>
-
-                    {/* Prev */}
-                    <button
-                        onClick={prevImage}
-                        style={{
-                            position: "absolute",
-                            left: 20,
-                            background: "transparent",
-                            border: "none",
-                            color: "#fff"
-                        }}
-                    >
-                        <ChevronLeft size={40} />
-                    </button>
-
-                    {/* onclick index image */}
-                    <img
-                        src={slideData[currentIndex].galleryImage}
-                        alt={slideData[currentIndex].imageAlt}
-                        style={{
-                            maxWidth: "90%",
-                            maxHeight: "90%",
-                            borderRadius: "8px"
-                        }}
-                    />
-
-                    {/* next slide */}
-                    <button
-                        onClick={nextImage}
-                        style={{
-                            position: "absolute",
-                            right: 20,
-                            background: "transparent",
-                            border: "none",
-                            color: "#fff"
-                        }}
-                    >
-                        <ChevronRight size={40} />
-                    </button>
-                </div>
-            )}
-        </>
-    );
-});
-
 
 const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
     const [darkMode, setDarkMode] = useState(false);
@@ -704,11 +546,31 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                         >My Services</h5>
                         {/* check if package is premium & regular to render this */}
                         {checkUserPackage("regular") && (
-                            <Row className="row g-3">
+                            <div
+                                className="d-flex flex-wrap"
+                                style={{
+                                    gap: "15px",
+                                    justifyContent: "start"
+                                }}
+                            >
                                 {profile.servicesData.map((service, i) => {
                                     const IconComponent = Icons[service.icon];
+                                    const total = profile.servicesData.length;
+
+                                    // Determine the width based on the total items
+                                    let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
+
+                                    if (total === 2) {
+                                        cardWidth = "calc(50% - 7.5px)";
+                                    } else if (total === 4) {
+                                        cardWidth = "calc(50% - 7.5px)";
+                                    } else if (total === 5) {
+                                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                                    }
+
                                     return (
-                                        <Col xs={4} key={i} className="">
+                                        <div key={i} style={{ width: cardWidth }}>
                                             <div
                                                 className="p-3 h-100 text-center rounded d-flex gap-2 flex-column align-items-center justify-content-center"
                                                 style={{ background: profile.colors.trinery }}
@@ -728,10 +590,10 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                                                     }}
                                                 >{service.title}</h6>
                                             </div>
-                                        </Col>
+                                        </div>
                                     )
                                 })}
-                            </Row>
+                            </div>
                         )}
 
                         {/* check if package is basic to render this */}
@@ -859,23 +721,21 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     )}
 
                     {/* Gallery */}
-                    {checkUserPackage("premium") && (
-                        <div
-                            className=""
+                    <div
+                        className=""
+                        style={{
+                            overflow: "hidden",
+                            width: "100%"
+                        }}
+                    >
+                        <h5 className="mt-4 fw-bold"
                             style={{
-                                overflow: "hidden",
-                                width: "100%"
+                                opacity: "0.8",
+                                color: darkMode ? profile.colors.white : profile.colors.black
                             }}
-                        >
-                            <h5 className="mt-4 fw-bold"
-                                style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                }}
-                            >Gallery</h5>
-                            <GallerySlider slideData={profile.gallerySlider} />
-                        </div>
-                    )}
+                        >Gallery</h5>
+                        <GallerySlider slideData={profile.gallerySlider} />
+                    </div>
 
                     {/* testimonial */}
                     {checkUserPackage("premium") && (

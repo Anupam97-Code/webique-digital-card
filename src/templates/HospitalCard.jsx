@@ -37,9 +37,11 @@ import {
 
 
 } from "lucide-react";
+import * as Icons from "lucide-react";
 import { link } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
+import GallerySlider from "./components/GallerySlider";
 
 
 
@@ -145,6 +147,7 @@ Message: ${formData.message}`;
       openingHours: safeData.openingHours,
       headerBgImage: safeData.headerBgImage,
       HospitalData: safeData.HospitalData || [],
+      gallerySlider: safeData.gallerySlider || [],
       profileImg: safeData.profileImg,
       servicesData: safeData.servicesData || [],
       link: safeData.link || [],
@@ -326,6 +329,7 @@ Message: ${formData.message}`;
 
 
           </div>
+
           <div
             style={{
               padding: "0 16px",
@@ -409,7 +413,8 @@ Message: ${formData.message}`;
             <div className='d-flex flex-column gap-2'>
               <h4 style={{
                 fontSize: "18px",
-                fontWeight: 600, lineHeight: "27px",
+                fontWeight: 600,
+                lineHeight: "27px",
                 color: darkMode ? profile.colors.white : profile.colors.dark,
               }}
               >
@@ -428,7 +433,9 @@ Message: ${formData.message}`;
                 {profile.AboutContent}
               </p>
             </div>
-            {(profile.package === "regular" || profile.package === "premium") && (
+
+            {/* grid countup */}
+            {(profile.package === "premium") && (
               <div>
                 <Row className='text-center g-3' >
                   {profile.HospitalData.map((item, index) => (
@@ -451,19 +458,10 @@ Message: ${formData.message}`;
                           }}>{item.Hcontent}</p>
                       </div>
                     </Col>
-
-
                   ))}
                 </Row>
-
-
               </div>
             )}
-
-
-
-
-
 
             {/* tabs */}
             <style>
@@ -494,7 +492,7 @@ Message: ${formData.message}`;
             </style>
             <div>
               {/* to show premium cardc data and grid services */}
-              {(profile.package === "regular" || profile.package === "premium") && (
+              {(profile.package === "premium") && (
                 <div>
                   {profile.tabs?.length > 0 && (
                     <Container style={{ padding: 0 }}>
@@ -783,7 +781,7 @@ Message: ${formData.message}`;
               )}
 
               {/* to show regular & basic services */}
-              {(profile.package === "basic") && (
+              {(profile.package === "basic" || profile.package === "regular") && (
                 <div className='d-flex flex-column gap-2'>
                   <h4
                     style={{
@@ -795,56 +793,80 @@ Message: ${formData.message}`;
                   >
                     Services
                   </h4>
+                  <div
+                    className="d-flex flex-wrap"
+                    style={{
+                      gap: "15px",
+                      justifyContent: "start"
+                    }}
+                  >
+                    {profile.servicesData.map((service, i) => {
+                      const IconComponent = Icons[service.icon];
+                      const total = profile.servicesData.length;
 
+                      // Determine the width based on the total items
+                      let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
+                      if (total === 2) {
+                        cardWidth = "calc(50% - 7.5px)";
+                      } else if (total === 4) {
+                        cardWidth = "calc(50% - 7.5px)";
+                      } else if (total === 5) {
+                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                      }
 
-                  <ul className="d-flex flex-wrap align-items-center justify-content-start" style={{ gap: " 0.625rem" }}>
-                    {profile.servicesData.map((service, index) => (
-                      <li
-                        key={index}
-                        style={{
-                          background: darkMode ? profile.colors.black : profile.colors.servBack,
-                          padding: "3px 17px",
-                          borderRadius: "55px",
-                          color: profile.colors.black,
-                          fontSize: "12px",
-                          fontWeight: "500",
-                          color: darkMode ? profile.colors.white : profile.colors.black,
-                          border: `1px solid ${profile.colors.borderGray}`
-                        }}
-                      >
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
+                      return (
+                        <div key={i} style={{ width: cardWidth }}>
+                          <div
+                            className="p-3 h-100 text-center rounded d-flex gap-2 flex-column align-items-center justify-content-center"
+                            style={{ background: profile.colors.trinery }}
+                          >
+                            <div
+                              style={{
+                                color: profile.colors.Primery,
+                              }}
+                            >
+                              {IconComponent && <IconComponent size={44} />}
+                            </div>
+                            <h6
+                              style={{
+                                fontSize: "14px",
+                                opacity: "0.7",
+                                color: darkMode ? profile.colors.white : profile.colors.black
+                              }}
+                            >{service.title}</h6>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* testimonial carousal */}
-            <style>
-              {`
-.testimonial-card {
-    padding: 12px;
-    border: 1px solid #B4B4B4;
-    border-radius: 6px;
 
-    .testimonial-top {
-    width: 54px;
-    height: 54px;
-
-    img{width:100%; height:auto}
-
-    
-}
-    
-}
-.swiper-pagination{position:relative; margin-top:10px;}
-`}
-            </style>
-
-
-
+            {/* Gallery */}
+            {(profile.package === "basic" || profile.package === "regular") && (
+              <div
+                className=""
+                style={{
+                  overflow: "hidden",
+                  width: "100%",
+                  padding: "0"
+                }}
+              >
+                <h4 className="fw-bold mb-2"
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    lineHeight: "27px",
+                    color: darkMode ? profile.colors.white : profile.colors.dark,
+                  }}
+                >Gallery</h4>
+                <GallerySlider slideData={profile.gallerySlider} />
+              </div>
+            )}
 
             {/* Inquiry div (form) */}
             <style>
@@ -938,7 +960,6 @@ textarea::placeholder {
 }
 `}
             </style>
-
 
             {(profile.package === "premium") && (
               <div className='d-flex flex-column gap-2'>
@@ -1096,11 +1117,29 @@ textarea::placeholder {
 
             )}
 
+            {/* testimonial carousal */}
+            <style>
+              {`
+.testimonial-card {
+    padding: 12px;
+    border: 1px solid #B4B4B4;
+    border-radius: 6px;
 
+    .testimonial-top {
+    width: 54px;
+    height: 54px;
 
+    img{width:100%; height:auto}
 
-
-            {(profile.package === "regular" || profile.package === "premium") && (
+    
+}
+    
+}
+.swiper-pagination{position:relative; margin-top:10px;}
+`}
+            </style>
+            {/* testimonial */}
+            {(profile.package === "premium") && (
               <section className='d-flex flex-column gap-2'>
 
                 <div className="d-flex justify-content-between align-items-center">

@@ -58,7 +58,10 @@ const ContactSection = ({ profile, darkMode }) => {
 
             {/* Single value */}
             {isSingle && (
-              <small className="text-start" style={{ opacity: 0.7 }}>
+              <small className="text-start" style={{
+                opacity: 0.7,
+                wordBreak: title === "Email" ? "break-all" : ""
+              }}>
                 {values[0]}
               </small>
             )}
@@ -79,7 +82,8 @@ const ContactSection = ({ profile, darkMode }) => {
                     display: "block",
                     opacity: 0.7,
                     textDecoration: "none",
-                    color: "inherit"
+                    color: "inherit",
+                    wordBreak: title === "Email" ? "break-all" : ""
                   }}
                 >
                   {val}
@@ -193,6 +197,7 @@ const ContactSection = ({ profile, darkMode }) => {
                 height: "42px",
                 background: darkMode ? profile.colors.dark : profile.colors.white,
                 color: profile.colors.Primery,
+                flexShrink: "0"
               }}
             >
               <Clock size={18} />

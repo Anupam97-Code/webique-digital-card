@@ -1,14 +1,64 @@
 {
   "headerBgImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/background-pk.webp",
   "profileImage": "/images/user-profile.webp",
-  "name": "Mr. Kishor Kapate",
+  "name": "Mr. Kishor R. Kapate",
   "title": "",
   "phone": "+91 98765 43210",
   "designation": "Proprietor",
   "payment": {
-    "upi_id": "panchakrudhna@upi",
-    "qr_image": "/images/user-profile.webp"
+    "upi_id": "www.kishorkapate77-1@oksbi",
+    "qr_image": "/images/panchakrushana-upi-qr.webp"
   },
+  "gallerySlider": [
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    }
+  ],
   "link": [
     {
       "name": "Facebook",
@@ -16,7 +66,7 @@
     },
     {
       "name": "Instagram",
-      "url": "https://instagram.com/"
+      "url": "https://www.instagram.com/kishor29629?igsh=MWo3amZwMmtrZmVyMA=="
     },
     {
       "name": "Linkedin",
@@ -24,16 +74,28 @@
     },
     {
       "name": "Youtube",
-      "url": "https://linkedin.com/"
+      "url": "https://www.facebook.com/share/1TK4NE1z4h/"
     }
   ],
   "AboutMe": "About Me",
   "AboutContent": "Panchkrushna Electrical & CCTV Solutions (EST. 2007) provides reliable electrical products, wiring services, and security system installations. We offer quality electrical materials, professional installation services, and trusted solutions for homes, shops, offices, and commercial spaces.",
   "servicesData": [
-    "All Types of Electrical Works",
-    "CCTV Installation",
-    "Electrical Fitting & Cabling ",
-    "Electrical material Supply"
+    {
+      "title": "All Types of Electrical Works",
+      "icon": "Zap"
+    },
+    {
+      "title": "CCTV Installation",
+      "icon": "Cctv"
+    },
+    {
+      "title": "Electrical Fitting & Cabling",
+      "icon": "Plug"
+    },
+    {
+      "title": "Electrical Fitting & Cabling",
+      "icon": "Plug"
+    }
   ],
   "testimonials": {
     "heading": "Testimonials",
@@ -104,27 +166,27 @@
   "openingHours": [
     {
       "dayName": "Monday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 09:00 PM"
     },
     {
       "dayName": "Tuesday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 09:00 PM"
     },
     {
       "dayName": "Wednesday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 09:00 PM"
     },
     {
       "dayName": "Thursday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 09:00 PM"
     },
     {
       "dayName": "Friday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 9:00 PM"
     },
     {
       "dayName": "Saturday",
-      "ocTime": "10:00 AM - 07:00 PM"
+      "ocTime": "10:00 AM - 9:00 PM"
     },
     {
       "dayName": "Sunday",
