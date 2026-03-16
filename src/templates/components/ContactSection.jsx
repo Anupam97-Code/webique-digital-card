@@ -105,16 +105,14 @@ const ContactSection = ({ profile, darkMode }) => {
 
   return (
     <div className="d-flex flex-column gap-2">
-      <h4
+      <h5 className="fw-bold my-0"
         style={{
-          fontSize: "18px",
-          fontWeight: 600,
+          fontWeight: 600, lineHeight:"100%", fontSize:"18px",
           color: darkMode ? profile.colors.white : profile.colors.black,
-          lineHeight: "27px",
         }}
       >
         Contact Me
-      </h4>
+      </h5>
 
       <div className="d-flex flex-column gap-3 align-items-center justify-content-center">
 

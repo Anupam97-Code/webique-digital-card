@@ -375,7 +375,7 @@ Message: ${formData.message}`;
           </div>
 
           {/* social media icons */}
-          <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
+          <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "15px", }}>
             <ul style={{ gap: "17px", }} className='d-flex flex-wrap'>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
@@ -410,8 +410,8 @@ Message: ${formData.message}`;
               </h4>
               <p
                 style={{
-                  fontSize: "12px",
-                  lineHeight: "24px",
+                  fontSize: "16px",
+                  lineHeight: "27px",
                   opacity: "0.7",
                   fontWeight: 400,
                   margin: 0,

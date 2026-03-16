@@ -10,6 +10,7 @@ import HospitalCard from "../templates/HospitalCard";
 import RestraurentCard from "../templates/RestraurentCard";
 import DigitalIDcard from "../templates/DigitalIDcard";
 import { button } from "framer-motion/client";
+import DigitalCardTwo from "../templates/DigitalCardTwo";
 
 const Card = () => {
     const { username } = useParams();
@@ -318,7 +319,8 @@ const Card = () => {
         Premium1: Premium1,
         RestraurentCard: RestraurentCard,
         DigitalIDcard: DigitalIDcard,
-        HospitalCard: HospitalCard
+        HospitalCard: HospitalCard,
+        DigitalCardTwo:DigitalCardTwo
     };
 
     const SelectedTemplate = templates[data.template];
