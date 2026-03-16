@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Tabs, Tab, Container, Carousel } from "react-bootstrap";
 import {
+  IndianRupee,
   Phone,
   Mail,
   MapPin,
@@ -57,7 +58,7 @@ const iconMap = {
   Youtube
 };
 
-const Premium1 = ({ data, openQR, saveContact }) => {
+const Premium1 = ({ data, openQR, saveContact, openUPI }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const [activeTab, setActiveTab] = useState("");
@@ -287,9 +288,9 @@ Message: ${formData.message}`;
                   background: profile.colors.Primery,
                   color: profile.colors.white,
                 }}
-                onClick={openQR}
+                onClick={openUPI}
               >
-                <ScanQrCode size={20} />
+                <IndianRupee size={20} />
               </button>
               {/* brosher button */}
               {checkUserPackage("premium") && (

@@ -7,6 +7,10 @@
   "phone": "+919860188007",
   "email": "anupam@example.com",
   "address": "Mumbai, Maharashtra, India",
+  "payment": {
+    "upi_id": "anupam@upi",
+    "qr_image": "https://www.webiquecard.in/dgcard-img/panchkrushna/user.webp"
+  },
   "map": {
     "type": "map",
     "label": "Location Map",

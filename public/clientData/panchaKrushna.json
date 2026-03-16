@@ -5,6 +5,10 @@
   "title": "",
   "phone": "+91 98765 43210",
   "designation": "Proprietor",
+  "payment": {
+    "upi_id": "panchakrudhna@upi",
+    "qr_image": "/images/user-profile.webp"
+  },
   "link": [
     {
       "name": "Facebook",
@@ -24,7 +28,7 @@
     }
   ],
   "AboutMe": "About Me",
-  "AboutContent": "Panchkrushna Electrical & CCTV Solutions provides reliable electrical products, wiring services, and security system installations. We offer quality electrical materials, professional installation services, and trusted solutions for homes, shops, offices, and commercial spaces.",
+  "AboutContent": "Panchkrushna Electrical & CCTV Solutions (EST. 2007) provides reliable electrical products, wiring services, and security system installations. We offer quality electrical materials, professional installation services, and trusted solutions for homes, shops, offices, and commercial spaces.",
   "servicesData": [
     "All Types of Electrical Works",
     "CCTV Installation",

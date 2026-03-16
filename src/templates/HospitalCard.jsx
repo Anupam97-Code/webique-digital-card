@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Tabs, Tab, Container, Carousel, Row, Col } from "react-bootstrap";
 import {
+  IndianRupee,
   Phone,
   Mail,
   MapPin,
@@ -32,7 +33,7 @@ import {
   Smartphone,
   Youtube,
   Clock4,
-  CalendarCheck  
+  CalendarCheck
 
 
 } from "lucide-react";
@@ -59,7 +60,7 @@ const iconMap = {
   Youtube
 };
 
-const HospitalCard = ({ data, openQR, saveContact }) => {
+const HospitalCard = ({ data, openQR, saveContact, openUPI }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const [activeTab, setActiveTab] = useState("");
@@ -303,9 +304,9 @@ Message: ${formData.message}`;
                   background: profile.colors.Primery,
                   color: profile.colors.white,
                 }}
-                onClick={openQR}
+                onClick={openUPI}
               >
-                <ScanQrCode size={20} />
+                <IndianRupee size={20} />
               </button>
               {/* brosher button */}
               {checkUserPackage("premium") && (
@@ -427,37 +428,37 @@ Message: ${formData.message}`;
                 {profile.AboutContent}
               </p>
             </div>
-{(profile.package === "regular" || profile.package === "premium") && (
-            <div>
-              <Row className='text-center g-3' >
-                {profile.HospitalData.map((item, index) => (
+            {(profile.package === "regular" || profile.package === "premium") && (
+              <div>
+                <Row className='text-center g-3' >
+                  {profile.HospitalData.map((item, index) => (
 
-                  <Col xs={6}>
-                    <div style={{
-                      border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
-                      borderRadius: "6px", padding: "15px", minHeight: "92px",
-                      background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
-                    }}>
-                      <h2 style={{
-                        fontSize: "30px", fontWeight: "600",
-                        color: darkMode ? profile.colors.white : profile.colors.black,
-                      }}>{item.Htitle}</h2>
-                      <p className='m-0'
-                        style={{
-                          fontSize: "12px",
-                          lineHeight: '100%',
+                    <Col xs={6}>
+                      <div style={{
+                        border: `solid 1px ${darkMode ? profile.colors.white : profile.colors.whiteBorder}`,
+                        borderRadius: "6px", padding: "15px", minHeight: "92px",
+                        background: darkMode ? profile.colors.darkFields : profile.colors.whiteFields
+                      }}>
+                        <h2 style={{
+                          fontSize: "30px", fontWeight: "600",
                           color: darkMode ? profile.colors.white : profile.colors.black,
-                        }}>{item.Hcontent}</p>
-                    </div>
-                  </Col>
+                        }}>{item.Htitle}</h2>
+                        <p className='m-0'
+                          style={{
+                            fontSize: "12px",
+                            lineHeight: '100%',
+                            color: darkMode ? profile.colors.white : profile.colors.black,
+                          }}>{item.Hcontent}</p>
+                      </div>
+                    </Col>
 
 
-                ))}
-              </Row>
+                  ))}
+                </Row>
 
 
-            </div>
-)}
+              </div>
+            )}
 
 
 
@@ -844,7 +845,7 @@ Message: ${formData.message}`;
 
 
 
-      
+
             {/* Inquiry div (form) */}
             <style>
               {`
@@ -1011,7 +1012,7 @@ textarea::placeholder {
                       />
                     </div>
 
-                    <div style={{ margin: "0 0 13px", position:"relative" }}>
+                    <div style={{ margin: "0 0 13px", position: "relative" }}>
                       <input
                         type="time"
                         name="time"
@@ -1027,11 +1028,11 @@ textarea::placeholder {
                           fontSize: "12px"
                         }}
                       />
-                      <div className='custom-icon' style={{color: darkMode ? profile.colors.white : profile.colors.black,}}>
-                      <Clock4 size={15}/>
+                      <div className='custom-icon' style={{ color: darkMode ? profile.colors.white : profile.colors.black, }}>
+                        <Clock4 size={15} />
                       </div>
                     </div>
-                    <div style={{ margin: "0 0 13px", position:"relative" }}>
+                    <div style={{ margin: "0 0 13px", position: "relative" }}>
                       <input
                         type="date"
                         name="date"
@@ -1047,8 +1048,8 @@ textarea::placeholder {
                           fontSize: "12px"
                         }}
                       />
-                      <div className='custom-icon' style={{color: darkMode ? profile.colors.white : profile.colors.black,}}>
-                      <CalendarCheck size={15}/>
+                      <div className='custom-icon' style={{ color: darkMode ? profile.colors.white : profile.colors.black, }}>
+                        <CalendarCheck size={15} />
                       </div>
                     </div>
 
@@ -1099,7 +1100,7 @@ textarea::placeholder {
 
 
 
-                  {(profile.package === "regular" || profile.package === "premium") && (
+            {(profile.package === "regular" || profile.package === "premium") && (
               <section className='d-flex flex-column gap-2'>
 
                 <div className="d-flex justify-content-between align-items-center">
@@ -1224,27 +1225,27 @@ textarea::placeholder {
             />
 
             {/* map div */}
-          {(profile.package === "premium" ||
-  profile.package === "regular" ||
-  profile.package === "basic") && (
-  <div>
-    {profile.map?.value && (
-      <div
-        className="container p-0"
-        style={{ borderRadius: "6px", overflow: "hidden" }}
-      >
-        <div className="ratio ratio-16x9">
-          <iframe
-            src={profile.map.value}
-            style={{ border: "0" }}
-            loading="lazy"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-    )}
-  </div>
-)}
+            {(profile.package === "premium" ||
+              profile.package === "regular" ||
+              profile.package === "basic") && (
+                <div>
+                  {profile.map?.value && (
+                    <div
+                      className="container p-0"
+                      style={{ borderRadius: "6px", overflow: "hidden" }}
+                    >
+                      <div className="ratio ratio-16x9">
+                        <iframe
+                          src={profile.map.value}
+                          style={{ border: "0" }}
+                          loading="lazy"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
           </div>
 
           {/* bottom sticky buttons group */}

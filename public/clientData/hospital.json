@@ -7,6 +7,10 @@
   "phone": "+919860188007",
   "email": "anupam@example.com",
   "address": "Mumbai, Maharashtra, India",
+  "payment": {
+    "upi_id": "hospital@upi",
+    "qr_image": "/images/hospital-logo.webp"
+  },
   "map": {
     "type": "map",
     "label": "Location Map",
