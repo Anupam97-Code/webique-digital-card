@@ -86,22 +86,81 @@ const Card = () => {
                 return;
             }
 
-            const borderSize = 10;
+            const qrWidth = originalCanvas.width;
+            const qrHeight = originalCanvas.height;
+
+            const textLines = [];
+            if (data?.name) textLines.push(`Name: ${data.name}`);
+            if (data?.title) textLines.push(`Title: ${data.title}`);
+            if (data?.designation) textLines.push(`Designation: ${data.designation}`);
+            textLines.push(`Link: ${window.location.href}`);
+
+            const cardPadding = 30;
+            const canvasPadding = 40;
+            const lineHeight = 24;
+            const textSectionHeight = textLines.length > 0 ? (textLines.length * lineHeight + 10) : 0;
+
+            const cardWidth = Math.max(qrWidth + cardPadding * 2, 300);
+            const cardHeight = qrHeight + textSectionHeight + cardPadding * 2;
 
             // Create new canvas
             const newCanvas = document.createElement("canvas");
+            newCanvas.width = cardWidth + canvasPadding * 2;
+            newCanvas.height = cardHeight + canvasPadding * 2;
             const ctx = newCanvas.getContext("2d");
 
-            // Increase canvas size (add border space)
-            newCanvas.width = originalCanvas.width + borderSize * 2;
-            newCanvas.height = originalCanvas.height + borderSize * 2;
-
-            // Fill white background
+            // Fill outer white background
             ctx.fillStyle = "#ffffff";
             ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-            // Draw original QR in center with border space
-            ctx.drawImage(originalCanvas, borderSize, borderSize);
+            // Shadow box
+            ctx.shadowColor = "rgba(0, 0, 0, 0.15)";
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 10;
+
+            const boxX = canvasPadding;
+            const boxY = canvasPadding;
+            const radius = 20;
+
+            // Box shape
+            ctx.fillStyle = "#ffffff";
+            ctx.beginPath();
+            ctx.moveTo(boxX + radius, boxY);
+            ctx.lineTo(boxX + cardWidth - radius, boxY);
+            ctx.quadraticCurveTo(boxX + cardWidth, boxY, boxX + cardWidth, boxY + radius);
+            ctx.lineTo(boxX + cardWidth, boxY + cardHeight - radius);
+            ctx.quadraticCurveTo(boxX + cardWidth, boxY + cardHeight, boxX + cardWidth - radius, boxY + cardHeight);
+            ctx.lineTo(boxX + radius, boxY + cardHeight);
+            ctx.quadraticCurveTo(boxX, boxY + cardHeight, boxX, boxY + cardHeight - radius);
+            ctx.lineTo(boxX, boxY + radius);
+            ctx.quadraticCurveTo(boxX, boxY, boxX + radius, boxY);
+            ctx.closePath();
+            ctx.fill();
+
+            // Reset shadow before drawing image and text
+            ctx.shadowColor = "transparent";
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+
+            // Draw QR code centered horizontally
+            const qrX = boxX + (cardWidth - qrWidth) / 2;
+            const qrY = boxY + cardPadding;
+            ctx.drawImage(originalCanvas, qrX, qrY);
+
+            // Draw text
+            if (textLines.length > 0) {
+                ctx.fillStyle = data?.colors?.black || "#000000";
+                ctx.font = "bold 16px Arial";
+                ctx.textAlign = "center";
+                
+                let textY = boxY + cardPadding + qrHeight + 25;
+                textLines.forEach(line => {
+                    ctx.fillText(line, boxX + (cardWidth / 2), textY, cardWidth - 40);
+                    textY += lineHeight;
+                });
+            }
 
             // Convert NEW canvas to blob
             const blob = await new Promise((resolve) =>
@@ -125,6 +184,13 @@ const Card = () => {
                 { type: "image/png" }
             );
 
+            const shareTextArray = [];
+            if (data?.name) shareTextArray.push(`Name: ${data.name}`);
+            if (data?.title) shareTextArray.push(`Title: ${data.title}`);
+            if (data?.designation) shareTextArray.push(`Designation: ${data.designation}`);
+            shareTextArray.push(`Digital Card Link: ${window.location.href}`);
+            const shareText = shareTextArray.join("\n");
+
             // Share if supported
             if (
                 navigator.canShare &&
@@ -133,6 +199,7 @@ const Card = () => {
                 await navigator.share({
                     files: [file],
                     title: `${data.name} Digital Card`,
+                    text: shareText,
                 });
             } else {
                 alert("Your device does not support QR image sharing.");
@@ -196,7 +263,7 @@ const Card = () => {
 
     }, [username]);
 
-    // if found card the show loading
+    // if found card then show loading
     if (loading) {
         return (
             <div className="card-loading">
@@ -205,7 +272,7 @@ const Card = () => {
             </div>
         );
     }
-    // if not the show msg
+    // if not then show err msg
     if (error || !data) {
         return (
             <h2 style={{ textAlign: "center", marginTop: "50px" }}>
@@ -218,18 +285,18 @@ const Card = () => {
     const handleSaveContact = () => {
         if (!data) return;
 
-        const vCardData = `
-BEGIN:VCARD
-VERSION:3.0
-FN:${data.name}
-ORG:${data.company || ""}
-TITLE:${data.designation || ""}
-TEL;TYPE=CELL:${data.phone || ""}
-EMAIL:${data.email || ""}
-ADR;TYPE=WORK:;;${data.address || ""}
-URL:${window.location.href}
-END:VCARD
-  `;
+        const vCardData = [
+            "BEGIN:VCARD",
+            "VERSION:3.0",
+            `FN:${data.name || ""}`,
+            `ORG:${data.company || ""}`,
+            `TITLE:${data.title || ""}`,
+            `TEL;TYPE=CELL:${data?.contactData?.phone_Number?.[0] || data.phone || ""}`,
+            `EMAIL:${data?.contactData?.mail?.[0] || data.email || ""}`,
+            `ADR;TYPE=WORK:;;${data?.contactData?.location?.address || data.address || ""}`,
+            `URL:${window.location.href}`,
+            "END:VCARD"
+        ].join("\r\n");
 
         const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" });
         const url = URL.createObjectURL(blob);
@@ -244,13 +311,14 @@ END:VCARD
         URL.revokeObjectURL(url);
     };
     //======= make this function for saveing the contact and making VCF file
+
     const templates = {
         Basic1: Basic1,
         Basic2: Basic2,
         Premium1: Premium1,
         RestraurentCard: RestraurentCard,
         DigitalIDcard: DigitalIDcard,
-        HospitalCard:HospitalCard
+        HospitalCard: HospitalCard
     };
 
     const SelectedTemplate = templates[data.template];
@@ -266,21 +334,59 @@ END:VCARD
                 openQR={() => setShowQR(true)}
                 openUPI={openUPI}
             />
+
             {/* make for show the users UPI QR  */}
             {showUPI && (
                 <div className="qr-overlay">
-                    <div className="qr-modal d-flex flex-column align-items-center justify-content-center" ref={modalRef}>
-                        <h5>Pay via UPI</h5>
-
+                    <div className="qr-modal d-flex flex-column align-items-center justify-content-center" ref={modalRef}
+                        style={{ padding: "40px 20px" }}>
+                        {/* show user name and profile image */}
+                        <div className="d-flex gap-3 flex-row align-items-center mb-3">
+                            {data?.profileImage ? (
+                                <img
+                                    src={data.profileImage}
+                                    alt={data.name || "Profile"}
+                                    style={{
+                                        width: "45px",
+                                        height: "45px",
+                                        borderRadius: "50%",
+                                        objectFit: "cover",
+                                        marginBottom: "10px"
+                                    }}
+                                />
+                            ) : (
+                                <div
+                                    style={{
+                                        width: "45px",
+                                        height: "45px",
+                                        borderRadius: "50%",
+                                        backgroundColor: data.colors.Primery,
+                                        color: data.colors.white,
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: "24px",
+                                        fontWeight: "bold",
+                                    }}
+                                >
+                                    {data?.name ? data.name.replace(/^(mr\.?|mrs\.?|ms\.?|dr\.?)\s+/i, "").charAt(0).toUpperCase() : "U"}
+                                </div>
+                            )}
+                            <h5 className="mb-0 text-center" style={{ color: data?.colors?.black || "#000" }}>
+                                {data?.name}
+                            </h5>
+                        </div>
+                        {/* show QR image */}
                         {data?.payment?.qr_image && (
                             <img
                                 src={data.payment.qr_image}
                                 alt="UPI QR"
                                 width="200"
                                 height="200"
+                                style={{ marginBottom: "10px" }}
                             />
                         )}
-
+                        {/* show upi id */}
                         {data?.payment?.upi_id && (
                             <button
                                 onClick={handleUPIPay}
@@ -290,24 +396,12 @@ END:VCARD
                                     display: "block",
                                     fontWeight: "600",
                                     textDecoration: "none",
-                                    color: data.colors.black,
-                                    background:"none"
+                                    color: data?.colors?.black || "#000",
+                                    background: "none"
                                 }}
                             >
                                 {data.payment.upi_id}
                             </button>
-                            // <a
-                            //     href={upiLink}
-                            //     style={{
-                            //         marginTop: "10px",
-                            //         display: "block",
-                            //         fontWeight: "600",
-                            //         textDecoration: "none",
-                            //         color: data.colors.black
-                            //     }}
-                            // >
-                            //     {data.payment.upi_id}
-                            // </a>
                         )}
                     </div>
                 </div>
@@ -323,6 +417,7 @@ END:VCARD
                             value={currentUrl}
                             size={200}
                             level="H"
+                            fgColor={data?.colors?.black || "#000000"}
                         />
                         <div className="qr-buttons">
                             <button onClick={downloadQR}><Download size={18} />  Download QR</button>

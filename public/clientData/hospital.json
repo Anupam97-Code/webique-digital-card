@@ -21,7 +21,7 @@
   "linkedin": "https://linkedin.com/in/anupam",
   "instagram": "https://instagram.com/marcus",
   "whatsapp": "919767724425",
-  "package": "premium",
+  "package": "basic",
   "template": "HospitalCard",
   "primaryColor": "#000000",
   "SecondaryColor": "#000000",
@@ -43,6 +43,56 @@
     {
       "Htitle": "1000+",
       "Hcontent": "Patients Treated"
+    }
+  ],
+  "gallerySlider": [
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image"
     }
   ],
   "link": [
@@ -167,12 +217,30 @@
     }
   ],
   "servicesData": [
-    "Emergency Care",
-    "Pediatrics",
-    "Maternity Care",
-    "Diagnostic",
-    "Orthopedic Care",
-    "Orthopedic Care"
+    {
+      "title": "Emergency Care",
+      "icon": "Ambulance"
+    },
+    {
+      "title": "Pediatrics",
+      "icon": "Baby"
+    },
+    {
+      "title": "Maternity Care",
+      "icon": "Heart"
+    },
+    {
+      "title": "Diagnostic",
+      "icon": "Stethoscope"
+    },
+    {
+      "title": "Orthopedic Care",
+      "icon": "Activity"
+    },
+    {
+      "title": "Surgery",
+      "icon": "Syringe"
+    }
   ],
   "testimonials": {
     "heading": "Testimonials",

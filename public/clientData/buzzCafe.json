@@ -32,7 +32,57 @@
             "icon": "Youtube"
         }
     ],
-    "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
+    "gallerySlider": [
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image"
+        }
+    ],
+    "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
     "servicesData": [
         {
             "title": "Fresh Food",
