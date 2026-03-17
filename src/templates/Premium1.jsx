@@ -238,13 +238,14 @@ Message: ${formData.message}`;
         {/* Theme Toggle */}
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="btn d-flex align-items-center justify-content-center position-fixed top-0 end-0 z-3 rounded-circle shadow"
+          className="btn d-flex align-items-center justify-content-center position-fixed top-0 end-0 rounded-circle shadow"
           style={{
             background: darkMode ? profile.colors.white : profile.colors.darkFields,
             color: darkMode ? profile.colors.darkFields : profile.colors.white,
             padding: "13px 13px",
             marginRight: "5px",
             marginTop: "5px",
+            zIndex:"1000"
           }}
         >
           {darkMode ? <Sun size={16} /> : <Moon size={16} />}

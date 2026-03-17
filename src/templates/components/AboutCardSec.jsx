@@ -13,8 +13,8 @@ const AboutCardSec = ({ title, description, darkMode, profile }) => {
                 </h4>
                 <p
                     style={{
-                        fontSize: "12px",
-                        lineHeight: "24px",
+                        fontSize: "16px",
+                        lineHeight: "27px",
                         opacity: "0.7",
                         fontWeight: 400,
                         margin: 0,

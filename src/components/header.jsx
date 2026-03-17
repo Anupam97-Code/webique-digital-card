@@ -60,7 +60,7 @@ const webImages = [
   {
     src: imgTen,
     alt: "Web development dashboard",
-    link: "https://webiquecard.in/hospital"
+    link: "https://webiquecard.in/businesscard"
   },
   {
     src: imgSix,

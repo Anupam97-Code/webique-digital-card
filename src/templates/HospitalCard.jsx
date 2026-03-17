@@ -133,6 +133,22 @@ Message: ${formData.message}`;
 
   // console.log("is mobile:", isMobile);
 
+  // mkae this for services icon & text responsive
+  const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 360);
+  useEffect(() => {
+
+    const handleResize = () => {
+      setIsSmallMobile(window.innerWidth <= 360);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
+
   const safeData = data || {};
 
   const profile = useMemo(
@@ -788,13 +804,17 @@ Message: ${formData.message}`;
                       // Determine the width based on the total items
                       let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
-                      if (total === 2) {
+                      if (isSmallMobile) {
                         cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 4) {
-                        cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 5) {
-                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
-                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                      } else {
+                        if (total === 2) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 4) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 5) {
+                          if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                          else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                        }
                       }
 
                       return (

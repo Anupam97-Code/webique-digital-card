@@ -1,0 +1,137 @@
+{
+    "headerBgImage": "",
+    "headerBgImagePosition": "top",
+    "headerOverlayLogoImg": "/images/webique-logo-white.png",
+    "profileImage": "/images/user-2.png",
+    "name": "Anupam Shimpi",
+    "title": "Forntend Developer",
+    "visitingLink": "www.webiquecard.in",
+    "socialLinks": [
+    {
+      "icon": "/images/col-insta.svg",
+      "text": "Follow Us On Instagram",
+      "link": "https://instagram.com"
+    },
+    {
+      "icon": "/images/color-facebook.svg",
+      "text": "Follow Us On Facebook",
+      "link": "https://facebook.com"
+    },
+    {
+      "icon": "/images/color-linkdin.svg",
+      "text": "Follow Us On Linkdin",
+      "link": "https://linkedin.com"
+    },
+    {
+      "icon": "/images/color-yt.svg",
+      "text": "Visit Us On Youtube",
+      "link": "https://youtube.com"
+    }
+  ],
+    "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
+    "servicesData": [
+        {
+            "title": "WordPress Development",
+            "icon": "Salad"
+        },
+        {
+            "title": "UI & UX Design",
+            "icon": "Utensils"
+        },
+        {
+            "title": "Custom Website",
+            "icon": "Users"
+        },
+        {
+            "title": "Branding Support",
+            "icon": "Trees"
+        },
+        {
+            "title": "E-commerce / WooCommerce",
+            "icon": "Cake"
+        },
+        {
+            "title": "Performance, SEO & Lead Enablement",
+            "icon": "HeartHandshake"
+        },
+        {
+            "title": "Emailer Template Design",
+            "icon": "ChefHat"
+        },
+        {
+            "title": "Security, Maintenance & Support",
+            "icon": "ChefHat"
+        }
+    ],
+    "contactData": {
+        "phone_Number": [
+            "+919860188007"
+        ],
+        "mail": [
+            "jordan.smith@mail.com"
+        ],
+        "location": {
+            "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
+            "link": "https://maps.app.goo.gl/JdERjLM7DnAdjFY67"
+        }
+    },
+    "openingHours": [
+        {
+            "dayName": "Monday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Tuesday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Wednesday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Thursday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Friday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Saturday",
+            "ocTime": "09:00 - 22:00"
+        },
+        {
+            "dayName": "Sunday",
+            "ocTime": "Closed"
+        }
+    ],
+    "colors": {
+        "Primery": "#ba003c",
+        "Secondery": "#DE040033",
+        "trinery": "#BEBEBE33",
+        "white": "#fff",
+        "black": "#1D1D1D",
+        "light": "#ffffff",
+        "lightBg": "#F1F3F5",
+        "dark": "#0F172A",
+        "darkCardBg": "#1E293B",
+        "grayblack": "#17191c",
+        "inputBg": "#BEBEBE26",
+        "borderGray": "#B4B4B4",
+        "stickyLink1": "#00BF63",
+        "stickyLink2": "#1680FB",
+        "stickyLink3": "#022B5B",
+        "svgPathBg": "#0F6DDA",
+        "headerBg": "#1680FB",
+        "shadowCol":"#00000040"
+    },
+    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
+    "description": "Professional Digital Visiting Card for Local Businesses",
+    "ogImage": "/images/webique-og-image.png",
+    "darkModeImage": "/images/user-profile.webp",
+    "company": "Webique Technology",
+    "email": "contact@webique.in",
+    "whatsapp": "919860188007",
+    "package": "basic",
+    "template": "DigitalCardTwo"
+}

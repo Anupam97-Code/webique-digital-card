@@ -1,17 +1,14 @@
 import React from 'react'
 import {
-
   ScanQrCode,
   Download,
-
-
-
 } from "lucide-react";
+
 const StickyFooter = ({ profile, isMobile, whatsappNumber, openQR, saveContact }) => {
     return (
         <div
             className="position-sticky w-100"
-            style={{ bottom: "-1px" }}
+            style={{ bottom: "-1px",zIndex:"1000" }}
         >
             <div className="w-100 p-0 gap-0 d-flex align-items-center justify-content-center">
                 {/* whatsapp button */}
