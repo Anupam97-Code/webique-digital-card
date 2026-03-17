@@ -281,7 +281,6 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                     className="position-relative "
                     style={{
                         width: "100%",
-                        padding: "0 15px",
                         maxWidth: isMobile ? "100%" : "402px",
                         background: darkMode ? profile.colors.grayblack : profile.colors.white,
                         // paddingBottom: "20px",
@@ -289,7 +288,7 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                     }}
                 >
                     {/* top card section to header Image */}
-
+                    <div style={{padding:"0 15px"}}>
                     <WaveShape
                         profile={profile}
                         darkMode={darkMode}
@@ -495,7 +494,7 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                             darkMode={darkMode}
                         />
                     </div>
-
+</div>
                     {/* Sticky Footer Buttons */}
                     <StickyFooter
                         profile={profile}

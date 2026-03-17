@@ -128,7 +128,7 @@ Message: ${formData.message}`;
   const profile = useMemo(
     () => ({
       name: safeData.name || "Marcus Whitlow",
-      whatsapp: safeData.whatsapp || "+91 919860188007",
+      whatsapp: safeData.whatsapp,
       title: safeData.title,
       designation: safeData.designation,
       company: safeData.company,
@@ -211,25 +211,6 @@ Message: ${formData.message}`;
 
   const whatsappNumber = String(profile.whatsapp).replace(/[^0-9]/g, "");
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-
-  const shareCard = () => {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: profile.name,
-          text: `Connect with ${profile.name}`,
-          url: currentUrl,
-        })
-        .catch(() => { });
-    } else {
-      window.open(
-        `https://wa.me/?text=${encodeURIComponent(
-          `Connect with ${profile.name} - ${currentUrl}`
-        )}`,
-        "_blank"
-      );
-    }
-  };
 
   return (
     <div style={{}}>
@@ -449,6 +430,7 @@ Message: ${formData.message}`;
 
 `}
             </style>
+            
             <div>
               {/* to show premium cardc data and grid services */}
               {checkUserPackage("premium") && (
@@ -719,7 +701,7 @@ Message: ${formData.message}`;
             {/* Gallery */}
             {(profile.package === "basic" || profile.package === "regular") && (
               <div
-                className=""
+                className="d-flex flex-column gap-2"
                 style={{
                   overflow: "hidden",
                   width: "100%"
@@ -1007,22 +989,20 @@ textarea::placeholder {
             />
 
             {/* map div */}
-            {checkUserPackage("premium") && (
-              <div>
-                {profile.map?.value && (
-                  <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
-                    <div className="ratio ratio-16x9">
-                      <iframe
-                        src={profile.map.value}
-                        style={{ border: "0" }}
-                        loading="lazy"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+            <div>
+              {profile.map?.value && (
+                <div className="container p-0 " style={{ borderRadius: "6px", overflow: "hidden" }}>
+                  <div className="ratio ratio-16x9">
+                    <iframe
+                      src={profile.map.value}
+                      style={{ border: "0" }}
+                      loading="lazy"
+                      allowFullScreen
+                    ></iframe>
                   </div>
-                )}
-              </div>
-            )}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* bottom sticky buttons group */}

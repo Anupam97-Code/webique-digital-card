@@ -11,6 +11,7 @@ import RestraurentCard from "../templates/RestraurentCard";
 import DigitalIDcard from "../templates/DigitalIDcard";
 import { button } from "framer-motion/client";
 import DigitalCardTwo from "../templates/DigitalCardTwo";
+import BusinessCard from "../templates/BusinessCard";
 
 const Card = () => {
     const { username } = useParams();
@@ -36,10 +37,14 @@ const Card = () => {
 
         if (showQR || showUPI) {
             document.addEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        } else {
+            document.body.style.overflow = "auto"; // Restore background scrolling
         }
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "auto"; // Cleanup on unmount
         };
     }, [showQR, showUPI]);
 
@@ -320,7 +325,8 @@ const Card = () => {
         RestraurentCard: RestraurentCard,
         DigitalIDcard: DigitalIDcard,
         HospitalCard: HospitalCard,
-        DigitalCardTwo:DigitalCardTwo
+        DigitalCardTwo:DigitalCardTwo,
+        BusinessCard:BusinessCard
     };
 
     const SelectedTemplate = templates[data.template];

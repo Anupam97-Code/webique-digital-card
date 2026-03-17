@@ -20,61 +20,72 @@
   "gallerySlider": [
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     }
   ],
   "facebook": "https://facebook.com/anupam",
   "linkedin": "https://linkedin.com/in/anupam",
   "instagram": "https://instagram.com/marcus",
   "whatsapp": "919767724425",
-  "package": "regular",
+  "package": "premium",
   "template": "Premium1",
-  "primaryColor": "#000000",
-  "SecondaryColor": "#000000",
+
   "AboutMe": "About Me",
   "AboutContent": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
   "link": [

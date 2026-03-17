@@ -7,9 +7,18 @@ import {
     Moon,
     ScanQrCode,
     X,
+    PenTool,
+    MonitorSmartphone,
+    LaptopMinimalCheck,
+    Laptop,
+    CodeXml,
+    Settings,
     ChevronLeft,
     ChevronRight,
-    IndianRupee
+    IndianRupee,
+    Phone,
+    Send,
+    Globe
 } from "lucide-react";
 import * as Icons from "lucide-react";
 import { li } from "framer-motion/client";
@@ -81,7 +90,9 @@ Message: ${formData.message}`;
             <style>
                 {`
 .form-control::placeholder {
-  color: #9CA3AF;
+  color:${profile?.colors?.placeholderCol};
+
+
 }
 `}
             </style>
@@ -263,7 +274,7 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
     )
 });
 
-const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
+const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
     const [darkMode, setDarkMode] = useState(false);
     const [activeMenuTab, setActiveMenuTab] = useState(0);
     const safeData = data || {};
@@ -289,6 +300,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
     const profile = useMemo(() => ({
         headerBgImage: safeData.headerBgImage || "",
         profileImage: safeData.profileImage || "/images/default-profile.png",
+        texture: safeData.texture,
 
         name: safeData.name || "John Doe",
         title: safeData.title || "Business Owner",
@@ -299,7 +311,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
         company: safeData.company || "",
         email: safeData.email || "",
         whatsapp: safeData.whatsapp || "",
-
+        headerOverlayLogoImg: safeData.headerOverlayLogoImg,
         socialLinks: safeData.socialLinks || [],
 
         servicesData: safeData.servicesData || [],
@@ -319,7 +331,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                 link: ""
             }
         },
-
+        contactDataTop: safeData.contactDataTop || [],
         openingHours: safeData.openingHours || [],
         iframe: safeData.iframe,
         colors: safeData.colors,
@@ -366,7 +378,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
     return (
         <div
-            className="min-vh-100 d-flex align-items-center justify-content-center p-0 p-md-3"
+            className="min-vh-100 d-flex align-items-center justify-content-center p-0"
             style={{ background: darkMode ? profile.colors.dark : profile.colors.lightBg }}
         >
             {/* Theme Toggle */}
@@ -394,138 +406,189 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     color: darkMode ? profile.colors.white : profile.colors.black,
                 }}
             >
-                {/* to header Image */}
-                <div
-                    style={{
-                        height: "170px",
-                        backgroundImage: `url(${profile.headerBgImage})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: profile.headerBgImagePosition,
-                        // borderRadius: "16px",
-                        padding: "10px"
-                    }}
-                    className="d-flex align-items-end justify-content-end"
-                >
-                    <div className="d-flex gap-1 position-relative z-2">
-                        {/* location button */}
-                        <a
-                            href={profile.contactData.location.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="rounded d-flex align-items-center justify-content-center"
-                            style={{
-                                padding: "6px",
-                                background: profile.colors.Primery,
-                                color: profile.colors.white,
-                            }}
-                        >
-                            <MapPin size={20} />
-                        </a>
-                        {/* QR button */}
-                        <button
-                            className="rounded d-flex align-items-center justify-content-center border-0"
-                            style={{
-                                padding: "6px",
-                                background: profile.colors.Primery,
-                                color: profile.colors.white,
-                            }}
-                            onClick={openUPI}
-                        >
-                            <IndianRupee size={20} />
-                        </button>
 
-                        {/* brosher button */}
-                        {/* {checkUserPackage("premium") && (
-                            <button
-                                className="rounded d-flex align-items-center justify-content-center border-0"
-                                style={{
-                                    padding: "6px",
-                                    background: profile.colors.Primery,
-                                    color: profile.colors.white,
-                                }}
-                                onClick={""}
+                <style>
+                    {`
+    .for-background{position:relative; overflow:hidden;}
+    .for-background::before {
+           content: "";
+      position: absolute;
+      width: 470px;
+      height: 470px;
+      border-radius: 50%;
+      background: ${profile?.colors?.Primery};
+      top: -256px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 21;
+    }
+
+        .for-background::after {
+         content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    opacity: 0.8;
+    background-image: url(${profile?.texture});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    
+  
+      
+  `}
+                </style>
+
+
+                {/* Profile Image / logo */}
+                <div className="w-100 for-background positon-relative overflow-hidden" style={{ zIndex: "22" }}>
+                    <div className="w-100"
+                        style={{
+                            backgroundColor: profile?.colors?.fade,
+                            paddingBottom: "15px",
+                            zIndex: "22"
+                        }}>
+                        {/* Logo */}
+                        <div className="d-flex align-items-center position-relative">
+                            {profile.headerOverlayLogoImg && (
+                                <img
+                                    src={profile.headerOverlayLogoImg}
+                                    alt={profile.name}
+                                    style={{
+                                        margin: "46px auto",
+                                        right: "30px",
+                                        width: "180px",
+                                        height: "auto",
+                                        objectFit: "cover",
+                                        zIndex: "22"
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <div className="d-flex flex-column position-relative" style={{ gap: "34px", zIndex: "21", padding: "0 16px" }}>
+                            <div className="d-flex flex-column align-items-center position-relative" style={{ gap: "15px", zIndex: "22" }}>
+                                <img
+                                    src={darkMode ? profile.profileImage : profile.profileImage}
+                                    alt={profile.name}
+                                    style={{
+                                        width: "120px",
+                                        height: "120px",
+                                        borderRadius: "50%",
+                                        objectFit: "cover",
+                                        border: `5px solid ${profile.colors.white}`,
+                                        background: profile.colors.white,
+                                    }}
+                                />
+
+                                <div className="text-center">
+                                    <h4 className="fw-bold"
+                                        style={{
+                                            color: darkMode ? profile.colors.white : profile.colors.white,
+                                        }}
+                                    >{profile.name}</h4>
+                                    <p
+                                        style={{
+                                            opacity: 0.7,
+                                            color: darkMode ? profile.colors.white : profile.colors.white,
+                                        }} className="mb-0">
+
+                                        {profile.title}
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                className="for-resp d-flex justify-content-center align-items-center w-100"
+                                style={{ gap: "15px" }}
                             >
-                                <Download size={20} />
-                            </button>
-                        )} */}
+                                {profile.contactDataTop.map((item, index) => {
+                                    const IconComponentTop = Icons[item.icon];
 
+                                    // 🔥 Decide link dynamically
+                                    let href = "#";
+
+                                    if (item.pn) {
+                                        href = `tel:${item.pn}`;
+                                    } else if (item.mail) {
+                                        href = `mailto:${item.mail}`;
+                                    } else if (item.link) {
+                                        href = item.link;
+                                    } else if (item.website) {
+                                        href = item.website;
+                                    }
+
+                                    return (
+                                        <a
+                                            key={index}
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{ textDecoration: "none", width: "100%" }}
+                                        >
+                                            <div
+                                                className="f-flex flex-column gap-3 text-center w-100"
+                                                style={{
+                                                    padding: "11px 0px",
+                                                    borderRadius: "6px",
+                                                    background: profile.colors.white,
+                                                }}
+                                            >
+                                                <div
+                                                    style={{
+                                                        color: profile.colors.Primery,
+                                                    }}
+                                                >
+                                                    {IconComponentTop && <IconComponentTop size={24} />}
+                                                </div>
+
+                                                <p
+                                                    className="mb-0"
+                                                    style={{
+                                                        fontSize: "12px",
+                                                        color: profile.colors.Primery,
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 {/* make this wrapper div to wrapp all the filds */}
                 <div
                     className="position-relative d-flex flex-column align-items-start justify-content-between"
                     style={{ gap: "20px", padding: "12px 16px 16px 16px" }}
                 >
-                    {/* Profile Image / logo */}
-                    <div className="w-100 d-flex align-items-center justify-content-start gap-3" style={{ marginTop: "-55px" }}>
-                        <img
-                            src={darkMode ? profile.darkModeImage : profile.profileImage}
-                            alt={profile.name}
-                            style={{
-                                width: "120px",
-                                height: "120px",
-                                borderRadius: "50%",
-                                objectFit: "cover",
-                                border: `5px solid ${profile.colors.Primery}`,
-                                background: profile.colors.Primery,
-                            }}
-                        />
 
-                        <div className="mt-4 pt-3 ">
-                            <h4 className="fw-bold"
-                                style={{
-                                    color: darkMode ? profile.colors.white : profile.colors.black,
-                                }}
-                            >{profile.name}</h4>
-                            <p
-                                style={{
-                                    opacity: 0.7,
-                                    color: darkMode ? profile.colors.white : profile.colors.black,
-                                }} className="mb-0">
 
-                                {profile.title}
-                            </p>
-                        </div>
-                    </div>
 
-               
 
-                    {/* Social Links / with lucid react icons */}
-                    <ul
-                        className="d-flex justify-content-start flex-wrap m-0 gap-3"
-                    // style={{
-                    //     justifyContent: isMobile ? "flex-start" : "center",
-                    // }}
-                    >
-                        {profile.socialLinks.map((item, i) => {
-                            const IconComponent = Icons[item.icon];
-                            return (
-                                <li key={i}>
-                                    <a
-                                        href={item.socialURL}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-2 rounded d-flex align-items-center justify-content-center"
-                                        style={{
-                                            background: profile.colors.Secondery,
-                                            color: profile.colors.Primery,
-                                        }}
-                                    >
-                                        {IconComponent && <IconComponent size={20} />}
-                                    </a>
-                                </li>
-                            )
-                        })}
-                    </ul>
+
 
                     {/* about */}
                     <div className="d-flex flex-column gap-2">
-                        <h4 className="fw-bold m-0"
+
+
+
+                        <h5 className="my-0"
                             style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
+                                fontWeight: 600, lineHeight: "100%", fontSize: "18px",
+                                color: darkMode ? profile.colors.white : profile.colors.black,
                             }}
-                        >About Us</h4>
+                        >
+                            About Us
+                        </h5>
+
+
                         <p className="m-0" style={{
                             opacity: 0.8,
                             opacity: "0.7",
@@ -537,12 +600,17 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
                     {/* besic premuim & regular service card grid */}
                     <div className="d-flex flex-column gap-2">
-                        <h4 className="fw-bold m-0"
+                        
+
+                            <h5 className="my-0"
                             style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
+                                fontWeight: 600, lineHeight: "100%", fontSize: "18px",
+                                color: darkMode ? profile.colors.white : profile.colors.black,
                             }}
-                        >My Services</h4>
+                        >
+                            My Services
+                        </h5>
+
                         {/* check if package is premium & regular to render this */}
                         {checkUserPackage("regular") && (
                             <div
@@ -631,7 +699,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     {checkUserPackage("premium") && (
 
                         <div className="w-100 d-flex flex-column gap-2">
-                            <h4 className="m-0 fw-bold"
+                            <h4 className="m-0"
                                 style={{
                                     opacity: "0.8",
                                     color: darkMode ? profile.colors.white : profile.colors.black
@@ -719,23 +787,46 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                         </div>
                     )}
 
-                    {/* Gallery */}
-                    <div
-                        className="d-flex flex-column gap-2"
-                        style={{
-                            overflow: "hidden",
-                            width: "100%"
-                        }}
-                    >
-                        <h4 className="m-0 fw-bold"
-                            style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
-                            }}
-                        >Gallery</h4>
-                        <GallerySlider slideData={profile.gallerySlider} />
-                    </div>
+                    {/* social media icons */}
+                    {/* Social Links / with lucid react icons */}
+                    <div className="d-flex flex-column gap-2">
+       
 
+                        <h5 className="my-0"
+                            style={{
+                                fontWeight: 600, lineHeight: "100%", fontSize: "18px",
+                                color: darkMode ? profile.colors.white : profile.colors.black,
+                            }}
+                        >
+                            Follow Us
+                        </h5>
+                        <ul
+                            className="d-flex justify-content-start flex-wrap m-0 gap-3"
+                        // style={{
+                        //     justifyContent: isMobile ? "flex-start" : "center",
+                        // }}
+                        >
+                            {profile.socialLinks.map((item, i) => {
+                                const IconComponent = Icons[item.icon];
+                                return (
+                                    <li key={i}>
+                                        <a
+                                            href={item.socialURL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-2 rounded d-flex align-items-center justify-content-center"
+                                            style={{
+                                                background: profile.colors.Secondery,
+                                                color: profile.colors.Primery,
+                                            }}
+                                        >
+                                            {IconComponent && <IconComponent size={20} />}
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                     {/* testimonial */}
                     {checkUserPackage("premium") && (
                         <div className="w-100 d-flex flex-column gap-2">
@@ -806,4 +897,4 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
     );
 }
 
-export default RestraurentCard;
+export default BusinessCard;

@@ -1,9 +1,11 @@
 {
   "headerBgImage": "/images/restaurant.dc-head-img.webp",
   "headerBgImagePosition": "center",
-  "profileImage": "/images/reastaurant-logo.webp",
-  "name": "Rameshwer Cafe",
-  "title": "Shouth indian food",
+  "headerOverlayLogoImg": "/images/webique-logo-white.png",
+  "texture": "/images/texture-1.png",
+  "profileImage": "/images/user-3.png",
+  "name": "Anupam Shimpi",
+  "title": "FullStack Developer",
   "ownerName": "",
   "designation": "",
   "payment": {
@@ -35,28 +37,28 @@
   "aboutDescription": "Ridiculus morbi id sed sed nunc enim nisi. Vel blandit lacus risus fringilla laoreet. At rhoncus cum netus feugiat. Ut sit mi varius enim. Elit auctor consequat pellentesque urna tortor quis mi.",
   "servicesData": [
     {
-      "title": "Fresh Food",
-      "icon": "Soup"
+      "title": "Responsive Web Design",
+      "icon": "PenTool"
     },
     {
-      "title": "Customer reviews",
-      "icon": "UserStar"
+      "title": "UI/UX Design",
+      "icon": "MonitorSmartphone"
     },
     {
-      "title": "Online Ordering",
-      "icon": "ShoppingCart"
+      "title": "Landing Page Development",
+      "icon": "LaptopMinimalCheck"
     },
     {
-      "title": "Special Offers",
-      "icon": "BadgePercent"
+      "title": "Website Redesign",
+      "icon": "Laptop"
     },
     {
-      "title": "Party Orders",
-      "icon": "PartyPopper"
+      "title": "HTML, CSS, JS, React",
+      "icon": "CodeXml"
     },
     {
-      "title": "Custome Meal Plans",
-      "icon": "CookingPot"
+      "title": "Website  Optimization",
+      "icon": "Settings"
     }
   ],
   "menuTabData": [
@@ -181,68 +183,7 @@
       ]
     }
   ],
-  "gallerySlider": [
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    },
-    {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": ""
-    }
-  ],
+
   "tesimonialSliderData": [
     {
       "testSrc": "/images/user-profile.webp",
@@ -270,20 +211,44 @@
     }
   ],
   "contactData": {
-    "phone_Number": [
-      "+918795462310",
-      "+919876543210"
-    ],
-    "mail": [
-      "restraurent@gmail.com",
-      "restraurent2@gmail.com"
-    ],
-    "restaurant_Number": "+917894561230",
+    "phone_Number": "+918795462310",
+    "mail": "restraurent@gmail.com",
+
     "location": {
       "address": "G-110, Atlanta Shoppers, Pathardi Phata, Nashik-422010",
       "link": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167"
-    }
+    },
+    "website":"https://www.webique.in/"
+    
   },
+
+
+  "contactDataTop": [
+    {
+      "title": "Call Us",
+      "icon": "Phone",
+      "pn":"+919767724425"
+    },
+    {
+      "title": "Eamil Us",
+      "icon": "Send",
+      "mail": "restraurent@gmail.com"
+    },
+    {
+      "title": "Locations",
+      "icon": "MapPin",
+      "link": "https://www.google.com/maps/place/Webique+technology/@19.9537733,73.7640719,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bdd95f5ba76ff57:0x44e1830bb9d40a86!8m2!3d19.9537683!4d73.7666468!16s%2Fg%2F11wp7pc864?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=20471dfb-471c-42f4-9347-724f565e3167"
+    },
+    {
+      "title": "Website",
+      "icon": "Globe",
+      "website":"https://www.webique.in/"
+    }
+  ],
+
+
+
+
   "openingHours": [
     {
       "dayName": "Monday",
@@ -315,9 +280,10 @@
     }
   ],
   "colors": {
-    "Primery": "#DE0400",
-    "Secondery": "#DE040033",
+    "Primery": "#6900BA",
+    "Secondery": "#6900BA33",
     "trinery": "#BEBEBE33",
+    "fade":"#6900BACC",
     "white": "#fff",
     "black": "#000",
     "light": "#F1F3F5",
@@ -329,13 +295,14 @@
     "borderGray": "#B4B4B4",
     "stickyLink1": "#00BF63",
     "stickyLink2": "#1680FB",
-    "stickyLink3": "#022B5B"
+    "stickyLink3": "#022B5B",
+    "placeholderCol":"#9CA3AF"
   },
   "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.666904269915!2d73.7666468!3d19.9537683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772874905998!5m2!1sen!2sin",
   "description": "Professional Digital Visiting Card for Local Businesses",
   "ogImage": "/images/webique-og-image.png",
   "darkModeImage": "/images/reastaurant-logo.webp",
   "company": "Webique Technology",
-  "package": "premium",
-  "template": "RestraurentCard"
+  "package": "regular",
+  "template": "BusinessCard"
 }

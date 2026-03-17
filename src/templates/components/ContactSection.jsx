@@ -105,7 +105,7 @@ const ContactSection = ({ profile, darkMode }) => {
 
   return (
     <div className="d-flex flex-column gap-2">
-      <h5 className="fw-bold my-0"
+      <h5 className="my-0"
         style={{
           fontWeight: 600, lineHeight:"100%", fontSize:"18px",
           color: darkMode ? profile.colors.white : profile.colors.black,
@@ -222,7 +222,7 @@ const ContactSection = ({ profile, darkMode }) => {
                       opacity: 0.7,
                     }}
                   >
-                    <span>{day.dayName}</span>
+                    <span >{day.dayName}</span>
                     <span>{day.ocTime}</span>
                   </div>
                 ))}
@@ -230,7 +230,6 @@ const ContactSection = ({ profile, darkMode }) => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
