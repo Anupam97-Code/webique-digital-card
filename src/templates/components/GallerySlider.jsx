@@ -62,17 +62,41 @@ const GallerySlider = memo(({ slideData }) => {
 
                                 return (
                                     <Col xs={6} key={index} className="mb-3 px-2">
-                                        <img
-                                            src={value.galleryImage}
-                                            alt={value.imageAlt}
-                                            onClick={() => openLightbox(realIndex)}
-                                            style={{
-                                                width: "100%",
-                                                borderRadius: "4px",
-                                                objectFit: "cover",
-                                                cursor: "pointer"
-                                            }}
-                                        />
+                                        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                                            <img
+                                                src={value.galleryImage}
+                                                alt={value.imageAlt}
+                                                onClick={() => openLightbox(realIndex)}
+                                                style={{
+                                                    width: "100%",
+                                                    height: "100%",
+                                                    borderRadius: "4px",
+                                                    objectFit: "cover",
+                                                    cursor: "pointer"
+                                                }}
+                                            />
+                                            {value.imageText !== "" && (
+                                                <p
+                                                    style={{
+                                                        position: "absolute",
+                                                        bottom: 0,
+                                                        left: 0,
+                                                        margin: 0,
+                                                        padding: "20px 10px 10px",
+                                                        color: "#ffffff",
+                                                        fontSize: "13px",
+                                                        zIndex: 2,
+                                                        pointerEvents: "none",
+                                                        background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)",
+                                                        width: "100%",
+                                                        borderBottomLeftRadius: "4px",
+                                                        borderBottomRightRadius: "4px"
+                                                    }}
+                                                >
+                                                    {value.imageText}
+                                                </p>
+                                            )}
+                                        </div>
                                     </Col>
                                 );
                             })}
@@ -138,7 +162,7 @@ const GallerySlider = memo(({ slideData }) => {
                         />
 
                         {/* Navigation Arrows */}
-                        <div 
+                        <div
                             style={{
                                 display: "flex",
                                 gap: "20px",

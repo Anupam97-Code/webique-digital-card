@@ -1,187 +1,199 @@
 {
-    "headerBgImage": "/images/restaurant.dc-head-img.webp",
-    "headerBgImagePosition": "center",
-    "profileImage": "/images/user-profile.webp",
-    "name": "Buzz Cafe",
-    "title": "Cafeteria",
-    "ownerName": "",
-    "designation": "",
-    "payment": {
-        "upi_id": "buzzCafe@upi",
-        "qr_image": "/images/user-profile.webp"
+  "headerBgImage": "/images/restaurant.dc-head-img.webp",
+  "headerBgImagePosition": "center",
+  "profileImage": "/images/user-profile.webp",
+  "name": "Buzz Cafe",
+  "title": "Cafeteria",
+  "ownerName": "",
+  "designation": "",
+  "payment": {
+    "upi_id": "buzzCafe@upi",
+    "qr_image": "/images/user-profile.webp"
+  },
+  "socialLinks": [
+    {
+      "socialName": "Facebook",
+      "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/",
+      "icon": "Facebook"
     },
-    "socialLinks": [
-        {
-            "socialName": "Facebook",
-            "socialURL": "https://www.facebook.com/people/Webique-Technology/61568650401785/",
-            "icon": "Facebook"
-        },
-        {
-            "socialName": "Instagram",
-            "socialURL": "https://www.instagram.com/webique_tech",
-            "icon": "Instagram"
-        },
-        {
-            "socialName": "LinkedIn",
-            "socialURL": "https://www.linkedin.com/company/webiquetech",
-            "icon": "Linkedin"
-        },
-        {
-            "socialName": "Youtube",
-            "socialURL": "https://www.youtube.com",
-            "icon": "Youtube"
-        }
-    ],
-    "gallerySlider": [
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        },
-        {
-            "galleryImage": "/images/placeholder-img.webp",
-            "imageAlt": "Demo Image"
-        }
-    ],
-    "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
-    "servicesData": [
-        {
-            "title": "Veg Food",
-            "icon": "Salad"
-        },
-        {
-            "title": "Lunch & Dinner",
-            "icon": "Utensils"
-        },
-        {
-            "title": "Family Restaurant",
-            "icon": "Users"
-        },
-        {
-            "title": "Party Lawn Available",
-            "icon": "Trees"
-        },
-        {
-            "title": "Birthday Party Booking",
-            "icon": "Cake"
-        },
-        {
-            "title": "Wedding Lawn",
-            "icon": "HeartHandshake"
-        },
-        {
-            "title": "Catering Service",
-            "icon": "ChefHat"
-        }
-    ],
-    "contactData": {
-        "phone_Number": [
-            "+918795462310",
-            "+919763771751"
-        ],
-        "mail": [
-            "buzzCafe@gmail.com",
-            "cafeBuzz@gmail.com"
-        ],
-        "restaurant_Number": "+918795462310",
-        "location": {
-            "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
-            "link": "https://maps.app.goo.gl/FTReqpPZDG3xzv279"
-        }
+    {
+      "socialName": "Instagram",
+      "socialURL": "https://www.instagram.com/webique_tech",
+      "icon": "Instagram"
     },
-    "openingHours": [
-        {
-            "dayName": "Monday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Tuesday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Wednesday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Thursday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Friday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Saturday",
-            "ocTime": "09:00 - 22:00"
-        },
-        {
-            "dayName": "Sunday",
-            "ocTime": "Closed"
-        }
-    ],
-    "colors": {
-        "Primery": "#DE0400",
-        "Secondery": "#DE040033",
-        "trinery": "#BEBEBE33",
-        "white": "#fff",
-        "black": "#000",
-        "light": "#F1F3F5",
-        "lightBg": "#F1F3F5",
-        "dark": "#0F172A",
-        "darkCardBg": "#1E293B",
-        "grayblack": "#17191c",
-        "inputBg": "#BEBEBE26",
-        "borderGray": "#B4B4B4",
-        "stickyLink1": "#00BF63",
-        "stickyLink2": "#1680FB",
-        "stickyLink3": "#022B5B"
+    {
+      "socialName": "LinkedIn",
+      "socialURL": "https://www.linkedin.com/company/webiquetech",
+      "icon": "Linkedin"
     },
-    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
-    "description": "Professional Digital Visiting Card for Local Businesses",
-    "ogImage": "/images/webique-og-image.png",
-    "darkModeImage": "/images/user-profile.webp",
-    "company": "Webique Technology",
-    "email": "contact@webique.in",
-    "whatsapp": "919767724426",
-    "package": "basic",
-    "template": "RestraurentCard"
+    {
+      "socialName": "Youtube",
+      "socialURL": "https://www.youtube.com",
+      "icon": "Youtube"
+    }
+  ],
+  "gallerySlider": [
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    },
+    {
+      "galleryImage": "/images/placeholder-img.webp",
+      "imageAlt": "Demo Image",
+      "imageText": "demo text"
+    }
+  ],
+  "aboutDescription": "Welcome to Buzz Cafe & Chai — your everyday hangout for great chai, delicious snacks, and good vibes. Whether you're craving a hot cup of chai, a juicy burger, or a slice of pizza, we've got something to make your day better. Sit back, relax, and enjoy the buzz!",
+  "servicesData": [
+    {
+      "title": "Veg Food",
+      "icon": "Salad"
+    },
+    {
+      "title": "Lunch & Dinner",
+      "icon": "Utensils"
+    },
+    {
+      "title": "Family Restaurant",
+      "icon": "Users"
+    },
+    {
+      "title": "Party Lawn Available",
+      "icon": "Trees"
+    },
+    {
+      "title": "Birthday Party Booking",
+      "icon": "Cake"
+    },
+    {
+      "title": "Wedding Lawn",
+      "icon": "HeartHandshake"
+    },
+    {
+      "title": "Catering Service",
+      "icon": "ChefHat"
+    }
+  ],
+  "contactData": {
+    "phone_Number": [
+      "+918795462310",
+      "+919763771751"
+    ],
+    "mail": [
+      "buzzCafe@gmail.com",
+      "cafeBuzz@gmail.com"
+    ],
+    "restaurant_Number": "+918795462310",
+    "location": {
+      "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
+      "link": "https://maps.app.goo.gl/FTReqpPZDG3xzv279"
+    }
+  },
+  "openingHours": [
+    {
+      "dayName": "Monday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Tuesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Wednesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Thursday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Friday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Saturday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Sunday",
+      "ocTime": "Closed"
+    }
+  ],
+  "colors": {
+    "Primery": "#DE0400",
+    "Secondery": "#DE040033",
+    "trinery": "#BEBEBE33",
+    "white": "#fff",
+    "black": "#000",
+    "light": "#F1F3F5",
+    "lightBg": "#F1F3F5",
+    "dark": "#0F172A",
+    "darkCardBg": "#1E293B",
+    "grayblack": "#17191c",
+    "inputBg": "#BEBEBE26",
+    "borderGray": "#B4B4B4",
+    "stickyLink1": "#00BF63",
+    "stickyLink2": "#1680FB",
+    "stickyLink3": "#022B5B"
+  },
+  "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4487.6573499942815!2d73.76751721856563!3d19.9541042864821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb003b7ddf3f%3A0xd43af0ffd21fefaa!2sBUZZ%20CAFE%20AND%20CHAI!5e1!3m2!1sen!2sin!4v1773054157138!5m2!1sen!2sin",
+  "description": "Professional Digital Visiting Card for Local Businesses",
+  "ogImage": "/images/webique-og-image.png",
+  "darkModeImage": "/images/user-profile.webp",
+  "company": "Webique Technology",
+  "email": "contact@webique.in",
+  "whatsapp": "919767724426",
+  "package": "basic",
+  "template": "RestraurentCard"
 }

@@ -1,6 +1,9 @@
 .text-type {
   display: inline-block;
   white-space: pre-wrap;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .text-type__cursor {

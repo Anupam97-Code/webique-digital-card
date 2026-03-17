@@ -35,10 +35,14 @@ const Card = () => {
 
         if (showQR || showUPI) {
             document.addEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        } else {
+            document.body.style.overflow = "auto"; // Restore background scrolling
         }
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.body.style.overflow = "auto"; // Cleanup on unmount
         };
     }, [showQR, showUPI]);
 

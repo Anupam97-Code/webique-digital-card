@@ -48,51 +48,63 @@
   "gallerySlider": [
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     },
     {
       "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image"
+      "imageAlt": "Demo Image",
+      "imageText": ""
     }
   ],
   "link": [

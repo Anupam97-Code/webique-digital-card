@@ -224,7 +224,7 @@ const ContactSection = ({ profile, darkMode }) => {
                       opacity: 0.7,
                     }}
                   >
-                    <span>{day.dayName}</span>
+                    <span >{day.dayName}</span>
                     <span>{day.ocTime}</span>
                   </div>
                 ))}
@@ -232,7 +232,6 @@ const ContactSection = ({ profile, darkMode }) => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

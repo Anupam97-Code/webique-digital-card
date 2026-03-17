@@ -849,14 +849,14 @@ Message: ${formData.message}`;
             {/* Gallery */}
             {(profile.package === "basic" || profile.package === "regular") && (
               <div
-                className=""
+                className="d-flex flex-column gap-2"
                 style={{
                   overflow: "hidden",
                   width: "100%",
                   padding: "0"
                 }}
               >
-                <h4 className="fw-bold mb-2"
+                <h4 className="fw-bold"
                   style={{
                     fontSize: "18px",
                     fontWeight: 600,

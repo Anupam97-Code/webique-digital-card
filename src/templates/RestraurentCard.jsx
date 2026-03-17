@@ -199,9 +199,9 @@ const TestimonialCarousal = memo(({ profile, darkMode }) => {
                                         />
 
                                         <div>
-                                            <h5 style={{ fontSize: "13px", margin: "0", color: profile.colors.black, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
+                                            <h4 style={{ fontSize: "13px", margin: "0", color: profile.colors.black, color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
                                                 {item.testName}
-                                            </h5>
+                                            </h4>
 
                                             <p style={{ fontSize: "12px", margin: 0, fontWeight: "400", lineHeight: "16px", color: darkMode ? profile.colors.white : profile.colors.black, opacity: darkMode ? "0.7" : "1" }}>
                                                 {item.testPost}
@@ -406,7 +406,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     }}
                     className="d-flex align-items-end justify-content-end"
                 >
-                    <div className="d-flex gap-1">
+                    <div className="d-flex gap-1 position-relative z-2">
                         {/* location button */}
                         <a
                             href={profile.contactData.location.link}
@@ -454,14 +454,13 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                 {/* make this wrapper div to wrapp all the filds */}
                 <div
                     className="position-relative d-flex flex-column align-items-start justify-content-between"
-                    style={{ gap: "15px", padding: "12px 16px 16px 16px" }}
+                    style={{ gap: "20px", padding: "12px 16px 16px 16px" }}
                 >
                     {/* Profile Image / logo */}
-                    <div className="w-100 d-flex justify-content-center mb-4 gap-3" style={{ paddingLeft: "125px" }}>
+                    <div className="w-100 d-flex align-items-center justify-content-start gap-3" style={{ marginTop: "-55px" }}>
                         <img
                             src={darkMode ? profile.darkModeImage : profile.profileImage}
                             alt={profile.name}
-                            className="position-absolute"
                             style={{
                                 width: "120px",
                                 height: "120px",
@@ -469,12 +468,10 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                                 objectFit: "cover",
                                 border: `5px solid ${profile.colors.Primery}`,
                                 background: profile.colors.Primery,
-                                left: "16px",
-                                top: "-40px"
                             }}
                         />
 
-                        <div className="">
+                        <div className="mt-4 pt-3 ">
                             <h4 className="fw-bold"
                                 style={{
                                     color: darkMode ? profile.colors.white : profile.colors.black,
@@ -493,7 +490,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
                     {/* Social Links / with lucid react icons */}
                     <ul
-                        className="d-flex justify-content-start flex-wrap mb-2 gap-3"
+                        className="d-flex justify-content-start flex-wrap m-0 gap-3"
                     // style={{
                     //     justifyContent: isMobile ? "flex-start" : "center",
                     // }}
@@ -520,14 +517,14 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     </ul>
 
                     {/* about */}
-                    <div>
-                        <h5 className="fw-bold"
+                    <div className="d-flex flex-column gap-2">
+                        <h4 className="fw-bold m-0"
                             style={{
                                 opacity: "0.8",
                                 color: darkMode ? profile.colors.white : profile.colors.black
                             }}
-                        >About Us</h5>
-                        <p style={{
+                        >About Us</h4>
+                        <p className="m-0" style={{
                             opacity: 0.8,
                             opacity: "0.7",
                             color: darkMode ? profile.colors.white : profile.colors.black
@@ -537,13 +534,13 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     </div>
 
                     {/* besic premuim & regular service card grid */}
-                    <div>
-                        <h5 className="fw-bold"
+                    <div className="d-flex flex-column gap-2">
+                        <h4 className="fw-bold m-0"
                             style={{
                                 opacity: "0.8",
                                 color: darkMode ? profile.colors.white : profile.colors.black
                             }}
-                        >My Services</h5>
+                        >My Services</h4>
                         {/* check if package is premium & regular to render this */}
                         {checkUserPackage("regular") && (
                             <div
@@ -631,13 +628,13 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     {/* menu tabs */}
                     {checkUserPackage("premium") && (
 
-                        <div className="w-100">
-                            <h5 className="mt-4 fw-bold"
+                        <div className="w-100 d-flex flex-column gap-2">
+                            <h4 className="m-0 fw-bold"
                                 style={{
                                     opacity: "0.8",
                                     color: darkMode ? profile.colors.white : profile.colors.black
                                 }}
-                            >Our Menu</h5>
+                            >Our Menu</h4>
                             {/* tabs btns map */}
                             <ul className="nav nav-pills">
                                 {profile.menuTabData.map((tab, i) => {
@@ -722,47 +719,47 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
                     {/* Gallery */}
                     <div
-                        className=""
+                        className="d-flex flex-column gap-2"
                         style={{
                             overflow: "hidden",
                             width: "100%"
                         }}
                     >
-                        <h5 className="mt-4 fw-bold"
+                        <h4 className="m-0 fw-bold"
                             style={{
                                 opacity: "0.8",
                                 color: darkMode ? profile.colors.white : profile.colors.black
                             }}
-                        >Gallery</h5>
+                        >Gallery</h4>
                         <GallerySlider slideData={profile.gallerySlider} />
                     </div>
 
                     {/* testimonial */}
                     {checkUserPackage("premium") && (
-                        <div className="w-100">
+                        <div className="w-100 d-flex flex-column gap-2">
 
-                            <h5 className="mt-4 fw-bold"
+                            <h4 className="m-0 fw-bold"
                                 style={{
                                     opacity: "0.8",
                                     color: darkMode ? profile.colors.white : profile.colors.black
                                 }}
-                            >Testimonials</h5>
+                            >Testimonials</h4>
                             <TestimonialCarousal profile={profile} darkMode={darkMode} />
                         </div>
                     )}
 
                     {/* form */}
                     {checkUserPackage("premium") && (
-                        <div className="w-100">
-                            <h5
-                                className="mt-4 fw-bold"
+                        <div className="w-100 d-flex flex-column gap-2">
+                            <h4
+                                className="m-0 fw-bold"
                                 style={{
                                     opacity: "0.8",
                                     color: darkMode ? profile.colors.white : profile.colors.black
                                 }}
                             >
                                 Inquiries
-                            </h5>
+                            </h4>
                             <InquiryForm profile={profile} darkMode={darkMode} />
                         </div>
                     )}
