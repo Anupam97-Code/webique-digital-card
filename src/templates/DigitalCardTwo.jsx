@@ -416,7 +416,7 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                                             borderRadius: "10px",
                                             backgroundColor: darkMode
                                                 ? profile.colors.darkCardBg
-                                                : profile.colors.trinery,
+                                                : profile.colors.white,
                                             color: darkMode ? profile.colors.white : profile.colors.black,
                                             border: darkMode ? `solid 1px ${profile.colors.white}` : `none`,
                                             padding: "8px 25px 8px 8px"
