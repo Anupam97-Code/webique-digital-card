@@ -211,7 +211,9 @@
     }
   ],
   "contactData": {
-    "phone_Number": "+918795462310",
+            "phone_Number": [
+            "+919767726725"
+        ],
     "mail": "restraurent@gmail.com",
 
     "location": {
@@ -280,7 +282,9 @@
     }
   ],
   "colors": {
-    "Primery": "#6900BA",
+    "Primery": "#a837ff",
+    "circleBg":"#6900BA",
+    "primaryDark":"#a837ff",
     "Secondery": "#6900BA33",
     "trinery": "#BEBEBE33",
     "fade":"#6900BACC",

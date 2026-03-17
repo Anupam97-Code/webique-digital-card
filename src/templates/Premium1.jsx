@@ -40,6 +40,7 @@ import { link, span } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 import GallerySlider from "./components/GallerySlider";
+import VideoSlider from './components/VideoSlider';
 
 
 
@@ -130,6 +131,7 @@ Message: ${formData.message}`;
       name: safeData.name || "Marcus Whitlow",
       whatsapp: safeData.whatsapp,
       title: safeData.title,
+      videoSlider:safeData.videoSlider || [],
       designation: safeData.designation,
       company: safeData.company,
       gallerySlider: safeData.gallerySlider,
@@ -860,6 +862,14 @@ Message: ${formData.message}`;
               </section>
             )}
 
+
+            <div>
+
+            </div>
+
+
+
+            <VideoSlider videos={profile.videoSlider}/>
             {/* Inquiry div (form) */}
             <style>
               {`

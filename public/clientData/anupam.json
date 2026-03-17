@@ -17,6 +17,31 @@
     "value": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9307.391877908936!2d73.766647!3d19.953768!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd95f5ba76ff57%3A0x44e1830bb9d40a86!2sWebique%20technology!5e1!3m2!1sen!2sin!4v1772712380755!5m2!1sen!2sin",
     "className": "w-100"
   },
+
+    "videoSlider": [
+    {
+      "galleryImage": "/images/video-one.mp4",
+      "imageAlt": "Demo Image",
+      "imageText": ""
+    },
+    {
+      "galleryImage": "/images/video-two.mp4",
+      "imageAlt": "Demo Image",
+      "imageText": ""
+    },
+    {
+      "galleryImage": "/images/video-one.mp4",
+      "imageAlt": "Demo Image",
+      "imageText": ""
+    },
+     {
+      "galleryImage": "/images/video-two.mp4",
+      "imageAlt": "Demo Image",
+      "imageText": ""
+    }
+   
+  ],
+
   "gallerySlider": [
     {
       "galleryImage": "/images/placeholder-img.webp",

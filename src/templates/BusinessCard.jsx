@@ -416,7 +416,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
       width: 470px;
       height: 470px;
       border-radius: 50%;
-      background: ${profile?.colors?.Primery};
+      background: ${profile?.colors?.circleBg};
       top: -256px;
       left: 50%;
       transform: translateX(-50%);
@@ -600,9 +600,9 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
 
                     {/* besic premuim & regular service card grid */}
                     <div className="d-flex flex-column gap-2">
-                        
 
-                            <h5 className="my-0"
+
+                        <h5 className="my-0"
                             style={{
                                 fontWeight: 600, lineHeight: "100%", fontSize: "18px",
                                 color: darkMode ? profile.colors.white : profile.colors.black,
@@ -644,7 +644,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                             >
                                                 <div
                                                     style={{
-                                                        color: profile.colors.Primery,
+                                                        color: darkMode ? profile.colors.Primery:profile.colors.Primery
                                                     }}
                                                 >
                                                     {IconComponent && <IconComponent size={44} />}
@@ -790,7 +790,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                     {/* social media icons */}
                     {/* Social Links / with lucid react icons */}
                     <div className="d-flex flex-column gap-2">
-       
+
 
                         <h5 className="my-0"
                             style={{
@@ -816,8 +816,8 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                             rel="noopener noreferrer"
                                             className="p-2 rounded d-flex align-items-center justify-content-center"
                                             style={{
-                                                background: profile.colors.Secondery,
-                                                color: profile.colors.Primery,
+                                                background:darkMode ? profile.colors.trinery:profile.colors.Secondery,
+                                                color: darkMode ? profile.colors.Primery:profile.colors.Primery
                                             }}
                                         >
                                             {IconComponent && <IconComponent size={20} />}

@@ -302,17 +302,33 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                         }}
                     >
 
+
+                            <style>
+                                {`
+.profile-img{
+  width: 152px; height:152px; border-radius:50%;
+}
+.profile-wrap{gap:28px}
+.social-wrap{gap:10px;}
+
+ @media (max-width: 370px) {
+      .profile-img{width:130px; height:130px}  
+      .profile-wrap{gap:10px}                            
+ }
+`}
+                            </style>
+
+
                         {/* top profile image */}
-                        <div className="d-flex align-items-end justifly-content-between" style={{ gap: "28px" }}>
-                            <img
-                                style={{
-                                    width: "152px",
-                                    height: "152px",
-                                    borderRadius: "50%",
-                                }}
+                        <div className="d-flex align-items-end justifly-content-between profile-wrap" >
+                            <img className="profile-img"
+
                                 src={profile.profileImage}
                                 alt={profile.name + profile.title}
                             />
+
+
+
 
                             {/* top profile content */}
                             <div className="profile-content w-100"
@@ -340,7 +356,7 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                                         {profile.title}
                                     </p>
 
-                                    <div className="d-flex" style={{ gap: "10px", marginTop: "18px" }}>
+                                    <div className="social-wrap d-flex">
 
                                         <ActionItemTop
                                             icon={<Phone size={18} color={profile.colors.white}/>}
