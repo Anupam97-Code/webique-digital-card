@@ -42,6 +42,7 @@ import { link } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 import GallerySlider from "./components/GallerySlider";
+import AboutCardSec from './components/AboutCardSec';
 
 
 
@@ -63,12 +64,10 @@ const iconMap = {
 };
 
 const HospitalCard = ({ data, openQR, saveContact, openUPI }) => {
-  const [darkMode, setDarkMode] = useState(false);
 
+  const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const [index, setIndex] = useState(0);
-
-
 
   const [formData, setFormData] = useState({
     name: "",
@@ -116,8 +115,8 @@ Message: ${formData.message}`;
     });
   };
 
-
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
+
   useEffect(() => {
 
     const handleResize = () => {
@@ -133,7 +132,6 @@ Message: ${formData.message}`;
   }, []);
 
   // console.log("is mobile:", isMobile);
-
 
   const safeData = data || {};
 
@@ -410,29 +408,12 @@ Message: ${formData.message}`;
             </ul>
 
             {/* About Me */}
-            <div className='d-flex flex-column gap-2'>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                lineHeight: "27px",
-                color: darkMode ? profile.colors.white : profile.colors.dark,
-              }}
-              >
-                {profile.AboutMe}
-              </h4>
-              <p
-                style={{
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                  opacity: "0.7",
-                  fontWeight: 400,
-                  margin: 0,
-                  color: darkMode ? profile.colors.white : profile.colors.black,
-                }}
-              >
-                {profile.AboutContent}
-              </p>
-            </div>
+            <AboutCardSec
+              title={profile.AboutMe}
+              description={profile.AboutContent}
+              darkMode={darkMode}
+              profile={profile}
+            />
 
             {/* grid countup */}
             {(profile.package === "premium") && (
@@ -845,9 +826,8 @@ Message: ${formData.message}`;
               )}
             </div>
 
-
-            {/* Gallery */}
-            {(profile.package === "basic" || profile.package === "regular") && (
+            {/* Gallery show only when user have premium or regular packs */}
+            {profile.package === "regular" && (
               <div
                 className="d-flex flex-column gap-2"
                 style={{

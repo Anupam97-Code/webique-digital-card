@@ -109,7 +109,7 @@ const ContactSection = ({ profile, darkMode }) => {
         style={{
           fontSize: "18px",
           fontWeight: 600,
-          color: darkMode ? profile.colors.white : profile.colors.black,
+          color: darkMode ? profile.colors.white : profile.colors.dark,
           lineHeight: "27px",
         }}
       >
@@ -205,7 +205,7 @@ const ContactSection = ({ profile, darkMode }) => {
 
             <div className="w-100">
               <h6
-                className="fw-bold"
+                className="fw-semibold"
                 style={{
                   margin: "0 0 5px",
                   color: darkMode ? profile.colors.white : profile.colors.black,

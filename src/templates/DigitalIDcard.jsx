@@ -17,6 +17,7 @@ import * as Icons from "lucide-react";
 import { Carousel, Col, Row } from "react-bootstrap";
 import StickyFooter from "./components/StickyFooter";
 import ContactSection from "./components/ContactSection";
+import AboutCardSec from "./components/AboutCardSec";
 
 
 const DigitalIDcard = ({ data, openQR, saveContact, openUPI }) => {
@@ -395,7 +396,7 @@ const DigitalIDcard = ({ data, openQR, saveContact, openUPI }) => {
                         style={{ padding: " 20px 16px" }}
                     >
                         {/* about */}
-                        <div>
+                        {/* <div>
                             <h5 className="fw-bold my-2"
                                 style={{
                                     opacity: "0.8",
@@ -409,14 +410,24 @@ const DigitalIDcard = ({ data, openQR, saveContact, openUPI }) => {
                             }}>
                                 {profile.aboutDescription}
                             </p>
-                        </div>
+                        </div> */}
+
+                        <AboutCardSec
+                            title={"About Us"}
+                            description={profile.aboutDescription}
+                            darkMode={darkMode}
+                            profile={profile}
+                        />
 
                         {/* services */}
-                        <div>
-                            <h5 className="fw-bold my-2"
+                        <div className="d-flex flex-column gap-2">
+                            <h5 className="m-0"
                                 style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                    // opacity: "0.8",
+                                    // color: darkMode ? profile.colors.white : profile.colors.black
+                                    fontSize: "18px",
+                                    fontWeight: 600, lineHeight: "27px",
+                                    color: darkMode ? profile.colors.white : profile.colors.dark
                                 }}
                             >Services</h5>
                             <ul className="d-flex align-items-start flex-wrap gap-2">

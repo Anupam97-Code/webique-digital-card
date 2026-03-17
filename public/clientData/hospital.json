@@ -21,7 +21,7 @@
   "linkedin": "https://linkedin.com/in/anupam",
   "instagram": "https://instagram.com/marcus",
   "whatsapp": "919767724425",
-  "package": "basic",
+  "package": "premium",
   "template": "HospitalCard",
   "primaryColor": "#000000",
   "SecondaryColor": "#000000",
@@ -49,7 +49,7 @@
     {
       "galleryImage": "/images/placeholder-img.webp",
       "imageAlt": "Demo Image",
-      "imageText": ""
+      "imageText": "deno text"
     },
     {
       "galleryImage": "/images/placeholder-img.webp",

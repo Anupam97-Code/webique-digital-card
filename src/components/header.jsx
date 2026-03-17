@@ -20,11 +20,14 @@ import imgFour from "../assets/images/mockup-14.png";
 import imgFive from "../assets/images/mockup-15.png";
 
 import imgSix from "../assets/images/mockup-16.png";
-import imgSeven from "../assets/images/mockup-17.png";
+// 1
+import imgSeven from "../assets/images/digital-card-2.png";
+
 import imgEight from "../assets/images/mockup-18.png";
 
 import imgNine from "../assets/images/mockup-19.png";
-import imgTen from "../assets/images/mockup-20.png";
+// 2
+import imgTen from "../assets/images/business-card-2.png";
 
 import { BlurText } from "./shared/TextAnimation";
 
@@ -35,24 +38,29 @@ const webImages = [
     link: "https://webiquecard.in/clientid"
   },
   {
-    src: imgOne,
-    alt: "Modern website design",
-    link: "https://webiquecard.in/restraurent"
-  },
-  {
     src: imgTwo,
     alt: "Creative UI UX design",
     link: "https://webiquecard.in/panchakrushna"
   },
   {
-    src: imgTen,
-    alt: "Web development dashboard",
-    link: "https://webiquecard.in/hospital"
+    src: imgOne,
+    alt: "Modern website design",
+    link: "https://webiquecard.in/restraurent"
   },
   {
     src: imgFour,
     alt: "Mobile app interface",
     link: "https://webiquecard.in/buzzcafe"
+  },
+  {
+    src: imgFive,
+    alt: "Digital branding concept",
+    link: "https://webiquecard.in/clientid"
+  },
+  {
+    src: imgTen,
+    alt: "Web development dashboard",
+    link: "https://webiquecard.in/hospital"
   },
   {
     src: imgSix,
@@ -62,7 +70,7 @@ const webImages = [
   {
     src: imgSeven,
     alt: "Creative UI UX design",
-    link: "https://webiquecard.in/restraurent"
+    link: "https://webiquecard.in/digitalcardtwo"
   },
   {
     src: imgEight,
@@ -75,34 +83,9 @@ const webImages = [
     link: "https://webiquecard.in/hospital"
   },
   {
-    src: imgFive,
-    alt: "Digital branding concept",
-    link: "https://webiquecard.in/clientid"
-  },
-  {
     src: imgTen,
     alt: "Digital branding concept",
-    link: "https://webiquecard.in/hospital"
-  },
-  {
-    src: imgOne,
-    alt: "Modern website design",
-    link: "https://webiquecard.in/restraurent"
-  },
-  {
-    src: imgTwo,
-    alt: "Creative UI UX design",
-    link: "https://webiquecard.in/panchakrushna"
-  },
-  {
-    src: imgTen,
-    alt: "Web development dashboard",
-    link: "https://webiquecard.in/hospital"
-  },
-  {
-    src: imgFour,
-    alt: "Mobile app interface",
-    link: "https://webiquecard.in/buzzcafe"
+    link: "https://webiquecard.in/businesscard"
   },
 ]
 
@@ -166,11 +149,11 @@ const Header = () => {
           </div>
         </div>
         <Swiper
-          slidesPerView={6}
+          slidesPerView={7}
           spaceBetween={20}
           centeredSlides
           loop
-          loopAdditionalSlides={4}
+          loopAdditionalSlides={0}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
