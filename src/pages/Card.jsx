@@ -160,7 +160,7 @@ const Card = () => {
                 ctx.fillStyle = data?.colors?.black || "#000000";
                 ctx.font = "bold 16px Arial";
                 ctx.textAlign = "center";
-                
+
                 let textY = boxY + cardPadding + qrHeight + 25;
                 textLines.forEach(line => {
                     ctx.fillText(line, boxX + (cardWidth / 2), textY, cardWidth - 40);
@@ -222,24 +222,115 @@ const Card = () => {
         setShowUPI(true);
     };
 
-    // add this link for when user click the upi id it needs to open upi related app
-    // const upiLink = data?.payment?.upi_id
-    //     ? `upi://pay?pa=${data.payment.upi_id}&pn=${encodeURIComponent(data.name)}&cu=INR`
-    //     : "#";
+    // const handleUPIPay = () => {
+    //     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    const handleUPIPay = () => {
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    //     const upiLink = "upi://pay?pa=restraurent@upi&pn=Buzz%20Cafe&cu=INR";
 
-        const upiLink = "upi://pay?pa=restraurent@upi&pn=Buzz%20Cafe&cu=INR";
+    //     if (isMobile) {
+    //         window.location.href = upiLink;
+    //     } else {
+    //         alert("Please open this on your mobile to pay via UPI");
+    //     }
+    // };
 
-        if (isMobile) {
-            window.location.href = upiLink;
-        } else {
-            alert("Please open this on your mobile to pay via UPI");
+    const downloadUPIQR = () => {
+        const img = document.getElementById("upiQRImage");
+
+        if (!img) {
+            alert("QR image not found");
+            return;
+        }
+
+        try {
+            const padding = 30;
+            const textHeight = 40;
+            const radius = 20;
+
+            const qrSize = img.naturalWidth;
+
+            const cardWidth = qrSize + padding * 2;
+            const cardHeight = qrSize + padding * 2 + textHeight;
+
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = cardWidth + 40;   // outer spacing
+            canvas.height = cardHeight + 40;
+
+            // === Background ===
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // === Shadow ===
+            ctx.shadowColor = "rgba(0,0,0,0.15)";
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 10;
+
+            const boxX = 20;
+            const boxY = 20;
+
+            // === Rounded Card ===
+            ctx.fillStyle = "#ffffff";
+            ctx.beginPath();
+            ctx.moveTo(boxX + radius, boxY);
+            ctx.lineTo(boxX + cardWidth - radius, boxY);
+            ctx.quadraticCurveTo(boxX + cardWidth, boxY, boxX + cardWidth, boxY + radius);
+            ctx.lineTo(boxX + cardWidth, boxY + cardHeight - radius);
+            ctx.quadraticCurveTo(boxX + cardWidth, boxY + cardHeight, boxX + cardWidth - radius, boxY + cardHeight);
+            ctx.lineTo(boxX + radius, boxY + cardHeight);
+            ctx.quadraticCurveTo(boxX, boxY + cardHeight, boxX, boxY + cardHeight - radius);
+            ctx.lineTo(boxX, boxY + radius);
+            ctx.quadraticCurveTo(boxX, boxY, boxX + radius, boxY);
+            ctx.closePath();
+            ctx.fill();
+
+            // Remove shadow for inner content
+            ctx.shadowColor = "transparent";
+
+            // === Draw QR ===
+            const qrX = boxX + padding;
+            const qrY = boxY + padding;
+
+            ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+
+            // === Draw UPI Text ===
+            if (data?.payment?.upi_id) {
+                ctx.fillStyle = "#000000";
+                ctx.font = "bold 16px Arial";
+                ctx.textAlign = "center";
+
+                const textY = qrY + qrSize + 25; // 15px spacing approx
+                ctx.fillText(
+                    data.payment.upi_id,
+                    boxX + cardWidth / 2,
+                    textY,
+                    cardWidth - 20
+                );
+            }
+
+            // === Export ===
+            const pngUrl = canvas.toDataURL("image/png");
+
+            const cleanName = data.name
+                ?.toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^a-z0-9-]/g, "");
+
+            const link = document.createElement("a");
+            link.href = pngUrl;
+            link.download = `${cleanName}-upi-qr.png`;
+            link.click();
+
+        } catch (error) {
+            console.error("Download failed:", error);
+
+            // fallback
+            window.open(data.payment.qr_image, "_blank");
         }
     };
-    // ===================================================================================================
 
+    // ===================================================================================================
 
     // modified for rendering 
     useEffect(() => {
@@ -325,8 +416,8 @@ const Card = () => {
         RestraurentCard: RestraurentCard,
         DigitalIDcard: DigitalIDcard,
         HospitalCard: HospitalCard,
-        DigitalCardTwo:DigitalCardTwo,
-        BusinessCard:BusinessCard
+        DigitalCardTwo: DigitalCardTwo,
+        BusinessCard: BusinessCard
     };
 
     const SelectedTemplate = templates[data.template];
@@ -385,55 +476,46 @@ const Card = () => {
                             </h5>
                         </div>
                         {/* show QR image */}
-                        {data?.payment?.qr_image && (
+                        {data.payment.qr_image && (
                             <img
+                                id="upiQRImage"
                                 src={data.payment.qr_image}
+                                crossOrigin="anonymous"
                                 alt="UPI QR"
                                 width="200"
                                 height="200"
                                 style={{ marginBottom: "10px" }}
                             />
                         )}
-                        {/* show upi id */}
-                        {data?.payment?.upi_id && (
-                            <button
-                                onClick={handleUPIPay}
-                                className="border-0"
-                                style={{
-                                    marginTop: "10px",
-                                    display: "block",
-                                    fontWeight: "600",
-                                    textDecoration: "none",
-                                    color: data?.colors?.black || "#000",
-                                    background: "none"
-                                }}
-                            >
-                                {data.payment.upi_id}
-                            </button>
-                        )}
+                        {/* btns for download and shrae UPI QR */}
+                        <div className="qr-buttons">
+                            <button onClick={downloadUPIQR}><Download size={18} />  Download QR</button>
+                        </div>
                     </div>
-                </div>
+                </div >
             )}
 
             {/* make for show the users Dgital cards QR generated by user card link */}
-            {showQR && (
-                <div className="qr-overlay">
-                    <div className="qr-modal" ref={modalRef}>
-                        <h5>{data.name}</h5>
-                        <QRCodeCanvas
-                            id="cardQR"
-                            value={currentUrl}
-                            size={200}
-                            level="H"
-                            fgColor={data?.colors?.black || "#000000"}
-                        />
-                        <div className="qr-buttons">
-                            <button onClick={downloadQR}><Download size={18} />  Download QR</button>
-                            <button onClick={shareQR}><Share2 size={18} /> Share QR</button>
+            {
+                showQR && (
+                    <div className="qr-overlay">
+                        <div className="qr-modal" ref={modalRef}>
+                            <h5>{data.name}</h5>
+                            <QRCodeCanvas
+                                id="cardQR"
+                                value={currentUrl}
+                                size={200}
+                                level="H"
+                                fgColor={data?.colors?.black || "#000000"}
+                            />
+                            <div className="qr-buttons">
+                                <button onClick={downloadQR}><Download size={18} />  Download QR</button>
+                                <button onClick={shareQR}><Share2 size={18} /> Share QR</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
         </>
     );
 };

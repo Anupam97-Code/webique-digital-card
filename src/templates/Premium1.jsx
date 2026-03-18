@@ -245,7 +245,7 @@ Message: ${formData.message}`;
             padding: "13px 13px",
             marginRight: "5px",
             marginTop: "5px",
-            zIndex:"1000"
+            zIndex: "1000"
           }}
         >
           {darkMode ? <Sun size={16} /> : <Moon size={16} />}
@@ -381,7 +381,7 @@ Message: ${formData.message}`;
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
                 return (
-                  <li className='d-flex align-items-center justify-content-center' style={{ width: "37px", height: "37px" }}>
+                  <li key={index} className='d-flex align-items-center justify-content-center' style={{ width: "37px", height: "37px" }}>
                     <a key={index} href={item.url} target="_blank" rel="noopener noreferrer"
                       className='d-flex align-items-center justify-content-center'
                       style={{
