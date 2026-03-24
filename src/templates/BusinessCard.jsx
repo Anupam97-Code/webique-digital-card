@@ -2,30 +2,13 @@ import React, { useMemo, useState, useEffect, memo, useRef, useLayoutEffect } fr
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/digitalCard.scss"
 import {
-    MapPin,
     Sun,
     Moon,
-    ScanQrCode,
-    X,
-    PenTool,
-    MonitorSmartphone,
-    LaptopMinimalCheck,
-    Laptop,
-    CodeXml,
-    Settings,
-    ChevronLeft,
-    ChevronRight,
-    IndianRupee,
-    Phone,
-    Send,
-    Globe
 } from "lucide-react";
 import * as Icons from "lucide-react";
-import { li } from "framer-motion/client";
 import { Carousel, Col, Row } from "react-bootstrap";
 import ContactSection from "./components/ContactSection";
 import StickyFooter from "./components/StickyFooter";
-import GallerySlider from "./components/GallerySlider";
 import AboutCardSec from "./components/AboutCardSec";
 
 

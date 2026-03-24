@@ -1,5 +1,5 @@
 // components/Header.jsx
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/headers.scss";
 // import "../styles/HeroSection.scss";
 // Swiper
@@ -35,42 +35,42 @@ const webImages = [
   {
     src: imgFive,
     alt: "Digital branding concept",
-    link: "https://webiquecard.in/clientid"
+    link: "/clientid"
   },
   {
     src: imgTwo,
     alt: "Creative UI UX design",
-    link: "https://webiquecard.in/panchakrushna"
+    link: "/panchakrushna"
   },
   {
     src: imgOne,
     alt: "Modern website design",
-    link: "https://webiquecard.in/restraurent"
+    link: "/restraurent"
   },
   {
     src: imgFour,
     alt: "Mobile app interface",
-    link: "https://webiquecard.in/buzzcafe"
+    link: "/buzzcafe"
   },
   {
     src: imgFive,
     alt: "Digital branding concept",
-    link: "https://webiquecard.in/clientid"
+    link: "/clientid"
   },
   {
     src: imgTen,
     alt: "Web development dashboard",
-    link: "https://webiquecard.in/businesscard"
+    link: "/businesscard"
   },
   {
     src: imgSix,
     alt: "Modern website design",
-    link: "https://webiquecard.in/anupam"
+    link: "/anupam"
   },
   {
     src: imgSeven,
     alt: "Creative UI UX design",
-    link: "https://webiquecard.in/digitalcardtwo"
+    link: "/digitalcardtwo"
   },
   {
     src: imgEight,
@@ -80,17 +80,22 @@ const webImages = [
   {
     src: imgNine,
     alt: "Mobile app interface",
-    link: "https://webiquecard.in/hospital"
+    link: "/hospital"
   },
   {
     src: imgTen,
     alt: "Digital branding concept",
-    link: "https://webiquecard.in/businesscard"
+    link: "/businesscard"
   },
 ]
 
 const Header = () => {
   const swiperRef = useRef(null);
+  const [hostUrl, setHostUrl] = useState("");
+
+  useEffect(() => {
+    setHostUrl(window.location.origin);
+  }, []);
 
   const animateSlides = (swiper) => {
     swiper.slides.forEach((slide, index) => {
@@ -188,7 +193,7 @@ const Header = () => {
           {webImages.map((value, index) => (
             <SwiperSlide key={index}>
               <a
-                href={value.link}
+                href={`${hostUrl}${value.link}`}
                 className="portfolio-slide"
                 target="_blank"
               >

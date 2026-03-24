@@ -66,9 +66,7 @@ const Premium1 = ({ data, openQR, saveContact, openUPI }) => {
 
   const [activeTab, setActiveTab] = useState("");
   const [index, setIndex] = useState(0);
-
-
-
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
