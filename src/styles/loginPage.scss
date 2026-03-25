@@ -138,10 +138,10 @@ h1 {
     .form-group {
         label {
             font-size: 20px;
-            color: #495057;
+            color: #000;
 
             @media(max-width:576px) {
-                font-size: 16pxc;
+                font-size: 14px;
             }
         }
 
@@ -151,9 +151,12 @@ h1 {
             background-color: #dee2e6;
         }
 
+        span,
         input {
             color: #212529;
             background-color: transparent;
+            font-weight: 16px !important;
+            font-weight: 400 !important;
         }
 
         .form-otp-num {
@@ -161,15 +164,15 @@ h1 {
             height: 50px;
             border: 1.5px solid #dee2e6;
             border-radius: 10px;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 400;
             color: #212529;
             background-color: transparent;
             transition: border-color 0.2s, box-shadow 0.2s;
 
             @media(max-width:375px) {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 font-size: 18px;
             }
         }
@@ -178,7 +181,7 @@ h1 {
     .resend-otp-btn {
         color: #0056b3;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 14px;
         font-weight: 500;
         border-bottom: 1px solid #0056b3;
         line-height: 18px;
@@ -201,7 +204,7 @@ h1 {
 }
 
 .logo-image {
-    width: 190px;
+    width: 160px;
     height: 51px;
 }
 

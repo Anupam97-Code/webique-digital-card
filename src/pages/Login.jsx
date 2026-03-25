@@ -98,7 +98,7 @@ export default function LoginPage() {
 
                         {/* Middle Section */}
                         <div className="text-center d-flex flex-column align-items-center flex-grow-1 justify-content-center mt-5">
-                            <h1 className="fw-bolder mb-1 mb-xxl-5">
+                            <h1 className="fw-bolder mb-2 mb-xxl-5">
                                 Welcome to Webique’s Smart Digital Card
                             </h1>
 
@@ -153,20 +153,20 @@ export default function LoginPage() {
                             </div>
 
                             {/* Heading */}
-                            <h2 className="fw-bolder mb-2 mb-md-5" >
+                            <h2 className="fw-bolder mb-4 mb-md-5" >
                                 Log in to your Account
                             </h2>
 
                             {/* Mobile Input */}
                             <div className="form-group mb-4 pb-1">
-                                <label className="mb-2 fw-semibold">Enter Your Mobile Number</label>
+                                <label className="mb-2 ">Enter Your Mobile Number</label>
                                 <div className="input-group phone-input-group d-flex align-items-center bg-white" style={{ border: '1.5px solid #dee2e6', borderRadius: '10px', transition: 'border-color 0.2s, box-shadow 0.2s' }}>
-                                    <span className="input-group-text bg-transparent border-0 text-secondary fw-bold px-3 fs-5">+91</span>
+                                    <span className="input-group-text bg-transparent border-0 text-secondary fw-bold px-3">+91</span>
                                     {/* Vertical divider */}
                                     <div className='vertical-divider'></div>
                                     <input
                                         type="tel"
-                                        className="form-control form-num-input border-0 shadow-none py-3 phone-input fw-semibold fs-5"
+                                        className="form-control form-num-input border-0 shadow-none py-3 phone-input fw-semibold"
                                         placeholder=""
                                         maxLength="10"
                                         required
@@ -176,7 +176,7 @@ export default function LoginPage() {
 
                             {/* OTP Section */}
                             <div className="form-group mb-3">
-                                <label className="mb-2 fw-semibold">Enter OTP</label>
+                                <label className="mb-2">Enter OTP</label>
                                 <div className="d-flex justify-content-between justify-content-sm-start gap-0 gap-sm-2">
                                     {[...Array(6)].map((_, i) => (
                                         <input
@@ -184,7 +184,7 @@ export default function LoginPage() {
                                             type="text"
                                             inputMode="numeric"
                                             maxLength="1"
-                                            className="form-control form-otp-num text-center shadow-none otp-input fw-bold"
+                                            className="form-control form-otp-num text-center shadow-none otp-input"
                                         />
                                     ))}
                                 </div>
