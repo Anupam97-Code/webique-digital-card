@@ -1,75 +1,75 @@
 {
   "headerBgImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/background-pk.webp",
-  "profileImage": "/images/user-profile.webp",
+  "profileImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/kishor-kapate.webp",
   "name": "Mr. Kishor R. Kapate",
   "title": "",
   "phone": "+91 9876543210",
   "designation": "Proprietor",
   "payment": {
     "upi_id": "www.kishorkapate77-1@oksbi",
-    "qr_image": "/images/panchakrushana-upi-qr.webp"
+    "qr_image": "https://www.webiquecard.in/dgcard-img/panchkrushna/panchakrushana-upi-qr.webp"
   },
   "whatsapp": "+919763772091",
   "gallerySlider": [
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-9.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "CCTV Installation"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-11.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "lighting connection"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-12.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "CCTV Installation"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-10.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Cabling"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-2.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-3.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-4.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-5.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-6.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-7.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-8.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Cabling"
     },
     {
-      "galleryImage": "/images/placeholder-img.webp",
-      "imageAlt": "Demo Image",
-      "imageText": "demo text"
+      "galleryImage": "https://www.webiquecard.in/dgcard-img/panchkrushna/pe-img-1.webp",
+      "imageAlt": "Panchakrushan Electrical Nashik",
+      "imageText": "Electrical Fitting"
     }
   ],
   "link": [
@@ -98,16 +98,16 @@
       "icon": "Zap"
     },
     {
+      "title": "Electrical Fitting & Cabling",
+      "icon": "Plug"
+    },
+    {
+      "title": "Electrical Material Supply",
+      "icon": "Package"
+    },
+    {
       "title": "CCTV Installation",
       "icon": "Cctv"
-    },
-    {
-      "title": "Electrical Fitting & Cabling",
-      "icon": "Plug"
-    },
-    {
-      "title": "Electrical Fitting & Cabling",
-      "icon": "Plug"
     }
   ],
   "testimonials": {
@@ -253,6 +253,6 @@
   "ogImage": "/images/webique-og-image.webp",
   "darkModeImage": "/images/reastaurant-logo.webp",
   "company": "PanchaKrushna Electrical",
-  "package": "basic",
+  "package": "regular",
   "template": "Premium1"
 }

@@ -9,25 +9,21 @@
     "socialLinks": [
     {
       "icon": "/images/col-insta.svg",
-      "caretIcon": "/images/caret-right.svg",
       "text": "Follow Us On Instagram",
       "link": "https://instagram.com"
     },
     {
       "icon": "/images/color-facebook.svg",
-      "caretIcon": "/images/caret-right.svg",
       "text": "Follow Us On Facebook",
       "link": "https://facebook.com"
     },
     {
       "icon": "/images/color-linkdin.svg",
-      "caretIcon": "/images/caret-right.svg",
       "text": "Follow Us On Linkdin",
       "link": "https://linkedin.com"
     },
     {
       "icon": "/images/color-yt.svg",
-      "caretIcon": "/images/caret-right.svg",
       "text": "Visit Us On Youtube",
       "link": "https://youtube.com"
     }
@@ -76,7 +72,7 @@
         ],
         "location": {
             "address": "Shop No G 10, Atlanta Shoppers Mall, Wasan Nagar, Pathardi Phata, Nashik, Maharashtra 422009",
-            "link": "https://maps.app.goo.gl/FTReqpPZDG3xzv279"
+            "link": "https://maps.app.goo.gl/JdERjLM7DnAdjFY67"
         }
     },
     "openingHours": [

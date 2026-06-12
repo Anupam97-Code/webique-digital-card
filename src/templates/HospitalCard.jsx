@@ -42,6 +42,7 @@ import { link } from 'framer-motion/client';
 import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 import GallerySlider from "./components/GallerySlider";
+import AboutCardSec from './components/AboutCardSec';
 
 
 
@@ -63,12 +64,10 @@ const iconMap = {
 };
 
 const HospitalCard = ({ data, openQR, saveContact, openUPI }) => {
-  const [darkMode, setDarkMode] = useState(false);
 
+  const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const [index, setIndex] = useState(0);
-
-
 
   const [formData, setFormData] = useState({
     name: "",
@@ -116,8 +115,8 @@ Message: ${formData.message}`;
     });
   };
 
-
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 417);
+
   useEffect(() => {
 
     const handleResize = () => {
@@ -134,6 +133,21 @@ Message: ${formData.message}`;
 
   // console.log("is mobile:", isMobile);
 
+  // mkae this for services icon & text responsive
+  const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 360);
+  useEffect(() => {
+
+    const handleResize = () => {
+      setIsSmallMobile(window.innerWidth <= 360);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
 
   const safeData = data || {};
 
@@ -410,29 +424,12 @@ Message: ${formData.message}`;
             </ul>
 
             {/* About Me */}
-            <div className='d-flex flex-column gap-2'>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                lineHeight: "27px",
-                color: darkMode ? profile.colors.white : profile.colors.dark,
-              }}
-              >
-                {profile.AboutMe}
-              </h4>
-              <p
-                style={{
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                  opacity: "0.7",
-                  fontWeight: 400,
-                  margin: 0,
-                  color: darkMode ? profile.colors.white : profile.colors.black,
-                }}
-              >
-                {profile.AboutContent}
-              </p>
-            </div>
+            <AboutCardSec
+              title={profile.AboutMe}
+              description={profile.AboutContent}
+              darkMode={darkMode}
+              profile={profile}
+            />
 
             {/* grid countup */}
             {(profile.package === "premium") && (
@@ -807,13 +804,17 @@ Message: ${formData.message}`;
                       // Determine the width based on the total items
                       let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
-                      if (total === 2) {
+                      if (isSmallMobile) {
                         cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 4) {
-                        cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 5) {
-                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
-                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                      } else {
+                        if (total === 2) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 4) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 5) {
+                          if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                          else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                        }
                       }
 
                       return (
@@ -845,9 +846,8 @@ Message: ${formData.message}`;
               )}
             </div>
 
-
-            {/* Gallery */}
-            {(profile.package === "basic" || profile.package === "regular") && (
+            {/* Gallery show only when user have premium or regular packs */}
+            {profile.package === "regular" && (
               <div
                 className="d-flex flex-column gap-2"
                 style={{

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const VideoSlider = ({ videos }) => {
+const VideoSlider = ({ videos, darkMode, profile }) => {
   const containerRef = useRef(null);
   const videoRefs = useRef([]);
   const lightboxRef = useRef(null);
@@ -104,7 +104,21 @@ const VideoSlider = ({ videos }) => {
   }, [activeIndex]);
 
   return (
-    <>
+    <div  className="d-flex flex-column gap-2"
+                style={{
+                  overflow: "hidden",
+                  width: "100%"
+                }}>
+<h4
+                  className="fw-bold"
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "600",
+                    color: darkMode ? profile.colors.white : profile.colors.black,
+                  }}
+                >
+                  Videos
+                </h4>
       {/* 🔥 Slider */}
       <div
         ref={containerRef}
@@ -116,13 +130,14 @@ const VideoSlider = ({ videos }) => {
           cursor: "grab"
         }}
       >
+        
         {videos.map((item, index) => (
           <div
             key={index}
             style={{
-              flex: "0 0 35.33%",
+              flex: "0 0 40%",
               scrollSnapAlign: "center",
-              borderRadius: "12px",
+              borderRadius: "8px",
               overflow: "hidden",
               cursor: "pointer"
             }}
@@ -208,7 +223,7 @@ const VideoSlider = ({ videos }) => {
           }
         `}
       </style>
-    </>
+    </div>
   );
 };
 

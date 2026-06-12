@@ -12,6 +12,8 @@ import DigitalIDcard from "../templates/DigitalIDcard";
 import { button } from "framer-motion/client";
 import DigitalCardTwo from "../templates/DigitalCardTwo";
 import BusinessCard from "../templates/BusinessCard";
+import Builder from "../templates/Builder.jsx";
+import ClientCustome1 from "../templates/ClientCustome1.jsx";
 
 const Card = () => {
     const { username } = useParams();
@@ -160,7 +162,7 @@ const Card = () => {
                 ctx.fillStyle = data?.colors?.black || "#000000";
                 ctx.font = "bold 16px Arial";
                 ctx.textAlign = "center";
-                
+
                 let textY = boxY + cardPadding + qrHeight + 25;
                 textLines.forEach(line => {
                     ctx.fillText(line, boxX + (cardWidth / 2), textY, cardWidth - 40);
@@ -325,8 +327,11 @@ const Card = () => {
         RestraurentCard: RestraurentCard,
         DigitalIDcard: DigitalIDcard,
         HospitalCard: HospitalCard,
-        DigitalCardTwo:DigitalCardTwo,
-        BusinessCard:BusinessCard
+        DigitalCardTwo: DigitalCardTwo,
+        BusinessCard: BusinessCard,
+        Builder: Builder,
+        ClientCustome1:ClientCustome1
+
     };
 
     const SelectedTemplate = templates[data.template];

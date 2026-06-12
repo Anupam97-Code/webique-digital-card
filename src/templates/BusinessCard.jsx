@@ -26,6 +26,7 @@ import { Carousel, Col, Row } from "react-bootstrap";
 import ContactSection from "./components/ContactSection";
 import StickyFooter from "./components/StickyFooter";
 import GallerySlider from "./components/GallerySlider";
+import AboutCardSec from "./components/AboutCardSec";
 
 
 /* ======================================================
@@ -297,11 +298,28 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
 
     // console.log("is mobile:", isMobile);
 
+    // mkae this for services icon & text responsive
+    const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 375);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsSmallMobile(window.innerWidth <= 375);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+
+
     const profile = useMemo(() => ({
         headerBgImage: safeData.headerBgImage || "",
         profileImage: safeData.profileImage || "/images/default-profile.png",
         texture: safeData.texture,
-
+        map: safeData.map,
         name: safeData.name || "John Doe",
         title: safeData.title || "Business Owner",
 
@@ -416,7 +434,13 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
       width: 470px;
       height: 470px;
       border-radius: 50%;
-      background: ${profile?.colors?.circleBg};
+       background:
+    ${profile?.colors?.logoBack}
+    url(${profile?.map});
+
+  background-size: cover;
+  background-position: center 146px;
+  background-repeat: no-repeat;
       top: -256px;
       left: 50%;
       transform: translateX(-50%);
@@ -460,9 +484,9 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                     src={profile.headerOverlayLogoImg}
                                     alt={profile.name}
                                     style={{
-                                        margin: "46px auto",
+                                        margin: "35px auto",
                                         right: "30px",
-                                        width: "180px",
+                                        width: "280px",
                                         height: "auto",
                                         objectFit: "cover",
                                         zIndex: "22"
@@ -534,7 +558,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                                 style={{
                                                     padding: "11px 0px",
                                                     borderRadius: "6px",
-                                                    background: profile.colors.white,
+                                                    background: profile.colors.logoBack,
                                                 }}
                                             >
                                                 <div
@@ -575,28 +599,13 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
 
 
                     {/* about */}
-                    <div className="d-flex flex-column gap-2">
 
-
-
-                        <h5 className="my-0"
-                            style={{
-                                fontWeight: 600, lineHeight: "100%", fontSize: "18px",
-                                color: darkMode ? profile.colors.white : profile.colors.black,
-                            }}
-                        >
-                            About Us
-                        </h5>
-
-
-                        <p className="m-0" style={{
-                            opacity: 0.8,
-                            opacity: "0.7",
-                            color: darkMode ? profile.colors.white : profile.colors.black
-                        }}>
-                            {profile.aboutDescription}
-                        </p>
-                    </div>
+                    <AboutCardSec
+                        title={"Aboue Us"}
+                        description={profile.aboutDescription}
+                        darkMode={darkMode}
+                        profile={profile}
+                    />
 
                     {/* besic premuim & regular service card grid */}
                     <div className="d-flex flex-column gap-2">
@@ -608,7 +617,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                 color: darkMode ? profile.colors.white : profile.colors.black,
                             }}
                         >
-                            My Services
+                            Our Group of Companies
                         </h5>
 
                         {/* check if package is premium & regular to render this */}
@@ -616,7 +625,7 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                             <div
                                 className="d-flex flex-wrap"
                                 style={{
-                                    gap: "15px",
+                                    gap: "20px",
                                     justifyContent: "start"
                                 }}
                             >
@@ -627,13 +636,17 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                     // Determine the width based on the total items
                                     let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
-                                    if (total === 2) {
+                                    if (isSmallMobile) {
                                         cardWidth = "calc(50% - 7.5px)";
-                                    } else if (total === 4) {
-                                        cardWidth = "calc(50% - 7.5px)";
-                                    } else if (total === 5) {
-                                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
-                                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                                    } else {
+                                        if (total === 2) {
+                                            cardWidth = "calc(50% - 7.5px)";
+                                        } else if (total === 4) {
+                                            cardWidth = "calc(50% - 7.5px)";
+                                        } else if (total === 5) {
+                                            if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                                            else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                                        }
                                     }
 
                                     return (
@@ -644,10 +657,19 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                             >
                                                 <div
                                                     style={{
-                                                        color: darkMode ? profile.colors.Primery:profile.colors.Primery
+                                                        color: darkMode ? profile.colors.Primery : profile.colors.Primery
                                                     }}
                                                 >
-                                                    {IconComponent && <IconComponent size={44} />}
+                                                    {service.image ? (
+                                                        <img
+                                                            src={service.image}
+                                                            alt={service.title}
+                                                            width="44"
+                                                            height="44"
+                                                        />
+                                                    ) : (
+                                                        IconComponent && <IconComponent size={44} />
+                                                    )}
                                                 </div>
                                                 <h6
                                                     style={{
@@ -787,6 +809,14 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                         </div>
                     )}
 
+
+
+
+
+
+
+
+
                     {/* social media icons */}
                     {/* Social Links / with lucid react icons */}
                     <div className="d-flex flex-column gap-2">
@@ -816,8 +846,8 @@ const BusinessCard = ({ data, saveContact, openQR, openUPI }) => {
                                             rel="noopener noreferrer"
                                             className="p-2 rounded d-flex align-items-center justify-content-center"
                                             style={{
-                                                background:darkMode ? profile.colors.trinery:profile.colors.Secondery,
-                                                color: darkMode ? profile.colors.Primery:profile.colors.Primery
+                                                background: darkMode ? profile.colors.trinery : profile.colors.trinery,
+                                                color: darkMode ? profile.colors.Primery : profile.colors.Secondery
                                             }}
                                         >
                                             {IconComponent && <IconComponent size={20} />}

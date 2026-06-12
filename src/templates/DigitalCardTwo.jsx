@@ -18,6 +18,7 @@ import * as Icons from "lucide-react";
 import { Carousel, Col, Row } from "react-bootstrap";
 import StickyFooter from "./components/StickyFooter";
 import ContactSection from "./components/ContactSection";
+import AboutCardSec from "./components/AboutCardSec";
 
 
 const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
@@ -39,6 +40,22 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
 
     }, []);
     // console.log("is mobile:", isMobile);
+
+    // mkae this for services icon & text responsive
+    const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 360);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsSmallMobile(window.innerWidth <= 360);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
 
     // extract data from json files
     const profile = useMemo(() => ({
@@ -288,109 +305,94 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
                     }}
                 >
                     {/* top card section to header Image */}
-                    <div style={{padding:"0 15px"}}>
-                    <WaveShape
-                        profile={profile}
-                        darkMode={darkMode}
-                    />
-                    {/* dynamic image calling */}
-                    <div
-                        className="overflow-hidden flex-column d-flex align-items-center justify-content-center"
-                        style={{
-                            marginTop: "-50px", position: "relative", marginBottom: "64px",
-                            backgroundColor: darkMode ? "transparent" : "transparent"
-                        }}
-                    >
+                    <div style={{ padding: "0 15px" }}>
+                        <WaveShape
+                            profile={profile}
+                            darkMode={darkMode}
+                        />
+                        {/* dynamic image calling */}
+                        <div
+                            className="overflow-hidden flex-column d-flex align-items-center justify-content-center"
+                            style={{
+                                marginTop: "-50px", position: "relative", marginBottom: "64px",
+                                backgroundColor: darkMode ? "transparent" : "transparent"
+                            }}
+                        >
 
-
-                            <style>
-                                {`
-.profile-img{
-  width: 152px; height:152px; border-radius:50%;
-}
-.profile-wrap{gap:28px}
-.social-wrap{gap:10px;}
-
- @media (max-width: 370px) {
-      .profile-img{width:130px; height:130px}  
-      .profile-wrap{gap:10px}                            
- }
-`}
-                            </style>
-
-
-                        {/* top profile image */}
-                        <div className="d-flex align-items-end justifly-content-between profile-wrap" >
-                            <img className="profile-img"
-
-                                src={profile.profileImage}
-                                alt={profile.name + profile.title}
-                            />
-
-
-
-
-                            {/* top profile content */}
-                            <div className="profile-content w-100"
-                                style={{ padding: "20px 0px 0px" }}
-                            >
-                                <div
-                                    className="position-relative z-3 d-flex flex-column align-items-left justify-content-center"
+                            {/* top profile image */}
+                            <div className="d-flex align-items-end justifly-content-between" style={{ gap: "28px" }}>
+                                <img
                                     style={{
-                                        paddingBottom: "0px"
+                                        width: "152px",
+                                        height: "152px",
+                                        borderRadius: "50%",
                                     }}
+                                    src={profile.profileImage}
+                                    alt={profile.name + profile.title}
+                                />
+
+                                {/* top profile content */}
+                                <div className="profile-content w-100"
+                                    style={{ padding: "20px 0px 0px" }}
                                 >
-                                    <h5 className="m-0"
+                                    <div
+                                        className="position-relative z-3 d-flex flex-column align-items-left justify-content-center"
                                         style={{
-                                            color: darkMode ? profile.colors.white : profile.colors.black,
+                                            paddingBottom: "0px"
                                         }}
                                     >
-                                        {profile.name}
-                                    </h5>
-                                    <p className="m-0"
-                                        style={{
-                                            opacity: "0.7",
-                                            color: darkMode ? profile.colors.white : profile.colors.black,
-                                        }}
-                                    >
-                                        {profile.title}
-                                    </p>
+                                        <h5 className="m-0"
+                                            style={{
+                                                color: darkMode ? profile.colors.white : profile.colors.black,
+                                            }}
+                                        >
+                                            {profile.name}
+                                        </h5>
+                                        <p className="m-0"
+                                            style={{
+                                                opacity: "0.7",
+                                                color: darkMode ? profile.colors.white : profile.colors.black,
+                                            }}
+                                        >
+                                            {profile.title}
+                                        </p>
 
-                                    <div className="social-wrap d-flex">
+                                        <div className="d-flex" style={{ gap: "10px", marginTop: "18px" }}>
 
-                                        <ActionItemTop
-                                            icon={<Phone size={18} color={profile.colors.white}/>}
-                                            values={profile.contactData.phone_Number}
-                                            type="tel"
-                                            className="topIconOnly"
-                                        />
+                                            <ActionItemTop
+                                                icon={<Phone size={18} color={profile.colors.white} />}
+                                                values={profile.contactData.phone_Number}
+                                                type="tel"
+                                                className="topIconOnly"
+                                            />
 
-                                        <ActionItemTop
-                                            icon={<Mail size={18} color={profile.colors.white}/>}
-                                            values={profile.contactData.mail}
-                                            type="mailto"
-                                            className="topIconOnly"
-                                        
-                                        />
+                                            <ActionItemTop
+                                                icon={<Mail size={18} color={profile.colors.white} />}
+                                                values={profile.contactData.mail}
+                                                type="mailto"
+                                                className="topIconOnly"
 
-                                        <ActionItemTop
-                                            icon={<MapPin size={18} color={profile.colors.white}/>}
-                                            href={profile.contactData.location.link}
-                                            className="topIconOnly"
-                                        />
+                                            />
+
+                                            <ActionItemTop
+                                                icon={<MapPin size={18} color={profile.colors.white} />}
+                                                values={profile.contactData.mail}
+                                                href={profile.contactData.location.link}
+                                                className="topIconOnly"
+                                            />
+
+                                        </div>
 
                                     </div>
+
+
+                                    {/* visiting link div */}
 
                                 </div>
 
 
-                                {/* visiting link div */}
-
-                            </div>
-
-
-                            <style>
-                                {`
+                                <style>
+                                    {`
 .topIconOnly{
   width: auto !important;
     padding: 0 !important;
@@ -411,106 +413,99 @@ const DigitalCardTwo = ({ data, openQR, saveContact, openUPI }) => {
   gap:0 !important;
 }
 `}
-                            </style>
+                                </style>
 
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        {/* body data */}
+                        <div className="d-flex flex-column" style={{ gap: "20px", marginBottom: "15px" }}>
 
-                    {/* body data */}
-                    <div className="d-flex flex-column" style={{ gap: "20px", marginBottom: "15px" }}>
-
-                        <div className="d-flex flex-column" style={{ gap: "15px" }}>
-                            {profile.socialLinks.map((item, index) => (
-                                <a key={index} href={item.link} target="_blank" style={{ textDecoration: "none" }}>
-                                    <div className="d-flex align-items-center justify-content-between"
-                                        style={{
-
-                                            boxShadow: `0px 0px 4px 0px ${profile.colors.shadowCol}`,
-                                            borderRadius: "10px",
-                                            backgroundColor: darkMode
-                                                ? profile.colors.darkCardBg
-                                                : profile.colors.white,
-                                            color: darkMode ? profile.colors.white : profile.colors.black,
-                                            border: darkMode ? `solid 1px ${profile.colors.white}` : `none`,
-                                            padding: "8px 25px 8px 8px"
-
-                                        }}>
-                                        <img src={item.icon} alt="img" />
-                                        <p
-                                            className="mb-0"
-                                            style={{ color: darkMode ? profile.colors.white : profile.colors.black }}
-                                        >
-                                            {item.text}
-                                        </p>
-                                        <ChevronRight
-                                            size={16}
-                                            color={darkMode ? profile.colors.white : profile.colors.black}
-                                        />
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                        {/* about */}
-                        <div className="d-flex flex-column gap-2">
-                            <h5 className="fw-bold my-0"
-                                style={{
-                                    opacity: "0.8", lineHeight: "100%", fontSize: "18px",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                }}
-                            >About Us</h5>
-                            <p className="mb-1" style={{
-                                fontSize: "16px",
-                                opacity: "0.7", lineHeight: "27px",
-                                color: darkMode ? profile.colors.white : profile.colors.black
-                            }}>
-                                {profile.aboutDescription}
-                            </p>
-                        </div>
-
-                        {/* services */}
-                        <div className="d-flex flex-column gap-2">
-                            <h5 className="fw-bold my-0"
-                                style={{
-                                    opacity: "0.8", lineHeight: "100%", fontSize: "18px",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                }}
-                            >Services</h5>
-                            <ul className="d-flex align-items-start flex-wrap gap-2">
-                                {profile.servicesData.map((value, i) => {
-                                    return (
-                                        <li
-                                            key={i}
-                                            className="h-100 text-center d-flex gap-2 flex-column align-items-center justify-content-center"
+                            <div className="d-flex flex-column" style={{ gap: "15px" }}>
+                                {profile.socialLinks.map((item, index) => (
+                                    <a key={index} href={item.link} target="_blank" style={{ textDecoration: "none" }}>
+                                        <div className="d-flex align-items-center justify-content-between"
                                             style={{
-                                                background: profile.colors.trinery,
-                                                borderRadius: "55px",
-                                                padding: "8px 15px 8px",
-                                                border: `1px solid ${profile.colors.borderGray}`
 
-                                            }}
-                                        >
-                                            <h6
+                                                boxShadow: `0px 0px 4px 0px ${profile.colors.shadowCol}`,
+                                                borderRadius: "10px",
+                                                backgroundColor: darkMode
+                                                    ? profile.colors.darkCardBg
+                                                    : profile.colors.white,
+                                                color: darkMode ? profile.colors.white : profile.colors.black,
+                                                border: darkMode ? `solid 1px ${profile.colors.white}` : `none`,
+                                                padding: "8px 25px 8px 8px"
+
+                                            }}>
+                                            <img src={item.icon} alt="img" />
+                                            <p
+                                                className="mb-0"
+                                                style={{ color: darkMode ? profile.colors.white : profile.colors.black }}
+                                            >
+                                                {item.text}
+                                            </p>
+                                            <ChevronRight
+                                                size={16}
+                                                color={darkMode ? profile.colors.white : profile.colors.black}
+                                            />
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+
+                            {/* about */}
+                        
+                            <AboutCardSec
+                                title={"Aboue Us"}
+                                description={profile.aboutDescription}
+                                darkMode={darkMode}
+                                profile={profile}
+                            />
+
+                            {/* services */}
+                            <div className="d-flex flex-column gap-2">
+                                <h5 className="fw-bold my-0"
+                                    style={{
+                                        opacity: "0.8", lineHeight: "100%", fontSize: "18px",
+                                        color: darkMode ? profile.colors.white : profile.colors.black
+                                    }}
+                                >Services</h5>
+                                <ul className="d-flex align-items-start flex-wrap gap-2">
+                                    {profile.servicesData.map((value, i) => {
+                                        return (
+                                            <li
+                                                key={i}
+                                                className="h-100 text-center d-flex gap-2 flex-column align-items-center justify-content-center"
                                                 style={{
-                                                    fontSize: "14px",
-                                                    opacity: "0.7",
-                                                    color: darkMode ? profile.colors.white : profile.colors.black
-                                                }}
-                                            >{value.title}</h6>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </div>
+                                                    background: profile.colors.trinery,
+                                                    borderRadius: "55px",
+                                                    padding: "8px 15px 8px",
+                                                    border: `1px solid ${profile.colors.borderGray}`
 
-                        {/* contact section */}
-                        <ContactSection
-                            profile={profile}
-                            darkMode={darkMode}
-                        />
+                                                }}
+                                            >
+                                                <h6
+                                                    style={{
+                                                        fontSize: "14px",
+                                                        opacity: "0.7",
+                                                        color: darkMode ? profile.colors.white : profile.colors.black
+                                                    }}
+                                                >{value.title}</h6>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+
+                            {/* contact section */}
+                            <ContactSection
+                                profile={profile}
+                                darkMode={darkMode}
+                            />
+                        </div>
                     </div>
-</div>
                     {/* Sticky Footer Buttons */}
                     <StickyFooter
                         profile={profile}

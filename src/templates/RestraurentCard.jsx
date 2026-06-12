@@ -17,6 +17,7 @@ import { Carousel, Col, Row } from "react-bootstrap";
 import ContactSection from "./components/ContactSection";
 import StickyFooter from "./components/StickyFooter";
 import GallerySlider from "./components/GallerySlider";
+import AboutCardSec from "./components/AboutCardSec";
 
 
 /* ======================================================
@@ -286,6 +287,23 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
     // console.log("is mobile:", isMobile);
 
+    // mkae this for services icon & text responsive
+    const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 360);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsSmallMobile(window.innerWidth <= 360);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+
+
     const profile = useMemo(() => ({
         headerBgImage: safeData.headerBgImage || "",
         profileImage: safeData.profileImage || "/images/default-profile.png",
@@ -488,7 +506,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                         </div>
                     </div>
 
-               
+
 
                     {/* Social Links / with lucid react icons */}
                     <ul
@@ -519,28 +537,20 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     </ul>
 
                     {/* about */}
-                    <div className="d-flex flex-column gap-2">
-                        <h4 className="fw-bold m-0"
-                            style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
-                            }}
-                        >About Us</h4>
-                        <p className="m-0" style={{
-                            opacity: 0.8,
-                            opacity: "0.7",
-                            color: darkMode ? profile.colors.white : profile.colors.black
-                        }}>
-                            {profile.aboutDescription}
-                        </p>
-                    </div>
+                    <AboutCardSec
+                        title={"About Us"}
+                        description={profile.aboutDescription}
+                        darkMode={darkMode}
+                        profile={profile}
+                    />
 
                     {/* besic premuim & regular service card grid */}
                     <div className="d-flex flex-column gap-2">
-                        <h4 className="fw-bold m-0"
+                        <h4 className=" m-0"
                             style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
+                                fontSize: "18px",
+                                fontWeight: 600, lineHeight: "27px",
+                                color: darkMode ? profile.colors.white : profile.colors.dark
                             }}
                         >My Services</h4>
                         {/* check if package is premium & regular to render this */}
@@ -559,13 +569,17 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                                     // Determine the width based on the total items
                                     let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
-                                    if (total === 2) {
+                                    if (isSmallMobile) {
                                         cardWidth = "calc(50% - 7.5px)";
-                                    } else if (total === 4) {
-                                        cardWidth = "calc(50% - 7.5px)";
-                                    } else if (total === 5) {
-                                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
-                                        else cardWidth = "calc(50% - 7.5px)"; // Last 2 items
+                                    } else {
+                                        if (total === 2) {
+                                            cardWidth = "calc(50% - 7.5px)";
+                                        } else if (total === 4) {
+                                            cardWidth = "calc(50% - 7.5px)";
+                                        } else if (total === 5) {
+                                            if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                                            else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                                        }
                                     }
 
                                     return (
@@ -631,10 +645,11 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     {checkUserPackage("premium") && (
 
                         <div className="w-100 d-flex flex-column gap-2">
-                            <h4 className="m-0 fw-bold"
+                            <h4 className="m-0"
                                 style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                    fontSize: "18px",
+                                    fontWeight: 600, lineHeight: "27px",
+                                    color: darkMode ? profile.colors.white : profile.colors.dark
                                 }}
                             >Our Menu</h4>
                             {/* tabs btns map */}
@@ -727,10 +742,11 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                             width: "100%"
                         }}
                     >
-                        <h4 className="m-0 fw-bold"
+                        <h4 className="m-0"
                             style={{
-                                opacity: "0.8",
-                                color: darkMode ? profile.colors.white : profile.colors.black
+                                fontSize: "18px",
+                                fontWeight: 600, lineHeight: "27px",
+                                color: darkMode ? profile.colors.white : profile.colors.dark
                             }}
                         >Gallery</h4>
                         <GallerySlider slideData={profile.gallerySlider} />
@@ -740,10 +756,11 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     {checkUserPackage("premium") && (
                         <div className="w-100 d-flex flex-column gap-2">
 
-                            <h4 className="m-0 fw-bold"
+                            <h4 className="m-0"
                                 style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                    fontSize: "18px",
+                                    fontWeight: 600, lineHeight: "27px",
+                                    color: darkMode ? profile.colors.white : profile.colors.dark
                                 }}
                             >Testimonials</h4>
                             <TestimonialCarousal profile={profile} darkMode={darkMode} />
@@ -754,10 +771,11 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                     {checkUserPackage("premium") && (
                         <div className="w-100 d-flex flex-column gap-2">
                             <h4
-                                className="m-0 fw-bold"
+                                className="m-0"
                                 style={{
-                                    opacity: "0.8",
-                                    color: darkMode ? profile.colors.white : profile.colors.black
+                                    fontSize: "18px",
+                                    fontWeight: 600, lineHeight: "27px",
+                                    color: darkMode ? profile.colors.white : profile.colors.dark
                                 }}
                             >
                                 Inquiries

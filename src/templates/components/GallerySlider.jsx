@@ -1,10 +1,24 @@
-import React, { useState, memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { Row, Col } from "react-bootstrap";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const GallerySlider = memo(({ slideData }) => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 400);
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 400);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
 
     // split array into groups of 4
     const chunkArray = (arr, size) => {
@@ -42,7 +56,7 @@ const GallerySlider = memo(({ slideData }) => {
                 style={{
                     overflowX: "auto",
                     width: "100%",
-                    gap: "16px",
+                    gap: "24px",
                     scrollSnapType: "x mandatory"
                 }}
             >
@@ -62,7 +76,7 @@ const GallerySlider = memo(({ slideData }) => {
 
                                 return (
                                     <Col xs={6} key={index} className="mb-3 px-2">
-                                        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                                        <div style={{ position: "relative", width: isMobile ? "100%" : "181px", height: "120px" }}>
                                             <img
                                                 src={value.galleryImage}
                                                 alt={value.imageAlt}

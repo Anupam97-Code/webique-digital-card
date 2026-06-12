@@ -41,6 +41,7 @@ import ContactSection from './components/ContactSection';
 import StickyFooter from './components/StickyFooter';
 import GallerySlider from "./components/GallerySlider";
 import VideoSlider from './components/VideoSlider';
+import AboutCardSec from './components/AboutCardSec';
 
 
 
@@ -122,6 +123,22 @@ Message: ${formData.message}`;
   }, []);
 
   // console.log("is mobile:", isMobile);
+
+  // mkae this for services icon & text responsive
+  const [isSmallMobile, setIsSmallMobile] = useState(window.innerWidth <= 360);
+  useEffect(() => {
+
+    const handleResize = () => {
+      setIsSmallMobile(window.innerWidth <= 360);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
 
 
   const safeData = data || {};
@@ -223,13 +240,14 @@ Message: ${formData.message}`;
         {/* Theme Toggle */}
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="btn d-flex align-items-center justify-content-center position-fixed top-0 end-0 z-3 rounded-circle shadow"
+          className="btn d-flex align-items-center justify-content-center position-fixed top-0 end-0 rounded-circle shadow"
           style={{
             background: darkMode ? profile.colors.white : profile.colors.darkFields,
             color: darkMode ? profile.colors.darkFields : profile.colors.white,
             padding: "13px 13px",
             marginRight: "5px",
             marginTop: "5px",
+            zIndex:"1000"
           }}
         >
           {darkMode ? <Sun size={16} /> : <Moon size={16} />}
@@ -357,8 +375,10 @@ Message: ${formData.message}`;
             </div>
           </div>
 
-          {/* social media icons */}
-          <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "15px", }}>
+          <div className='d-flex flex-column' style={{ padding: "0 16px", gap: "20px", }}>
+
+            {/* social media icons */}
+
             <ul style={{ gap: "17px", }} className='d-flex flex-wrap'>
               {profile.link.map((item, index) => {
                 const Icon = iconMap[item.name];
@@ -382,28 +402,13 @@ Message: ${formData.message}`;
             </ul>
 
             {/* About Me */}
-            <div className='d-flex flex-column gap-2'>
-              <h4 style={{
-                fontSize: "18px",
-                fontWeight: 600, lineHeight: "27px",
-                color: darkMode ? profile.colors.white : profile.colors.dark,
-              }}
-              >
-                {profile.AboutMe}
-              </h4>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "27px",
-                  opacity: "0.7",
-                  fontWeight: 400,
-                  margin: 0,
-                  color: darkMode ? profile.colors.white : profile.colors.black,
-                }}
-              >
-                {profile.AboutContent}
-              </p>
-            </div>
+
+            <AboutCardSec
+              title={profile.AboutMe}
+              description={profile.AboutContent}
+              darkMode={darkMode}
+              profile={profile}
+            />
 
             {/* tabs */}
             <style>
@@ -425,14 +430,9 @@ Message: ${formData.message}`;
   color: 1680FB !important;
 
 }
-
-
-
-
-
 `}
             </style>
-            
+
             <div>
               {/* to show premium cardc data and grid services */}
               {checkUserPackage("premium") && (
@@ -661,13 +661,17 @@ Message: ${formData.message}`;
                       // Determine the width based on the total items
                       let cardWidth = "calc(33.333% - 10px)"; // Default to 3 items per row
 
-                      if (total === 2) {
+                      if (isSmallMobile) {
                         cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 4) {
-                        cardWidth = "calc(50% - 7.5px)";
-                      } else if (total === 5) {
-                        if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
-                        else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                      } else {
+                        if (total === 2) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 4) {
+                          cardWidth = "calc(50% - 7.5px)";
+                        } else if (total === 5) {
+                          if (i < 3) cardWidth = "calc(33.333% - 10px)"; // First 3 items
+                          else cardWidth = "calc(33.333% - 10px)"; // Last 2 items
+                        }
                       }
 
                       return (
@@ -701,7 +705,7 @@ Message: ${formData.message}`;
             </div>
 
             {/* Gallery */}
-            {(profile.package === "basic" || profile.package === "regular") && (
+            {profile.package === "regular" && (
               <div
                 className="d-flex flex-column gap-2"
                 style={{
@@ -723,6 +727,10 @@ Message: ${formData.message}`;
               </div>
             )}
 
+
+
+
+            <VideoSlider videos={profile.videoSlider} profile={profile} darkMode={darkMode}/>
             {/* testimonial carousal */}
             <style>
               {`
@@ -731,7 +739,7 @@ Message: ${formData.message}`;
     border: 1px solid #B4B4B4;
     border-radius: 6px;
 
-    .testimonial-top {
+    .testimonial-top {    
     width: 54px;
     height: 54px;
 
@@ -745,7 +753,7 @@ Message: ${formData.message}`;
 `}
             </style>
 
-            {checkUserPackage("regular") && (
+            {checkUserPackage("premium") && (
               <section className='d-flex flex-column gap-2'>
 
                 <div className="d-flex justify-content-between align-items-center">
@@ -863,13 +871,11 @@ Message: ${formData.message}`;
             )}
 
 
-            <div>
-
-            </div>
+       
 
 
-
-            <VideoSlider videos={profile.videoSlider}/>
+         
+            
             {/* Inquiry div (form) */}
             <style>
               {`
@@ -882,7 +888,8 @@ textarea::placeholder {
 }
 `}
             </style>
-            {checkUserPackage("regular") && (
+            
+            {checkUserPackage("premium") && (
               <div className='d-flex flex-column gap-2'>
                 <h4 style={{
                   fontSize: "18px",
