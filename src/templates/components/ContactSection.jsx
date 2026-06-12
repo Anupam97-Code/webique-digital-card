@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Globe, ArrowUpRight } from "lucide-react";
 
 const ContactSection = ({ profile, darkMode }) => {
 
@@ -107,7 +107,7 @@ const ContactSection = ({ profile, darkMode }) => {
     <div className="d-flex flex-column gap-2">
       <h5 className="my-0"
         style={{
-          fontWeight: 600, lineHeight:"100%", fontSize:"18px",
+          fontWeight: 600, lineHeight: "100%", fontSize: "18px",
           color: darkMode ? profile.colors.white : profile.colors.black,
         }}
       >
@@ -117,25 +117,26 @@ const ContactSection = ({ profile, darkMode }) => {
       <div className="d-flex flex-column gap-3 align-items-center justify-content-center">
 
         {/* Call */}
-        <ActionItem
-          icon={
-            <div
-              className="d-flex align-items-center justify-content-center rounded-3"
-              style={{
-                width: "42px",
-                height: "42px",
-                background: darkMode ? profile.colors.dark : profile.colors.white,
-                color: profile.colors.Primery,
-              }}
-            >
-              <Phone size={18} />
-            </div>
-          }
-          title="Call Me"
-          subtitle={profile.contactData?.phone_Number}
-          href={`tel:${profile.contactData?.phone_Number?.[0]}`}
-        />
-
+        {profile.contactData.phone_Number && (
+          <ActionItem
+            icon={
+              <div
+                className="d-flex align-items-center justify-content-center rounded-3"
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  background: darkMode ? profile.colors.dark : profile.colors.white,
+                  color: profile.colors.Primery,
+                }}
+              >
+                <Phone size={18} />
+              </div>
+            }
+            title="Call Me"
+            subtitle={profile.contactData?.phone_Number}
+            href={`tel:${profile.contactData?.phone_Number?.[0]}`}
+          />
+        )}
         {/* Email */}
         <ActionItem
           icon={
@@ -155,6 +156,28 @@ const ContactSection = ({ profile, darkMode }) => {
           subtitle={profile.contactData.mail}
           href={`mailto:${profile.contactData.mail}`}
         />
+        {/* Email */}
+        {profile.contactData.website && (
+          <ActionItem
+            icon={
+              <div
+                className="d-flex align-items-center justify-content-center rounded-3"
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  background: darkMode ? profile.colors.dark : profile.colors.white,
+                  color: profile.colors.Primery,
+                }}
+              >
+                <Globe size={18} />
+              </div>
+            }
+            title="website"
+            subtitle={profile.contactData.website}
+            href={`https://${profile.contactData.website}`}
+          />
+        )}
+
 
         {/* Location */}
         <ActionItem

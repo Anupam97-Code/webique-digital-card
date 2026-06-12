@@ -12,7 +12,8 @@ import DigitalIDcard from "../templates/DigitalIDcard";
 import { button } from "framer-motion/client";
 import DigitalCardTwo from "../templates/DigitalCardTwo";
 import BusinessCard from "../templates/BusinessCard";
-
+import ClientCustome1 from "../templates/ClientCustome1";
+import Builder from "../templates/Builder"
 const Card = () => {
     const { username } = useParams();
     const [data, setData] = useState(null);
@@ -417,7 +418,9 @@ const Card = () => {
         DigitalIDcard: DigitalIDcard,
         HospitalCard: HospitalCard,
         DigitalCardTwo: DigitalCardTwo,
-        BusinessCard: BusinessCard
+        BusinessCard: BusinessCard,
+        Builder: Builder,
+        ClientCustome1: ClientCustome1
     };
 
     const SelectedTemplate = templates[data.template];

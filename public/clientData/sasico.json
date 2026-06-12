@@ -1,0 +1,240 @@
+{
+    "name": "SASICO",
+    "title": "S & S International Consultants Pvt Ltd.",
+    "companyPerson": {
+        "person1": "Sabab Ali",
+        "designation1": "Founder",
+        "cpNumber1": [
+            "9540893422",
+            "9899755141"
+        ],
+        "person2": "Hasan Shah",
+        "designation2": "MD (Nashik)",
+        "cpNumber2": "9960764696",
+        "person3": "Shoaib Ali",
+        "designation3": "MD (Delhi)",
+        "cpNumber3": "9871954482"
+    },
+    "headerBgImage": "https://www.webiquecard.in/dgcard-img/sasico/sasico-banner.webp",
+    "profileImage": "https://www.webiquecard.in/dgcard-img/sasico/sasico-logo.webp",
+    "company": "SASICO",
+    "phone": "+919540893422",
+    "payment": {
+        "upi_id": "",
+        "qr_image": ""
+    },
+    "map": {
+        "type": "map",
+        "label": "Location Map",
+        "value": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.292344628361!2d77.2735146!3d28.560982799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce392c0b02a5f%3A0x5c6234f11236fccc!2sS%20%26%20S%20International%20Consultants!5e0!3m2!1sen!2sin!4v1774958913820!5m2!1sen!2sin",
+        "className": "w-100"
+    },
+    "gallerySlider": [
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        },
+        {
+            "galleryImage": "/images/placeholder-img.webp",
+            "imageAlt": "Demo Image",
+            "imageText": ""
+        }
+    ],
+    "whatsapp": "+919960764696",
+    "package": "regular",
+    "template": "ClientCustome1",
+    "AboutMe": "About Me",
+    "AboutContent": "We are committed to the complete satisfaction of both, our prestigious clients as well as jobs seekers who are desirous for overseas employment with a right and a better secure future. We provide overseas placements for those looking forward to their horizons and head for a better career opportunities in Global.",
+    "link": [
+        {
+            "name": "Linkedin",
+            "url": "https://www.linkedin.com/company/sasico-s-s-international-consultants-pvt-ltd/"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://dribbble.com/anupam"
+        },
+        {
+            "name": "Facebook",
+            "url": "https://facebook.com/anupam"
+        },
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/anupam"
+        }
+    ],
+    "servicesData": [
+        {
+            "title": "Working Visit Visas",
+            "icon": ""
+        },
+        {
+            "title": "Family Visit Visas",
+            "icon": ""
+        },
+        {
+            "title": "Employment / Work Visas",
+            "icon": ""
+        },
+        {
+            "title": "Normal Documents Attestation",
+            "icon": ""
+        },
+        {
+            "title": "Degree Attestation for Embassies",
+            "icon": ""
+        },
+        {
+            "title": "Nursing Staff",
+            "icon": ""
+        },
+        {
+            "title": "Male / Female Attendant",
+            "icon": ""
+        },
+        {
+            "title": "Doctors",
+            "icon": ""
+        },
+        {
+            "title": "Pathology Staffs",
+            "icon": ""
+        },
+        {
+            "title": "Teaching Staffs",
+            "icon": ""
+        }
+    ],
+    "colors": {
+        "GredientOne": "linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 92.11%)",
+        "Primery": "#0379BC",
+        "Secondery": "#00D4FF26",
+        "trinery": "#BEBEBE33",
+        "servBack": "#ebebeb",
+        "white": "#fff",
+        "black": "#000",
+        "dark": "#0F172A",
+        "darkCardBg": "#1E293B",
+        "grayblack": "#17191c",
+        "inputBg": "#BEBEBE26",
+        "borderGray": "#B4B4B4",
+        "stickyLink1": "#00BF63",
+        "stickyLink2": "#1680FB",
+        "stickyLink3": "#022B5B",
+        "whiteFields": "#f1f3f5",
+        "darkFields": "#1f2d3d",
+        "darkBorder": "#47535f",
+        "whiteBorder": "#dee2e6",
+        "iconBakcgorundDark": "#0f172a",
+        "iconBakcgroundWhite": "#DCECFE",
+        "bdyColor": "#1d2537",
+        "tabBackground": "#1680FB26",
+        "deactiveTabs": "#FFFFFF26",
+        "decativeWhite": "#9a999926"
+    },
+    "contactData": {
+        "mail": [
+            "S.ali@sasico.in",
+            "Imfo@sasico.in",
+            "Hr@sasico.in"
+        ],
+        "website": "www.sasico.in",
+        "restaurant_Number": "+917894561230",
+        "location": {
+            "address": "151/2nd Floor, Sarai Jullen, Okhla Road, Above Shri Ram Medicos New Delhi, India - 110025",
+            "link": "https://maps.app.goo.gl/okJG77kv4dPLPT8Z6"
+        }
+    },
+    "openingHours": [
+        {
+            "dayName": "Monday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Tuesday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Wednesday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Thursday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Friday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Saturday",
+            "ocTime": "10:00 - 7:00"
+        },
+        {
+            "dayName": "Sunday",
+            "ocTime": "Closed"
+        }
+    ],
+    "reviewLink": "https://share.google/BZxCSRgmArhrWKDfO",
+    "brochureLink": "https://www.webiquecard.in/dgcard-img/sasico/sasico-brochure.pdf",
+    "show": {
+        "payment": false,
+        "brochure": true,
+        "serviceDataIcons": false,
+        "serviceDataBasic": true,
+        "gallerySlider": false,
+        "testimonial": false,
+        "openingHoures": true
+    }
+}

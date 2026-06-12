@@ -1,0 +1,315 @@
+{
+  "headerBgImage": "/images/restaurant.dc-head-img.webp",
+  "headerBgImagePosition": "center",
+  "headerOverlayLogoImg": "https://webiquecard.in/dgcard-img/borade/bb-white.png",
+  "texture": "/images/texture-1.png",
+  "map": "https://webiquecard.in/dgcard-img/borade/building.png",
+  "profileImage": "https://webiquecard.in/dgcard-img/borade/user-3.png",
+  "name": "Balasaheb Borade",
+  "title": "Chairman & Founder",
+  "ownerName": "",
+  "designation": "",
+  "payment": {
+    "upi_id": "restraurent@upi",
+    "qr_image": "/images/reastaurant-logo.webp"
+  },
+  "socialLinks": [
+    {
+      "socialName": "Facebook",
+      "socialURL": "https://www.facebook.com/",
+      "icon": "Facebook"
+    },
+    {
+      "socialName": "Instagram",
+      "socialURL": "https://www.instagram.com/webique_tech",
+      "icon": "Instagram"
+    },
+    {
+      "socialName": "LinkedIn",
+      "socialURL": "https://www.instagram.com/bigdreamassociates/",
+      "icon": "Linkedin"
+    },
+    {
+      "socialName": "Youtube",
+      "socialURL": "https://www.youtube.com",
+      "icon": "Youtube"
+    }
+  ],
+  "aboutDescription": "He has 11 years in corporate governance. Holds Director and Designated Partner roles. Currently with 5 companies, including SB Realtor and Shree Pandhari Infrastructures Private Limited. Engaged in General Business. Contributes to corporate operations.",
+  "servicesData": [
+    {
+      "srno":"1",
+      "title": "Shree Pandhari Infrastructure pvt. ltd.",
+      "text":"govt. contractor | Real Estate | Land Developers | Rood Infra",
+      "image": "/images/cropped-lgo-1.svg"
+    },
+    {
+      "srno":"2",
+      "title": "Shree Pandhari Multi-Purpose Charitable Org.",
+      "text":"Community Developement an d Social Welfare Programs",
+      "image": "/images/cropped-lgo-2.svg"
+    },
+    {
+      "srno":"3",
+      "title": "Savita Masale",
+      "text":"Manufacturing of Authentic Maharashtrian Spices",
+      "image": "/images/cropped-lgo-3.svg"
+    },
+    {
+      "srno":"4",
+      "title": "SB Realtors",
+      "text":"Real Estate | Land Developers",
+      "image": "/images/cropped-lgo-4.svg"
+    },
+    {
+      "srno":"5",
+      "title": "Ideal Corporation",
+      "text":"Stock Investment and Financial Growth Solutions",
+      "image": "/images/lgo-5.png"
+    }
+  ],
+  "menuTabData": [
+    {
+      "menuTabName": "Salad",
+      "menuTabList": [
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Antipasta Salad",
+          "menuDishPrice": "120"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Tossed Salad",
+          "menuDishPrice": "100"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Garden Salad",
+          "menuDishPrice": "130"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Simple Garden Salad Recipe",
+          "menuDishPrice": "150"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Garden Salad with Oregano ",
+          "menuDishPrice": "125"
+        }
+      ]
+    },
+    {
+      "menuTabName": "Pizzas",
+      "menuTabList": [
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Margherita Pizza",
+          "menuDishPrice": "149"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Cheesy Mac Veg Giant Pizza",
+          "menuDishPrice": "159"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Sausage Pizza",
+          "menuDishPrice": "120"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Greek Pita Pizzas",
+          "menuDishPrice": "179"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Easy Pita Pizza",
+          "menuDishPrice": "199"
+        }
+      ]
+    },
+    {
+      "menuTabName": "Veg",
+      "menuTabList": [
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Antipasta Salad",
+          "menuDishPrice": "120"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Tossed Salad",
+          "menuDishPrice": "100"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Garden Salad",
+          "menuDishPrice": "130"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Simple Garden Salad Recipe",
+          "menuDishPrice": "150"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Garden Salad with Oregano ",
+          "menuDishPrice": "125"
+        }
+      ]
+    },
+    {
+      "menuTabName": "Non-Veg",
+      "menuTabList": [
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Margherita Pizza",
+          "menuDishPrice": "149"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Cheesy Mac Veg Giant Pizza",
+          "menuDishPrice": "159"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Sausage Pizza",
+          "menuDishPrice": "120"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Greek Pita Pizzas",
+          "menuDishPrice": "179"
+        },
+        {
+          "menuDishSrc": "",
+          "menuDishName": "Easy Pita Pizza",
+          "menuDishPrice": "199"
+        }
+      ]
+    }
+  ],
+  "tesimonialSliderData": [
+    {
+      "testSrc": "/images/user-profile.webp",
+      "testName": "Cole Rich",
+      "testPost": "Customer",
+      "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+    },
+    {
+      "testSrc": "/images/user-profile.webp",
+      "testName": "Richi Rich",
+      "testPost": "Customer",
+      "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+    },
+    {
+      "testSrc": "/images/user-profile.webp",
+      "testName": "Solomon",
+      "testPost": "Customer",
+      "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+    },
+    {
+      "testSrc": "/images/user-profile.webp",
+      "testName": "Sanju",
+      "testPost": "Customer",
+      "testReview": "Lobortis etiam lectus mollis vulputate non egestas. Non aliquet facilisis leo tellus aliquet facilisis leo tellus.."
+    }
+  ],
+  "contactData": {
+    "phone_Number": [
+      "+919325861210","+919822761210"
+    ],
+    "mail": "Spiplnsk@gmail.com",
+    "location": {
+      "address": "Office No - 314/315, Atlanta Shoppers Serv.No 323/1/1/A/5, Plot No-4/5, Pathardi Road, Nashik",
+      "link": "https://maps.app.goo.gl/MxnYpLXoTTzUvf3q6"
+    },
+    "website": "www.balasahebboradegroup.com"
+  },
+  "contactDataTop": [
+    {
+      "title": "Call Us",
+      "icon": "Phone",
+      "pn": "02532951210"
+    },
+    {
+      "title": "Eamil Us",
+      "icon": "Send",
+      "mail": "Spiplnsk@gmail.com"
+    },
+    {
+      "title": "Locations",
+      "icon": "MapPin",
+      "link": "https://maps.app.goo.gl/KukcrdHFVZjkcEC27"
+    },
+    {
+      "title": "Website",
+      "icon": "Globe",
+      "website": "https://balasahebboradegroup.com/"
+    }
+  ],
+  "openingHours": [
+    {
+      "dayName": "Monday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Tuesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Wednesday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Thursday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Friday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Saturday",
+      "ocTime": "09:00 - 22:00"
+    },
+    {
+      "dayName": "Sunday",
+      "ocTime": "Closed"
+    }
+  ],
+  "colors": {
+    "Primery": "#e9bf5b",
+    "logoBack": "#2d2e2f",
+    "textColor":"#d0c5af",
+    "headerGredient": "linear-gradient(45deg, black, transparent)",
+    "headerGredientLight": "linear-gradient(45deg, white, transparent)",
+    "primaryDark": "#a837ff",
+    "borderChiarman":"linear-gradient(to right, #d4af37, #f2ca50 )",
+    "Secondery": "#000000",
+    "trinery": "#fff",
+    "trinery_light": "#2d2e2f",
+    "fade": "#000000",
+    "white": "#fff",
+    "black": "#1a1c1c",
+    "light": "#F1F3F5",
+    "lightBg": "#f9f9f9",
+    "dark": "#0F172A",
+    "darkCardBg": "#1E293B",
+    "grayblack": "#17191c",
+    "inputBg": "#BEBEBE26",
+    "borderGray": "#B4B4B4",
+    "stickyLink1": "#00BF63",
+    "stickyLink2": "#1680FB",
+    "stickyLink3": "#022B5B",
+    "placeholderCol": "#9CA3AF"
+  },
+  "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4653.692966525934!2d73.76669270000001!3d19.9538688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb5225d00b9b%3A0x3027c7e5494e4e54!2sSHREE%20PANDHARI%20INFRASTRUCTERS%20PVT%20LTD!5e1!3m2!1sen!2sin!4v1781083435233!5m2!1sen!2sin",
+  "description": "Professional Digital Visiting Card for Local Businesses",
+  "ogImage": "/images/webique-og-image.png",
+  "darkModeImage": "/images/reastaurant-logo.webp",
+  "company": "Webique Technology",
+  "package": "regular",
+  "template": "Builder"
+}
