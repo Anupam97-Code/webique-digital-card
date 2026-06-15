@@ -25,7 +25,7 @@ const ContactSection = ({ profile, darkMode }) => {
         {...wrapperProps}
         className="w-100 d-flex align-items-center justify-content-between text-decoration-none p-2 border"
         style={{
-          backgroundColor: darkMode ? profile.colors.darkFields : profile.colors.white,
+          backgroundColor: darkMode ? profile.colors.darkFields : profile.colors.trinery,
           color: darkMode ? profile.colors.white : profile.colors.black,
           borderRadius: "4px"
         }}
@@ -38,7 +38,7 @@ const ContactSection = ({ profile, darkMode }) => {
             style={{
               width: "42px",
               height: "42px",
-              background: darkMode ? profile.colors.dark : profile.colors.white,
+              background: darkMode ? profile.colors.dark : profile.colors.trinery,
               color: profile.colors.Primery,
               flexShrink: "0",
             }}
@@ -183,7 +183,7 @@ const ContactSection = ({ profile, darkMode }) => {
         <div
           className="w-100 d-flex align-items-start justify-content-between p-2 border"
           style={{
-            backgroundColor: darkMode ? profile.colors.darkFields : profile.colors.white,
+            backgroundColor: darkMode ? profile.colors.darkFields : profile.colors.trinery,
             color: darkMode ? profile.colors.white : profile.colors.black,
             borderRadius: "4px",
           }}

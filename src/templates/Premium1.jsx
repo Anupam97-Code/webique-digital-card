@@ -148,7 +148,7 @@ Message: ${formData.message}`;
       name: safeData.name || "Marcus Whitlow",
       whatsapp: safeData.whatsapp,
       title: safeData.title,
-      videoSlider:safeData.videoSlider || [],
+      videoSlider: safeData.videoSlider || [],
       designation: safeData.designation,
       company: safeData.company,
       gallerySlider: safeData.gallerySlider,
@@ -247,7 +247,7 @@ Message: ${formData.message}`;
             padding: "13px 13px",
             marginRight: "5px",
             marginTop: "5px",
-            zIndex:"1000"
+            zIndex: "1000"
           }}
         >
           {darkMode ? <Sun size={16} /> : <Moon size={16} />}
@@ -706,31 +706,41 @@ Message: ${formData.message}`;
 
             {/* Gallery */}
             {profile.package === "regular" && (
-              <div
-                className="d-flex flex-column gap-2"
-                style={{
-                  overflow: "hidden",
-                  width: "100%"
-                }}
-              >
-                <h4
+              <>
+                <div
+                  className="d-flex flex-column gap-2"
                   style={{
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    color: darkMode ? profile.colors.white : profile.colors.dark,
-                    lineHeight: "27px"
+                    overflow: "hidden",
+                    width: "100%"
                   }}
                 >
-                  Gallery
-                </h4>
-                <GallerySlider slideData={profile.gallerySlider} />
-              </div>
+                  <h4
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      color: darkMode ? profile.colors.white : profile.colors.dark,
+                      lineHeight: "27px"
+                    }}
+                  >
+                    Gallery
+                  </h4>
+                  <GallerySlider slideData={profile.gallerySlider} />
+                </div>
+
+
+                
+              </>
             )}
 
+             {profile.package === "premium" && (
+
+              <>
+                <VideoSlider videos={profile.videoSlider} profile={profile} darkMode={darkMode} />
+              </>
+             )}
 
 
 
-            <VideoSlider videos={profile.videoSlider} profile={profile} darkMode={darkMode}/>
             {/* testimonial carousal */}
             <style>
               {`
@@ -871,11 +881,11 @@ Message: ${formData.message}`;
             )}
 
 
-       
 
 
-         
-            
+
+
+
             {/* Inquiry div (form) */}
             <style>
               {`
@@ -888,7 +898,7 @@ textarea::placeholder {
 }
 `}
             </style>
-            
+
             {checkUserPackage("premium") && (
               <div className='d-flex flex-column gap-2'>
                 <h4 style={{

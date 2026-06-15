@@ -402,22 +402,7 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
             style={{ background: darkMode ? profile.colors.lightBg : profile.colors.dark }}
         >
             {/* Theme Toggle */}
-            <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="btn position-fixed  rounded-circle shadow d-flex align-items-center justify-content-center"
-                style={{
-                    background: darkMode ? profile.colors.white : profile.colors.dark,
-                    color: darkMode ? profile.colors.dark : profile.colors.white,
-                    padding: "13px 13px",
-                    marginRight: "15px",
-                    marginTop: "15px",
-                    zIndex:"110",
-                    top:"60px",
-                    right:"15px"
-                }}
-            >
-                {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+
 
             <div
                 className="position-relative "
@@ -543,7 +528,24 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
                                 />
                             )}
 
-                            <div style={{ color: profile.colors.white, fontSize: "24px" }}><FaRegFilePdf /></div>
+                            <div className="d-flex gap-2 align-items-center">
+                                <div style={{ color: profile.colors.white, fontSize: "26px" }}><FaRegFilePdf /></div>
+                                <button
+                                    onClick={() => setDarkMode(!darkMode)}
+                                    className="btn position-static  rounded-circle shadow d-flex align-items-center justify-content-center"
+                                    style={{
+                                        background: darkMode ? profile.colors.white : profile.colors.dark,
+                                        color: darkMode ? profile.colors.dark : profile.colors.white,
+                                        padding: "8px 8px",
+                                        zIndex: "110",
+                                        top: "60px",
+                                        right: "15px"
+                                    }}
+                                >
+                                    {darkMode ? <Sun size={14} /> : <Moon size={14} />}
+                                </button>
+
+                            </div>
                         </div>
                         <div className="d-flex flex-column position-relative for-building" style={{ gap: "34px", zIndex: "21", padding: "190px 16px 30px 16px" }}>
                             <div className="d-flex flex-column align-items-start position-relative" style={{ gap: "15px", zIndex: "99" }}>
@@ -751,7 +753,7 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
                                         <div key={i} style={{ width: cardWidth }}>
                                             <div
                                                 className="p-3 h-100 text-left rounded d-flex gap-3 flex-column"
-                                                style={{ background: darkMode ? profile.colors.trinery : profile.colors.white }}
+                                                style={{ background: darkMode ? profile.colors.trinery : profile.colors.fade }}
                                             >
                                                 {/* <div
                                                     style={{
@@ -960,7 +962,7 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
                                             className="p-2 rounded d-flex align-items-center justify-content-center"
                                             style={{
 
-                                                background: darkMode ? profile.colors.logoBack : profile.colors.white,
+                                                background: darkMode ? profile.colors.logoBack : profile.colors.fade,
                                                 color: darkMode ? profile.colors.Primery : profile.colors.Secondery
                                             }}
                                         >
@@ -1020,6 +1022,9 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
 
     .contact-style .fw-semibold{color: ${darkMode ? profile.colors.Primery : profile.colors.black}}
     
+    .contact-style .for-style{
+    background: ${darkMode ? profile.colors.logoBack : profile.colors.fade} !important;
+}
     }
 }
     `}

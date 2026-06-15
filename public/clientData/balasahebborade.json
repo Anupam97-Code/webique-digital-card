@@ -21,18 +21,13 @@
     },
     {
       "socialName": "Instagram",
-      "socialURL": "https://www.instagram.com/webique_tech",
+      "socialURL": "https://www.instagram.com/sb.realtors?igsh=MWY3NXQ4azg1bzk1MA%3D%3D",
       "icon": "Instagram"
     },
     {
       "socialName": "LinkedIn",
-      "socialURL": "https://www.instagram.com/bigdreamassociates/",
+      "socialURL": "https://in.linkedin.com/in/mr-balasaheb-borade-mrs-savita-b-borade-58230632",
       "icon": "Linkedin"
-    },
-    {
-      "socialName": "Youtube",
-      "socialURL": "https://www.youtube.com",
-      "icon": "Youtube"
     }
   ],
   "aboutDescription": "He has 11 years in corporate governance. Holds Director and Designated Partner roles. Currently with 5 companies, including SB Realtor and Shree Pandhari Infrastructures Private Limited. Engaged in General Business. Contributes to corporate operations.",
@@ -227,6 +222,7 @@
     },
     "website": "www.balasahebboradegroup.com"
   },
+  "whatsapp": "+919822761210",
   "contactDataTop": [
     {
       "title": "Call Us",
@@ -252,27 +248,27 @@
   "openingHours": [
     {
       "dayName": "Monday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 6:00"
     },
     {
       "dayName": "Tuesday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 6:00"
     },
     {
       "dayName": "Wednesday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 6:00"
     },
     {
       "dayName": "Thursday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 6:00"
     },
     {
       "dayName": "Friday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 6:00"
     },
     {
       "dayName": "Saturday",
-      "ocTime": "09:00 - 22:00"
+      "ocTime": "10:00 - 2:00"
     },
     {
       "dayName": "Sunday",
@@ -288,8 +284,8 @@
     "primaryDark": "#a837ff",
     "borderChiarman":"linear-gradient(to right, #d4af37, #f2ca50 )",
     "Secondery": "#000000",
-    "trinery": "#2d2e2f",
-    "fade": "#000000",
+    "trinery": "#bebebe33",
+    "fade": "#e9bf6533",
     "white": "#fff",
     "black": "#1a1c1c",
     "light": "#F1F3F5",
