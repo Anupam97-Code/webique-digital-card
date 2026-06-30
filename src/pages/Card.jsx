@@ -15,6 +15,7 @@ import BusinessCard from "../templates/BusinessCard";
 import Builder from "../templates/Builder.jsx";
 import ClientCustome1 from "../templates/ClientCustome1.jsx";
 
+
 const Card = () => {
     const { username } = useParams();
     const [data, setData] = useState(null);
@@ -330,7 +331,8 @@ const Card = () => {
         DigitalCardTwo: DigitalCardTwo,
         BusinessCard: BusinessCard,
         Builder: Builder,
-        ClientCustome1:ClientCustome1
+        ClientCustome1:ClientCustome1,
+        RestraurentCard:RestraurentCard
 
     };
 

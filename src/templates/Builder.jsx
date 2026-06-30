@@ -388,6 +388,16 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
 
         return checkPackage(requiredUserPackage);
     };
+
+    const downloadPdf = () => {
+        const link = document.createElement("a");
+        link.href = "https://webiquecard.in/dgcard-img/borade/balasahebboradeportfolio.pdf";
+        link.target = "_blank";
+        link.download = "balasahebboradeportfolio.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
     //==== create for checking the packages and assing the styles
 
     // console.log("groupedTestimonials", groupedTestimonials);
@@ -529,7 +539,16 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
                             )}
 
                             <div className="d-flex gap-2 align-items-center">
-                                <div style={{ color: profile.colors.white, fontSize: "26px" }}><FaRegFilePdf /></div>
+                                <div
+                                    onClick={downloadPdf}
+                                    style={{
+                                        color: profile.colors.white,
+                                        fontSize: "26px",
+                                        cursor: "pointer",
+                                    }}
+                                >
+                                    <FaRegFilePdf />
+                                </div>
                                 <button
                                     onClick={() => setDarkMode(!darkMode)}
                                     className="btn position-static  rounded-circle shadow d-flex align-items-center justify-content-center"
@@ -561,13 +580,7 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
 
 
 
-                            <div className="position-absolute"
-                                style={{
-                                    width: "100%", height: "100%", top: "0", left: "0", zIndex: 98,
-                                    background: darkMode ? profile.colors.headerGredient : profile.colors.headerGredientLight,
-                                }}
 
-                            ></div>
                         </div>
                     </div>
                 </div>
@@ -745,7 +758,7 @@ const Builder = ({ data, saveContact, openQR, openUPI }) => {
                                             cardWidth = "calc(100%)";
                                         } else if (total === 5) {
                                             if (i < 3) cardWidth = "calc(100%)"; // First 3 items
-                                            else cardWidth = "calc(100% - 10px)"; // Last 2 items
+                                            else cardWidth = "calc(100%)"; // Last 2 items
                                         }
                                     }
 

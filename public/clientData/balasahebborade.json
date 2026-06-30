@@ -3,10 +3,11 @@
   "headerBgImagePosition": "center",
   "headerOverlayLogoImg": "https://webiquecard.in/dgcard-img/borade/bb-white.png",
   "texture": "/images/texture-1.png",
-  "map": "https://webiquecard.in/dgcard-img/borade/building.png",
+  "map": "https://webiquecard.in/dgcard-img//borade/map-bg.png",
   "profileImage": "https://webiquecard.in/dgcard-img/borade/user-3.png",
   "name": "Balasaheb Borade",
   "title": "Chairman & Founder",
+  "portfolioPdf": "https://webiquecard.in/dgcard-img/borade/balasahebboradeportfolio.pdf",
   "ownerName": "",
   "designation": "",
   "payment": {
@@ -33,33 +34,33 @@
   "aboutDescription": "He has 11 years in corporate governance. Holds Director and Designated Partner roles. Currently with 5 companies, including SB Realtor and Shree Pandhari Infrastructures Private Limited. Engaged in General Business. Contributes to corporate operations.",
   "servicesData": [
     {
-      "srno":"1",
+      "srno": "1",
       "title": "Shree Pandhari Infrastructure pvt. ltd.",
-      "text":"govt. contractor | Real Estate | Land Developers | Rood Infra",
+      "text": "govt. contractor | Real Estate | Land Developers | Rood Infra",
       "image": "/images/cropped-lgo-1.svg"
     },
     {
-      "srno":"2",
+      "srno": "2",
       "title": "Shree Pandhari Multi-Purpose Charitable Org.",
-      "text":"Community Developement an d Social Welfare Programs",
+      "text": "Community Developement an d Social Welfare Programs",
       "image": "/images/cropped-lgo-2.svg"
     },
     {
-      "srno":"3",
+      "srno": "3",
       "title": "Savita Masale",
-      "text":"Manufacturing of Authentic Maharashtrian Spices",
+      "text": "Manufacturing of Authentic Maharashtrian Spices",
       "image": "/images/cropped-lgo-3.svg"
     },
     {
-      "srno":"4",
+      "srno": "4",
       "title": "SB Realtors",
-      "text":"Real Estate | Land Developers",
+      "text": "Real Estate | Land Developers",
       "image": "/images/cropped-lgo-4.svg"
     },
     {
-      "srno":"5",
+      "srno": "5",
       "title": "Ideal Corporation",
-      "text":"Stock Investment and Financial Growth Solutions",
+      "text": "Stock Investment and Financial Growth Solutions",
       "image": "/images/lgo-5.png"
     }
   ],
@@ -213,7 +214,8 @@
   ],
   "contactData": {
     "phone_Number": [
-      "+919325861210","+919822761210"
+      "+919822761210",
+      "+919325861210"
     ],
     "mail": "Spiplnsk@gmail.com",
     "location": {
@@ -277,12 +279,12 @@
   ],
   "colors": {
     "Primery": "#e9bf5b",
-    "logoBack": "#2d2e2f",
-    "textColor":"#d0c5af",
+    "logoBack": "#17191c",
+    "textColor": "#d0c5af",
     "headerGredient": "linear-gradient(45deg, black, transparent)",
     "headerGredientLight": "linear-gradient(45deg, white, transparent)",
     "primaryDark": "#a837ff",
-    "borderChiarman":"linear-gradient(to right, #d4af37, #f2ca50 )",
+    "borderChiarman": "linear-gradient(to right, #d4af37, #f2ca50 )",
     "Secondery": "#000000",
     "trinery": "#bebebe33",
     "fade": "#e9bf6533",

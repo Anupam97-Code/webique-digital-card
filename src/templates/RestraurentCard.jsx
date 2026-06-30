@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, memo, useRef, useLayoutEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/digitalCard.scss"
+import { FaRegFilePdf } from "react-icons/fa";
 import {
     MapPin,
     Sun,
@@ -316,6 +317,7 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
 
         company: safeData.company || "",
         email: safeData.email || "",
+        website: safeData.website || "",
         whatsapp: safeData.whatsapp || "",
 
         socialLinks: safeData.socialLinks || [],
@@ -334,7 +336,8 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
             restaurant_Number: "",
             location: {
                 address: "",
-                link: ""
+                link: "",
+                pdfLink:""
             }
         },
 
@@ -426,6 +429,19 @@ const RestraurentCard = ({ data, saveContact, openQR, openUPI }) => {
                 >
                     <div className="d-flex gap-1 position-relative z-2">
                         {/* location button */}
+                        <a
+                            href={profile.contactData.location.pdfLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded d-flex align-items-center justify-content-center"
+                            style={{
+                                padding: "6px",
+                                background: profile.colors.Primery,
+                                color: profile.colors.white,
+                            }}
+                        >
+                            <FaRegFilePdf size={20}/>
+                        </a>
                         <a
                             href={profile.contactData.location.link}
                             target="_blank"

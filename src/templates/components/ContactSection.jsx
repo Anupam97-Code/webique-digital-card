@@ -159,6 +159,27 @@ const ContactSection = ({ profile, darkMode }) => {
           href={`mailto:${profile.contactData.mail}`}
         />
 
+
+        <ActionItem
+          icon={
+            <div
+              className="d-flex align-items-center justify-content-center rounded-3"
+              style={{
+                width: "42px",
+                height: "42px",
+                background: darkMode ? profile.colors.dark : profile.colors.white,
+                color: profile.colors.Primery,
+              }}
+            >
+              <Mail size={18} />
+            </div>
+          }
+
+          title="Website"
+          subtitle={profile.contactData.website}
+          href={profile.contactData.website.url}
+        />
+
         {/* Location */}
         <ActionItem
           icon={
